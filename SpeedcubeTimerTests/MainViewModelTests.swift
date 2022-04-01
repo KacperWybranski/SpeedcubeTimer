@@ -1,0 +1,38 @@
+//
+//  MainViewModelTests.swift
+//  SpeedcubeTimerTests
+//
+//  Created by Kacper on 01/04/2022.
+//
+
+import XCTest
+@testable import SpeedcubeTimer
+
+class MainViewModelTests: XCTestCase {
+
+    private var viewModel: MainViewModel?
+    
+    override func setUpWithError() throws {
+        viewModel = .init()
+    }
+
+    override func tearDownWithError() throws {
+        viewModel = nil
+    }
+
+    func testChangeCurrentSession() {
+        let oldSession = viewModel?.settings.currentSession
+        
+        viewModel?.setSessionTo(cube: TestConfiguration.newCube, index: TestConfiguration.newSessionIndex)
+        
+        XCTAssertNotEqual(viewModel?.settings.currentSession, oldSession)
+        XCTAssertEqual(viewModel?.settings.currentSession.cube, TestConfiguration.newCube)
+        XCTAssertEqual(viewModel?.settings.currentSession.sessionindex, TestConfiguration.newSessionIndex)
+    }
+
+}
+
+private enum TestConfiguration {
+    static let newSessionIndex = 2
+    static let newCube = Cube.two
+}

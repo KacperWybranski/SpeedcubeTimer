@@ -7,13 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */; };
+		E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */; };
+		E74480B027F78E2E009ECBEF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AF27F78E2E009ECBEF /* AppSettings.swift */; };
+		E74480B227F78E5F009ECBEF /* AppSetingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480B127F78E5F009ECBEF /* AppSetingsTests.swift */; };
+		E74480B427F796EB009ECBEF /* ScrambleProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */; };
+		E79D877A27F1C9F000C39780 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D877927F1C9F000C39780 /* MainModel.swift */; };
+		E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D877F27F2F74000C39780 /* MainViewModel.swift */; };
+		E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */; };
+		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
+		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
+		E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878727F4580C00C39780 /* SettingsViewModel.swift */; };
+		E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */; };
+		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
+		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
+		E85499C827EF6E0C00FA8FF1 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499C727EF6E0C00FA8FF1 /* TimerModel.swift */; };
+		E85499CA27EF6EC700FA8FF1 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499C927EF6EC700FA8FF1 /* SettingsModel.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
-		E8F3BB0027EA0AC6001AEDB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFF27EA0AC6001AEDB2 /* ContentView.swift */; };
 		E8F3BB0227EA0AC7001AEDB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F3BB0127EA0AC7001AEDB2 /* Assets.xcassets */; };
 		E8F3BB0527EA0AC7001AEDB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F3BB0427EA0AC7001AEDB2 /* Preview Assets.xcassets */; };
-		E8F3BB0F27EA0AC7001AEDB2 /* SpeedcubeTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB0E27EA0AC7001AEDB2 /* SpeedcubeTimerTests.swift */; };
 		E8F3BB1927EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB1827EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift */; };
 		E8F3BB1B27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB1A27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift */; };
+		E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */; };
+		E8F3BB2D27EA150D001AEDB2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */; };
+		E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */; };
+		E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */; };
+		E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +53,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		E74480AF27F78E2E009ECBEF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		E74480B127F78E5F009ECBEF /* AppSetingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetingsTests.swift; sourceTree = "<group>"; };
+		E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleProviderTests.swift; sourceTree = "<group>"; };
+		E79D877927F1C9F000C39780 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		E79D877F27F2F74000C39780 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModel.swift; sourceTree = "<group>"; };
+		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
+		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
+		E79D878727F4580C00C39780 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
+		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
+		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E85499C727EF6E0C00FA8FF1 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		E85499C927EF6EC700FA8FF1 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerApp.swift; sourceTree = "<group>"; };
-		E8F3BAFF27EA0AC6001AEDB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E8F3BB0127EA0AC7001AEDB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8F3BB0427EA0AC7001AEDB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E8F3BB0A27EA0AC7001AEDB2 /* SpeedcubeTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedcubeTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F3BB0E27EA0AC7001AEDB2 /* SpeedcubeTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerTests.swift; sourceTree = "<group>"; };
 		E8F3BB1427EA0AC7001AEDB2 /* SpeedcubeTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedcubeTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F3BB1827EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerUITests.swift; sourceTree = "<group>"; };
 		E8F3BB1A27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleProvider.swift; sourceTree = "<group>"; };
+		E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +109,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E74480B527F79704009ECBEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */,
+				E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E85499BE27EF65D500FA8FF1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
+				E79D878727F4580C00C39780 /* SettingsViewModel.swift */,
+				E85499C927EF6EC700FA8FF1 /* SettingsModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		E8F3BAF127EA0AC6001AEDB2 = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +151,7 @@
 		E8F3BAFC27EA0AC6001AEDB2 /* SpeedcubeTimer */ = {
 			isa = PBXGroup;
 			children = (
-				E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */,
-				E8F3BAFF27EA0AC6001AEDB2 /* ContentView.swift */,
-				E8F3BB0127EA0AC7001AEDB2 /* Assets.xcassets */,
+				E8F3BB2927EA0CC9001AEDB2 /* Application */,
 				E8F3BB0327EA0AC7001AEDB2 /* Preview Content */,
 			);
 			path = SpeedcubeTimer;
@@ -113,7 +168,11 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E8F3BB0E27EA0AC7001AEDB2 /* SpeedcubeTimerTests.swift */,
+				E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */,
+				E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */,
+				E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */,
+				E74480B127F78E5F009ECBEF /* AppSetingsTests.swift */,
+				E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */,
 			);
 			path = SpeedcubeTimerTests;
 			sourceTree = "<group>";
@@ -125,6 +184,68 @@
 				E8F3BB1A27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift */,
 			);
 			path = SpeedcubeTimerUITests;
+			sourceTree = "<group>";
+		};
+		E8F3BB2927EA0CC9001AEDB2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
+				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
+				E8F3BB3F27EC8DCB001AEDB2 /* Main */,
+				E85499BE27EF65D500FA8FF1 /* Settings */,
+				E8F3BB4327EC8E36001AEDB2 /* ResultsList */,
+				E8F3BB2B27EA0CEA001AEDB2 /* Timer */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E8F3BB2A27EA0CE2001AEDB2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB0127EA0AC7001AEDB2 /* Assets.xcassets */,
+				E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E8F3BB2B27EA0CEA001AEDB2 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */,
+				E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */,
+				E85499C727EF6E0C00FA8FF1 /* TimerModel.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		E8F3BB2E27EA1A79001AEDB2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */,
+				E74480B527F79704009ECBEF /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */,
+				E79D877F27F2F74000C39780 /* MainViewModel.swift */,
+				E79D877927F1C9F000C39780 /* MainModel.swift */,
+				E74480AF27F78E2E009ECBEF /* AppSettings.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E8F3BB4327EC8E36001AEDB2 /* ResultsList */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */,
+				E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */,
+				E79D878527F3AAC600C39780 /* ResultDetailView.swift */,
+			);
+			path = ResultsList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +378,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8F3BB0027EA0AC6001AEDB2 /* ContentView.swift in Sources */,
+				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
+				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
+				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
+				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
+				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,
+				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
+				E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */,
+				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
+				E8F3BB2D27EA150D001AEDB2 /* TimerViewModel.swift in Sources */,
+				E85499CA27EF6EC700FA8FF1 /* SettingsModel.swift in Sources */,
+				E85499C827EF6E0C00FA8FF1 /* TimerModel.swift in Sources */,
+				E79D877A27F1C9F000C39780 /* MainModel.swift in Sources */,
+				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
+				E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */,
+				E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */,
+				E74480B027F78E2E009ECBEF /* AppSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +402,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8F3BB0F27EA0AC7001AEDB2 /* SpeedcubeTimerTests.swift in Sources */,
+				E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */,
+				E74480B227F78E5F009ECBEF /* AppSetingsTests.swift in Sources */,
+				E74480B427F796EB009ECBEF /* ScrambleProviderTests.swift in Sources */,
+				E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */,
+				E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,20 +559,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpeedcubeTimer/Preview Content\"";
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimer.macbook2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -448,20 +589,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpeedcubeTimer/Preview Content\"";
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimer.macbook2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

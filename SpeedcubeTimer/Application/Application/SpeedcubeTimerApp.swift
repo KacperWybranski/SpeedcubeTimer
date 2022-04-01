@@ -2,7 +2,7 @@
 //  SpeedcubeTimerApp.swift
 //  SpeedcubeTimer
 //
-//  Created by x210981 on 22/03/2022.
+//  Created by Kacper on 22/03/2022.
 //
 
 import SwiftUI
@@ -11,7 +11,8 @@ import SwiftUI
 struct SpeedcubeTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(viewModel: MainViewModel())
+                .preferredColorScheme(.dark)
         }
     }
 }
