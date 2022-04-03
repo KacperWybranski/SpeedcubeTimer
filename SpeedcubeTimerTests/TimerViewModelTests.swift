@@ -11,14 +11,17 @@ import XCTest
 
 class TimerViewModelTests: XCTestCase {
     
-    private var settings: AppSettings = TestConfiguration.settings
+    private var settings: AppSettings?
     private var viewModel: TimerViewModel?
 
     override func setUpWithError() throws {
-        viewModel = TimerViewModel(settings: settings)
+        let newSettings = TestConfiguration.settings
+        settings = newSettings
+        viewModel = TimerViewModel(settings: newSettings)
     }
 
     override func tearDownWithError() throws {
+        settings = nil
         viewModel = nil
     }
 
@@ -73,13 +76,13 @@ class TimerViewModelTests: XCTestCase {
     }
     
     func testNewInitialState() {
-        let expectation = XCTestExpectation(description: "after running for 3 seconds")
+        let expectation = XCTestExpectation(description: "initial state set")
         let initialScramble = viewModel?.scramble
         
         viewModel?.touchBegan()
         viewModel?.touchEnded()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.viewModel?.touchBegan()
             self.viewModel?.touchEnded()
             
@@ -107,7 +110,7 @@ class TimerViewModelTests: XCTestCase {
             
             XCTAssertNotEqual(self.viewModel?.time, TestConfiguration.endedStateNotValidTime)
             
-            self.settings.changeSessionTo(cube: .three, index: 2)
+            self.settings?.changeSessionTo(cube: .three, index: 2)
             
             XCTAssertEqual(self.viewModel?.shouldScrambleBeHidden, TestConfiguration.initialStateShouldScrambleBeHidden)
             XCTAssertEqual(self.viewModel?.timerTextColor, TestConfiguration.initialStateTimerTextColor)
@@ -122,7 +125,7 @@ class TimerViewModelTests: XCTestCase {
     
     func testSaveNewResult() {
         let scramble = viewModel?.scramble
-        let results = settings.currentSession.results
+        let results = settings!.currentSession.results
         
         viewModel?.touchBegan()
         viewModel?.touchEnded()
@@ -130,9 +133,25 @@ class TimerViewModelTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.viewModel?.touchBegan()
             
-            XCTAssertEqual(self.settings.currentSession.results.count, results.count + 1)
-            XCTAssertEqual(self.settings.currentSession.results.last?.scramble, scramble)
+            XCTAssertEqual(self.settings?.currentSession.results.count, results.count + 1)
+            XCTAssertEqual(self.settings?.currentSession.results.last?.scramble, scramble)
         }
+    }
+    
+    func testFormattedTime() {
+        settings?.isPreinspectionOn.toggle()
+
+        viewModel?.touchBegan()
+        viewModel?.touchEnded()
+
+        XCTAssertEqual(viewModel?.formattedTime, viewModel?.time.asTextOnlyFractionalPart)
+
+        viewModel?.touchBegan()
+        viewModel?.touchEnded()
+
+        XCTAssertEqual(viewModel?.formattedTime, viewModel?.time.asTextWithTwoDecimal)
+        
+        settings?.isPreinspectionOn.toggle()
     }
 }
 

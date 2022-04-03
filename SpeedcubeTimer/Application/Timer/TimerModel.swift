@@ -10,4 +10,7 @@ enum CubingState {
     case ready
     case ongoing
     case ended
+    
+    case preinspectionOngoing
+    case preinspectionReady
 }

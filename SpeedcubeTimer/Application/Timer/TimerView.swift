@@ -28,7 +28,7 @@ struct TimerView: View {
                 .padding(.horizontal, 15)
                 .offset(y: -150)
             
-            Text(viewModel.time.asTextWithFormatting)
+            Text(viewModel.formattedTime)
                 .foregroundColor(viewModel.timerTextColor)
                 .font(.system(size: 70))
                 .multilineTextAlignment(.center)

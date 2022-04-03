@@ -8,8 +8,10 @@
 import SwiftUI
 
 class AppSettings: ObservableObject {
-    @Published var currentSession: CubingSession = .initialSession
     private var allSessions: [CubingSession]
+    
+    @Published var currentSession: CubingSession = .initialSession
+    @Published var isPreinspectionOn: Bool = false
     
     init(sessions: [CubingSession]) {
         allSessions = sessions

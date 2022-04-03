@@ -25,6 +25,10 @@ struct SettingsView: View {
                         }
                     }
                 }
+                
+                Section("General") {
+                    Toggle("Preinspection", isOn: $viewModel.appSettings.isPreinspectionOn)
+                }
             }
             .navigationTitle("Settings")
         }

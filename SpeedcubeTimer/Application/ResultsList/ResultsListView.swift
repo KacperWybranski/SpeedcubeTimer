@@ -55,7 +55,7 @@ struct ResultListRow: View {
     
     var body: some View {
         HStack {
-            Text(result.time.asTextWithFormatting)
+            Text(result.time.asTextWithTwoDecimal)
                 .fixedSize(horizontal: true, vertical: true)
             Spacer()
             Text(result.date.formatted())

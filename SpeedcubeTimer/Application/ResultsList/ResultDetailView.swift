@@ -12,7 +12,7 @@ struct ResultDetailView: View {
     
     var body: some View {
         VStack {
-            Text(result.time.asTextWithFormatting)
+            Text(result.time.asTextWithTwoDecimal)
                 .font(.system(size: 60))
                 .foregroundColor(.green)
             Spacer()

@@ -8,7 +8,11 @@
 import Foundation
 
 extension TimeInterval {
-    var asTextWithFormatting: String {
+    var asTextWithTwoDecimal: String {
         String(format: "%.2f", self)
+    }
+    
+    var asTextOnlyFractionalPart: String {
+        String(format: "%.0f", self)
     }
 }
