@@ -169,9 +169,3 @@ private enum TestConfiguration {
                                                    cube: .three,
                                                    session: 1)
 }
-
-private extension String {
-    static var empty: String {
-        ""
-    }
-}

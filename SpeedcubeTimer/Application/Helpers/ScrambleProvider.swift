@@ -31,7 +31,7 @@ struct ScrambleProvider {
                 scrambleMoves.append(random)
             }
         }
-        var scramble: String = ""
+        var scramble: String = .empty
         scrambleMoves.forEach { move in
             scramble += "\(move) "
         }
