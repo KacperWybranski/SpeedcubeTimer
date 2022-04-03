@@ -37,3 +37,4 @@ Results View | Timer View | Settings View
 * Add storing data in user defaults.
 * Add support for more cubes.
 * Add possibility to use own identifier insetad of number of session.
+* Add records section above all results.
