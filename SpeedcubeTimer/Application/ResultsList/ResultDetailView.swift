@@ -16,13 +16,14 @@ struct ResultDetailView: View {
                 .font(.system(size: 60))
                 .foregroundColor(.green)
             Spacer()
-                .frame(maxHeight: 30)
+                .frame(height: 40)
             Text(result.scramble)
                 .multilineTextAlignment(.center)
                 .font(.system(size: 25))
             Spacer()
-                .frame(maxHeight: 30)
+                .frame(height: 40)
             Text(result.date.formatted())
+                .font(.system(size: 20))
         }
         .padding(.horizontal, 20)
     }
@@ -32,6 +33,7 @@ struct ResultDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ResultDetailView(result: .previewResult)
             .preferredColorScheme(.dark)
+.previewInterfaceOrientation(.portrait)
     }
 }
 

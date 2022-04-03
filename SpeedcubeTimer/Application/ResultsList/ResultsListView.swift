@@ -34,9 +34,22 @@ struct ResultList: View {
     @ObservedObject var session: CubingSession
     
     var body: some View {
-        List(session.results.reversed()) { result in
-            ResultListRow(result: result)
+//        List(session.results.reversed()) { result in
+//            ResultListRow(result: result)
+//        }
+        List {
+            ForEach(session.results.reversed()) { result in
+                ResultListRow(result: result)
+            }
+            .onDelete(perform: deleteResult)
         }
+        .toolbar {
+            EditButton()
+        }
+    }
+    
+    private func deleteResult(at offsets: IndexSet) {
+        session.results.remove(atOffsets: offsets)
     }
 }
 
