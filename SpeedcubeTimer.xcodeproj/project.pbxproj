@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
+		E71B7DE327FA1FDF00896892 /* ResultsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */; };
 		E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */; };
 		E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */; };
 		E74480B027F78E2E009ECBEF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AF27F78E2E009ECBEF /* AppSettings.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModelTests.swift; sourceTree = "<group>"; };
 		E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		E74480AF27F78E2E009ECBEF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */,
 				E74480B127F78E5F009ECBEF /* AppSetingsTests.swift */,
 				E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */,
+				E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */,
 			);
 			path = SpeedcubeTimerTests;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */,
 				E74480B227F78E5F009ECBEF /* AppSetingsTests.swift in Sources */,
 				E74480B427F796EB009ECBEF /* ScrambleProviderTests.swift in Sources */,
+				E71B7DE327FA1FDF00896892 /* ResultsListViewModelTests.swift in Sources */,
 				E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */,
 				E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */,
 			);

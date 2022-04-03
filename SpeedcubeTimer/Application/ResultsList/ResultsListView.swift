@@ -18,7 +18,7 @@ struct ResultsListView: View {
     
     var body: some View {
         NavigationView {
-            ResultList(session: settings.currentSession)
+            ResultList(session: settings.currentSession, viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.large)
                 .navigationTitle("Results")
         }
@@ -32,24 +32,20 @@ struct ResultsListView: View {
 
 struct ResultList: View {
     @ObservedObject var session: CubingSession
+    var viewModel: ResultsListViewModel
     
     var body: some View {
-//        List(session.results.reversed()) { result in
-//            ResultListRow(result: result)
-//        }
         List {
             ForEach(session.results.reversed()) { result in
                 ResultListRow(result: result)
             }
-            .onDelete(perform: deleteResult)
+            .onDelete { offsets in
+                viewModel.removeResult(at: offsets)
+            }
         }
         .toolbar {
             EditButton()
         }
-    }
-    
-    private func deleteResult(at offsets: IndexSet) {
-        session.results.remove(atOffsets: offsets)
     }
 }
 
