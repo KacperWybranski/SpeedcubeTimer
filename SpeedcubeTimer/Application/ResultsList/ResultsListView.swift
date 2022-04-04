@@ -36,7 +36,7 @@ struct ResultList: View {
     
     var body: some View {
         List {
-            ForEach(session.results.reversed()) { result in
+            ForEach(session.results) { result in
                 ResultListRow(result: result)
             }
             .onDelete { offsets in
