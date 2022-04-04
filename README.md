@@ -20,7 +20,7 @@ App is always in dark mode, so it use less energy on devices with OLED screens.
 
 Results View | Timer View | Settings View
 :---:|:-----:|:---:
-![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 01 49](https://user-images.githubusercontent.com/63157451/161436974-ad09e77f-3063-4c54-a786-e9af341245ec.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 00 39](https://user-images.githubusercontent.com/63157451/161436969-dacd95f8-fb46-4066-9b81-368b8971e9b8.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 01 09](https://user-images.githubusercontent.com/63157451/161436978-3553ba03-aa4b-47b0-8dd2-9a1441eb0198.png)
+![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 01 49](https://user-images.githubusercontent.com/63157451/161436974-ad09e77f-3063-4c54-a786-e9af341245ec.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 00 39](https://user-images.githubusercontent.com/63157451/161436969-dacd95f8-fb46-4066-9b81-368b8971e9b8.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 21 46 33](https://user-images.githubusercontent.com/63157451/161445457-1a6b34f8-91ec-4da3-b87f-f664902bcae7.png)
 
 ## Features
 
@@ -30,10 +30,11 @@ Results View | Timer View | Settings View
 * Remove unwanted solves with "edit" button or swipe gesture on row.
 * Change cube scramble by selecting different cube in settings (suported: 3x3 and 2x2).
 * Store your results on 10 different session for each cube (ex. one hand, bld)
+* Turn on preinspection in settings if you need.
 
 ### Future plans:
 
-* Add option to turn on preinpection.
 * Add storing data in user defaults.
 * Add support for more cubes.
 * Add possibility to use own identifier insetad of number of session.
+* Add records section above all results.
