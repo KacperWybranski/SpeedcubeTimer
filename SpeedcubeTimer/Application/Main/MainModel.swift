@@ -12,9 +12,11 @@ class CubingSession: ObservableObject, Equatable {
     @Published var cube: Cube
     @Published var sessionindex: Int
     
-    var bestResult: Result?
+    var bestResult: Result? {
+        results.best
+    }
     
-    init(results: [Result], cube: Cube, session: Int, bestResult: Result? = nil) {
+    init(results: [Result], cube: Cube, session: Int) {
         self.results = results
         self.cube = cube
         self.sessionindex = session
@@ -30,6 +32,11 @@ class CubingSession: ObservableObject, Equatable {
                 lhs.cube == rhs.cube &&
                 lhs.sessionindex == rhs.sessionindex)
     }
+}
+
+enum Cube: CaseIterable {
+    case two
+    case three
 }
 
 struct Result: Hashable, Identifiable {
@@ -52,7 +59,8 @@ struct Result: Hashable, Identifiable {
     }
 }
 
-enum Cube: CaseIterable {
-    case two
-    case three
+extension Array where Element == Result {
+    var best: Result? {
+        return sorted { $0.time < $1.time }.first
+    }
 }

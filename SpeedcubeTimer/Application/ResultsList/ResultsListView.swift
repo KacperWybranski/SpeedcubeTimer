@@ -113,6 +113,6 @@ private extension CubingSession {
             .init(time: 1.24, scramble: "A B C A B C", date: .now),
             .init(time: 55.56, scramble: "A B C A B C", date: .now)
         ]
-        return CubingSession(results: results, cube: .three, session: 1, bestResult: results.first)
+        return CubingSession(results: results, cube: .three, session: 1)
     }
 }

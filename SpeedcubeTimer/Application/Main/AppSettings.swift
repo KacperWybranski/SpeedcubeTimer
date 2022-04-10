@@ -39,15 +39,9 @@ class AppSettings: ObservableObject {
     
     func addNewResult(_ result: Result) {
         currentSession.results.insert(result, at: 0)
-        
-        if isNewBest(result) {
-            currentSession.bestResult = result
-            debugPrint("new best: \(result.time)")
-        }
     }
     
-    func isNewBest(_ result: Result) -> Bool {
-        guard let bestTime = currentSession.bestResult?.time else { return true }
-        return (result.time < bestTime)
+    func remove(at offsets: IndexSet) {
+        currentSession.results.remove(atOffsets: offsets)
     }
 }

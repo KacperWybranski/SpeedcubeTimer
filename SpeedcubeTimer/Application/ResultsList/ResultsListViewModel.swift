@@ -16,6 +16,6 @@ class ResultsListViewModel: ObservableObject {
     }
     
     func removeResult(at offsets: IndexSet) {
-        settings.currentSession.results.remove(atOffsets: offsets)
+        settings.remove(at: offsets)
     }
 }
