@@ -104,8 +104,8 @@ class TimerViewModel: ObservableObject {
     }
     
     private func saveResult() {
-        let newResult = Result(time: time, scramble: scramble, date: Date.now)
-        settings.currentSession.results.insert(newResult, at: 0)
+        let result = Result(time: time, scramble: scramble, date: Date.now)
+        settings.addNewResult(result)
     }
     
     private func newScramble() -> String {

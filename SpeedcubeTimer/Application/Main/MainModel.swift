@@ -12,10 +12,13 @@ class CubingSession: ObservableObject, Equatable {
     @Published var cube: Cube
     @Published var sessionindex: Int
     
-    init(results: [Result], cube: Cube, session: Int) {
+    var bestResult: Result?
+    
+    init(results: [Result], cube: Cube, session: Int, bestResult: Result? = nil) {
         self.results = results
         self.cube = cube
         self.sessionindex = session
+        
     }
     
     static var initialSession: CubingSession {

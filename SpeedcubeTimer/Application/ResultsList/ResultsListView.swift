@@ -36,11 +36,17 @@ struct ResultList: View {
     
     var body: some View {
         List {
-            ForEach(session.results) { result in
-                ResultListRow(result: result)
+            Section("Best") {
+                ResultListRowBestResult(result: session.bestResult)
             }
-            .onDelete { offsets in
-                viewModel.removeResult(at: offsets)
+            
+            Section("All") {
+                ForEach(session.results) { result in
+                    ResultListRow(result: result)
+                }
+                .onDelete { offsets in
+                    viewModel.removeResult(at: offsets)
+                }
             }
         }
         .toolbar {
@@ -72,6 +78,19 @@ struct ResultListRow: View {
     }
 }
 
+struct ResultListRowBestResult: View {
+    var result: Result?
+    var resultPlaceholder = "-"
+    
+    var body: some View {
+        HStack {
+            Text("Single")
+            Spacer()
+            Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
+        }
+    }
+}
+
 // MARK: - Preview
 
 struct ResultsListView_Previews: PreviewProvider {
@@ -91,6 +110,6 @@ private extension CubingSession {
             .init(time: 1.24, scramble: "A B C A B C", date: .now),
             .init(time: 55.56, scramble: "A B C A B C", date: .now)
         ]
-        return CubingSession(results: results, cube: .three, session: 1)
+        return CubingSession(results: results, cube: .three, session: 1, bestResult: results.first)
     }
 }

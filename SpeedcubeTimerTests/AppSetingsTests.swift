@@ -44,6 +44,29 @@ class AppSettingsTests: XCTestCase {
         XCTAssertEqual(settings?.currentSession.cube, TestConfiguration.thirdSessionCube)
         XCTAssertEqual(settings?.currentSession.sessionindex, TestConfiguration.thirdSessionIndex)
     }
+    
+    func testAddNewResult() {
+        let resultsCount = settings?.currentSession.results.count
+        settings?.addNewResult(TestConfiguration.resultToAdd)
+        
+        XCTAssertEqual(settings?.currentSession.results.first, TestConfiguration.resultToAdd)
+        XCTAssertEqual((resultsCount ?? 0) + 1, settings?.currentSession.results.count)
+    }
+    
+    func testAddFirstResultBest() {
+        let resultToAdd = TestConfiguration.resultToAdd
+        settings?.currentSession = TestConfiguration.emptySession
+        settings?.addNewResult(resultToAdd)
+        
+        XCTAssertEqual(settings?.currentSession.bestResult, resultToAdd)
+    }
+    
+    func testAddNewBestResult() {
+        let newBestResult = TestConfiguration.resultToAdd
+        settings?.addNewResult(newBestResult)
+        
+        XCTAssertEqual(settings?.currentSession.bestResult, newBestResult)
+    }
 }
 
 private enum TestConfiguration {
@@ -54,6 +77,8 @@ private enum TestConfiguration {
                                                     cube: secondSessionCube,
                                                     session: secondSessionIndex)
     
+    static let emptySession: CubingSession = .init(results: [], cube: .three, session: 1)
+    
     static let secondSessionCube: Cube = .three
     static let secondSessionIndex = 2
     
@@ -61,4 +86,6 @@ private enum TestConfiguration {
     static let thirdSessionIndex = 5
     
     static let defaultInitialSession: CubingSession = .init(results: [], cube: .three, session: 1)
+    
+    static let resultToAdd: Result = .init(time: 2.23, scramble: "scramble", date: .now)
 }

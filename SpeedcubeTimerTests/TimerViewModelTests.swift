@@ -124,6 +124,7 @@ class TimerViewModelTests: XCTestCase {
     }
     
     func testSaveNewResult() {
+        let expectation = XCTestExpectation(description: "on save new result")
         let scramble = viewModel?.scramble
         let results = settings!.currentSession.results
         
@@ -134,8 +135,12 @@ class TimerViewModelTests: XCTestCase {
             self.viewModel?.touchBegan()
             
             XCTAssertEqual(self.settings?.currentSession.results.count, results.count + 1)
-            XCTAssertEqual(self.settings?.currentSession.results.last?.scramble, scramble)
+            XCTAssertEqual(self.settings?.currentSession.results.first?.scramble, scramble)
+            
+            expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testFormattedTime() {
