@@ -40,6 +40,12 @@ struct ResultList: View {
                 ResultListRowBestResult(result: session.bestResult)
             }
             
+            Section("Current") {
+                ResultListRowAverage(averageOf: .five, result: session.averageOfLast(5))
+                ResultListRowAverage(averageOf: .twelve, result: session.averageOfLast(12))
+                ResultListRowAverage(averageOf: .hundred, result: session.meanOfLast(100))
+            }
+            
             Section("All") {
                 ForEach(session.results) { result in
                     ResultListRow(result: result)
@@ -74,6 +80,37 @@ struct ResultListRow: View {
     }
 }
 
+struct ResultListRowAverage: View {
+    var averageOf: AverageOrMeanOf
+    var result: TimeInterval?
+    var resultPlaceholder = "-"
+    
+    var body: some View {
+        HStack {
+            Text(averageName)
+            Spacer()
+            Text(result?.asTextWithTwoDecimal ?? resultPlaceholder)
+        }
+    }
+    
+    var averageName: String {
+        switch averageOf {
+        case .five:
+            return "average of 5"
+        case .twelve:
+            return "average of 12"
+        case .hundred:
+            return "mean of 100"
+        }
+    }
+    
+    enum AverageOrMeanOf {
+        case five
+        case twelve
+        case hundred
+    }
+}
+
 struct ResultListRowBestResult: View {
     var result: Result?
     var resultPlaceholder = "-"
@@ -100,6 +137,7 @@ struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsListView(viewModel: ResultsListViewModel(settings: AppSettings(sessions: [.previewSession])))
             .preferredColorScheme(.dark)
+            .previewDevice("iPhone 13")
     }
 }
 

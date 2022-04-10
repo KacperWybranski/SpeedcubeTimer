@@ -59,6 +59,31 @@ struct Result: Hashable, Identifiable {
     }
 }
 
+extension CubingSession {
+    func averageOfLast(_ solvesCount: Int) -> TimeInterval? {
+        guard results.count >= solvesCount else { return nil }
+        
+        var times = results
+            .prefix(solvesCount)
+            .map { $0.time }
+            .sorted()
+        times.removeLast()
+        times.removeFirst()
+        
+        return times.average
+    }
+    
+    func meanOfLast(_ solvesCount: Int) -> TimeInterval? {
+        guard results.count >= solvesCount else { return nil }
+        
+        return results
+            .prefix(solvesCount)
+            .map { $0.time }
+            .sorted()
+            .average
+    }
+}
+
 extension Array where Element == Result {
     var best: Result? {
         return sorted { $0.time < $1.time }.first
