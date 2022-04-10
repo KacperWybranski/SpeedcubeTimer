@@ -56,24 +56,20 @@ struct ResultList: View {
 }
 
 struct ResultListRow: View {
-    @State private var isShowingSheet: Bool = false
     var result: Result
     
     var body: some View {
-        HStack {
-            Text(result.time.asTextWithTwoDecimal)
-                .fixedSize(horizontal: true, vertical: true)
-            Spacer()
-            Text(result.date.formatted())
-                .lineLimit(1)
-                .foregroundColor(.gray)
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            isShowingSheet.toggle()
-        }
-        .sheet(isPresented: $isShowingSheet) {
+        NavigationLink(destination: {
             ResultDetailView(result: result)
+        }) {
+            HStack {
+                Text(result.time.asTextWithTwoDecimal)
+                    .fixedSize(horizontal: true, vertical: true)
+                Spacer()
+                Text(result.date.formatted())
+                    .lineLimit(1)
+                    .foregroundColor(.gray)
+            }
         }
     }
 }
@@ -83,11 +79,18 @@ struct ResultListRowBestResult: View {
     var resultPlaceholder = "-"
     
     var body: some View {
-        HStack {
-            Text("Single")
-            Spacer()
-            Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
+        NavigationLink(destination: {
+            if let result = result {
+                ResultDetailView(result: result)
+            }
+        }) {
+            HStack {
+                Text("Single")
+                Spacer()
+                Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
+            }
         }
+        .disabled(result.isNil)
     }
 }
 
