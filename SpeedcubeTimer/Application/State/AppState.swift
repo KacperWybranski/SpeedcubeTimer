@@ -44,5 +44,28 @@ class AppState: ObservableObject {
     func remove(at offsets: IndexSet) {
         currentSession.results.remove(atOffsets: offsets)
     }
+    
+    func averageOfLast(_ solvesCount: Int) -> TimeInterval? {
+        guard currentSession.results.count >= solvesCount else { return nil }
+        
+        var times = currentSession.results
+            .prefix(solvesCount)
+            .map { $0.time }
+            .sorted()
+        times.removeLast()
+        times.removeFirst()
+        
+        return times.average
+    }
+    
+    func meanOfLast(_ solvesCount: Int) -> TimeInterval? {
+        guard currentSession.results.count >= solvesCount else { return nil }
+        
+        return currentSession.results
+            .prefix(solvesCount)
+            .map { $0.time }
+            .sorted()
+            .average
+    }
 }
 

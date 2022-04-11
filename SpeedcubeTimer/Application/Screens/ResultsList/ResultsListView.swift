@@ -41,9 +41,12 @@ struct ResultList: View {
             }
             
             Section("Current") {
-                ResultListRowAverage(averageOf: .five, result: session.averageOfLast(5))
-                ResultListRowAverage(averageOf: .twelve, result: session.averageOfLast(12))
-                ResultListRowAverage(averageOf: .hundred, result: session.meanOfLast(100))
+                ResultListRowAverage(name: viewModel.averageName(.five),
+                                     result: viewModel.averageOfLast(5))
+                ResultListRowAverage(name: viewModel.averageName(.five),
+                                     result: viewModel.averageOfLast(12))
+                ResultListRowAverage(name: viewModel.averageName(.five),
+                                     result: viewModel.meanOfLast(100))
             }
             
             Section("All") {
@@ -81,34 +84,18 @@ struct ResultListRow: View {
 }
 
 struct ResultListRowAverage: View {
-    var averageOf: AverageOrMeanOf
-    var result: TimeInterval?
-    var resultPlaceholder = "-"
+    var name: String
+    var result: String
     
     var body: some View {
         HStack {
-            Text(averageName)
+            Text(name)
             Spacer()
-            Text(result?.asTextWithTwoDecimal ?? resultPlaceholder)
+            Text(result)
         }
     }
     
-    var averageName: String {
-        switch averageOf {
-        case .five:
-            return "average of 5"
-        case .twelve:
-            return "average of 12"
-        case .hundred:
-            return "mean of 100"
-        }
-    }
     
-    enum AverageOrMeanOf {
-        case five
-        case twelve
-        case hundred
-    }
 }
 
 struct ResultListRowBestResult: View {

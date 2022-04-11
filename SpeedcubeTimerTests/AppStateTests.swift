@@ -1,8 +1,8 @@
 //
-//  AppSetingsTests.swift
+//  AppStateTests.swift
 //  SpeedcubeTimerTests
 //
-//  Created by Kacper on 01/04/2022.
+//  Created by Kacper on 11/04/2022.
 //
 
 import XCTest
@@ -67,6 +67,15 @@ class AppStateTests: XCTestCase {
         
         XCTAssertEqual(appState?.currentSession.bestResult, newBestResult)
     }
+    
+    func testAverageOfLastAndMeanOfLast() {
+        appState?.currentSession.results = TestConfiguration.resultsForAverage
+        XCTAssertEqual(appState?.averageOfLast(5), TestConfiguration.expectedAverage)
+        XCTAssertEqual(appState?.meanOfLast(5), TestConfiguration.expectedMean)
+        
+        XCTAssertEqual(appState?.averageOfLast(10), nil)
+        XCTAssertEqual(appState?.meanOfLast(10), nil)
+    }
 }
 
 private enum TestConfiguration {
@@ -88,4 +97,13 @@ private enum TestConfiguration {
     static let defaultInitialSession: CubingSession = .init(results: [], cube: .three, session: 1)
     
     static let resultToAdd: Result = .init(time: 2.23, scramble: "scramble", date: .now)
+    
+    static let resultsForAverage: [Result] = [.init(time: 0.10, scramble: "abc", date: .now),
+                                              .init(time: 2.00, scramble: "abc", date: .now),
+                                              .init(time: 2.50, scramble: "avc", date: .now),
+                                              .init(time: 3.00, scramble: "abc", date: .now),
+                                              .init(time: 89.00, scramble: "abc", date: .now)]
+    static let expectedAverage: TimeInterval = 2.50
+    static let expectedMean: TimeInterval = 19.32
 }
+
