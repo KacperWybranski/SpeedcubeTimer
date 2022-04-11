@@ -61,36 +61,32 @@ class TimerViewModel: ObservableObject {
     }
     
     private func applyState(_ newState: CubingState) {
+        state = newState
+        
         switch newState {
         case .idle:
-            state = .idle
             timerTextColor = .white
             scramble = newScramble()
             shouldScrambleBeHidden = false
         case .ready:
-            state = .ready
             timerTextColor = .yellow
             time = 0.0
         case .ongoing:
-            state = .ongoing
             timerTextColor = .green
             shouldScrambleBeHidden = true
             stopPreinspectionTimer()
             time = 0.0
             startTimer()
         case .ended:
-            state = .ended
             timerTextColor = .red
             stopTimer()
             saveResult()
         case .preinspectionOngoing:
-            state = .preinspectionOngoing
             timerTextColor = .green
             time = 15.0
             shouldScrambleBeHidden = true
             startPreinspectionTimer()
         case .preinspectionReady:
-            state = .preinspectionReady
             timerTextColor = .yellow
         }
     }
