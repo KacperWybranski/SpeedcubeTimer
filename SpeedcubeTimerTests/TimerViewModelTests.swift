@@ -11,17 +11,17 @@ import XCTest
 
 class TimerViewModelTests: XCTestCase {
     
-    private var settings: AppSettings?
+    private var appState: AppState?
     private var viewModel: TimerViewModel?
 
     override func setUpWithError() throws {
-        let newSettings = TestConfiguration.settings
-        settings = newSettings
-        viewModel = TimerViewModel(settings: newSettings)
+        let newAppState = TestConfiguration.appState
+        appState = newAppState
+        viewModel = TimerViewModel(appState: newAppState)
     }
 
     override func tearDownWithError() throws {
-        settings = nil
+        appState = nil
         viewModel = nil
     }
 
@@ -110,7 +110,7 @@ class TimerViewModelTests: XCTestCase {
             
             XCTAssertNotEqual(self.viewModel?.time, TestConfiguration.endedStateNotValidTime)
             
-            self.settings?.changeSessionTo(cube: .three, index: 2)
+            self.appState?.changeSessionTo(cube: .three, index: 2)
             
             XCTAssertEqual(self.viewModel?.shouldScrambleBeHidden, TestConfiguration.initialStateShouldScrambleBeHidden)
             XCTAssertEqual(self.viewModel?.timerTextColor, TestConfiguration.initialStateTimerTextColor)
@@ -126,7 +126,7 @@ class TimerViewModelTests: XCTestCase {
     func testSaveNewResult() {
         let expectation = XCTestExpectation(description: "on save new result")
         let scramble = viewModel?.scramble
-        let results = settings!.currentSession.results
+        let results = appState!.currentSession.results
         
         viewModel?.touchBegan()
         viewModel?.touchEnded()
@@ -134,8 +134,8 @@ class TimerViewModelTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.viewModel?.touchBegan()
             
-            XCTAssertEqual(self.settings?.currentSession.results.count, results.count + 1)
-            XCTAssertEqual(self.settings?.currentSession.results.first?.scramble, scramble)
+            XCTAssertEqual(self.appState?.currentSession.results.count, results.count + 1)
+            XCTAssertEqual(self.appState?.currentSession.results.first?.scramble, scramble)
             
             expectation.fulfill()
         }
@@ -144,7 +144,7 @@ class TimerViewModelTests: XCTestCase {
     }
     
     func testFormattedTime() {
-        settings?.isPreinspectionOn.toggle()
+        appState?.isPreinspectionOn.toggle()
 
         viewModel?.touchBegan()
         viewModel?.touchEnded()
@@ -156,7 +156,7 @@ class TimerViewModelTests: XCTestCase {
 
         XCTAssertEqual(viewModel?.formattedTime, viewModel?.time.asTextWithTwoDecimal)
         
-        settings?.isPreinspectionOn.toggle()
+        appState?.isPreinspectionOn.toggle()
     }
 }
 
@@ -187,7 +187,7 @@ private enum TestConfiguration {
     static let idleStateTimerTextColor: Color = .white
     
     //reset after session change
-    static let settings: AppSettings = .init(sessions: [session])
+    static let appState: AppState = .init(sessions: [session])
     
     static let session: CubingSession = .init(results: [Result(time: 5.0, scramble: "abc", date: .now)],
                                                    cube: .three,

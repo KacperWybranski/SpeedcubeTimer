@@ -11,10 +11,10 @@ import XCTest
 class SettingsViewModelTests: XCTestCase {
 
     private var viewModel: SettingsViewModel?
-    private var settings: AppSettings = TestConfiguration.settings
+    private var appState: AppState = TestConfiguration.appState
     
     override func setUpWithError() throws {
-        viewModel = .init(settings: settings)
+        viewModel = .init(appState: appState)
     }
 
     override func tearDownWithError() throws {
@@ -22,27 +22,27 @@ class SettingsViewModelTests: XCTestCase {
     }
 
     func testChangeCurrentSessionAfterSessionIndexChange() {
-        let oldSession = settings.currentSession
+        let oldSession = appState.currentSession
         
         viewModel?.currentSessionIndex = TestConfiguration.newSessionIndex
         
-        XCTAssertNotEqual(settings.currentSession, oldSession)
-        XCTAssertEqual(settings.currentSession.sessionindex, TestConfiguration.newSessionIndex)
+        XCTAssertNotEqual(appState.currentSession, oldSession)
+        XCTAssertEqual(appState.currentSession.sessionindex, TestConfiguration.newSessionIndex)
     }
     
     func testChangeCurrentSessionAfterCubeChange() {
-        let oldSession = settings.currentSession
+        let oldSession = appState.currentSession
         
         viewModel?.currentCube = TestConfiguration.newCube
         
-        XCTAssertNotEqual(settings.currentSession, oldSession)
-        XCTAssertEqual(settings.currentSession.cube, TestConfiguration.newCube)
+        XCTAssertNotEqual(appState.currentSession, oldSession)
+        XCTAssertEqual(appState.currentSession.cube, TestConfiguration.newCube)
     }
 
 }
 
 private enum TestConfiguration {
-    static let settings: AppSettings = .init(sessions: [session])
+    static let appState: AppState = .init(sessions: [session])
     
     static let session: CubingSession = .init(results: [Result(time: 5.0, scramble: "abc", date: .now)],
                                                    cube: .three,

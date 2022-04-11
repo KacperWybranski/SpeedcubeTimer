@@ -1,13 +1,13 @@
 //
-//  AppSettings.swift
+//  AppState.swift
 //  SpeedcubeTimer
 //
-//  Created by Kacper on 01/04/2022.
+//  Created by Kacper on 11/04/2022.
 //
 
 import SwiftUI
 
-class AppSettings: ObservableObject {
+class AppState: ObservableObject {
     private var allSessions: [CubingSession]
     
     @Published var currentSession: CubingSession = .initialSession
@@ -45,3 +45,4 @@ class AppSettings: ObservableObject {
         currentSession.results.remove(atOffsets: offsets)
     }
 }
+

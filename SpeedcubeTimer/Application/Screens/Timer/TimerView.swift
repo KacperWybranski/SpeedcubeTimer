@@ -47,6 +47,6 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(viewModel: TimerViewModel(settings: AppSettings(sessions: [.initialSession])))
+        TimerView(viewModel: TimerViewModel(appState: AppState(sessions: [.initialSession])))
     }
 }

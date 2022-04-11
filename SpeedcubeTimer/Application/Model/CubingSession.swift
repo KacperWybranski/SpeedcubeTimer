@@ -1,10 +1,11 @@
 //
-//  MainModel.swift
+//  CubingSession.swift
 //  SpeedcubeTimer
 //
-//  Created by Kacper on 28/03/2022.
+//  Created by Kacper on 11/04/2022.
 //
 
+import Foundation
 import SwiftUI
 
 class CubingSession: ObservableObject, Equatable {
@@ -34,31 +35,6 @@ class CubingSession: ObservableObject, Equatable {
     }
 }
 
-enum Cube: CaseIterable {
-    case two
-    case three
-}
-
-struct Result: Hashable, Identifiable {
-    var id = UUID()
-    var time: TimeInterval
-    var scramble: String
-    var date: Date
-    
-    init(time: TimeInterval, scramble: String, date: Date) {
-        self.time = time
-        self.scramble = scramble
-        self.date = date
-    }
-    
-    static func == (lhs: Result, rhs: Result) -> Bool {
-        (lhs.time == rhs.time &&
-            lhs.scramble == rhs.scramble &&
-            lhs.id == rhs.id &&
-            lhs.date == rhs.date)
-    }
-}
-
 extension CubingSession {
     func averageOfLast(_ solvesCount: Int) -> TimeInterval? {
         guard results.count >= solvesCount else { return nil }
@@ -81,11 +57,5 @@ extension CubingSession {
             .map { $0.time }
             .sorted()
             .average
-    }
-}
-
-extension Array where Element == Result {
-    var best: Result? {
-        return sorted { $0.time < $1.time }.first
     }
 }

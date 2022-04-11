@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 class ResultsListViewModel: ObservableObject {
-    var settings: AppSettings
+    var appState: AppState
     
-    init(settings: AppSettings) {
-        self.settings = settings
+    init(appState: AppState) {
+        self.appState = appState
     }
     
     func removeResult(at offsets: IndexSet) {
-        settings.remove(at: offsets)
+        appState.remove(at: offsets)
     }
 }

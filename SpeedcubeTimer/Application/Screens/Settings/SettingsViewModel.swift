@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    @Published var appSettings: AppSettings
+    @Published var appState: AppState
     @Published var currentCube: Cube {
         didSet {
             changeCurrentSession()
@@ -24,13 +24,13 @@ class SettingsViewModel: ObservableObject {
     let allCubeOptions = Cube.allCases
     let allSessionOptions: [Int] = Array(1...10)
     
-    init(settings: AppSettings) {
-        appSettings = settings
-        currentCube = settings.currentSession.cube
-        currentSessionIndex = settings.currentSession.sessionindex
+    init(appState: AppState) {
+        self.appState = appState
+        currentCube = appState.currentSession.cube
+        currentSessionIndex = appState.currentSession.sessionindex
     }
     
     private func changeCurrentSession() {
-        appSettings.changeSessionTo(cube: currentCube, index: currentSessionIndex)
+        appState.changeSessionTo(cube: currentCube, index: currentSessionIndex)
     }
 }

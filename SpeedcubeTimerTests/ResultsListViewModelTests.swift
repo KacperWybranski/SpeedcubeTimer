@@ -10,11 +10,11 @@ import XCTest
 
 class ResultsListViewModelTests: XCTestCase {
     
-    private var settings: AppSettings = TestConfiguration.settings
+    private var appState: AppState = TestConfiguration.appState
     private var viewModel: ResultsListViewModel?
 
     override func setUpWithError() throws {
-        viewModel = .init(settings: settings)
+        viewModel = .init(appState: appState)
     }
 
     override func tearDownWithError() throws {
@@ -24,18 +24,18 @@ class ResultsListViewModelTests: XCTestCase {
     func testRemoveResultAt() {
         let result = Result(time: 8.33, scramble: "abcabc", date: .now)
         
-        settings.currentSession.results.append(result)
+        appState.currentSession.results.append(result)
         
-        XCTAssertEqual(settings.currentSession.results.first, result)
+        XCTAssertEqual(appState.currentSession.results.first, result)
         
         viewModel?.removeResult(at: IndexSet(integer: 0))
         
-        XCTAssertEqual(viewModel?.settings.currentSession.results.isEmpty, true)
+        XCTAssertEqual(viewModel?.appState.currentSession.results.isEmpty, true)
     }
 }
 
 private enum TestConfiguration {
-    static let settings: AppSettings = .init(sessions: [session])
+    static let appState: AppState = .init(sessions: [session])
     static let session: CubingSession = .init(results: [],
                                                    cube: .three,
                                                    session: 1)

@@ -8,64 +8,64 @@
 import XCTest
 @testable import SpeedcubeTimer
 
-class AppSettingsTests: XCTestCase {
+class AppStateTests: XCTestCase {
 
-    private var settings: AppSettings?
+    private var appState: AppState?
     
     override func setUpWithError() throws {
-        settings = .init(sessions: [TestConfiguration.firstSession, TestConfiguration.secondSession])
+        appState = .init(sessions: [TestConfiguration.firstSession, TestConfiguration.secondSession])
     }
 
     override func tearDownWithError() throws {
-        settings = nil
+        appState = nil
     }
 
     func testCurrentSessionIsFirstSessionFromInitial() {
-        XCTAssertEqual(settings?.currentSession, TestConfiguration.firstSession)
+        XCTAssertEqual(appState?.currentSession, TestConfiguration.firstSession)
     }
     
     func testCurrentSessionWhenInitWithEmptySessions() {
-        settings = .init(sessions: [])
+        appState = .init(sessions: [])
         
-        XCTAssertEqual(settings?.currentSession, TestConfiguration.defaultInitialSession)
+        XCTAssertEqual(appState?.currentSession, TestConfiguration.defaultInitialSession)
     }
     
     func testChangeSessionToExistingOne() {
-        settings?.changeSessionTo(cube: TestConfiguration.secondSessionCube, index: TestConfiguration.secondSessionIndex)
+        appState?.changeSessionTo(cube: TestConfiguration.secondSessionCube, index: TestConfiguration.secondSessionIndex)
         
-        XCTAssertEqual(settings?.currentSession, TestConfiguration.secondSession)
+        XCTAssertEqual(appState?.currentSession, TestConfiguration.secondSession)
     }
     
     func testChangeSessionToNewOne() {
-        settings?.changeSessionTo(cube: TestConfiguration.thirdSessionCube, index: TestConfiguration.thirdSessionIndex)
+        appState?.changeSessionTo(cube: TestConfiguration.thirdSessionCube, index: TestConfiguration.thirdSessionIndex)
         
-        XCTAssertNotEqual(settings?.currentSession, TestConfiguration.firstSession)
-        XCTAssertNotEqual(settings?.currentSession, TestConfiguration.secondSession)
-        XCTAssertEqual(settings?.currentSession.cube, TestConfiguration.thirdSessionCube)
-        XCTAssertEqual(settings?.currentSession.sessionindex, TestConfiguration.thirdSessionIndex)
+        XCTAssertNotEqual(appState?.currentSession, TestConfiguration.firstSession)
+        XCTAssertNotEqual(appState?.currentSession, TestConfiguration.secondSession)
+        XCTAssertEqual(appState?.currentSession.cube, TestConfiguration.thirdSessionCube)
+        XCTAssertEqual(appState?.currentSession.sessionindex, TestConfiguration.thirdSessionIndex)
     }
     
     func testAddNewResult() {
-        let resultsCount = settings?.currentSession.results.count
-        settings?.addNewResult(TestConfiguration.resultToAdd)
+        let resultsCount = appState?.currentSession.results.count
+        appState?.addNewResult(TestConfiguration.resultToAdd)
         
-        XCTAssertEqual(settings?.currentSession.results.first, TestConfiguration.resultToAdd)
-        XCTAssertEqual((resultsCount ?? 0) + 1, settings?.currentSession.results.count)
+        XCTAssertEqual(appState?.currentSession.results.first, TestConfiguration.resultToAdd)
+        XCTAssertEqual((resultsCount ?? 0) + 1, appState?.currentSession.results.count)
     }
     
     func testAddFirstResultBest() {
         let resultToAdd = TestConfiguration.resultToAdd
-        settings?.currentSession = TestConfiguration.emptySession
-        settings?.addNewResult(resultToAdd)
+        appState?.currentSession = TestConfiguration.emptySession
+        appState?.addNewResult(resultToAdd)
         
-        XCTAssertEqual(settings?.currentSession.bestResult, resultToAdd)
+        XCTAssertEqual(appState?.currentSession.bestResult, resultToAdd)
     }
     
     func testAddNewBestResult() {
         let newBestResult = TestConfiguration.resultToAdd
-        settings?.addNewResult(newBestResult)
+        appState?.addNewResult(newBestResult)
         
-        XCTAssertEqual(settings?.currentSession.bestResult, newBestResult)
+        XCTAssertEqual(appState?.currentSession.bestResult, newBestResult)
     }
 }
 

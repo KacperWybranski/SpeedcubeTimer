@@ -21,13 +21,13 @@ class MainViewModelTests: XCTestCase {
     }
 
     func testChangeCurrentSession() {
-        let oldSession = viewModel?.settings.currentSession
+        let oldSession = viewModel?.appState.currentSession
         
         viewModel?.setSessionTo(cube: TestConfiguration.newCube, index: TestConfiguration.newSessionIndex)
         
-        XCTAssertNotEqual(viewModel?.settings.currentSession, oldSession)
-        XCTAssertEqual(viewModel?.settings.currentSession.cube, TestConfiguration.newCube)
-        XCTAssertEqual(viewModel?.settings.currentSession.sessionindex, TestConfiguration.newSessionIndex)
+        XCTAssertNotEqual(viewModel?.appState.currentSession, oldSession)
+        XCTAssertEqual(viewModel?.appState.currentSession.cube, TestConfiguration.newCube)
+        XCTAssertEqual(viewModel?.appState.currentSession.sessionindex, TestConfiguration.newSessionIndex)
     }
 
 }

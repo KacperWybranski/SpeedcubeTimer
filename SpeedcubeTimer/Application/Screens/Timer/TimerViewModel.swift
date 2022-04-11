@@ -8,8 +8,21 @@
 import SwiftUI
 import Combine
 
+extension TimerViewModel {
+    
+    enum CubingState {
+        case idle
+        case ready
+        case ongoing
+        case ended
+        
+        case preinspectionOngoing
+        case preinspectionReady
+    }
+}
+
 class TimerViewModel: ObservableObject {
-    private var settings: AppSettings
+    private var appState: AppState
     private var state: CubingState = .idle
     private var timer: Timer?
     private var preinspectionTimer: Timer?
@@ -24,11 +37,11 @@ class TimerViewModel: ObservableObject {
         (state == .preinspectionReady || state == .preinspectionOngoing) ? time.asTextOnlyFractionalPart : time.asTextWithTwoDecimal
     }
     
-    init(settings: AppSettings) {
-        self.settings = settings
-        self.scramble = ScrambleProvider.newScramble(for: settings.currentSession.cube)
+    init(appState: AppState) {
+        self.appState = appState
+        self.scramble = ScrambleProvider.newScramble(for: appState.currentSession.cube)
         
-        anyCancellable = settings.$currentSession.sink { [weak self] newSession in
+        anyCancellable = appState.$currentSession.sink { [weak self] newSession in
             guard let self = self else { return }
             self.reset(newCube: newSession.cube)
         }
@@ -50,7 +63,7 @@ class TimerViewModel: ObservableObject {
     func touchEnded() {
         switch state {
         case .ready:
-            applyState(settings.isPreinspectionOn ? .preinspectionOngoing : .ongoing)
+            applyState(appState.isPreinspectionOn ? .preinspectionOngoing : .ongoing)
         case .preinspectionReady:
             applyState(.ongoing)
         case .ended:
@@ -101,11 +114,11 @@ class TimerViewModel: ObservableObject {
     
     private func saveResult() {
         let result = Result(time: time, scramble: scramble, date: Date.now)
-        settings.addNewResult(result)
+        appState.addNewResult(result)
     }
     
     private func newScramble() -> String {
-        ScrambleProvider.newScramble(for: settings.currentSession.cube)
+        ScrambleProvider.newScramble(for: appState.currentSession.cube)
     }
     
     private func startTimer() {

@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ResultsListView: View {
-    @ObservedObject private var settings: AppSettings
+    @ObservedObject private var appState: AppState
     private var viewModel: ResultsListViewModel
     
     init(viewModel: ResultsListViewModel) {
         self.viewModel = viewModel
-        self.settings = viewModel.settings
+        self.appState = viewModel.appState
     }
     
     var body: some View {
         NavigationView {
-            ResultList(session: settings.currentSession, viewModel: viewModel)
+            ResultList(session: appState.currentSession, viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.large)
                 .navigationTitle("Results")
         }
@@ -135,7 +135,7 @@ struct ResultListRowBestResult: View {
 
 struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsListView(viewModel: ResultsListViewModel(settings: AppSettings(sessions: [.previewSession])))
+        ResultsListView(viewModel: ResultsListViewModel(appState: AppState(sessions: [.previewSession])))
             .preferredColorScheme(.dark)
             .previewDevice("iPhone 13")
     }
