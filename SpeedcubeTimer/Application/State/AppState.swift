@@ -30,7 +30,7 @@ class AppState: ObservableObject {
     }
     
     func changeSessionTo(cube: Cube, index: Int) {
-        if let session = allSessions.first(where: { $0.cube == cube && $0.sessionindex == index }) {
+        if let session = allSessions.first(where: { $0.cube == cube && $0.session == index }) {
             currentSession = session
         } else {
             setNewSession(cube: cube, index: index)

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 extension TimerViewModel {
     
@@ -26,7 +25,6 @@ class TimerViewModel: ObservableObject {
     private var state: CubingState = .idle
     private var timer: Timer?
     private var preinspectionTimer: Timer?
-    private var anyCancellable: AnyCancellable?
     
     @Published var time: TimeInterval = 0.0
     @Published var scramble: String
@@ -40,11 +38,6 @@ class TimerViewModel: ObservableObject {
     init(appState: AppState) {
         self.appState = appState
         self.scramble = ScrambleProvider.newScramble(for: appState.currentSession.cube)
-        
-        anyCancellable = appState.$currentSession.sink { [weak self] newSession in
-            guard let self = self else { return }
-            self.reset(newCube: newSession.cube)
-        }
     }
     
     func touchBegan() {

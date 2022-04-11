@@ -10,11 +10,9 @@ import SwiftUI
 struct TimerView: View {
     @ObservedObject var viewModel: TimerViewModel
     
-    init(viewModel: TimerViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
+        print(Self._printChanges())
+        return
         ZStack {
             Color
                 .black

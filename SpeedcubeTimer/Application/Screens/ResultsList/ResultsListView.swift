@@ -31,7 +31,7 @@ struct ResultsListView: View {
 }
 
 struct ResultList: View {
-    @ObservedObject var session: CubingSession
+    var session: CubingSession
     var viewModel: ResultsListViewModel
     
     var body: some View {
@@ -43,9 +43,9 @@ struct ResultList: View {
             Section("Current") {
                 ResultListRowAverage(name: viewModel.averageName(.five),
                                      result: viewModel.averageOfLast(5))
-                ResultListRowAverage(name: viewModel.averageName(.five),
+                ResultListRowAverage(name: viewModel.averageName(.twelve),
                                      result: viewModel.averageOfLast(12))
-                ResultListRowAverage(name: viewModel.averageName(.five),
+                ResultListRowAverage(name: viewModel.averageName(.hundred),
                                      result: viewModel.meanOfLast(100))
             }
             

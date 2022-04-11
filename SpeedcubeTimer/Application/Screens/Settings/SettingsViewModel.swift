@@ -27,7 +27,7 @@ class SettingsViewModel: ObservableObject {
     init(appState: AppState) {
         self.appState = appState
         currentCube = appState.currentSession.cube
-        currentSessionIndex = appState.currentSession.sessionindex
+        currentSessionIndex = appState.currentSession.session
     }
     
     private func changeCurrentSession() {
