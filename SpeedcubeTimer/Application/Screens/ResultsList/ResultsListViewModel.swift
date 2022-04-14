@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class ResultsListViewModel: ObservableObject {
-    var appState: AppState
+    @ObservedObject var appState: AppState
     
     private var averageNotSetPlaceholder = "-"
     

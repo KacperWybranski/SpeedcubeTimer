@@ -27,7 +27,7 @@ class MainViewModelTests: XCTestCase {
         
         XCTAssertNotEqual(viewModel?.appState.currentSession, oldSession)
         XCTAssertEqual(viewModel?.appState.currentSession.cube, TestConfiguration.newCube)
-        XCTAssertEqual(viewModel?.appState.currentSession.sessionindex, TestConfiguration.newSessionIndex)
+        XCTAssertEqual(viewModel?.appState.currentSession.index, TestConfiguration.newSessionIndex)
     }
 
 }

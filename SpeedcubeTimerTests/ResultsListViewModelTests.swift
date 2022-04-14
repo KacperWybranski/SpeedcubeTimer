@@ -48,7 +48,7 @@ private enum TestConfiguration {
     static let appState: AppState = .init(sessions: [session])
     static let session: CubingSession = .init(results: [],
                                                    cube: .three,
-                                                   session: 1)
+                                                   index: 1)
     
     static let resultsForAverage: [Result] = [.init(time: 0.10, scramble: "abc", date: .now),
                                               .init(time: 2.00, scramble: "abc", date: .now),

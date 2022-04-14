@@ -24,12 +24,6 @@ class AppStateTests: XCTestCase {
         XCTAssertEqual(appState?.currentSession, TestConfiguration.firstSession)
     }
     
-    func testCurrentSessionWhenInitWithEmptySessions() {
-        appState = .init(sessions: [])
-        
-        XCTAssertEqual(appState?.currentSession, TestConfiguration.defaultInitialSession)
-    }
-    
     func testChangeSessionToExistingOne() {
         appState?.changeSessionTo(cube: TestConfiguration.secondSessionCube, index: TestConfiguration.secondSessionIndex)
         
@@ -42,7 +36,7 @@ class AppStateTests: XCTestCase {
         XCTAssertNotEqual(appState?.currentSession, TestConfiguration.firstSession)
         XCTAssertNotEqual(appState?.currentSession, TestConfiguration.secondSession)
         XCTAssertEqual(appState?.currentSession.cube, TestConfiguration.thirdSessionCube)
-        XCTAssertEqual(appState?.currentSession.sessionindex, TestConfiguration.thirdSessionIndex)
+        XCTAssertEqual(appState?.currentSession.index, TestConfiguration.thirdSessionIndex)
     }
     
     func testAddNewResult() {
@@ -81,12 +75,12 @@ class AppStateTests: XCTestCase {
 private enum TestConfiguration {
     static let firstSession: CubingSession = .init(results: [Result(time: 5.0, scramble: "abc", date: .now)],
                                                    cube: .three,
-                                                   session: 1)
+                                                   index: 1)
     static let secondSession: CubingSession = .init(results: [Result(time: 9.0, scramble: "dce", date: .now)],
                                                     cube: secondSessionCube,
-                                                    session: secondSessionIndex)
+                                                    index: secondSessionIndex)
     
-    static let emptySession: CubingSession = .init(results: [], cube: .three, session: 1)
+    static let emptySession: CubingSession = .init(results: [], cube: .three, index: 1)
     
     static let secondSessionCube: Cube = .three
     static let secondSessionIndex = 2
@@ -94,7 +88,7 @@ private enum TestConfiguration {
     static let thirdSessionCube: Cube = .two
     static let thirdSessionIndex = 5
     
-    static let defaultInitialSession: CubingSession = .init(results: [], cube: .three, session: 1)
+    static let defaultInitialSession: CubingSession = .init(results: [], cube: .three, index: 1)
     
     static let resultToAdd: Result = .init(time: 2.23, scramble: "scramble", date: .now)
     

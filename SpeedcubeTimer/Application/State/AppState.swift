@@ -24,13 +24,13 @@ class AppState: ObservableObject {
     }
     
     private func setNewSession(cube: Cube, index: Int) {
-        let newSession = CubingSession(results: [], cube: cube, session: index)
+        let newSession = CubingSession(results: [], cube: cube, index: index)
         allSessions.append(newSession)
         currentSession = newSession
     }
     
     func changeSessionTo(cube: Cube, index: Int) {
-        if let session = allSessions.first(where: { $0.cube == cube && $0.session == index }) {
+        if let session = allSessions.first(where: { $0.cube == cube && $0.index == index }) {
             currentSession = session
         } else {
             setNewSession(cube: cube, index: index)

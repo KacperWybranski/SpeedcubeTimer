@@ -5,7 +5,7 @@
 //  Created by Kacper on 29/03/2022.
 //
 
-import SwiftUI
+import Combine
 
 class MainViewModel: ObservableObject {
     @Published private(set) var appState: AppState

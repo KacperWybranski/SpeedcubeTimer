@@ -5,8 +5,7 @@
 //  Created by Kacper on 30/03/2022.
 //
 
-import Foundation
-import SwiftUI
+import Combine
 
 class SettingsViewModel: ObservableObject {
     @Published var appState: AppState
@@ -27,7 +26,7 @@ class SettingsViewModel: ObservableObject {
     init(appState: AppState) {
         self.appState = appState
         currentCube = appState.currentSession.cube
-        currentSessionIndex = appState.currentSession.session
+        currentSessionIndex = appState.currentSession.index
     }
     
     private func changeCurrentSession() {

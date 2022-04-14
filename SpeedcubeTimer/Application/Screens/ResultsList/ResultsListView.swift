@@ -18,48 +18,39 @@ struct ResultsListView: View {
     
     var body: some View {
         NavigationView {
-            ResultList(session: appState.currentSession, viewModel: viewModel)
-                .navigationBarTitleDisplayMode(.large)
-                .navigationTitle("Results")
+            List {
+                Section("Best") {
+                    ResultListRowBestResult(result: appState.currentSession.bestResult)
+                }
+                
+                Section("Current") {
+                    ResultListRowAverage(name: viewModel.averageName(.five),
+                                         result: viewModel.averageOfLast(5))
+                    ResultListRowAverage(name: viewModel.averageName(.twelve),
+                                         result: viewModel.averageOfLast(12))
+                    ResultListRowAverage(name: viewModel.averageName(.hundred),
+                                         result: viewModel.meanOfLast(100))
+                }
+                
+                Section("All") {
+                    ForEach(appState.currentSession.results) { result in
+                        ResultListRow(result: result)
+                    }
+                    .onDelete { offsets in
+                        viewModel.removeResult(at: offsets)
+                    }
+                }
+            }
+            .toolbar {
+                EditButton()
+            }
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("Results")
         }
         .background {
             Color
                 .black
                 .ignoresSafeArea()
-        }
-    }
-}
-
-struct ResultList: View {
-    var session: CubingSession
-    var viewModel: ResultsListViewModel
-    
-    var body: some View {
-        List {
-            Section("Best") {
-                ResultListRowBestResult(result: session.bestResult)
-            }
-            
-            Section("Current") {
-                ResultListRowAverage(name: viewModel.averageName(.five),
-                                     result: viewModel.averageOfLast(5))
-                ResultListRowAverage(name: viewModel.averageName(.twelve),
-                                     result: viewModel.averageOfLast(12))
-                ResultListRowAverage(name: viewModel.averageName(.hundred),
-                                     result: viewModel.meanOfLast(100))
-            }
-            
-            Section("All") {
-                ForEach(session.results) { result in
-                    ResultListRow(result: result)
-                }
-                .onDelete { offsets in
-                    viewModel.removeResult(at: offsets)
-                }
-            }
-        }
-        .toolbar {
-            EditButton()
         }
     }
 }
@@ -138,6 +129,6 @@ private extension CubingSession {
             .init(time: 1.24, scramble: "A B C A B C", date: .now),
             .init(time: 55.56, scramble: "A B C A B C", date: .now)
         ]
-        return CubingSession(results: results, cube: .three, session: 1)
+        return CubingSession(results: results, cube: .three, index: 1)
     }
 }

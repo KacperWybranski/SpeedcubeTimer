@@ -191,5 +191,5 @@ private enum TestConfiguration {
     
     static let session: CubingSession = .init(results: [Result(time: 5.0, scramble: "abc", date: .now)],
                                                    cube: .three,
-                                                   session: 1)
+                                                   index: 1)
 }

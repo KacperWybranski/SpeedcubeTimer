@@ -38,13 +38,14 @@ import SwiftUI
 struct CubingSession: Equatable {
     var results: [Result]
     var cube: Cube
-    var session: Int
+    var index: Int
+    var id: UUID = UUID()
     
     var bestResult: Result? {
         results.best
     }
     
     static var initialSession: CubingSession {
-        return CubingSession(results: [], cube: .three, session: 1)
+        return CubingSession(results: [], cube: .three, index: 1)
     }
 }

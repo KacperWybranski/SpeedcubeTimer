@@ -11,8 +11,6 @@ struct TimerView: View {
     @ObservedObject var viewModel: TimerViewModel
     
     var body: some View {
-        print(Self._printChanges())
-        return
         ZStack {
             Color
                 .black
