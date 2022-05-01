@@ -18,11 +18,11 @@ struct MainView: View {
                     Label("Results", systemImage: "list.number")
                 }
                 .tag(0)
-            TimerView(viewModel: viewModel.timerViewModel)
-                .tabItem {
-                    Label("Timer", systemImage: "timer")
-                }
-                .tag(1)
+//            TimerView(viewModel: viewModel.timerViewModel)
+//                .tabItem {
+//                    Label("Timer", systemImage: "timer")
+//                }
+//                .tag(1)
             SettingsView(viewModel: viewModel.settingsViewModel)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")

@@ -9,14 +9,12 @@ import Combine
 
 class MainViewModel: ObservableObject {
     @Published private(set) var appState: AppState
-    @Published private(set) var timerViewModel: TimerViewModel
     @Published private(set) var resultsListViewModel: ResultsListViewModel
     @Published private(set) var settingsViewModel: SettingsViewModel
     
     init() {
         let initialAppState = AppState(sessions: [.initialSession]) // load from userdefaults maybe?
         appState = initialAppState
-        timerViewModel = .init(appState: initialAppState)
         resultsListViewModel = .init(appState: initialAppState)
         settingsViewModel = .init(appState: initialAppState)
     }

@@ -7,6 +7,53 @@
 
 import SwiftUI
 
+// MARK: - New Redux AppState
+
+#warning("change name to AppState after old is removed")
+struct ReduxAppState: Codable {
+    let screens: [AppScreenState]
+}
+
+extension ReduxAppState {
+    init() {
+        screens = [.timerScreen(TimerViewState())]
+    }
+}
+
+extension ReduxAppState: Equatable {
+    static func == (lhs: ReduxAppState, rhs: ReduxAppState) -> Bool {
+        lhs.screens == rhs.screens
+    }
+}
+
+extension ReduxAppState {
+    static let reducer: Reducer<Self> = { state, action in
+        let screens = state.screens.map {
+            AppScreenState.reducer($0, action)
+        }
+        return ReduxAppState(screens: screens)
+    }
+}
+
+extension ReduxAppState {
+    func screenState<State>(for screen: AppScreen) -> State? {
+            return screens
+                .compactMap {
+                    switch ($0, screen) {
+                    case (.timerScreen(let state), .timer):
+                        return state as? State
+                    }
+                }
+                .first
+        }
+    
+    enum AppScreen {
+        case timer
+    }
+}
+
+// MARK: - Old MVVM AppState
+
 class AppState: ObservableObject {
     private var allSessions: [CubingSession]
     
