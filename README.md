@@ -1,6 +1,8 @@
 # SpeedcubeTimer
 Speedcubing timer built with SwiftUI and MVVM pattern.
 
+❗️I decided to refactor app with Redux pattern since it may be better in this case. There is new branch named "redux" for that ❗️
+
 ## Table of contents
 * [About](#about)
 * [Screenshots](#screenshots)
