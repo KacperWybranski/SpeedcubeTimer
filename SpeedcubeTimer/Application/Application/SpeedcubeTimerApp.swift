@@ -13,7 +13,7 @@ struct SpeedcubeTimerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TimerView()
+            MainView()
                 .preferredColorScheme(.dark)
                 .environmentObject(store)
         }

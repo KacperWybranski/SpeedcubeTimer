@@ -7,10 +7,24 @@
 
 import SwiftUI
 
+private enum Configuration {
+    static let timerTimeInterval: TimeInterval = 0.01
+    static let timerPreinspectionTimeInterval: TimeInterval = 1
+    static let preinpectionSeconds: TimeInterval = 15.00
+}
+
 struct TimerView: View {
     @EnvironmentObject var store: Store<ReduxAppState>
     
     var state: TimerViewState { store.state.screenState(for: .timer) ?? .init() }
+    
+    var timeString: String {
+        if state.cubingState == .preinspectionOngoing || state.cubingState == .preinspectionReady {
+            return state.time.asTextOnlyFractionalPart
+        } else {
+            return state.time.asTextWithTwoDecimal
+        }
+    }
     
     @State private var timer: Timer?
     
@@ -28,7 +42,7 @@ struct TimerView: View {
                 .padding(.horizontal, 15)
                 .offset(y: -150)
             
-            Text(state.time.asTextWithTwoDecimal)
+            Text(timeString)
                 .foregroundColor(state.cubingState.timerTextColor)
                 .font(.system(size: 70))
                 .multilineTextAlignment(.center)
@@ -46,9 +60,12 @@ struct TimerView: View {
         )
         .onChange(of: state.cubingState) { newState in
             switch newState {
+            case .preinspectionOngoing:
+                startPreinspectionTimer()
             case .ended:
                 stopTimer()
             case .ongoing:
+                stopTimer()
                 startTimer()
             default:
                 break
@@ -56,9 +73,18 @@ struct TimerView: View {
         }
     }
     
+    private func startPreinspectionTimer() {
+        let startDate = Date.now
+        store.dispatch(TimerViewStateAction.updateTime(Configuration.preinpectionSeconds))
+        timer = Timer.scheduledTimer(withTimeInterval: Configuration.timerPreinspectionTimeInterval, repeats: true) { timer in
+            let newTime = Configuration.preinpectionSeconds - (Date.now.timeIntervalSince1970 - startDate.timeIntervalSince1970)
+            store.dispatch(TimerViewStateAction.updateTime(newTime))
+        }
+    }
+    
     private func startTimer() {
         let startDate = Date.now
-        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: Configuration.timerTimeInterval, repeats: true) { timer in
             let newTime = Date.now.timeIntervalSince1970 - startDate.timeIntervalSince1970
             store.dispatch(TimerViewStateAction.updateTime(newTime))
         }
@@ -76,9 +102,10 @@ struct TimerView: View {
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
         let timerViewState = TimerViewState(cubingState: .idle,
-                                            time: 0.90,
+                                            time: 0.00,
                                             cube: .three,
-                                            scramble: ScrambleProvider.newScramble(for: .three))
+                                            scramble: ScrambleProvider.newScramble(for: .three),
+                                            isPreinspectionOn: true)
         let store = Store
             .init(initial: ReduxAppState(screens: [.timerScreen(timerViewState)]),
                   reducer: ReduxAppState.reducer)

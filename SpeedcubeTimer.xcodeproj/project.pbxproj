@@ -23,11 +23,10 @@
 		E7556D9F280432F00024BB7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E7556DA3280447CB0024BB7A /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA2280447CA0024BB7A /* AppStateTests.swift */; };
-		E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D877F27F2F74000C39780 /* MainViewModel.swift */; };
+		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
-		E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878727F4580C00C39780 /* SettingsViewModel.swift */; };
 		E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
@@ -76,11 +75,10 @@
 		E7556D9E280432F00024BB7A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E7556DA2280447CA0024BB7A /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
-		E79D877F27F2F74000C39780 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateAction.swift; sourceTree = "<group>"; };
 		E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModel.swift; sourceTree = "<group>"; };
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
-		E79D878727F4580C00C39780 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -190,11 +188,27 @@
 			path = State;
 			sourceTree = "<group>";
 		};
+		E796C00A2822E22A0092EE59 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		E796C00B2822E2300092EE59 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E79D878727F4580C00C39780 /* SettingsViewModel.swift */,
-				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
+				E796C00B2822E2300092EE59 /* State */,
+				E796C00A2822E22A0092EE59 /* VIew */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -301,7 +315,6 @@
 		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E79D877F27F2F74000C39780 /* MainViewModel.swift */,
 				E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */,
 			);
 			path = Main;
@@ -448,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7556D9C2804325E0024BB7A /* Model.swift in Sources */,
+				E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
@@ -455,7 +469,6 @@
 				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,
 				E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */,
 				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
-				E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
 				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
@@ -467,7 +480,6 @@
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
 				E712AB6028187813008CD0A4 /* Store.swift in Sources */,
 				E7556D9F280432F00024BB7A /* AppState.swift in Sources */,
-				E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */,
 				E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,
 			);

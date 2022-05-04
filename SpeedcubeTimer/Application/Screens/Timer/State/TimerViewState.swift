@@ -13,6 +13,7 @@ struct TimerViewState: Codable, Equatable {
     let time: Double
     let cube: Cube
     let scramble: String
+    let isPreinspectionOn: Bool
 }
 
 extension TimerViewState {
@@ -21,6 +22,7 @@ extension TimerViewState {
         time = .zero
         cube = .three
         scramble = ScrambleProvider.newScramble(for: cube)
+        isPreinspectionOn = false
     }
 }
 
@@ -31,18 +33,22 @@ extension TimerViewState {
         case ongoing
         case ended
         
+        case preinspectionReady
+        case preinspectionOngoing
+        
         var timerTextColor: Color {
             switch self {
             case .idle: return .white
-            case .ready: return .yellow
+            case .ready, .preinspectionReady: return .yellow
             case .ongoing: return .green
             case .ended: return .red
+            case .preinspectionOngoing: return .cyan
             }
         }
         
         var shouldScrambleBeHidden: Bool {
             switch self {
-            case .idle, .ready:
+            case .idle, .ready, .preinspectionReady, .preinspectionOngoing:
                 return false
             case .ongoing, .ended:
                 return true
