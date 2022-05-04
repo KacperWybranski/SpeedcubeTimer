@@ -1,5 +1,6 @@
 # SpeedcubeTimer
-Speedcubing timer built with SwiftUI and MVVM pattern.
+Speedcubing timer built with SwiftUI and Redux pattern. 
+❗️Refactor in progress ❗️
 
 ## Table of contents
 * [About](#about)
