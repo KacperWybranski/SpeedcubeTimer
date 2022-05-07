@@ -66,7 +66,7 @@ extension TimerViewState {
             return TimerViewState(cubingState: .idle,
                                   time: state.time,
                                   cube: state.cube,
-                                  scramble: ScrambleProvider.newScramble(for: .three),
+                                  scramble: ScrambleProvider.newScramble(for: state.cube),
                                   isPreinspectionOn: state.isPreinspectionOn)
         case (_, TimerViewStateAction.updateTime(let newTime)):
             return TimerViewState(cubingState: state.cubingState,
