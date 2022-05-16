@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct TimerViewState: Codable, Equatable {
+struct TimerViewState: Equatable {
     let cubingState: CubingState
     let time: Double
     let cube: Cube
@@ -27,7 +27,7 @@ extension TimerViewState {
 }
 
 extension TimerViewState {
-    enum CubingState: Codable {
+    enum CubingState {
         case idle
         case ready
         case ongoing

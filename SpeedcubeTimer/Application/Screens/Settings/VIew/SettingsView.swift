@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var store: Store<ReduxAppState>
+    @EnvironmentObject var store: Store<AppState>
     
     @State private var currentCube: Cube = .three
     @State private var currentSession: Int = 1
@@ -52,7 +52,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(Store(initial: ReduxAppState(), reducer: ReduxAppState.reducer))
+            .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
             .preferredColorScheme(.dark)
     }
 }

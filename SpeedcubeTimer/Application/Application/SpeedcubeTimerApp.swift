@@ -9,7 +9,7 @@ import SwiftUI
  
 @main
 struct SpeedcubeTimerApp: App {
-    let store = Store(initial: ReduxAppState(), reducer: ReduxAppState.reducer)
+    let store = Store(initial: AppState(), reducer: AppState.reducer)
     
     var body: some Scene {
         WindowGroup {

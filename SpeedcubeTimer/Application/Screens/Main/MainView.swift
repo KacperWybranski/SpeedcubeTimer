@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var store: Store<ReduxAppState>
+    @EnvironmentObject var store: Store<AppState>
     @State private var selection: Int = 1
     
     var body: some View {
         TabView(selection: $selection) {
+            ResultsListView()
+                .tabItem {
+                    Label("Results", systemImage: "list.number")
+                }
+                .tag(0)
             TimerView()
                 .tabItem {
-                    Label("TImer", systemImage: "timer")
+                    Label("Timer", systemImage: "timer")
                 }
                 .tag(1)
             SettingsView()
@@ -31,6 +36,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(Store(initial: ReduxAppState(), reducer: ReduxAppState.reducer))
+            .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
     }
 }

@@ -11,5 +11,6 @@ enum TimerViewStateAction: Action {
     case touchBegan
     case touchEnded
     case updateTime(_ time: Double)
+    case saveResult(_ result: Result)
 }
 

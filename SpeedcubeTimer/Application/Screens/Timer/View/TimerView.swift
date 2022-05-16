@@ -14,7 +14,7 @@ private enum Configuration {
 }
 
 struct TimerView: View {
-    @EnvironmentObject var store: Store<ReduxAppState>
+    @EnvironmentObject var store: Store<AppState>
     
     var state: TimerViewState { store.state.screenState(for: .timer) ?? .init() }
     
@@ -50,11 +50,9 @@ struct TimerView: View {
         .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in
-                    debugPrint("touch began")
                     store.dispatch(TimerViewStateAction.touchBegan)
                 }
                 .onEnded { _ in
-                    debugPrint("touch ended")
                     store.dispatch(TimerViewStateAction.touchEnded)
                 }
         )
@@ -64,6 +62,7 @@ struct TimerView: View {
                 startPreinspectionTimer()
             case .ended:
                 stopTimer()
+                saveResult()
             case .ongoing:
                 stopTimer()
                 startTimer()
@@ -97,6 +96,13 @@ struct TimerView: View {
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
+    private func saveResult() {
+        let result = Result(time: state.time,
+                            scramble: state.scramble,
+                            date: .now)
+        store.dispatch(TimerViewStateAction.saveResult(result))
+    }
+    
 }
 
 struct TimerView_Previews: PreviewProvider {
@@ -107,8 +113,8 @@ struct TimerView_Previews: PreviewProvider {
                                             scramble: ScrambleProvider.newScramble(for: .three),
                                             isPreinspectionOn: true)
         let store = Store
-            .init(initial: ReduxAppState(screens: [.timerScreen(timerViewState)]),
-                  reducer: ReduxAppState.reducer)
+            .init(initial: AppState(screens: [.timerScreen(timerViewState)]),
+                  reducer: AppState.reducer)
         TimerView()
             .environmentObject(store)
     }

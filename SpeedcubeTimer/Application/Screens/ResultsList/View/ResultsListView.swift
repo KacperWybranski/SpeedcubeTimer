@@ -8,41 +8,39 @@
 import SwiftUI
 
 struct ResultsListView: View {
-    @ObservedObject private var appState: AppState
-    private var viewModel: ResultsListViewModel
+    @EnvironmentObject var store: Store<AppState>
     
-    init(viewModel: ResultsListViewModel) {
-        self.viewModel = viewModel
-        self.appState = viewModel.appState
-    }
+    var state: ResultsViewState { store.state.screenState(for: .resultsList) ?? .init() }
     
     var body: some View {
         NavigationView {
             List {
                 Section("Best") {
-                    ResultListRowBestResult(result: appState.currentSession.bestResult)
+                    ResultListRowBestResult(result: state.currentSession.bestResult)
                 }
                 
                 Section("Current") {
-                    ResultListRowAverage(name: viewModel.averageName(.five),
-                                         result: viewModel.averageOfLast(5))
-                    ResultListRowAverage(name: viewModel.averageName(.twelve),
-                                         result: viewModel.averageOfLast(12))
-                    ResultListRowAverage(name: viewModel.averageName(.hundred),
-                                         result: viewModel.meanOfLast(100))
+                    ResultListRowAverage(name: "average of 5",
+                                         result: "to implement")
+                    ResultListRowAverage(name: "average of 12",
+                                         result: "to implement")
+                    ResultListRowAverage(name: "mean of 100",
+                                         result: "to implement")
                 }
                 
                 Section("All") {
-                    ForEach(appState.currentSession.results) { result in
+                    ForEach(state.currentSession.results) { result in
                         ResultListRow(result: result)
                     }
                     .onDelete { offsets in
-                        viewModel.removeResult(at: offsets)
+                        removeResult(at: offsets)
                     }
                 }
             }
             .toolbar {
-                EditButton()
+                if !state.currentSession.results.isEmpty {
+                    EditButton()
+                }
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Results")
@@ -52,6 +50,10 @@ struct ResultsListView: View {
                 .black
                 .ignoresSafeArea()
         }
+    }
+    
+    func removeResult(at offsets: IndexSet) {
+        store.dispatch(ResultsViewStateAction.removeResultsAt(offsets))
     }
 }
 
@@ -113,7 +115,12 @@ struct ResultListRowBestResult: View {
 
 struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsListView(viewModel: ResultsListViewModel(appState: AppState(sessions: [.previewSession])))
+        let resultsListState = ResultsViewState(currentSession: .previewSession)
+        let store = Store
+            .init(initial: AppState(screens: [.resultsScreen(resultsListState)]),
+                  reducer: AppState.reducer)
+        ResultsListView()
+            .environmentObject(store)
             .preferredColorScheme(.dark)
             .previewDevice("iPhone 13")
     }
