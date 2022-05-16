@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-
+ 
 @main
 struct SpeedcubeTimerApp: App {
+    let store = Store(initial: AppState(), reducer: AppState.reducer)
+    
     var body: some Scene {
         WindowGroup {
-            MainView(viewModel: MainViewModel())
+            MainView()
                 .preferredColorScheme(.dark)
+                .environmentObject(store)
         }
     }
 }

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var store: Store<AppState>
     @State private var selection: Int = 1
     
-    var body: some View { 
+    var body: some View {
         TabView(selection: $selection) {
-            ResultsListView(viewModel: viewModel.resultsListViewModel)
+            ResultsListView()
                 .tabItem {
                     Label("Results", systemImage: "list.number")
                 }
                 .tag(0)
-            TimerView(viewModel: viewModel.timerViewModel)
+            TimerView()
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
                 .tag(1)
-            SettingsView(viewModel: viewModel.settingsViewModel)
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
@@ -35,7 +35,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(viewModel: MainViewModel())
-            .preferredColorScheme(.dark)
+        MainView()
+            .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
     }
 }

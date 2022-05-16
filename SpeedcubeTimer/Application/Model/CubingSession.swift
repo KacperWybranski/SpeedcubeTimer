@@ -17,8 +17,12 @@ struct CubingSession: Equatable {
     var bestResult: Result? {
         results.best
     }
-    
-    static var initialSession: CubingSession {
-        return CubingSession(results: [], cube: .three, index: 1)
+}
+
+extension CubingSession {
+    init() {
+        results = []
+        cube = .three
+        index = 1
     }
 }

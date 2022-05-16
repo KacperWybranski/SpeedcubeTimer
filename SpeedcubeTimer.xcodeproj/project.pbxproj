@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */; };
+		E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E2281C542E00EAA212 /* TimerViewState.swift */; };
+		E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */; };
+		E712AB6028187813008CD0A4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB5F28187813008CD0A4 /* Store.swift */; };
+		E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB6528187BD2008CD0A4 /* AppScreenState.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
 		E71B7DE327FA1FDF00896892 /* ResultsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */; };
 		E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */; };
@@ -18,11 +23,12 @@
 		E7556D9F280432F00024BB7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E7556DA3280447CB0024BB7A /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA2280447CA0024BB7A /* AppStateTests.swift */; };
-		E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D877F27F2F74000C39780 /* MainViewModel.swift */; };
-		E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */; };
+		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
+		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
+		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
+		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
-		E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878727F4580C00C39780 /* SettingsViewModel.swift */; };
 		E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
@@ -32,7 +38,6 @@
 		E8F3BB1927EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB1827EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift */; };
 		E8F3BB1B27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB1A27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift */; };
 		E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */; };
-		E8F3BB2D27EA150D001AEDB2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */; };
 		E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */; };
 		E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */; };
 		E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */; };
@@ -56,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateReducer.swift; sourceTree = "<group>"; };
+		E70C08E2281C542E00EAA212 /* TimerViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewState.swift; sourceTree = "<group>"; };
+		E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateAction.swift; sourceTree = "<group>"; };
+		E712AB5F28187813008CD0A4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		E712AB6528187BD2008CD0A4 /* AppScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenState.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModelTests.swift; sourceTree = "<group>"; };
 		E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
@@ -67,11 +77,12 @@
 		E7556D9E280432F00024BB7A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E7556DA2280447CA0024BB7A /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
-		E79D877F27F2F74000C39780 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModel.swift; sourceTree = "<group>"; };
+		E763E09228327E5E0051DE7E /* ResultsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewState.swift; sourceTree = "<group>"; };
+		E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducer.swift; sourceTree = "<group>"; };
+		E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateAction.swift; sourceTree = "<group>"; };
+		E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateAction.swift; sourceTree = "<group>"; };
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
-		E79D878727F4580C00C39780 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -84,7 +95,6 @@
 		E8F3BB1827EA0AC7001AEDB2 /* SpeedcubeTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerUITests.swift; sourceTree = "<group>"; };
 		E8F3BB1A27EA0AC7001AEDB2 /* SpeedcubeTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedcubeTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleProvider.swift; sourceTree = "<group>"; };
 		E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListView.swift; sourceTree = "<group>"; };
@@ -115,6 +125,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E70C08DC281C53F000EAA212 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E70C08DD281C53F500EAA212 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E70C08E2281C542E00EAA212 /* TimerViewState.swift */,
+				E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */,
+				E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E712AB5E28187804008CD0A4 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				E712AB5F28187813008CD0A4 /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		E74480B527F79704009ECBEF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +187,42 @@
 			isa = PBXGroup;
 			children = (
 				E7556D9E280432F00024BB7A /* AppState.swift */,
+				E712AB6528187BD2008CD0A4 /* AppScreenState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E763E09028327E460051DE7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */,
+				E79D878527F3AAC600C39780 /* ResultDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E763E09128327E4D0051DE7E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E763E09228327E5E0051DE7E /* ResultsViewState.swift */,
+				E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */,
+				E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E796C00A2822E22A0092EE59 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		E796C00B2822E2300092EE59 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -158,8 +230,8 @@
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E79D878727F4580C00C39780 /* SettingsViewModel.swift */,
-				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
+				E796C00B2822E2300092EE59 /* State */,
+				E796C00A2822E22A0092EE59 /* VIew */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -227,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
+				E712AB5E28187804008CD0A4 /* Store */,
 				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
 				E7556D9D280432E60024BB7A /* State */,
 				E7556D9A2804324B0024BB7A /* Model */,
@@ -247,8 +320,8 @@
 		E8F3BB2B27EA0CEA001AEDB2 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				E8F3BB2C27EA150D001AEDB2 /* TimerViewModel.swift */,
-				E8F3BB2727EA0B2D001AEDB2 /* TimerView.swift */,
+				E70C08DD281C53F500EAA212 /* State */,
+				E70C08DC281C53F000EAA212 /* View */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -265,7 +338,6 @@
 		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E79D877F27F2F74000C39780 /* MainViewModel.swift */,
 				E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */,
 			);
 			path = Main;
@@ -274,9 +346,8 @@
 		E8F3BB4327EC8E36001AEDB2 /* ResultsList */ = {
 			isa = PBXGroup;
 			children = (
-				E79D878127F2FC4F00C39780 /* ResultsListViewModel.swift */,
-				E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */,
-				E79D878527F3AAC600C39780 /* ResultDetailView.swift */,
+				E763E09128327E4D0051DE7E /* State */,
+				E763E09028327E460051DE7E /* View */,
 			);
 			path = ResultsList;
 			sourceTree = "<group>";
@@ -412,23 +483,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7556D9C2804325E0024BB7A /* Model.swift in Sources */,
+				E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */,
+				E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
+				E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
 				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,
+				E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */,
 				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
-				E79D878827F4580C00C39780 /* SettingsViewModel.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
-				E8F3BB2D27EA150D001AEDB2 /* TimerViewModel.swift in Sources */,
+				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
+				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
+				E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */,
+				E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
+				E712AB6028187813008CD0A4 /* Store.swift in Sources */,
 				E7556D9F280432F00024BB7A /* AppState.swift in Sources */,
-				E79D878027F2F74000C39780 /* MainViewModel.swift in Sources */,
-				E79D878227F2FC5000C39780 /* ResultsListViewModel.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -577,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -604,6 +680,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,6 +711,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -656,7 +734,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7HD4U882MR;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -676,7 +754,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7HD4U882MR;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

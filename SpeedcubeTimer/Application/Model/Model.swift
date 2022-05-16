@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Cube
 
-enum Cube: CaseIterable {
+enum Cube: CaseIterable, Codable {
     case two
     case three
 }
