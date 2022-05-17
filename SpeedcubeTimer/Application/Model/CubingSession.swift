@@ -25,4 +25,31 @@ extension CubingSession {
         cube = .three
         index = 1
     }
+    
+    func avgOfLast(_ count: Int) -> Double? {
+        guard results.count >= count else { return nil }
+            
+        var times = results
+            .prefix(count)
+            .map { $0.time }
+            .sorted()
+        
+        times.removeFirst()
+        times.removeFirst()
+        return times.average
+    }
+    
+    func meanOfLast(_ count: Int) -> Double? {
+        guard results.count >= count else { return nil }
+        
+        return results
+            .prefix(count)
+            .map { $0.time }
+            .sorted()
+            .average
+    }
+    
+    static var initialSession: CubingSession {
+        return CubingSession(results: [], cube: .three, index: 1)
+    }
 }

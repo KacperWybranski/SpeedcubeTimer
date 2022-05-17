@@ -59,4 +59,12 @@ extension Array where Element == Result {
     var best: Result? {
         return sorted { $0.time < $1.time }.first
     }
+    
+    var worst: Result? {
+        return sorted { $0.time < $1.time }.last
+    }
+    
+    var average: Double? {
+        return self.map { $0.time }.average
+    }
 }

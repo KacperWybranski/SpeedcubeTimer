@@ -21,11 +21,11 @@ struct ResultsListView: View {
                 
                 Section("Current") {
                     ResultListRowAverage(name: "average of 5",
-                                         result: "to implement")
+                                         result: state.currentAvg5Text)
                     ResultListRowAverage(name: "average of 12",
-                                         result: "to implement")
+                                         result: state.currentAvg12Text)
                     ResultListRowAverage(name: "mean of 100",
-                                         result: "to implement")
+                                         result: state.currentMeanOf100Text)
                 }
                 
                 Section("All") {

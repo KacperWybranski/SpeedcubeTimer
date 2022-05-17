@@ -9,6 +9,15 @@ import Foundation
 
 struct ResultsViewState: Equatable {
     let currentSession: CubingSession
+    var currentAvg5Text: String {
+        currentSession.avgOfLast(5)?.asTextWithTwoDecimal ?? "-"
+    }
+    var currentAvg12Text: String {
+        currentSession.avgOfLast(12)?.asTextWithTwoDecimal ?? "-"
+    }
+    var currentMeanOf100Text: String {
+        currentSession.meanOfLast(100)?.asTextWithTwoDecimal ?? "-"
+    }
 }
 
 extension ResultsViewState {
