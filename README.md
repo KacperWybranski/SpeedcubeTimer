@@ -1,8 +1,6 @@
 # SpeedcubeTimer
 Speedcubing timer built with SwiftUI and Redux pattern.
 
-First approach was MVVM which code is still available to see in 'mvvm' branch. I decided to change architecture because it's seems more natural and easier to mantain this particular app where screens are strongly dependent on each other with Redux approach.
-
 ## Table of contents
 * [About](#about)
 * [Screenshots](#screenshots)
@@ -11,7 +9,7 @@ First approach was MVVM which code is still available to see in 'mvvm' branch. I
 
 ## About
 
-Project was started to learn more about SwiftUI and applying MVVM pattern to it.
+Project was started to learn more about SwiftUI and applying MVVM pattern to it. I decided to change architecture to Redux because it's seems more natural and easier to mantain this particular app where screens are strongly dependent on each other with this approach. MVVM which code is still available to see in 'mvvm' branch.
 
 I decided not to share common data using global variables, so it is shared between screens by passing it to appropriate view models when views are created.
 With addition of whole logic being moved to view models, it was possible to write unit tests for every functionality.
