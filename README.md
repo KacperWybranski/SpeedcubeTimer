@@ -20,7 +20,8 @@ App is always in dark mode, so it use less energy on devices with OLED screens.
 
 Results View | Timer View | Settings View
 :---:|:-----:|:---:
-![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 01 49](https://user-images.githubusercontent.com/63157451/161436974-ad09e77f-3063-4c54-a786-e9af341245ec.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 18 00 39](https://user-images.githubusercontent.com/63157451/161436969-dacd95f8-fb46-4066-9b81-368b8971e9b8.png) | ![Simulator Screen Shot - iPhone 11 - 2022-04-03 at 21 46 33](https://user-images.githubusercontent.com/63157451/161445457-1a6b34f8-91ec-4da3-b87f-f664902bcae7.png)
+![IMG_1548](https://user-images.githubusercontent.com/63157451/168847927-4cbfe3bb-2149-45c8-9be9-df20c28805b9.PNG) | ![IMG_1547](https://user-images.githubusercontent.com/63157451/168847889-3990bf66-8b5b-411a-9f7b-324ab360d63a.PNG) | ![IMG_1546](https://user-images.githubusercontent.com/63157451/168847752-44325757-0c66-496c-b022-185e7bae77b4.PNG)
+
 
 ## Features
 
