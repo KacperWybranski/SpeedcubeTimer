@@ -7,17 +7,29 @@
 
 import SwiftUI
 
-// MARK: - New Redux AppState
+// MARK: - AppState
 
 struct AppState {
+    let allSessions: [CubingSession]
+    let currentSession: CubingSession
     let screens: [AppScreenState]
 }
 
+// MARK: - Initialize
+
 extension AppState {
     init() {
+        currentSession = .initialSession
+        allSessions = [currentSession]
         screens = [.timerScreen(TimerViewState()), .resultsScreen(ResultsViewState())]
     }
+    
+    static func forPreview(screenStates: [AppScreenState], session: CubingSession) -> AppState {
+        return AppState(allSessions: [session], currentSession: session, screens: screenStates)
+    }
 }
+
+// MARK: - Equatable
 
 extension AppState: Equatable {
     static func == (lhs: AppState, rhs: AppState) -> Bool {
@@ -25,14 +37,7 @@ extension AppState: Equatable {
     }
 }
 
-extension AppState {
-    static let reducer: Reducer<Self> = { state, action in
-        let screens = state.screens.map {
-            AppScreenState.reducer($0, action)
-        }
-        return AppState(screens: screens)
-    }
-}
+// MARK: - ScreenState
 
 extension AppState {
     func screenState<State>(for screen: AppScreen) -> State? {

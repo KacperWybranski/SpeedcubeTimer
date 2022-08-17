@@ -107,13 +107,15 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
+        let session = CubingSession(results: [], cube: .three, index: 1)
         let timerViewState = TimerViewState(cubingState: .idle,
                                             time: 0.00,
                                             cube: .three,
                                             scramble: ScrambleProvider.newScramble(for: .three),
                                             isPreinspectionOn: true)
         let store = Store
-            .init(initial: AppState(screens: [.timerScreen(timerViewState)]),
+            .init(initial: .forPreview(screenStates: [.timerScreen(timerViewState)],
+                                       session: session),
                   reducer: AppState.reducer)
         TimerView()
             .environmentObject(store)

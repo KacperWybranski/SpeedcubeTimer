@@ -40,7 +40,7 @@ struct SettingsView: View {
                 store.dispatch(SettingsViewStateAction.cubeChanged($0))
             }
             .onChange(of: currentSession) {
-                store.dispatch(SettingsViewStateAction.sessionChanged($0))
+                store.dispatch(SettingsViewStateAction.sessionIndexChanged($0))
             }
             .onChange(of: isPreinspectionOn) {
                 store.dispatch(SettingsViewStateAction.isPreinspectionOnChanged($0))

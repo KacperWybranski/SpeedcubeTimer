@@ -115,9 +115,11 @@ struct ResultListRowBestResult: View {
 
 struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
-        let resultsListState = ResultsViewState(currentSession: .previewSession)
+        let session = CubingSession.previewSession
+        let resultsListState = ResultsViewState(currentSession: session)
         let store = Store
-            .init(initial: AppState(screens: [.resultsScreen(resultsListState)]),
+            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)],
+                                       session: session),
                   reducer: AppState.reducer)
         ResultsListView()
             .environmentObject(store)

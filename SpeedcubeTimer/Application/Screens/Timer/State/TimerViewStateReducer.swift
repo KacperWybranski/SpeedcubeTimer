@@ -10,23 +10,27 @@ import Foundation
 extension TimerViewState {
     static let reducer: Reducer<Self> = { state, action in
         
-        if let settingsAction = action as? SettingsViewStateAction {
-            switch settingsAction {
-            case .cubeChanged(let newCube):
+        if let action = action as? AppStateAction {
+            switch action {
+            case .newSessionSet(let newSession):
                 return TimerViewState(cubingState: state.cubingState,
                                       time: state.time,
-                                      cube: newCube,
-                                      scramble: ScrambleProvider.newScramble(for: newCube),
+                                      cube: newSession.cube,
+                                      scramble: ScrambleProvider.newScramble(for: newSession.cube),
                                       isPreinspectionOn: state.isPreinspectionOn)
-            case .sessionChanged(let newSession):
-                return state
-                #warning("no change for now")
+            }
+        }
+        
+        if let settingsAction = action as? SettingsViewStateAction {
+            switch settingsAction {
             case .isPreinspectionOnChanged(let isOn):
                 return TimerViewState(cubingState: state.cubingState,
                                       time: state.time,
                                       cube: state.cube,
                                       scramble: state.scramble,
                                       isPreinspectionOn: isOn)
+            default:
+                break
             }
         }
         
