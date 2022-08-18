@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// MARK: - CubingSession
+
 struct CubingSession: Equatable {
     var results: [Result]
     var cube: Cube
@@ -19,6 +21,8 @@ struct CubingSession: Equatable {
     }
 }
 
+// MARK: - Additions
+
 extension CubingSession {
     init() {
         results = []
@@ -26,30 +30,19 @@ extension CubingSession {
         index = 1
     }
     
-    func avgOfLast(_ count: Int) -> Double? {
+    func avgOfLast(_ count: Int) -> AverageResult? {
         guard results.count >= count else { return nil }
-            
-        var times = results
-            .prefix(count)
-            .map { $0.time }
-            .sorted()
         
-        times.removeFirst()
-        times.removeFirst()
-        return times.average
+        return .init(mode: .avgOf, solves: Array(results.prefix(count)))
     }
     
-    func meanOfLast(_ count: Int) -> Double? {
+    func meanOfLast(_ count: Int) -> AverageResult? {
         guard results.count >= count else { return nil }
         
-        return results
-            .prefix(count)
-            .map { $0.time }
-            .sorted()
-            .average
+        return .init(mode: .avgOf, solves: Array(results.prefix(count)))
     }
     
     static var initialSession: CubingSession {
-        return CubingSession(results: [], cube: .three, index: 1)
+        .init(results: [], cube: .three, index: 1)
     }
 }

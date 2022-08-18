@@ -15,17 +15,17 @@ struct ResultsListView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("Best") {
+                Section("Best 🏆") {
                     ResultListRowBestResult(result: state.currentSession.bestResult)
                 }
                 
                 Section("Current") {
                     ResultListRowAverage(name: "average of 5",
-                                         result: state.currentAvg5Text)
+                                         result: state.currentAvg5)
                     ResultListRowAverage(name: "average of 12",
-                                         result: state.currentAvg12Text)
+                                         result: state.currentAvg12)
                     ResultListRowAverage(name: "mean of 100",
-                                         result: state.currentMeanOf100Text)
+                                         result: state.currentMean100)
                 }
                 
                 Section("All") {
@@ -57,15 +57,19 @@ struct ResultsListView: View {
     }
 }
 
+// MARK: - ResultListRow
+
 struct ResultListRow: View {
     var result: Result
+    
+    private(set) var withParentheses: Bool = false
     
     var body: some View {
         NavigationLink(destination: {
             ResultDetailView(result: result)
         }) {
             HStack {
-                Text(result.time.asTextWithTwoDecimal)
+                Text(result.time.asTextWithTwoDecimal.wrappedInParentheses(withParentheses))
                     .fixedSize(horizontal: true, vertical: true)
                 Spacer()
                 Text(result.date.formatted())
@@ -74,26 +78,56 @@ struct ResultListRow: View {
             }
         }
     }
+    
+    func wrappedInParentheses(_ wrapped: Bool) -> some View {
+        var newView = self
+        newView.withParentheses = wrapped
+        return newView
+    }
 }
+
+// MARK: - ResultListRowAverage
 
 struct ResultListRowAverage: View {
+    let resultPlaceholder = "-"
     var name: String
-    var result: String
+    var result: AverageResult?
     
     var body: some View {
-        HStack {
-            Text(name)
-            Spacer()
-            Text(result)
+        NavigationLink(destination: {
+            if let result = result {
+                ResultListAverageList(name: name, result: result)
+            }
+        }) {
+            HStack {
+                Text(name)
+                Spacer()
+                Text(result?.value.asTextWithTwoDecimal ?? resultPlaceholder)
+            }
         }
+        .disabled(result.isNil)
     }
-    
-    
 }
 
+struct ResultListAverageList: View {
+    let name: String
+    let result: AverageResult
+    
+    var body: some View {
+        List {
+            ForEach(result.solves) { solve in
+                ResultListRow(result: solve)
+                    .wrappedInParentheses([result.solves.best, result.solves.worst].contains(solve))
+            }
+        }
+    }
+}
+
+// MARK: - ResultListRowBestResult
+
 struct ResultListRowBestResult: View {
+    let resultPlaceholder = "-"
     var result: Result?
-    var resultPlaceholder = "-"
     
     var body: some View {
         NavigationLink(destination: {

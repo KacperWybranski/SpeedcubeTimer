@@ -9,4 +9,12 @@ import Foundation
 
 extension String {
     static let empty: String = ""
+    
+    func wrappedInParentheses(_ wrap: Bool) -> String {
+        if wrap {
+            return "(\(self))"
+        } else {
+            return self
+        }
+    }
 }
