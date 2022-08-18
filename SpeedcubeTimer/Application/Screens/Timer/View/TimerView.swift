@@ -73,18 +73,18 @@ struct TimerView: View {
     }
     
     private func startPreinspectionTimer() {
-        let startDate = Date.now
+        let startDate = Date()
         store.dispatch(TimerViewStateAction.updateTime(Configuration.preinpectionSeconds))
         timer = Timer.scheduledTimer(withTimeInterval: Configuration.timerPreinspectionTimeInterval, repeats: true) { timer in
-            let newTime = Configuration.preinpectionSeconds - (Date.now.timeIntervalSince1970 - startDate.timeIntervalSince1970)
+            let newTime = Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970)
             store.dispatch(TimerViewStateAction.updateTime(newTime))
         }
     }
     
     private func startTimer() {
-        let startDate = Date.now
+        let startDate = Date()
         timer = Timer.scheduledTimer(withTimeInterval: Configuration.timerTimeInterval, repeats: true) { timer in
-            let newTime = Date.now.timeIntervalSince1970 - startDate.timeIntervalSince1970
+            let newTime = Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
             store.dispatch(TimerViewStateAction.updateTime(newTime))
         }
         UIApplication.shared.isIdleTimerDisabled = true
@@ -99,7 +99,7 @@ struct TimerView: View {
     private func saveResult() {
         let result = Result(time: state.time,
                             scramble: state.scramble,
-                            date: .now)
+                            date: .init())
         store.dispatch(TimerViewStateAction.saveResult(result))
     }
     

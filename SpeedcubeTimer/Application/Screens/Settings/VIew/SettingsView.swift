@@ -17,7 +17,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Current session") {
+                Section(header: Text("Current session")) {
                     Picker("Cube", selection: $currentCube) {
                         ForEach(Cube.allCases, id: \.self) { option in
                             Text(option.name)
@@ -31,7 +31,7 @@ struct SettingsView: View {
                     }
                 }
                 
-                Section("General") {
+                Section(header: Text("General")) {
                     Toggle("Preinspection", isOn: $isPreinspectionOn)
                 }
             }

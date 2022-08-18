@@ -22,7 +22,7 @@ struct ResultDetailView: View {
                 .font(.system(size: 25))
             Spacer()
                 .frame(height: 40)
-            Text(result.date.formatted())
+            Text(result.date.formatted)
                 .font(.system(size: 20))
         }
         .padding(.horizontal, 20)
@@ -33,12 +33,11 @@ struct ResultDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ResultDetailView(result: .previewResult)
             .preferredColorScheme(.dark)
-.previewInterfaceOrientation(.portrait)
     }
 }
 
 private extension Result {
     static var previewResult: Result {
-        .init(time: 9.23, scramble: ScrambleProvider.newScramble(for: .three), date: .now)
+        .init(time: 9.23, scramble: ScrambleProvider.newScramble(for: .three), date: .init())
     }
 }

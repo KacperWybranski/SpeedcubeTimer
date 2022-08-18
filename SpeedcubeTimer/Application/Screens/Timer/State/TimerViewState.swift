@@ -42,7 +42,7 @@ extension TimerViewState {
             case .ready, .preinspectionReady: return .yellow
             case .ongoing: return .green
             case .ended: return .red
-            case .preinspectionOngoing: return .cyan
+            case .preinspectionOngoing: return Color(red: 0, green: 1, blue: 1)
             }
         }
         
