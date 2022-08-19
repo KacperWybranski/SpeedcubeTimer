@@ -14,18 +14,32 @@
 		E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB6528187BD2008CD0A4 /* AppScreenState.swift */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
-		E71B7DE327FA1FDF00896892 /* ResultsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */; };
 		E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
 		E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
-		E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */; };
-		E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */; };
-		E74480B427F796EB009ECBEF /* ScrambleProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */; };
+		E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D686828B046F900B41034 /* AppStateReducerTests.swift */; };
+		E73D686A28B047A600B41034 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
+		E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
+		E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
+		E73D686D28B047B200B41034 /* AppScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB6528187BD2008CD0A4 /* AppScreenState.swift */; };
+		E73D686E28B047C500B41034 /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
+		E73D686F28B047C700B41034 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
+		E73D687028B047CB00B41034 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
+		E73D687128B0489100B41034 /* TimerViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E2281C542E00EAA212 /* TimerViewState.swift */; };
+		E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */; };
+		E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */; };
+		E73D687428B0489C00B41034 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
+		E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
+		E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
+		E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
+		E73D687828B04A2A00B41034 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB5F28187813008CD0A4 /* Store.swift */; };
+		E73D687928B04A3A00B41034 /* ScrambleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */; };
+		E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
+		E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
 		E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D95280262AD0024BB7A /* Optional+Additions.swift */; };
 		E7556D98280283990024BB7A /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
 		E7556D9C2804325E0024BB7A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
 		E7556D9F280432F00024BB7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
-		E7556DA3280447CB0024BB7A /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA2280447CA0024BB7A /* AppStateTests.swift */; };
 		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
 		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
 		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
@@ -33,7 +47,6 @@
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
 		E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0A03228AE64970092776C /* Date+Additions.swift */; };
-		E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
@@ -72,18 +85,14 @@
 		E712AB6528187BD2008CD0A4 /* AppScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenState.swift; sourceTree = "<group>"; };
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
-		E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListViewModelTests.swift; sourceTree = "<group>"; };
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
-		E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
-		E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
-		E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleProviderTests.swift; sourceTree = "<group>"; };
+		E73D686828B046F900B41034 /* AppStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
 		E7556D95280262AD0024BB7A /* Optional+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Additions.swift"; sourceTree = "<group>"; };
 		E7556D97280283990024BB7A /* Double+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Additions.swift"; sourceTree = "<group>"; };
 		E7556D9B2804325E0024BB7A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E7556D9E280432F00024BB7A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
-		E7556DA2280447CA0024BB7A /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
 		E763E09228327E5E0051DE7E /* ResultsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewState.swift; sourceTree = "<group>"; };
 		E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducer.swift; sourceTree = "<group>"; };
 		E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateAction.swift; sourceTree = "<group>"; };
@@ -91,7 +100,6 @@
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
 		E7A0A03228AE64970092776C /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
-		E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,12 +296,7 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E81C5DAE27F6F47A00C8D6FC /* TimerViewModelTests.swift */,
-				E74480AB27F78959009ECBEF /* SettingsViewModelTests.swift */,
-				E74480AD27F78C76009ECBEF /* MainViewModelTests.swift */,
-				E74480B327F796EB009ECBEF /* ScrambleProviderTests.swift */,
-				E71B7DE227FA1FDF00896892 /* ResultsListViewModelTests.swift */,
-				E7556DA2280447CA0024BB7A /* AppStateTests.swift */,
+				E73D686828B046F900B41034 /* AppStateReducerTests.swift */,
 			);
 			path = SpeedcubeTimerTests;
 			sourceTree = "<group>";
@@ -529,12 +532,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E74480AE27F78C76009ECBEF /* MainViewModelTests.swift in Sources */,
-				E74480B427F796EB009ECBEF /* ScrambleProviderTests.swift in Sources */,
-				E7556DA3280447CB0024BB7A /* AppStateTests.swift in Sources */,
-				E71B7DE327FA1FDF00896892 /* ResultsListViewModelTests.swift in Sources */,
-				E81C5DAF27F6F47A00C8D6FC /* TimerViewModelTests.swift in Sources */,
-				E74480AC27F78959009ECBEF /* SettingsViewModelTests.swift in Sources */,
+				E73D687028B047CB00B41034 /* AverageResult.swift in Sources */,
+				E73D686F28B047C700B41034 /* Model.swift in Sources */,
+				E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */,
+				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
+				E73D686E28B047C500B41034 /* CubingSession.swift in Sources */,
+				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
+				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
+				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
+				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
+				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
+				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
+				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
+				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
+				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
+				E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */,
+				E73D686A28B047A600B41034 /* AppState.swift in Sources */,
+				E73D686D28B047B200B41034 /* AppScreenState.swift in Sources */,
+				E73D687928B04A3A00B41034 /* ScrambleProvider.swift in Sources */,
+				E73D687428B0489C00B41034 /* SettingsViewStateAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

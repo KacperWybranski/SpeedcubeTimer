@@ -24,6 +24,14 @@ extension TimerViewState {
         scramble = ScrambleProvider.newScramble(for: cube)
         isPreinspectionOn = false
     }
+    
+    init(session: CubingSession) {
+        cubingState = .idle
+        time = .zero
+        cube = session.cube
+        scramble = ScrambleProvider.newScramble(for: cube)
+        isPreinspectionOn = false
+    }
 }
 
 extension TimerViewState {

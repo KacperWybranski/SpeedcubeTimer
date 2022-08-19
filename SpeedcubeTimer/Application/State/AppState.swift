@@ -21,7 +21,7 @@ extension AppState {
     init() {
         currentSession = .initialSession
         allSessions = [currentSession]
-        screens = [.timerScreen(TimerViewState()), .resultsScreen(ResultsViewState())]
+        screens = [.timerScreen(TimerViewState(session: currentSession)), .resultsScreen(ResultsViewState())]
     }
     
     static func forPreview(screenStates: [AppScreenState], session: CubingSession) -> AppState {
