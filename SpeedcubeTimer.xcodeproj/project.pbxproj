@@ -35,6 +35,8 @@
 		E73D687928B04A3A00B41034 /* ScrambleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */; };
 		E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
 		E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
+		E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */; };
+		E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */; };
 		E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D95280262AD0024BB7A /* Optional+Additions.swift */; };
 		E7556D98280283990024BB7A /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
 		E7556D9C2804325E0024BB7A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
@@ -88,6 +90,8 @@
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
 		E73D686828B046F900B41034 /* AppStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
+		E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducerTests.swift; sourceTree = "<group>"; };
+		E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E7556D95280262AD0024BB7A /* Optional+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Additions.swift"; sourceTree = "<group>"; };
 		E7556D97280283990024BB7A /* Double+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Additions.swift"; sourceTree = "<group>"; };
 		E7556D9B2804325E0024BB7A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -165,6 +169,16 @@
 				E712AB5F28187813008CD0A4 /* Store.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		E73D688028B2283F00B41034 /* StateTests */ = {
+			isa = PBXGroup;
+			children = (
+				E73D686828B046F900B41034 /* AppStateReducerTests.swift */,
+				E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */,
+				E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */,
+			);
+			path = StateTests;
 			sourceTree = "<group>";
 		};
 		E74480B527F79704009ECBEF /* Extensions */ = {
@@ -296,7 +310,7 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E73D686828B046F900B41034 /* AppStateReducerTests.swift */,
+				E73D688028B2283F00B41034 /* StateTests */,
 			);
 			path = SpeedcubeTimerTests;
 			sourceTree = "<group>";
@@ -536,6 +550,7 @@
 				E73D686F28B047C700B41034 /* Model.swift in Sources */,
 				E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */,
 				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
+				E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */,
 				E73D686E28B047C500B41034 /* CubingSession.swift in Sources */,
 				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
@@ -544,6 +559,7 @@
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
 				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
 				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
+				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
 				E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */,

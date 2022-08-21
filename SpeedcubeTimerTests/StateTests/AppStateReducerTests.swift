@@ -29,9 +29,11 @@ class AppStateReducerTests: XCTestCase {
                                      screens: [.timerScreen(TimerViewState(session: session2)),
                                                .resultsScreen(ResultsViewState(currentSession: session2))])
         
-        // Test
+        // Reduce
         
         let reduced = AppState.reducer(beforeAppState, SettingsViewStateAction.cubeChanged(.two))
+        
+        // Test
         
         XCTAssertEqual(reduced.allSessions, afterAppState.allSessions)
         XCTAssertEqual(reduced.currentSession, afterAppState.currentSession)
@@ -64,9 +66,11 @@ class AppStateReducerTests: XCTestCase {
                                      screens: [.timerScreen(TimerViewState(session: session2)),
                                                .resultsScreen(ResultsViewState(currentSession: session2))])
         
-        // Test
+        // Reduce
         
         let reduced = AppState.reducer(beforeAppState, SettingsViewStateAction.sessionIndexChanged(2))
+        
+        // Test
         
         XCTAssertEqual(reduced.allSessions, afterAppState.allSessions)
         XCTAssertEqual(reduced.currentSession, afterAppState.currentSession)
@@ -99,9 +103,11 @@ class AppStateReducerTests: XCTestCase {
                                      screens: [.timerScreen(TimerViewState(session: sessionAfter)),
                                                .resultsScreen(ResultsViewState(currentSession: sessionAfter))])
         
-        // Test
+        // Reduce
         
         let reduced = AppState.reducer(beforeAppState, TimerViewStateAction.saveResult(Configuration.sampleSolve))
+        
+        // Test
         
         XCTAssertEqual(reduced.allSessions, afterAppState.allSessions)
         XCTAssertEqual(reduced.currentSession, afterAppState.currentSession)
@@ -134,9 +140,11 @@ class AppStateReducerTests: XCTestCase {
                                      screens: [.timerScreen(TimerViewState(session: sessionAfter)),
                                                .resultsScreen(ResultsViewState(currentSession: sessionAfter))])
         
-        // Test
+        // Reduce
         
         let reduced = AppState.reducer(beforeAppState, ResultsViewStateAction.removeResultsAt(.init(integer: 0)))
+        
+        // Test
         
         XCTAssertEqual(reduced.allSessions, afterAppState.allSessions)
         XCTAssertEqual(reduced.currentSession, afterAppState.currentSession)
