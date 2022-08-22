@@ -39,7 +39,7 @@ extension CubingSession {
     func meanOfLast(_ count: Int) -> AverageResult? {
         guard results.count >= count else { return nil }
         
-        return .init(mode: .avgOf, solves: Array(results.prefix(count)))
+        return .init(mode: .meanOf, solves: Array(results.prefix(count)))
     }
     
     func bestAvgOf(_ count: Int, mode: AverageResult.Mode) -> AverageResult? {

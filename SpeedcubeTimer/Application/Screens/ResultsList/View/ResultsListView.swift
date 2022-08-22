@@ -22,8 +22,8 @@ struct ResultsListView: View {
                         Section(header: Text(ResultsListDictionary.best)) {
                             ResultListRowBestResult(result: state.bestResult)
                             ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: state.bestAvg5)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: state.currentAvg12)
-                            ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: state.currentMean100)
+                            ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: state.bestAvg12)
+                            ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: state.bestMean100)
                         }
                         
                         Section(header: Text(ResultsListDictionary.current)) {
@@ -35,7 +35,7 @@ struct ResultsListView: View {
                                                  result: state.currentMean100)
                         }
                         
-                        Section(header: Text(ResultsListDictionary.all)) {
+                        Section(header: Text(ResultsListDictionary.all + " (\(state.currentSession.results.count))")) {
                             ForEach(state.currentSession.results) { result in
                                 ResultListRow(result: result)
                             }
