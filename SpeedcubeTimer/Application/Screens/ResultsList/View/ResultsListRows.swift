@@ -1,56 +1,11 @@
 //
-//  ResultsListWithSectionsView.swift
+//  ResultsListRows.swift
 //  SpeedcubeTimer
 //
 //  Created by Kacper on 22/08/2022.
 //
 
 import SwiftUI
-
-struct ResultsListWithSectionsView: View {
-    @EnvironmentObject var store: Store<AppState>
-    
-    var state: ResultsViewState
-    
-    var body: some View {
-        if state.currentSession.results.isEmpty {
-            ResultsListEmptyView()
-        } else {
-            List {
-                Section(header: Text("Best 🏆")) {
-                    ResultListRowBestResult(result: state.currentSession.bestResult)
-                }
-                
-                Section(header: Text("Current")) {
-                    ResultListRowAverage(name: "average of 5",
-                                         result: state.currentAvg5)
-                    ResultListRowAverage(name: "average of 12",
-                                         result: state.currentAvg12)
-                    ResultListRowAverage(name: "mean of 100",
-                                         result: state.currentMean100)
-                }
-                
-                Section(header: Text("All")) {
-                    ForEach(state.currentSession.results) { result in
-                        ResultListRow(result: result)
-                    }
-                    .onDelete { offsets in
-                        removeResult(at: offsets)
-                    }
-                }
-            }
-            .toolbar {
-                if !state.currentSession.results.isEmpty {
-                    EditButton()
-                }
-            }
-        }
-    }
-    
-    func removeResult(at offsets: IndexSet) {
-        store.dispatch(ResultsViewStateAction.removeResultsAt(offsets))
-    }
-}
 
 // MARK: - ResultListRow
 
@@ -131,11 +86,44 @@ struct ResultListRowBestResult: View {
             }
         }) {
             HStack {
-                Text("Single")
+                Text(ResultsListDictionary.single)
                 Spacer()
                 Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
             }
         }
         .disabled(result.isNil)
+    }
+}
+
+// MARK: - Preview
+
+struct ResultsListRowsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let session = CubingSession.previewSession
+        let resultsListState = ResultsViewState(currentSession: session)
+        let store = Store
+            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session), reducer: AppState.reducer)
+        ResultsListView()
+            .environmentObject(store)
+            .preferredColorScheme(.dark)
+            .previewDevice("iPhone 13")
+    }
+}
+
+private extension CubingSession {
+    static var previewSession: CubingSession {
+        let results: [Result] = [
+            .init(time: 0.56, scramble: "A B C A B C", date: .init()),
+            .init(time: 0.123, scramble: "B C A A B C", date: .init()),
+            .init(time: 0.98, scramble: "A B C P O D", date: .init()),
+            .init(time: 1.54, scramble: "O S I E M K", date: .init()),
+            .init(time: 1.24, scramble: "A B C A B C", date: .init()),
+            .init(time: 55.56, scramble: "A B C A B C", date: .init())
+        ]
+        return CubingSession(results: results, cube: .three, index: 1)
+    }
+    
+    static var previewEmptySession: CubingSession {
+        CubingSession(results: [], cube: .three, index: 1)
     }
 }

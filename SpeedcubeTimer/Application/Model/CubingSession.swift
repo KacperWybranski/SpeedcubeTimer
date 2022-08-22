@@ -42,6 +42,29 @@ extension CubingSession {
         return .init(mode: .avgOf, solves: Array(results.prefix(count)))
     }
     
+    func bestAvgOf(_ count: Int, mode: AverageResult.Mode) -> AverageResult? {
+        guard results.count >= count else { return nil}
+        
+        return results
+            .dropLast(count-1)
+            .compactMap { (result) -> AverageResult? in
+                guard let firstIndex = results.firstIndex(of: result) else { return nil }
+                let solvesToCount: [Result] = {
+                    (0..<count)
+                        .map {
+                            results[firstIndex + $0]
+                        }
+                }()
+                return AverageResult(mode: mode, solves: solvesToCount)
+            }
+            .sorted {
+                $0.value < $1.value
+            }
+            .first
+    }
+}
+
+extension CubingSession {
     static var initialSession: CubingSession {
         .init(results: [], cube: .three, index: 1)
     }
