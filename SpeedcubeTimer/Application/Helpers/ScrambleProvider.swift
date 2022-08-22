@@ -9,12 +9,7 @@ import Foundation
 
 struct ScrambleProvider {
     static func newScramble(for cube: Cube) -> String {
-        switch cube {
-        case .two:
-            return newScramble(availableMoves: ["R", "F", "U"], length: 12)
-        case .three:
-            return newScramble(availableMoves: ["R", "F", "U", "L", "B", "D"], length: 20)
-        }
+        newScramble(availableMoves: cube.availableMoves, length: cube.scrambleLength)
     }
     
     private static func newScramble(availableMoves: [String], length: Int) -> String {
@@ -36,5 +31,27 @@ struct ScrambleProvider {
             scramble += "\(move) "
         }
         return scramble
+    }
+}
+
+extension Cube {
+    
+    /// available moves excluding double and prime moves
+    var availableMoves: [String] {
+        switch self {
+        case .two:
+            return ["R", "F", "U"]
+        case .three:
+            return ["R", "F", "U", "L", "B", "D"]
+        }
+    }
+    
+    var scrambleLength: Int {
+        switch self {
+        case .two:
+            return 12
+        case .three:
+            return 20
+        }
     }
 }
