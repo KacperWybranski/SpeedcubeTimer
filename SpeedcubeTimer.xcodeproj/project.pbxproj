@@ -40,6 +40,8 @@
 		E73D688328B3914800B41034 /* ScrambleProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D688228B3914800B41034 /* ScrambleProviderTests.swift */; };
 		E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D688428B3950800B41034 /* Double+AverageTests.swift */; };
 		E73D688A28B396C800B41034 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D688928B396C800B41034 /* ResultTests.swift */; };
+		E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D688B28B39AD900B41034 /* ResultsListEmptyView.swift */; };
+		E73D688E28B39DE400B41034 /* ResultsListWithSectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D688D28B39DE400B41034 /* ResultsListWithSectionsView.swift */; };
 		E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D95280262AD0024BB7A /* Optional+Additions.swift */; };
 		E7556D98280283990024BB7A /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
 		E7556D9C2804325E0024BB7A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
@@ -98,6 +100,8 @@
 		E73D688228B3914800B41034 /* ScrambleProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleProviderTests.swift; sourceTree = "<group>"; };
 		E73D688428B3950800B41034 /* Double+AverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+AverageTests.swift"; sourceTree = "<group>"; };
 		E73D688928B396C800B41034 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		E73D688B28B39AD900B41034 /* ResultsListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListEmptyView.swift; sourceTree = "<group>"; };
+		E73D688D28B39DE400B41034 /* ResultsListWithSectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListWithSectionsView.swift; sourceTree = "<group>"; };
 		E7556D95280262AD0024BB7A /* Optional+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Additions.swift"; sourceTree = "<group>"; };
 		E7556D97280283990024BB7A /* Double+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Additions.swift"; sourceTree = "<group>"; };
 		E7556D9B2804325E0024BB7A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 			children = (
 				E8F3BB4427EC8E52001AEDB2 /* ResultsListView.swift */,
 				E79D878527F3AAC600C39780 /* ResultDetailView.swift */,
+				E73D688B28B39AD900B41034 /* ResultsListEmptyView.swift */,
+				E73D688D28B39DE400B41034 /* ResultsListWithSectionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				E7556D9C2804325E0024BB7A /* Model.swift in Sources */,
 				E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */,
 				E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */,
+				E73D688E28B39DE400B41034 /* ResultsListWithSectionsView.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
 				E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */,
@@ -554,6 +561,7 @@
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
+				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
 				E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */,

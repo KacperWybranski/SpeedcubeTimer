@@ -43,5 +43,6 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
+            .preferredColorScheme(.dark)
     }
 }
