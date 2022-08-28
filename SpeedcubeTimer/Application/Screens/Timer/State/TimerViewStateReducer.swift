@@ -17,8 +17,7 @@ extension TimerViewState {
                                       time: state.time,
                                       cube: newSession.cube,
                                       scramble: ScrambleProvider.newScramble(for: newSession.cube),
-                                      isPreinspectionOn: state.isPreinspectionOn,
-                                      isPresentingOverlay: state.isPresentingOverlay)
+                                      isPreinspectionOn: state.isPreinspectionOn)
             }
         }
         
@@ -29,8 +28,7 @@ extension TimerViewState {
                                       time: state.time,
                                       cube: state.cube,
                                       scramble: state.scramble,
-                                      isPreinspectionOn: isOn,
-                                      isPresentingOverlay: state.isPresentingOverlay)
+                                      isPreinspectionOn: isOn)
             default:
                 break
             }
@@ -43,64 +41,43 @@ extension TimerViewState {
                                   time: .zero,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (.ready, TimerViewStateAction.touchEnded):
             return TimerViewState(cubingState: state.isPreinspectionOn ? .preinspectionOngoing : .ongoing,
                                   time: state.time,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (.ongoing, TimerViewStateAction.touchBegan):
             return TimerViewState(cubingState: .ended,
                                   time: state.time,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (.preinspectionOngoing, TimerViewStateAction.touchBegan):
             return TimerViewState(cubingState: .preinspectionReady,
                                   time: state.time,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (.preinspectionReady, TimerViewStateAction.touchEnded):
             return TimerViewState(cubingState: .ongoing,
                                   time: state.time,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (.ended, TimerViewStateAction.touchEnded):
             return TimerViewState(cubingState: .idle,
                                   time: state.time,
                                   cube: state.cube,
                                   scramble: ScrambleProvider.newScramble(for: state.cube),
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         case (_, TimerViewStateAction.updateTime(let newTime)):
             return TimerViewState(cubingState: state.cubingState,
                                   time: newTime,
                                   cube: state.cube,
                                   scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: state.isPresentingOverlay)
-        case (_, TimerViewStateAction.showOverlay):
-            return TimerViewState(cubingState: state.cubingState,
-                                  time: state.time,
-                                  cube: state.cube,
-                                  scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: true)
-        case (_, TimerViewStateAction.hideOverlay):
-            return TimerViewState(cubingState: state.cubingState,
-                                  time: state.time,
-                                  cube: state.cube,
-                                  scramble: state.scramble,
-                                  isPreinspectionOn: state.isPreinspectionOn,
-                                  isPresentingOverlay: false)
+                                  isPreinspectionOn: state.isPreinspectionOn)
         default:
             return state
         }

@@ -61,7 +61,7 @@ extension AppState {
                 newAllSessions.append(newSession)
                 newActions = [AppStateAction.newSessionSet(newSession)]
                 if newSession.bestResult == newResult {
-                    newActions.append(TimerViewStateAction.showOverlay)
+                    newActions.append(MainViewStateAction.showOverlay)
                 }
             default:
                 break

@@ -16,6 +16,13 @@
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
 		E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
 		E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
+		E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
+		E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
+		E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
+		E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
+		E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
+		E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
+		E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */; };
 		E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D686828B046F900B41034 /* AppStateReducerTests.swift */; };
 		E73D686A28B047A600B41034 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
@@ -98,6 +105,10 @@
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
+		E73A67D528BC0E920013B2AC /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
+		E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateAction.swift; sourceTree = "<group>"; };
+		E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducer.swift; sourceTree = "<group>"; };
+		E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D686828B046F900B41034 /* AppStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateReducerTests.swift; sourceTree = "<group>"; };
@@ -189,12 +200,31 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
+		E73A67DB28BC0F3B0013B2AC /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E73A67D528BC0E920013B2AC /* MainViewState.swift */,
+				E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */,
+				E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E73A67DC28BC0F3F0013B2AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E73D688028B2283F00B41034 /* StateTests */ = {
 			isa = PBXGroup;
 			children = (
 				E73D686828B046F900B41034 /* AppStateReducerTests.swift */,
 				E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */,
 				E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */,
+				E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */,
 			);
 			path = StateTests;
 			sourceTree = "<group>";
@@ -418,7 +448,8 @@
 		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E8F3BB4027EC8DD9001AEDB2 /* MainView.swift */,
+				E73A67DB28BC0F3B0013B2AC /* State */,
+				E73A67DC28BC0F3F0013B2AC /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -563,7 +594,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7556D9C2804325E0024BB7A /* Model.swift in Sources */,
+				E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */,
 				E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */,
+				E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */,
 				E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */,
 				E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */,
 				E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */,
@@ -585,6 +618,7 @@
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
+				E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
@@ -606,10 +640,12 @@
 				E73D687028B047CB00B41034 /* AverageResult.swift in Sources */,
 				E73D686F28B047C700B41034 /* Model.swift in Sources */,
 				E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */,
+				E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */,
 				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
 				E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
+				E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */,
 				E73D686E28B047C500B41034 /* CubingSession.swift in Sources */,
 				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
@@ -621,6 +657,8 @@
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
+				E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */,
+				E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */,
 				E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */,
 				E73D686A28B047A600B41034 /* AppState.swift in Sources */,
 				E73D686D28B047B200B41034 /* AppScreenState.swift in Sources */,
