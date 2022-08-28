@@ -13,7 +13,7 @@ extension AppState {
     static let reducer: Reducer<Self> = { state, action in
         var newSession = state.currentSession
         var newAllSessions = state.allSessions
-        var newAction = action
+        var newActions = [action]
         
         if let action = action as? SettingsViewStateAction {
             switch action {
@@ -28,7 +28,7 @@ extension AppState {
                 }()
                 newSession = tmpNewSession
                 newAllSessions = tmpAllSessions
-                newAction = AppStateAction.newSessionSet(newSession)
+                newActions = [AppStateAction.newSessionSet(newSession)]
             case .sessionIndexChanged(let newIndex):
                 let tmpNewSession = state.session(for: state.currentSession.cube, and: newIndex)
                 let tmpAllSessions: [CubingSession] = {
@@ -40,7 +40,7 @@ extension AppState {
                 }()
                 newSession = tmpNewSession
                 newAllSessions = tmpAllSessions
-                newAction = AppStateAction.newSessionSet(newSession)
+                newActions = [AppStateAction.newSessionSet(newSession)]
             default:
                 break
             }
@@ -59,7 +59,10 @@ extension AppState {
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }
                 newAllSessions.append(newSession)
-                newAction = AppStateAction.newSessionSet(newSession)
+                newActions = [AppStateAction.newSessionSet(newSession)]
+                if newSession.bestResult == newResult {
+                    newActions.append(TimerViewStateAction.showOverlay)
+                }
             default:
                 break
             }
@@ -78,12 +81,16 @@ extension AppState {
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }
                 newAllSessions.append(newSession)
-                newAction = AppStateAction.newSessionSet(newSession)
+                newActions = [AppStateAction.newSessionSet(newSession)]
             }
         }
         
-        let newScreens = state.screens.map {
-            AppScreenState.reducer($0, newAction)
+        let newScreens = state.screens.map { (screenState: AppScreenState) -> AppScreenState in
+            var finalState: AppScreenState = screenState
+            newActions.forEach { action in
+                finalState = AppScreenState.reducer(finalState, action)
+            }
+            return finalState
         }
         
         return AppState(allSessions: newAllSessions,

@@ -177,6 +177,36 @@ class TimerViewStateReducerTests: XCTestCase {
         
         XCTAssertEqual(reduced.time, newTime)
     }
+    
+    func testShowOverlayOnNewPb() {
+        
+        // Input
+        
+        let timerViewStateBefore = Configuration.timerStateDefault
+        
+        // Reduce
+        
+        let reduced = TimerViewState.reducer(timerViewStateBefore, TimerViewStateAction.showOverlay)
+        
+        // Test
+        
+        XCTAssertTrue(reduced.isPresentingOverlay)
+    }
+    
+    func testHideOverlayAfterAnimationEnd() {
+        
+        // Input
+        
+        let timerViewStateBefore = Configuration.timerStatePresentingOverlay
+        
+        // Reduce
+        
+        let reduced = TimerViewState.reducer(timerViewStateBefore, TimerViewStateAction.hideOverlay)
+        
+        // Test
+        
+        XCTAssertFalse(reduced.isPresentingOverlay)
+    }
 }
 
 private enum Configuration {
@@ -184,43 +214,57 @@ private enum Configuration {
     static let sessionCubeThreeIndexTwo = CubingSession(results: [], cube: .three, index: 2)
     
     static let timerStateDefault = TimerViewState(cubingState: .idle,
-                                                           time: 0.0,
-                                                           cube: .three,
-                                                           scramble: "scramble",
-                                                           isPreinspectionOn: false)
+                                                  time: 0.0,
+                                                  cube: .three,
+                                                  scramble: "scramble",
+                                                  isPreinspectionOn: false,
+                                                  isPresentingOverlay: false)
     static let timerStatePreinspectionOn = TimerViewState(cubingState: .idle,
                                                           time: 0.0,
                                                           cube: .three,
                                                           scramble: "scramble",
-                                                          isPreinspectionOn: true)
+                                                          isPreinspectionOn: true,
+                                                          isPresentingOverlay: false)
     static let timerStateReady = TimerViewState(cubingState: .ready,
                                                 time: 0.0,
                                                 cube: .three,
                                                 scramble: "scramble",
-                                                isPreinspectionOn: false)
+                                                isPreinspectionOn: false,
+                                                isPresentingOverlay: false)
     static let timerStateReadyPreinspectionOn = TimerViewState(cubingState: .ready,
                                                 time: 0.0,
                                                 cube: .three,
                                                 scramble: "scramble",
-                                                isPreinspectionOn: true)
+                                                isPreinspectionOn: true,
+                                                isPresentingOverlay: false)
     static let timerStatePreinspectionOngoing = TimerViewState(cubingState: .preinspectionOngoing,
                                                                time: 13.0,
                                                                cube: .three,
                                                                scramble: "scramble",
-                                                               isPreinspectionOn: true)
+                                                               isPreinspectionOn: true,
+                                                               isPresentingOverlay: false)
     static let timerStatePreinspectionReady = TimerViewState(cubingState: .preinspectionReady,
                                                              time: 4.0,
                                                              cube: .three,
                                                              scramble: "scramble",
-                                                             isPreinspectionOn: true)
+                                                             isPreinspectionOn: true,
+                                                             isPresentingOverlay: false)
     static let timerStateOngoing = TimerViewState(cubingState: .ongoing,
                                                   time: 5.3,
                                                   cube: .three,
                                                   scramble: "scramble",
-                                                  isPreinspectionOn: false)
+                                                  isPreinspectionOn: false,
+                                                  isPresentingOverlay: false)
     static let timerStateEnded = TimerViewState(cubingState: .ended,
-                                                  time: 5.3,
-                                                  cube: .three,
-                                                  scramble: "scramble",
-                                                  isPreinspectionOn: false)
+                                                time: 5.3,
+                                                cube: .three,
+                                                scramble: "scramble",
+                                                isPreinspectionOn: false,
+                                                isPresentingOverlay: false)
+    static let timerStatePresentingOverlay =  TimerViewState(cubingState: .ended,
+                                                             time: 5.3,
+                                                             cube: .three,
+                                                             scramble: "scramble",
+                                                             isPreinspectionOn: false,
+                                                             isPresentingOverlay: true)
 }

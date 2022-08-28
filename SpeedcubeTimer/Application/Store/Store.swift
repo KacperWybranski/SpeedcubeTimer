@@ -43,5 +43,4 @@ final class Store<State: Equatable>: ObservableObject {
             self.state = newState
         }
     }
-    
 }

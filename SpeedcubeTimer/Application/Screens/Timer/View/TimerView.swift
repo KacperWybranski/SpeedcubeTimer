@@ -46,7 +46,14 @@ struct TimerView: View {
                 .foregroundColor(state.cubingState.timerTextColor)
                 .font(.system(size: 70))
                 .multilineTextAlignment(.center)
+            
+            if state.isPresentingOverlay {
+                OverlayAnimationView(text: "🤩 new pb 🥳") {
+                    store.dispatch(TimerViewStateAction.hideOverlay)
+                }
+            }
         }
+        .allowsHitTesting(!state.isPresentingOverlay)
         .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in
@@ -69,6 +76,9 @@ struct TimerView: View {
             default:
                 break
             }
+        }
+        .onDisappear {
+            store.dispatch(TimerViewStateAction.hideOverlay)
         }
     }
     
@@ -112,7 +122,8 @@ struct TimerView_Previews: PreviewProvider {
                                             time: 0.00,
                                             cube: .three,
                                             scramble: ScrambleProvider.newScramble(for: .three),
-                                            isPreinspectionOn: true)
+                                            isPreinspectionOn: true,
+                                            isPresentingOverlay: false)
         let store = Store
             .init(initial: .forPreview(screenStates: [.timerScreen(timerViewState)],
                                        session: session),
