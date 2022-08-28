@@ -12,7 +12,5 @@ enum TimerViewStateAction: Action {
     case touchEnded
     case updateTime(_ time: Double)
     case saveResult(_ result: Result)
-    case showOverlay
-    case hideOverlay
 }
 

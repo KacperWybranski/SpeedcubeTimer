@@ -21,7 +21,7 @@ extension AppState {
     init() {
         currentSession = .initialSession
         allSessions = [currentSession]
-        screens = [.timerScreen(TimerViewState(session: currentSession)), .resultsScreen(ResultsViewState())]
+        screens = [.main(MainViewState()), .timerScreen(TimerViewState(session: currentSession)), .resultsScreen(ResultsViewState())]
     }
     
     static func forPreview(screenStates: [AppScreenState], session: CubingSession) -> AppState {
@@ -44,6 +44,8 @@ extension AppState {
             return screens
                 .compactMap {
                     switch ($0, screen) {
+                    case (.main(let state), .main):
+                        return state as? State
                     case (.timerScreen(let state), .timer):
                         return state as? State
                     case (.resultsScreen(let state), .resultsList):
@@ -56,6 +58,7 @@ extension AppState {
         }
     
     enum AppScreen {
+        case main
         case timer
         case resultsList
     }

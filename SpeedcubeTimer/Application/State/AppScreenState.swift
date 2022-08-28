@@ -10,6 +10,7 @@ import Foundation
 // MARK: - App Screen State
 
 enum AppScreenState: Equatable {
+    case main(MainViewState)
     case timerScreen(TimerViewState)
     case resultsScreen(ResultsViewState)
 }
@@ -20,6 +21,8 @@ extension AppScreenState {
     static let reducer: Reducer<Self> = { state, action in
         
         switch state {
+        case .main(let state):
+            return .main(MainViewState.reducer(state, action))
         case .timerScreen(let state):
             return .timerScreen(TimerViewState.reducer(state, action))
         case .resultsScreen(let state):

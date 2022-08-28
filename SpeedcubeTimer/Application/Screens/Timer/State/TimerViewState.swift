@@ -14,7 +14,6 @@ struct TimerViewState: Equatable {
     let cube: Cube
     let scramble: String
     let isPreinspectionOn: Bool
-    let isPresentingOverlay: Bool
 }
 
 extension TimerViewState {
@@ -24,7 +23,6 @@ extension TimerViewState {
         cube = .three
         scramble = ScrambleProvider.newScramble(for: cube)
         isPreinspectionOn = false
-        isPresentingOverlay = false
     }
     
     init(session: CubingSession) {
@@ -33,7 +31,6 @@ extension TimerViewState {
         cube = session.cube
         scramble = ScrambleProvider.newScramble(for: cube)
         isPreinspectionOn = false
-        isPresentingOverlay = false
     }
 }
 
