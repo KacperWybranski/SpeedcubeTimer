@@ -11,10 +11,12 @@ struct ResultsListEmptyView: View {
     var body: some View {
         VStack {
             Text("Nothing to display 🥺")
+                .foregroundColor(.lightGray)
                 .font(.system(size: 25, weight: .medium))
             Spacer()
                 .frame(height: 20)
             Text("Finish solve to enjoy summary of your results here!")
+                .foregroundColor(.lightGray)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
         }

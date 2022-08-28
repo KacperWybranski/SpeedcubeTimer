@@ -39,7 +39,7 @@ struct TimerView: View {
                     .overlay(
                         Text(state.scramble)
                             .hidden(state.cubingState.shouldScrambleBeHidden)
-                            .foregroundColor(.white)
+                            .foregroundColor(.lightGray)
                             .font(.system(size: 40))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 15)
