@@ -34,18 +34,25 @@ struct TimerView: View {
                 .black
                 .ignoresSafeArea()
             
-            Text(state.scramble)
-                .hidden(state.cubingState.shouldScrambleBeHidden)
-                .foregroundColor(.white)
-                .font(.system(size: 40))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 15)
-                .offset(y: -150)
-            
-            Text(timeString)
-                .foregroundColor(state.cubingState.timerTextColor)
-                .font(.system(size: 70))
-                .multilineTextAlignment(.center)
+            VStack(spacing: 0) {
+                Color.clear
+                    .overlay(
+                        Text(state.scramble)
+                            .hidden(state.cubingState.shouldScrambleBeHidden)
+                            .foregroundColor(.white)
+                            .font(.system(size: 40))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 15)
+                    )
+                
+                Text(timeString)
+                    .foregroundColor(state.cubingState.timerTextColor)
+                    .font(.system(size: 70))
+                    .multilineTextAlignment(.center)
+                    
+                
+                Color.clear
+            }
             
             if state.isPresentingOverlay {
                 OverlayAnimationView(text: "🤩 new pb 🥳") {
@@ -120,8 +127,8 @@ struct TimerView_Previews: PreviewProvider {
         let session = CubingSession(results: [], cube: .three, index: 1)
         let timerViewState = TimerViewState(cubingState: .idle,
                                             time: 0.00,
-                                            cube: .three,
-                                            scramble: ScrambleProvider.newScramble(for: .three),
+                                            cube: .four,
+                                            scramble: ScrambleProvider.newScramble(for: .four),
                                             isPreinspectionOn: true,
                                             isPresentingOverlay: false)
         let store = Store
@@ -130,5 +137,6 @@ struct TimerView_Previews: PreviewProvider {
                   reducer: AppState.reducer)
         TimerView()
             .environmentObject(store)
+            .previewDevice("iPhone 13 mini")
     }
 }
