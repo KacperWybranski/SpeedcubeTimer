@@ -38,10 +38,10 @@ struct OverlayAnimationView: View {
                 isOverlayColorVisible = false
                 isTextVisible = true
             }
-            withAnimation(.easeIn(duration: Configuration.hideTextDuration).delay(2.3)) {
+            withAnimation(.easeIn(duration: Configuration.hideTextDuration).delay(3.0)) {
                 isTextVisible = false
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                 animationEnded()
             }
         }

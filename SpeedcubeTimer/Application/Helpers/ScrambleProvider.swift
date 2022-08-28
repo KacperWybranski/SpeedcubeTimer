@@ -43,6 +43,8 @@ extension Cube {
             return ["R", "F", "U"]
         case .three:
             return ["R", "F", "U", "L", "B", "D"]
+        case .four:
+            return ["R", "F", "U", "L", "B", "D", "r", "f", "u", "l", "b", "d"]
         }
     }
     
@@ -52,6 +54,8 @@ extension Cube {
             return 12
         case .three:
             return 20
+        case .four:
+            return 40
         }
     }
 }

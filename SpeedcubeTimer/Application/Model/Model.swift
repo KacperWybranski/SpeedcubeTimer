@@ -12,6 +12,7 @@ import Foundation
 enum Cube: CaseIterable, Codable {
     case two
     case three
+    case four
 }
 
 // MARK: - SelectionType
@@ -29,6 +30,7 @@ extension Cube: SelectionType {
         switch self {
         case .two: return "2x2"
         case .three: return "3x3"
+        case .four: return "4x4"
         }
     }
 }
