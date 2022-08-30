@@ -60,8 +60,12 @@ extension AppState {
                 newAllSessions.removeAll { $0.id == oldSession.id }
                 newAllSessions.append(newSession)
                 newActions = [AppStateAction.newSessionSet(newSession)]
-                if newSession.bestResult == newResult {
-                    newActions.append(MainViewStateAction.showOverlay)
+                if newSession.bestResult != oldSession.bestResult {
+                    newActions.append(MainViewStateAction.showOverlay(text: "🤩 new best single 🥳"))
+                } else if newSession.bestAvgOf(5, mode: .avgOf) != oldSession.bestAvgOf(5, mode: .avgOf) {
+                    newActions.append(MainViewStateAction.showOverlay(text: "🤯 new best avg5 😱"))
+                } else if newSession.bestAvgOf(12, mode: .avgOf) != oldSession.bestAvgOf(12, mode: .avgOf) {
+                    newActions.append(MainViewStateAction.showOverlay(text: "🎉 new best avg12 🎉"))
                 }
             default:
                 break

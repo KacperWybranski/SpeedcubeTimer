@@ -8,6 +8,6 @@
 import Foundation
 
 enum MainViewStateAction: Action {
-    case showOverlay
+    case showOverlay(text: String)
     case hideOverlay
 }

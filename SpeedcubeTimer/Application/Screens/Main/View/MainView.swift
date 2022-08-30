@@ -41,7 +41,7 @@ struct MainView: View {
             }
             
             if state.isPresentingOverlay {
-                OverlayAnimationView(text: "🤩 new pb 🥳") {
+                OverlayAnimationView(text: state.overlayText) {
                     store.dispatch(MainViewStateAction.hideOverlay)
                 }
             }
@@ -54,5 +54,6 @@ struct MainView_Previews: PreviewProvider {
         MainView()
             .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
             .preferredColorScheme(.dark)
+            .previewDevice("iPhone 13 mini")
     }
 }

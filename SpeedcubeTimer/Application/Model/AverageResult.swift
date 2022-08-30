@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - AverageResult
 
-struct AverageResult {
+struct AverageResult: Equatable {
     
     enum Mode {
         case avgOf

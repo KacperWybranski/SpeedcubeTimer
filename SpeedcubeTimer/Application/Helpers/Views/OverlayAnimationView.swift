@@ -24,7 +24,8 @@ struct OverlayAnimationView: View {
             if isTextVisible {
                 Text(text)
                     .foregroundColor(.lightYellow)
-                    .font(.system(size: 40))
+                    .font(.system(size: 30))
+                    .multilineTextAlignment(.center)
                     .transition(.opacity)
                     .offset(x: 0, y: 200)
             }

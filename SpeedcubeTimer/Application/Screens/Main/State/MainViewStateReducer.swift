@@ -12,10 +12,12 @@ extension MainViewState {
         
         if let action = action as? MainViewStateAction {
             switch action {
-            case .showOverlay:
-                return MainViewState(isPresentingOverlay: true)
+            case .showOverlay(let text):
+                return MainViewState(isPresentingOverlay: true,
+                                     overlayText: text)
             case .hideOverlay:
-                return MainViewState(isPresentingOverlay: false)
+                return MainViewState(isPresentingOverlay: false,
+                                     overlayText: .empty)
             }
         }
         

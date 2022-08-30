@@ -9,10 +9,12 @@ import Foundation
 
 struct MainViewState: Equatable {
     let isPresentingOverlay: Bool
+    let overlayText: String
 }
 
 extension MainViewState {
     init() {
         isPresentingOverlay = false
+        overlayText = .empty
     }
 }

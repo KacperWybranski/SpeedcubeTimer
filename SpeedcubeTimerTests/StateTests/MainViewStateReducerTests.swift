@@ -19,14 +19,16 @@ class MainViewStateReducerTests: XCTestCase {
         // Input
         
         let mainViewStateBefore = Configuration.mainStateDefault
+        let overlayText = Configuration.overlayText
         
         // Reduce
         
-        let reduced = MainViewState.reducer(mainViewStateBefore, MainViewStateAction.showOverlay)
+        let reduced = MainViewState.reducer(mainViewStateBefore, MainViewStateAction.showOverlay(text: overlayText))
         
         // Test
         
         XCTAssertTrue(reduced.isPresentingOverlay)
+        XCTAssertEqual(reduced.overlayText, overlayText)
     }
     
     func testHideOverlayAfterAnimationEnd() {
@@ -46,6 +48,7 @@ class MainViewStateReducerTests: XCTestCase {
 }
 
 private enum Configuration {
-    static let mainStateDefault: MainViewState = .init(isPresentingOverlay: false)
-    static let mainStatePresentingOverlay: MainViewState = .init(isPresentingOverlay: true)
+    static let mainStateDefault: MainViewState = .init(isPresentingOverlay: false, overlayText: .empty)
+    static let mainStatePresentingOverlay: MainViewState = .init(isPresentingOverlay: true, overlayText: .empty)
+    static let overlayText: String = "Great"
 }
