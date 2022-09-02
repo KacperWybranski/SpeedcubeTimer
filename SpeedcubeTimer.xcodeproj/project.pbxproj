@@ -61,10 +61,15 @@
 		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
+		E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */; };
 		E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0A03228AE64970092776C /* Date+Additions.swift */; };
 		E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */; };
 		E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F328BBAB0000140717 /* Color+Additions.swift */; };
 		E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */; };
+		E7E8BFC428C20C24008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
+		E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
+		E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
+		E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
@@ -129,10 +134,13 @@
 		E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateAction.swift; sourceTree = "<group>"; };
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
+		E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E7A0A03228AE64970092776C /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterCircleTransition.swift; sourceTree = "<group>"; };
 		E7A415F328BBAB0000140717 /* Color+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Additions.swift"; sourceTree = "<group>"; };
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
+		E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewState.swift; sourceTree = "<group>"; };
+		E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducer.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +233,7 @@
 				E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */,
 				E73D687E28B2257800B41034 /* TimerViewStateReducerTests.swift */,
 				E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */,
+				E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */,
 			);
 			path = StateTests;
 			sourceTree = "<group>";
@@ -325,7 +334,9 @@
 		E796C00B2822E2300092EE59 /* State */ = {
 			isa = PBXGroup;
 			children = (
+				E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */,
 				E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */,
+				E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -614,6 +625,7 @@
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
 				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
+				E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */,
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
@@ -628,6 +640,7 @@
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
 				E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */,
 				E712AB6028187813008CD0A4 /* Store.swift in Sources */,
+				E7E8BFC428C20C24008A05BD /* SettingsViewState.swift in Sources */,
 				E7556D9F280432F00024BB7A /* AppState.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,
 			);
@@ -650,8 +663,10 @@
 				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
 				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
+				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
+				E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */,
 				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
 				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
@@ -660,6 +675,7 @@
 				E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */,
 				E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */,
 				E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */,
+				E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E73D686A28B047A600B41034 /* AppState.swift in Sources */,
 				E73D686D28B047B200B41034 /* AppScreenState.swift in Sources */,
 				E73D688328B3914800B41034 /* ScrambleProviderTests.swift in Sources */,

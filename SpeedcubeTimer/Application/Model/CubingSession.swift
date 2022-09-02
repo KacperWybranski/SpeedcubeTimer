@@ -14,6 +14,7 @@ struct CubingSession: Equatable {
     var results: [Result]
     var cube: Cube
     var index: Int
+    var name: String?
     var id: UUID = UUID()
     
     var bestResult: Result? {

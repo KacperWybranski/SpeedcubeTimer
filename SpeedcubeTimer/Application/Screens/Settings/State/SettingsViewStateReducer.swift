@@ -1,19 +1,19 @@
 //
-//  ResultsViewStateReducer.swift
+//  SettingsViewStateReducer.swift
 //  SpeedcubeTimer
 //
-//  Created by Kacper on 16/05/2022.
+//  Created by Kacper on 02/09/2022.
 //
 
 import Foundation
 
-extension ResultsViewState {
+extension SettingsViewState {
     static let reducer: Reducer<Self> = { state, action in
         
         if let action = action as? AppStateAction {
             switch action {
-            case .newSessionSet(let newSession):
-                return ResultsViewState(currentSession: newSession)
+            case .newAllSessionsSet(let allSessions):
+                return SettingsViewState(allSessions: allSessions)
             default:
                 break
             }
@@ -22,4 +22,3 @@ extension ResultsViewState {
         return state
     }
 }
-

@@ -8,6 +8,7 @@
 import Foundation
 
 enum SettingsViewStateAction: Action {
+    case currentSessionNameChanged(_ name: String)
     case cubeChanged(_ cube: Cube)
     case sessionIndexChanged(_ session: Int)
     case isPreinspectionOnChanged(_ isOn: Bool)

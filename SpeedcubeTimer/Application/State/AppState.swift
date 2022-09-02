@@ -21,7 +21,12 @@ extension AppState {
     init() {
         currentSession = .initialSession
         allSessions = [currentSession]
-        screens = [.main(MainViewState()), .timerScreen(TimerViewState(session: currentSession)), .resultsScreen(ResultsViewState())]
+        screens = [
+            .main(MainViewState()),
+            .timerScreen(TimerViewState(session: currentSession)),
+            .resultsScreen(ResultsViewState()),
+            .settingsScreen(SettingsViewState(allSessions: allSessions))
+        ]
     }
     
     static func forPreview(screenStates: [AppScreenState], session: CubingSession) -> AppState {
@@ -50,6 +55,8 @@ extension AppState {
                         return state as? State
                     case (.resultsScreen(let state), .resultsList):
                         return state as? State
+                    case (.settingsScreen(let state), .settings):
+                        return state as? State
                     default:
                         return nil
                     }
@@ -61,5 +68,6 @@ extension AppState {
         case main
         case timer
         case resultsList
+        case settings
     }
 }
