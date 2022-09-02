@@ -9,26 +9,27 @@ import Foundation
 
 struct ScrambleProvider {
     static func newScramble(for cube: Cube) -> String {
-        newScramble(availableMoves: cube.availableMoves, length: cube.scrambleLength)
+        newScramble(availableMoves: cube.availableMoves,
+                    availableModifiers: cube.availableModifiers,
+                    length: cube.scrambleLength)
     }
     
-    private static func newScramble(availableMoves: [String], length: Int) -> String {
-        let availableModifiers: [String] = ["", "'", "2"]
-        var scrambleMoves = [String]()
+    private static func newScramble(availableMoves: [Move], availableModifiers: [MoveModifier], length: Int) -> String {
+        var scrambleMoves = [ModifiedMove]()
         for index in 0..<length {
-            if var random = availableMoves.randomElement() {
-                if index != 0 {
-                    while (scrambleMoves[index-1].contains(random)) {
-                        if let newRandom = availableMoves.randomElement() { random = newRandom }
-                    }
-                }
-                if let randomModifier = availableModifiers.randomElement() { random += randomModifier }
-                scrambleMoves.append(random)
+            var randomMove: Move = .none
+            let randomModifier = availableModifiers.randomElement() ?? .none
+            
+            while randomMove == .none || (index != 0 && scrambleMoves[index-1].move == randomMove) {
+                randomMove = availableMoves.randomElement() ?? .none
             }
+            
+            scrambleMoves.append(ModifiedMove(move: randomMove, modifier: randomModifier))
         }
         var scramble: String = .empty
-        scrambleMoves.forEach { move in
-            scramble += "\(move) "
+        scrambleMoves
+            .forEach { move in
+                scramble += (move.asString + " ")
         }
         return scramble
     }
@@ -36,15 +37,25 @@ struct ScrambleProvider {
 
 extension Cube {
     
-    /// available moves excluding double and prime moves
-    var availableMoves: [String] {
+    /// available moves
+    var availableMoves: [Move] {
         switch self {
         case .two:
-            return ["R", "F", "U"]
+            return [.R, .F, .U]
+        case .three, .four:
+            return [.R, .F, .U, .L, .B, .D]
+        }
+    }
+    
+    /// available modifiers (prime, doubled, double layer)
+    var availableModifiers: [MoveModifier] {
+        switch self {
+        case .two:
+            return [.doubled, .prime, .none]
         case .three:
-            return ["R", "F", "U", "L", "B", "D"]
+            return [.doubled, .prime, .none]
         case .four:
-            return ["R", "F", "U", "L", "B", "D", "r", "f", "u", "l", "b", "d"]
+            return [.doubleLayer, .doubled, .prime, .combined(available: [.doubleLayer, .doubled, .prime]), .none]
         }
     }
     
@@ -57,5 +68,95 @@ extension Cube {
         case .four:
             return 40
         }
+    }
+}
+
+// MARK: - Move
+
+enum Move: String {
+    case R
+    case L
+    case U
+    case D
+    case F
+    case B
+    
+    case none
+}
+
+// MARK: - MoveModifier
+
+enum MoveModifier: Equatable {
+    case doubleLayer
+    case prime
+    case doubled
+    case combined(available: [MoveModifier])
+    
+    case none
+    
+    var priorityForCombining: Int {
+        switch self {
+        case .doubleLayer:
+            return 0
+        case .doubled, .prime, .combined, .none:
+            return 1
+        }
+    }
+    
+    func canBeCombined(with another: MoveModifier) -> Bool {
+        switch (self, another) {
+        case (.doubled, .prime):
+            return false
+        default:
+            return true
+        }
+    }
+    
+    func apply(to input: Move) -> String {
+        apply(to: input.rawValue)
+    }
+    
+    private func apply(to input: String) -> String {
+        switch self {
+        case .doubleLayer:
+            return input.lowercased()
+        case .prime:
+            return input + "'"
+        case .doubled:
+            return input + "2"
+        case .combined(let availableModifiers):
+            if availableModifiers.isEmpty { return input }
+            if availableModifiers.count == 1 { return availableModifiers.first?.apply(to: input) ?? input }
+            
+            var random1: MoveModifier = .none
+            var random2: MoveModifier = .none
+            while random1 == .none || random2 == .none || random1 == random2 || !random1.canBeCombined(with: random2) {
+                random1 = availableModifiers.randomElement() ?? .none
+                random2 = availableModifiers.randomElement() ?? .none
+            }
+            
+            var modified: String = input
+            [random1, random2]
+                .sorted {
+                    $0.priorityForCombining < $1.priorityForCombining
+                }
+                .forEach {
+                    modified = $0.apply(to: modified)
+                }
+            return modified
+        case .none:
+            return input
+        }
+    }
+}
+
+// MARK: - Modified move
+
+struct ModifiedMove {
+    let move: Move
+    let modifier: MoveModifier
+    
+    var asString: String {
+        modifier.apply(to: move)
     }
 }
