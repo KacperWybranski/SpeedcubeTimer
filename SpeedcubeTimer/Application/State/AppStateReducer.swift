@@ -17,6 +17,18 @@ extension AppState {
         
         if let action = action as? SettingsViewStateAction {
             switch action {
+            case .currentSessionNameChanged(let name):
+                newSession = .init(results: newSession.results,
+                                   cube: newSession.cube,
+                                   index: newSession.index,
+                                   name: (name == .empty ? nil : name),
+                                   id: newSession.id)
+                newAllSessions.removeAll { $0.id == newSession.id }
+                newAllSessions.append(newSession)
+                newActions = [
+                    AppStateAction.newSessionSet(newSession),
+                    AppStateAction.newAllSessionsSet(newAllSessions)
+                ]
             case .cubeChanged(let newCube):
                 let tmpNewSession = state.session(for: newCube, and: state.currentSession.index)
                 let tmpAllSessions: [CubingSession] = {
@@ -55,6 +67,7 @@ extension AppState {
                 newSession = .init(results: newResults,
                                    cube: oldSession.cube,
                                    index: oldSession.index,
+                                   name: oldSession.name,
                                    id: oldSession.id)
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }
@@ -81,6 +94,7 @@ extension AppState {
                 newSession = .init(results: newResults,
                                    cube: oldSession.cube,
                                    index: oldSession.index,
+                                   name: oldSession.name,
                                    id: oldSession.id)
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }

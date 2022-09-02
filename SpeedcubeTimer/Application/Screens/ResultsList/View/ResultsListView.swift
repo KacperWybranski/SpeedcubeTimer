@@ -102,6 +102,6 @@ private extension CubingSession {
     }
     
     static var previewEmptySession: CubingSession {
-        CubingSession(results: [], cube: .three, index: 1)
+        CubingSession()
     }
 }

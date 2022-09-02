@@ -114,7 +114,7 @@ struct TimerView: View {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        let session = CubingSession(results: [], cube: .three, index: 1)
+        let session = CubingSession()
         let timerViewState = TimerViewState(cubingState: .idle,
                                             time: 0.00,
                                             cube: .four,

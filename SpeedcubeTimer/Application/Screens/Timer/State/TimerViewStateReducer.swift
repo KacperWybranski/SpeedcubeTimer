@@ -18,6 +18,8 @@ extension TimerViewState {
                                       cube: newSession.cube,
                                       scramble: ScrambleProvider.newScramble(for: newSession.cube),
                                       isPreinspectionOn: state.isPreinspectionOn)
+            default:
+                break
             }
         }
         

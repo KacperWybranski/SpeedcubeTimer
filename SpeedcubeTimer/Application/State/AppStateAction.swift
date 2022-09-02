@@ -10,5 +10,6 @@ import Foundation
 // MARK: - Action
 
 enum AppStateAction: Action {
+    case newAllSessionsSet(_ sessions: [CubingSession])
     case newSessionSet(_ session: CubingSession)
 }
