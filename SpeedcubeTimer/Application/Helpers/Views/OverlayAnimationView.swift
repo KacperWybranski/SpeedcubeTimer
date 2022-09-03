@@ -10,6 +10,7 @@ import SwiftUI
 struct OverlayAnimationView: View {
     var text: String
     var animationEnded: (() -> Void)
+    var themeColor: Color = .randomThemeForOverlay
     
     @State var isOverlayColorVisible: Bool = false
     @State var isTextVisible: Bool = false
@@ -17,13 +18,13 @@ struct OverlayAnimationView: View {
     var body: some View {
         ZStack {
             if isOverlayColorVisible {
-                Color.lightYellow
+                themeColor
                     .transition(.asymmetric(insertion: .quarterCircle, removal: .opacity))
             }
             
             if isTextVisible {
                 Text(text)
-                    .foregroundColor(.lightYellow)
+                    .foregroundColor(themeColor)
                     .font(.system(size: 30))
                     .multilineTextAlignment(.center)
                     .transition(.opacity)
@@ -77,6 +78,13 @@ struct SampleView: View {
                 }
             }
         }
+    }
+}
+
+private extension Color {
+    static var randomThemeForOverlay: Color {
+        [.lightBlue, .lightYellow, .lightPink]
+            .randomElement() ?? .lightYellow
     }
 }
 
