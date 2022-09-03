@@ -223,9 +223,4 @@ private enum Configuration {
                                                 cube: .three,
                                                 scramble: "scramble",
                                                 isPreinspectionOn: false)
-    static let timerStatePresentingOverlay =  TimerViewState(cubingState: .ended,
-                                                             time: 5.3,
-                                                             cube: .three,
-                                                             scramble: "scramble",
-                                                             isPreinspectionOn: false)
 }
