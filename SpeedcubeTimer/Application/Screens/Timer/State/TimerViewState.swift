@@ -14,6 +14,14 @@ struct TimerViewState: Equatable {
     let cube: Cube
     let scramble: String
     let isPreinspectionOn: Bool
+    
+    var formattedTime: String {
+        if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
+            return time.asTextOnlyFractionalPart
+        } else {
+            return time.asTextWithTwoDecimal
+        }
+    }
 }
 
 extension TimerViewState {
