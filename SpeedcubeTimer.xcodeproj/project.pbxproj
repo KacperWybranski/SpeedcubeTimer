@@ -323,12 +323,12 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		E796C00A2822E22A0092EE59 /* VIew */ = {
+		E796C00A2822E22A0092EE59 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
 			);
-			path = VIew;
+			path = View;
 			sourceTree = "<group>";
 		};
 		E796C00B2822E2300092EE59 /* State */ = {
@@ -354,7 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				E796C00B2822E2300092EE59 /* State */,
-				E796C00A2822E22A0092EE59 /* VIew */,
+				E796C00A2822E22A0092EE59 /* View */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

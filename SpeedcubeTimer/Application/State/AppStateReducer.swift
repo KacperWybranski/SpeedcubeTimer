@@ -26,8 +26,7 @@ extension AppState {
                 newAllSessions.removeAll { $0.id == newSession.id }
                 newAllSessions.append(newSession)
                 newActions = [
-                    AppStateAction.newSessionSet(newSession),
-                    AppStateAction.newAllSessionsSet(newAllSessions)
+                    AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
                 ]
             case .cubeChanged(let newCube):
                 let tmpNewSession = state.session(for: newCube, and: state.currentSession.index)
@@ -40,7 +39,9 @@ extension AppState {
                 }()
                 newSession = tmpNewSession
                 newAllSessions = tmpAllSessions
-                newActions = [AppStateAction.newSessionSet(newSession)]
+                newActions = [
+                    AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+                ]
             case .sessionIndexChanged(let newIndex):
                 let tmpNewSession = state.session(for: state.currentSession.cube, and: newIndex)
                 let tmpAllSessions: [CubingSession] = {
@@ -52,7 +53,9 @@ extension AppState {
                 }()
                 newSession = tmpNewSession
                 newAllSessions = tmpAllSessions
-                newActions = [AppStateAction.newSessionSet(newSession)]
+                newActions = [
+                    AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+                ]
             default:
                 break
             }
@@ -72,7 +75,9 @@ extension AppState {
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }
                 newAllSessions.append(newSession)
-                newActions = [AppStateAction.newSessionSet(newSession)]
+                newActions = [
+                    AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+                ]
                 if newSession.bestResult != oldSession.bestResult {
                     newActions.append(MainViewStateAction.showOverlay(text: "🤩 new best single 🥳"))
                 } else if newSession.bestAvgOf(5, mode: .avgOf) != oldSession.bestAvgOf(5, mode: .avgOf) {
@@ -99,7 +104,9 @@ extension AppState {
                 
                 newAllSessions.removeAll { $0.id == oldSession.id }
                 newAllSessions.append(newSession)
-                newActions = [AppStateAction.newSessionSet(newSession)]
+                newActions = [
+                    AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+                ]
             }
         }
         

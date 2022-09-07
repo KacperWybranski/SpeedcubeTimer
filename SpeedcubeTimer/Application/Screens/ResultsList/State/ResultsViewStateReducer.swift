@@ -12,10 +12,8 @@ extension ResultsViewState {
         
         if let action = action as? AppStateAction {
             switch action {
-            case .newSessionSet(let newSession):
+            case .newSessionsSet(let newSession, _):
                 return ResultsViewState(currentSession: newSession)
-            default:
-                break
             }
         }
         

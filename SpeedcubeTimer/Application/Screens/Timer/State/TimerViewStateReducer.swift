@@ -12,14 +12,12 @@ extension TimerViewState {
         
         if let action = action as? AppStateAction {
             switch action {
-            case .newSessionSet(let newSession):
+            case .newSessionsSet(let newSession, _):
                 return TimerViewState(cubingState: state.cubingState,
                                       time: state.time,
                                       cube: newSession.cube,
                                       scramble: ScrambleProvider.newScramble(for: newSession.cube),
                                       isPreinspectionOn: state.isPreinspectionOn)
-            default:
-                break
             }
         }
         

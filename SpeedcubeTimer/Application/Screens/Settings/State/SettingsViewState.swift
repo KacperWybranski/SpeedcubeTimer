@@ -9,6 +9,8 @@ import Foundation
 
 struct SettingsViewState: Equatable {
     let allSessions: [CubingSession]
+    let currentSession: CubingSession
+    let isPreinspectionOn: Bool
     
     static let availableCubes: [Cube] = Cube.allCases
     static let availableSessionNums: [Int] = Array(1...10)
@@ -23,7 +25,16 @@ struct SettingsViewState: Equatable {
 
 extension SettingsViewState {
     init() {
-        allSessions = [.init()]
+        let session = CubingSession()
+        allSessions = [session]
+        currentSession = session
+        isPreinspectionOn = false
+    }
+    
+    init(allSessions: [CubingSession]) {
+        self.allSessions = allSessions
+        self.currentSession = allSessions.first ?? .init()
+        self.isPreinspectionOn = false
     }
 }
 
