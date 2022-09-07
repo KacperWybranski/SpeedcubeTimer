@@ -10,17 +10,21 @@ import Foundation
 extension MainViewState {
     static let reducer: Reducer<Self> = { state, action in
         
-        if let action = action as? MainViewStateAction {
-            switch action {
-            case .showOverlay(let text):
-                return MainViewState(isPresentingOverlay: true,
-                                     overlayText: text)
-            case .hideOverlay:
-                return MainViewState(isPresentingOverlay: false,
-                                     overlayText: .empty)
-            }
+        switch action {
+        case MainViewStateAction.selectionChanged(let selection):
+            return MainViewState(isPresentingOverlay: state.isPresentingOverlay,
+                                 overlayText: state.overlayText,
+                                 tabSelection: selection)
+        case MainViewStateAction.showOverlay(let text):
+            return MainViewState(isPresentingOverlay: true,
+                                 overlayText: text,
+                                 tabSelection: state.tabSelection)
+        case MainViewStateAction.hideOverlay:
+            return MainViewState(isPresentingOverlay: false,
+                                 overlayText: .empty,
+                                 tabSelection: state.tabSelection)
+        default:
+            return state
         }
-        
-        return state
     }
 }

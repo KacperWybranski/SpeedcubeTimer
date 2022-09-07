@@ -15,9 +15,9 @@ struct SettingsViewState: Equatable {
     static let availableCubes: [Cube] = Cube.allCases
     static let availableSessionNums: [Int] = Array(1...10)
     
-    func identifierForSession(with cube: Cube, and index: Int) -> String? {
+    func identifierForSession(with index: Int) -> String? {
         allSessions
-            .filter { $0.cube == cube && $0.index == index }
+            .filter { $0.cube == currentSession.cube && $0.index == index }
             .first?
             .name
     }

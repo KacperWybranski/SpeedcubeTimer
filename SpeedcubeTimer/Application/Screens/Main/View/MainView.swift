@@ -9,13 +9,13 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var store: Store<AppState>
-    @State private var selection: Int = 1
     
     var state: MainViewState { store.state.screenState(for: .main) ?? .init() }
     
     var body: some View {
         ZStack {
-            TabView(selection: $selection) {
+            TabView(selection: Binding(get: { state.tabSelection },
+                                       set: { store.dispatch(MainViewStateAction.selectionChanged($0)) })) {
                 ResultsListView()
                     .tabItem {
                         Label("Results", systemImage: "list.number")

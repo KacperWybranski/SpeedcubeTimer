@@ -26,7 +26,7 @@ struct SettingsView: View {
                     Picker("Session", selection: Binding(get: { state.currentSession.index },
                                                          set: { store.dispatch(SettingsViewStateAction.sessionIndexChanged($0)) })) {
                         ForEach(SettingsViewState.availableSessionNums, id: \.self) { option in
-                            Text("\(option) \(state.identifierForSession(with: state.currentSession.cube, and: option)?.wrappedInParentheses(true) ?? .empty)")
+                            Text("\(option) \(state.identifierForSession(with: option)?.wrappedInParentheses(true) ?? .empty)")
                         }
                     }
                     

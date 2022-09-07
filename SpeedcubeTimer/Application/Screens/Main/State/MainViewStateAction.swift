@@ -8,6 +8,7 @@
 import Foundation
 
 enum MainViewStateAction: Action {
+    case selectionChanged(_ selection: Int)
     case showOverlay(text: String)
     case hideOverlay
 }
