@@ -105,7 +105,7 @@ enum MoveModifier: Equatable {
     
     func canBeCombined(with another: MoveModifier) -> Bool {
         switch (self, another) {
-        case (.doubled, .prime):
+        case (.doubled, .prime), (.prime, .doubled):
             return false
         default:
             return true
