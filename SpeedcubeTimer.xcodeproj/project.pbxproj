@@ -59,6 +59,7 @@
 		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
 		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
 		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
+		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
 		E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */; };
@@ -323,12 +324,12 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		E796C00A2822E22A0092EE59 /* VIew */ = {
+		E796C00A2822E22A0092EE59 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E85499BF27EF65E000FA8FF1 /* SettingsView.swift */,
 			);
-			path = VIew;
+			path = View;
 			sourceTree = "<group>";
 		};
 		E796C00B2822E2300092EE59 /* State */ = {
@@ -354,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				E796C00B2822E2300092EE59 /* State */,
-				E796C00A2822E22A0092EE59 /* VIew */,
+				E796C00A2822E22A0092EE59 /* View */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -671,6 +672,7 @@
 				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
+				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
 				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
 				E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */,
 				E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */,

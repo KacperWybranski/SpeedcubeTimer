@@ -10,11 +10,13 @@ import Foundation
 struct MainViewState: Equatable {
     let isPresentingOverlay: Bool
     let overlayText: String
+    let tabSelection: Int
 }
 
 extension MainViewState {
     init() {
         isPresentingOverlay = false
         overlayText = .empty
+        tabSelection = 1
     }
 }

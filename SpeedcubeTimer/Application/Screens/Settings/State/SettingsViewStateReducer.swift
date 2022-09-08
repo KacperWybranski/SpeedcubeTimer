@@ -10,15 +10,17 @@ import Foundation
 extension SettingsViewState {
     static let reducer: Reducer<Self> = { state, action in
         
-        if let action = action as? AppStateAction {
-            switch action {
-            case .newAllSessionsSet(let allSessions):
-                return SettingsViewState(allSessions: allSessions)
-            default:
-                break
-            }
+        switch action {
+        case AppStateAction.newSessionsSet(let newCurrent, let newAllSessions):
+            return SettingsViewState(allSessions: newAllSessions,
+                                     currentSession: newCurrent,
+                                     isPreinspectionOn: state.isPreinspectionOn)
+        case SettingsViewStateAction.isPreinspectionOnChanged(let isPreinspectionOn):
+            return SettingsViewState(allSessions: state.allSessions,
+                                     currentSession: state.currentSession,
+                                     isPreinspectionOn: isPreinspectionOn)
+        default:
+            return state
         }
-        
-        return state
     }
 }

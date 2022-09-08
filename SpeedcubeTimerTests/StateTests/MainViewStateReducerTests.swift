@@ -48,7 +48,7 @@ class MainViewStateReducerTests: XCTestCase {
 }
 
 private enum Configuration {
-    static let mainStateDefault: MainViewState = .init(isPresentingOverlay: false, overlayText: .empty)
-    static let mainStatePresentingOverlay: MainViewState = .init(isPresentingOverlay: true, overlayText: .empty)
+    static let mainStateDefault: MainViewState = .init(isPresentingOverlay: false, overlayText: .empty, tabSelection: 1)
+    static let mainStatePresentingOverlay: MainViewState = .init(isPresentingOverlay: true, overlayText: .empty, tabSelection: 1)
     static let overlayText: String = "Great"
 }

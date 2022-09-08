@@ -26,7 +26,7 @@ class ResultsViewStateReducerTests: XCTestCase {
         
         // Reduce
         
-        let reduced = ResultsViewState.reducer(resultsViewStateBefore, AppStateAction.newSessionSet(session2))
+        let reduced = ResultsViewState.reducer(resultsViewStateBefore, AppStateAction.newSessionsSet(current: session2, allSessions: [session2]))
         
         // Test
         

@@ -18,14 +18,6 @@ struct TimerView: View {
     
     var state: TimerViewState { store.state.screenState(for: .timer) ?? .init() }
     
-    var timeString: String {
-        if state.cubingState == .preinspectionOngoing || state.cubingState == .preinspectionReady {
-            return state.time.asTextOnlyFractionalPart
-        } else {
-            return state.time.asTextWithTwoDecimal
-        }
-    }
-    
     @State private var timer: Timer?
     
     var body: some View {
@@ -45,7 +37,7 @@ struct TimerView: View {
                             .padding(.horizontal, 15)
                     )
                 
-                Text(timeString)
+                Text(state.formattedTime)
                     .foregroundColor(state.cubingState.timerTextColor)
                     .font(.system(size: 70))
                     .multilineTextAlignment(.center)
