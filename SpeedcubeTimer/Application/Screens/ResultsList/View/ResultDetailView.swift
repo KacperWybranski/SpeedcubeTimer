@@ -14,7 +14,7 @@ struct ResultDetailView: View {
         VStack {
             Text(result.time.asTextWithTwoDecimal)
                 .font(.system(size: 60))
-                .foregroundColor(.green)
+                .foregroundColor(.primaryTheme)
             Spacer()
                 .frame(height: 40)
             Text(result.scramble)

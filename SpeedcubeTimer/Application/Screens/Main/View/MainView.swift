@@ -32,7 +32,7 @@ struct MainView: View {
                     }
                     .tag(2)
             }
-            .accentColor(.green)
+            .accentColor(.primaryTheme)
             .onAppear {
                 if #available(iOS 15.0, *) {
                     let appearance = UITabBarAppearance()
