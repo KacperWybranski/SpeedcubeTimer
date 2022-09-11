@@ -33,6 +33,21 @@ class ResultsViewStateReducerTests: XCTestCase {
         XCTAssertEqual(reduced, resultsViewStateAfter)
     }
     
+    func testNonHandledAction() {
+        
+        // Input
+        
+        let sessionBefore = Configuration.sessionCubeThreeIndexOne
+        let beforeState = ResultsViewState(currentSession: sessionBefore)
+        
+        // Reduced
+        
+        let reduced = ResultsViewState.reducer(beforeState, TestAction.notHandledAction)
+        
+        // Test
+        
+        XCTAssertEqual(beforeState, reduced)
+    }
 }
 
 private enum Configuration {

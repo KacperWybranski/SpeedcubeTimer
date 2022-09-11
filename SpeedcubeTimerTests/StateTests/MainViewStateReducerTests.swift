@@ -14,6 +14,26 @@ class MainViewStateReducerTests: XCTestCase {
     
     override func tearDownWithError() throws { }
     
+    func testTabSelectionChanged() {
+        
+        // Input
+        
+        let beforeState = MainViewState(isPresentingOverlay: false,
+                                        overlayText: .empty,
+                                        tabSelection: 1)
+        let afterState = MainViewState(isPresentingOverlay: false,
+                                       overlayText: .empty,
+                                       tabSelection: 2)
+        
+        // Reduced
+        
+        let reduced = MainViewState.reducer(beforeState, MainViewStateAction.selectionChanged(2))
+        
+        // Test
+        
+        XCTAssertEqual(reduced, afterState)
+    }
+    
     func testShowOverlayOnNewPb() {
         
         // Input
@@ -44,6 +64,24 @@ class MainViewStateReducerTests: XCTestCase {
         // Test
         
         XCTAssertFalse(reduced.isPresentingOverlay)
+        XCTAssertEqual(reduced.overlayText, .empty)
+    }
+    
+    func testNonHandledAction() {
+        
+        // Input
+        
+        let beforeState = MainViewState(isPresentingOverlay: false,
+                                        overlayText: .empty,
+                                        tabSelection: 1)
+        
+        // Reduced
+        
+        let reduced = MainViewState.reducer(beforeState, TestAction.notHandledAction)
+        
+        // Test
+        
+        XCTAssertEqual(beforeState, reduced)
     }
 }
 

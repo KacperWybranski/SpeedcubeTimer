@@ -14,6 +14,7 @@
 		E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB6528187BD2008CD0A4 /* AppScreenState.swift */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
+		E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7208AC928CDFAAA007EEEFB /* TestAction.swift */; };
 		E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
 		E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
 		E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
@@ -109,6 +110,7 @@
 		E712AB6528187BD2008CD0A4 /* AppScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenState.swift; sourceTree = "<group>"; };
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		E7208AC928CDFAAA007EEEFB /* TestAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAction.swift; sourceTree = "<group>"; };
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
 		E73A67D528BC0E920013B2AC /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				E73D688828B396AE00B41034 /* ModelTests */,
 				E73D688128B3913400B41034 /* HelpersTests */,
 				E73D688028B2283F00B41034 /* StateTests */,
+				E7208AC928CDFAAA007EEEFB /* TestAction.swift */,
 			);
 			path = SpeedcubeTimerTests;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */,
 				E73D686E28B047C500B41034 /* CubingSession.swift in Sources */,
 				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
+				E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
 				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
 				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
