@@ -12,4 +12,6 @@ enum SettingsViewStateAction: Action {
     case cubeChanged(_ cube: Cube)
     case sessionIndexChanged(_ session: Int)
     case isPreinspectionOnChanged(_ isOn: Bool)
+    case showEraseSessionPopup(_ show: Bool)
+    case eraseSession
 }
