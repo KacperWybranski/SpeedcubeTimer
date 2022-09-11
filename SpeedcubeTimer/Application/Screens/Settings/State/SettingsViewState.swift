@@ -14,6 +14,8 @@ struct SettingsViewState: Equatable {
     let currentSession: CubingSession
     let isPreinspectionOn: Bool
     let isPresentingEraseSessionPopup: Bool
+    let isPresentingResetActionSheet: Bool
+    let isPresentingResetAppPopup: Bool
     
     static let availableCubes: [Cube] = Cube.allCases
     static let availableSessionNums: [Int] = Array(1...10)
@@ -35,6 +37,8 @@ extension SettingsViewState {
         currentSession = session
         isPreinspectionOn = false
         isPresentingEraseSessionPopup = false
+        isPresentingResetActionSheet = false
+        isPresentingResetAppPopup = false
     }
     
     init(allSessions: [CubingSession]) {
@@ -42,5 +46,7 @@ extension SettingsViewState {
         self.currentSession = allSessions.first ?? .init()
         self.isPreinspectionOn = false
         isPresentingEraseSessionPopup = false
+        isPresentingResetActionSheet = false
+        isPresentingResetAppPopup = false
     }
 }

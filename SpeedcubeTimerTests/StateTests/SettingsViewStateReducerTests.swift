@@ -35,11 +35,15 @@ final class SettingsViewStateReducerTests: XCTestCase {
         let beforeState = SettingsViewState(allSessions: [session],
                                             currentSession: session,
                                             isPreinspectionOn: false,
-                                            isPresentingEraseSessionPopup: false)
+                                            isPresentingEraseSessionPopup: false,
+                                            isPresentingResetActionSheet: false,
+                                            isPresentingResetAppPopup: false)
         let afterState = SettingsViewState(allSessions: [session],
                                            currentSession: session,
                                            isPreinspectionOn: true,
-                                           isPresentingEraseSessionPopup: false)
+                                           isPresentingEraseSessionPopup: false,
+                                           isPresentingResetActionSheet: false,
+                                           isPresentingResetAppPopup: false)
         
         // Reduce
         
@@ -58,15 +62,73 @@ final class SettingsViewStateReducerTests: XCTestCase {
         let beforeState = SettingsViewState(allSessions: [session],
                                             currentSession: session,
                                             isPreinspectionOn: false,
-                                            isPresentingEraseSessionPopup: false)
+                                            isPresentingEraseSessionPopup: false,
+                                            isPresentingResetActionSheet: false,
+                                            isPresentingResetAppPopup: false)
         let afterState = SettingsViewState(allSessions: [session],
                                            currentSession: session,
                                            isPreinspectionOn: false,
-                                           isPresentingEraseSessionPopup: true)
+                                           isPresentingEraseSessionPopup: true,
+                                           isPresentingResetActionSheet: false,
+                                           isPresentingResetAppPopup: false)
         
         // Reduce
         
         let reduced = SettingsViewState.reducer(beforeState, SettingsViewStateAction.showEraseSessionPopup(true))
+        
+        // Test
+        
+        XCTAssertEqual(afterState, reduced)
+    }
+    
+    func testShowResetActionSheet() {
+        
+        // Input
+        
+        let session = CubingSession()
+        let beforeState = SettingsViewState(allSessions: [session],
+                                            currentSession: session,
+                                            isPreinspectionOn: false,
+                                            isPresentingEraseSessionPopup: false,
+                                            isPresentingResetActionSheet: false,
+                                            isPresentingResetAppPopup: false)
+        let afterState = SettingsViewState(allSessions: [session],
+                                           currentSession: session,
+                                           isPreinspectionOn: false,
+                                           isPresentingEraseSessionPopup: false,
+                                           isPresentingResetActionSheet: true,
+                                           isPresentingResetAppPopup: false)
+        
+        // Reduce
+        
+        let reduced = SettingsViewState.reducer(beforeState, SettingsViewStateAction.showResetActionSheet(true))
+        
+        // Test
+        
+        XCTAssertEqual(afterState, reduced)
+    }
+    
+    func testShowResetAppPopup() {
+        
+        // Input
+        
+        let session = CubingSession()
+        let beforeState = SettingsViewState(allSessions: [session],
+                                            currentSession: session,
+                                            isPreinspectionOn: false,
+                                            isPresentingEraseSessionPopup: false,
+                                            isPresentingResetActionSheet: false,
+                                            isPresentingResetAppPopup: false)
+        let afterState = SettingsViewState(allSessions: [session],
+                                           currentSession: session,
+                                           isPreinspectionOn: false,
+                                           isPresentingEraseSessionPopup: false,
+                                           isPresentingResetActionSheet: false,
+                                           isPresentingResetAppPopup: true)
+        
+        // Reduce
+        
+        let reduced = SettingsViewState.reducer(beforeState, SettingsViewStateAction.showResetAppPopup(true))
         
         // Test
         
@@ -81,7 +143,9 @@ final class SettingsViewStateReducerTests: XCTestCase {
         let beforeState = SettingsViewState(allSessions: [session],
                                             currentSession: session,
                                             isPreinspectionOn: false,
-                                            isPresentingEraseSessionPopup: false)
+                                            isPresentingEraseSessionPopup: false,
+                                            isPresentingResetActionSheet: false,
+                                            isPresentingResetAppPopup: false)
         
         // Reduced
         

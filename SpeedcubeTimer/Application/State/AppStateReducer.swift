@@ -66,6 +66,16 @@ extension AppState {
             newActions = [
                 AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
             ]
+        case SettingsViewStateAction.resetApp:
+            newSession = .initialSession
+            newAllSessions = [newSession]
+            let screens: [AppScreenState] = [
+                .main(state.screenState(for: .main) ?? MainViewState()),
+                .timerScreen(TimerViewState(session: newSession)),
+                .resultsScreen(ResultsViewState()),
+                .settingsScreen(SettingsViewState(allSessions: newAllSessions))
+            ]
+            return AppState(allSessions: newAllSessions, currentSession: newSession, screens: screens)
         case TimerViewStateAction.saveResult(let newResult):
             let oldSession = state.currentSession
             var newResults = oldSession.results
