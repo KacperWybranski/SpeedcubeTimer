@@ -177,6 +177,22 @@ class TimerViewStateReducerTests: XCTestCase {
         
         XCTAssertEqual(reduced.time, newTime)
     }
+    
+    func testNonHandledAction() {
+        
+        // Input
+        
+        let sessionBefore = Configuration.sessionCubeThreeIndexOne
+        let beforeState = TimerViewState(session: sessionBefore)
+        
+        // Reduced
+        
+        let reduced = TimerViewState.reducer(beforeState, TestAction.notHandledAction)
+        
+        // Test
+        
+        XCTAssertEqual(beforeState, reduced)
+    }
 }
 
 private enum Configuration {

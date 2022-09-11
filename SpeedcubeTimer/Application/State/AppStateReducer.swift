@@ -55,6 +55,17 @@ extension AppState {
             newActions = [
                 AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
             ]
+        case SettingsViewStateAction.eraseSession:
+            newSession = .init(results: [],
+                               cube: newSession.cube,
+                               index: newSession.index,
+                               name: nil,
+                               id: newSession.id)
+            newAllSessions.removeAll { $0.id == newSession.id }
+            newAllSessions.append(newSession)
+            newActions = [
+                AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+            ]
         case TimerViewStateAction.saveResult(let newResult):
             let oldSession = state.currentSession
             var newResults = oldSession.results

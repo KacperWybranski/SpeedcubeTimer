@@ -287,7 +287,82 @@ class AppStateReducerTests: XCTestCase {
             }
         }
     }
+
+    func testEraseSessionOnSettingsViewScreen() {
+        
+        // Input
+        
+        let sessionBefore = Configuration.sessionCubeThreeIndexOneWithOneSolve
+        let sessionAfter = Configuration.sessionCubeThreeIndexOneWithoutSolve
+        let beforeAppState = AppState(allSessions: [sessionBefore],
+                                      currentSession: sessionBefore,
+                                      screens: [.timerScreen(TimerViewState(session: sessionBefore)),
+                                                .resultsScreen(ResultsViewState(currentSession: sessionBefore)),
+                                                .settingsScreen(SettingsViewState(allSessions: [sessionBefore]))])
+        
+        let afterAppState = AppState(allSessions: [sessionAfter],
+                                     currentSession: sessionAfter,
+                                     screens: [.timerScreen(TimerViewState(session: sessionAfter)),
+                                               .resultsScreen(ResultsViewState(currentSession: sessionAfter)),
+                                               .settingsScreen(SettingsViewState(allSessions: [sessionAfter]))])
+        
+        // Reduce
+        
+        let reduced = AppState.reducer(beforeAppState, SettingsViewStateAction.eraseSession)
+        
+        // Test
+        
+        XCTAssertEqual(afterAppState.allSessions, reduced.allSessions)
+        XCTAssertEqual(afterAppState.currentSession, reduced.currentSession)
+        
+        for (screen, screenReduced) in zip(afterAppState.screens, reduced.screens) {
+            switch (screen, screenReduced) {
+            case (.timerScreen(let state), .timerScreen(let stateReduced)):
+                XCTAssertEqual(state.cube, stateReduced.cube)
+            case (.resultsScreen(let state), .resultsScreen(let stateReduced)):
+                XCTAssertEqual(state.currentSession, stateReduced.currentSession)
+            case (.settingsScreen(let state), .settingsScreen(let stateReduced)):
+                XCTAssertEqual(state.allSessions, stateReduced.allSessions)
+            default:
+                break
+            }
+        }
+    }
     
+    func testNonHandledAction() {
+        
+        // Input
+        
+        let sessionBefore = Configuration.sessionCubeThreeIndexOneWithOneSolve
+        let beforeAppState = AppState(allSessions: [sessionBefore],
+                                      currentSession: sessionBefore,
+                                      screens: [.timerScreen(TimerViewState(session: sessionBefore)),
+                                                .resultsScreen(ResultsViewState(currentSession: sessionBefore)),
+                                                .settingsScreen(SettingsViewState(allSessions: [sessionBefore]))])
+        
+        // Reduced
+        
+        let reduced = AppState.reducer(beforeAppState, TestAction.notHandledAction)
+        
+        // Test
+        
+        XCTAssertEqual(beforeAppState.allSessions, reduced.allSessions)
+        XCTAssertEqual(beforeAppState.currentSession, reduced.currentSession)
+        
+        for (screen, screenReduced) in zip(beforeAppState.screens, reduced.screens) {
+            switch (screen, screenReduced) {
+            case (.timerScreen(let state), .timerScreen(let stateReduced)):
+                XCTAssertEqual(state.cube, stateReduced.cube)
+            case (.resultsScreen(let state), .resultsScreen(let stateReduced)):
+                XCTAssertEqual(state.currentSession, stateReduced.currentSession)
+            case (.settingsScreen(let state), .settingsScreen(let stateReduced)):
+                XCTAssertEqual(state.allSessions, stateReduced.allSessions)
+            default:
+                break
+            }
+        }
+    }
+
 }
 
 private enum Configuration {

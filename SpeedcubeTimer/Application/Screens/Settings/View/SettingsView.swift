@@ -32,6 +32,20 @@ struct SettingsView: View {
                     
                     TextField("Session identifier", text: Binding(get: { state.currentSession.name ?? .empty },
                                                                   set: { store.dispatch(SettingsViewStateAction.currentSessionNameChanged($0)) }))
+                    
+                    Button {
+                        store.dispatch(SettingsViewStateAction.showEraseSessionPopup(true))
+                    } label: {
+                        Text("Erase")
+                            .foregroundColor(.red)
+                    }
+                    .alert(isPresented: Binding(get: { state.isPresentingEraseSessionPopup },
+                                                set: { if !$0 { store.dispatch(SettingsViewStateAction.showEraseSessionPopup($0)) } })) {
+                        Alert(title: Text("Are you sure?"),
+                              message: Text("Current session name and all results from this session will be removed."),
+                              primaryButton: .destructive(Text("Yes"), action: { store.dispatch(SettingsViewStateAction.eraseSession) }),
+                              secondaryButton: .default(Text("No")))
+                    }
                 }
                 
                 Section(header: Text("General")) {

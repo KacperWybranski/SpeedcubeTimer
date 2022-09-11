@@ -5,12 +5,15 @@
 //  Created by Kacper on 02/09/2022.
 //
 
-import Foundation
+import SwiftUI
+
+// MARK: - SettingsViewState
 
 struct SettingsViewState: Equatable {
     let allSessions: [CubingSession]
     let currentSession: CubingSession
     let isPreinspectionOn: Bool
+    let isPresentingEraseSessionPopup: Bool
     
     static let availableCubes: [Cube] = Cube.allCases
     static let availableSessionNums: [Int] = Array(1...10)
@@ -23,19 +26,21 @@ struct SettingsViewState: Equatable {
     }
 }
 
+// MARK: - Intialize
+
 extension SettingsViewState {
     init() {
         let session = CubingSession()
         allSessions = [session]
         currentSession = session
         isPreinspectionOn = false
+        isPresentingEraseSessionPopup = false
     }
     
     init(allSessions: [CubingSession]) {
         self.allSessions = allSessions
         self.currentSession = allSessions.first ?? .init()
         self.isPreinspectionOn = false
+        isPresentingEraseSessionPopup = false
     }
 }
-
-

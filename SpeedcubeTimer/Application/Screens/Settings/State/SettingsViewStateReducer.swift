@@ -14,11 +14,18 @@ extension SettingsViewState {
         case AppStateAction.newSessionsSet(let newCurrent, let newAllSessions):
             return SettingsViewState(allSessions: newAllSessions,
                                      currentSession: newCurrent,
-                                     isPreinspectionOn: state.isPreinspectionOn)
+                                     isPreinspectionOn: state.isPreinspectionOn,
+                                     isPresentingEraseSessionPopup: state.isPresentingEraseSessionPopup)
         case SettingsViewStateAction.isPreinspectionOnChanged(let isPreinspectionOn):
             return SettingsViewState(allSessions: state.allSessions,
                                      currentSession: state.currentSession,
-                                     isPreinspectionOn: isPreinspectionOn)
+                                     isPreinspectionOn: isPreinspectionOn,
+                                     isPresentingEraseSessionPopup: state.isPresentingEraseSessionPopup)
+        case SettingsViewStateAction.showEraseSessionPopup(let show):
+            return SettingsViewState(allSessions: state.allSessions,
+                                     currentSession: state.currentSession,
+                                     isPreinspectionOn: state.isPreinspectionOn,
+                                     isPresentingEraseSessionPopup: show)
         default:
             return state
         }

@@ -25,7 +25,71 @@ final class SettingsViewStateReducerTests: XCTestCase {
         // Test
         
         XCTAssertEqual(afterState, reduced)
+    }
+    
+    func testIsPreinspectionOnChanged() {
         
+        // Input
+        
+        let session = CubingSession()
+        let beforeState = SettingsViewState(allSessions: [session],
+                                            currentSession: session,
+                                            isPreinspectionOn: false,
+                                            isPresentingEraseSessionPopup: false)
+        let afterState = SettingsViewState(allSessions: [session],
+                                           currentSession: session,
+                                           isPreinspectionOn: true,
+                                           isPresentingEraseSessionPopup: false)
+        
+        // Reduce
+        
+        let reduced = SettingsViewState.reducer(beforeState, SettingsViewStateAction.isPreinspectionOnChanged(true))
+        
+        // Test
+        
+        XCTAssertEqual(afterState, reduced)
+    }
+    
+    func testShowEraseSessionPopup() {
+        
+        // Input
+        
+        let session = CubingSession()
+        let beforeState = SettingsViewState(allSessions: [session],
+                                            currentSession: session,
+                                            isPreinspectionOn: false,
+                                            isPresentingEraseSessionPopup: false)
+        let afterState = SettingsViewState(allSessions: [session],
+                                           currentSession: session,
+                                           isPreinspectionOn: false,
+                                           isPresentingEraseSessionPopup: true)
+        
+        // Reduce
+        
+        let reduced = SettingsViewState.reducer(beforeState, SettingsViewStateAction.showEraseSessionPopup(true))
+        
+        // Test
+        
+        XCTAssertEqual(afterState, reduced)
+    }
+    
+    func testNonHandledAction() {
+        
+        // Input
+        
+        let session = CubingSession()
+        let beforeState = SettingsViewState(allSessions: [session],
+                                            currentSession: session,
+                                            isPreinspectionOn: false,
+                                            isPresentingEraseSessionPopup: false)
+        
+        // Reduced
+        
+        let reduced = SettingsViewState.reducer(beforeState, TestAction.notHandledAction)
+        
+        // Test
+        
+        XCTAssertEqual(beforeState, reduced)
     }
 }
 

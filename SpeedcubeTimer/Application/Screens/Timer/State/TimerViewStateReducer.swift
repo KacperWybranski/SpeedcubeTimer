@@ -10,28 +10,21 @@ import Foundation
 extension TimerViewState {
     static let reducer: Reducer<Self> = { state, action in
         
-        if let action = action as? AppStateAction {
-            switch action {
-            case .newSessionsSet(let newSession, _):
-                return TimerViewState(cubingState: state.cubingState,
-                                      time: state.time,
-                                      cube: newSession.cube,
-                                      scramble: ScrambleProvider.newScramble(for: newSession.cube),
-                                      isPreinspectionOn: state.isPreinspectionOn)
-            }
-        }
-        
-        if let settingsAction = action as? SettingsViewStateAction {
-            switch settingsAction {
-            case .isPreinspectionOnChanged(let isOn):
-                return TimerViewState(cubingState: state.cubingState,
-                                      time: state.time,
-                                      cube: state.cube,
-                                      scramble: state.scramble,
-                                      isPreinspectionOn: isOn)
-            default:
-                break
-            }
+        switch action {
+        case AppStateAction.newSessionsSet(let newSession, _):
+            return TimerViewState(cubingState: state.cubingState,
+                                  time: state.time,
+                                  cube: newSession.cube,
+                                  scramble: ScrambleProvider.newScramble(for: newSession.cube),
+                                  isPreinspectionOn: state.isPreinspectionOn)
+        case SettingsViewStateAction.isPreinspectionOnChanged(let isOn):
+            return TimerViewState(cubingState: state.cubingState,
+                                  time: state.time,
+                                  cube: state.cube,
+                                  scramble: state.scramble,
+                                  isPreinspectionOn: isOn)
+        default:
+            break
         }
         
         switch (state.cubingState, action) {
