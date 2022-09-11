@@ -20,7 +20,7 @@ App is always in dark mode, so it use less energy on devices with OLED screens.
 
 Results View | Timer View | Settings View
 :---:|:-----:|:---:
- ![IMG_3772](https://user-images.githubusercontent.com/63157451/187084945-5c0323d1-5389-4a36-b27e-575e483da7f9.PNG) | ![IMG_3768](https://user-images.githubusercontent.com/63157451/187084985-c31cfaf2-e3be-4c61-be1a-f2a3265dfb41.PNG) | ![IMG_1546](https://user-images.githubusercontent.com/63157451/168847752-44325757-0c66-496c-b022-185e7bae77b4.PNG)
+ ![IMG_3772](https://user-images.githubusercontent.com/63157451/187084945-5c0323d1-5389-4a36-b27e-575e483da7f9.PNG) | ![IMG_3768](https://user-images.githubusercontent.com/63157451/187084985-c31cfaf2-e3be-4c61-be1a-f2a3265dfb41.PNG) | ![IMG_3867](https://user-images.githubusercontent.com/63157451/189527589-8907638a-eb62-46db-9ae9-982e55b36285.PNG)
 ![IMG_3769](https://user-images.githubusercontent.com/63157451/187084962-267fc55d-4855-465c-9e88-5b4217fce249.PNG) | ![IMG_3774](https://user-images.githubusercontent.com/63157451/187084966-b828f0cb-3196-4c0f-8d0b-f5c78dfeb12a.PNG) | ![IMG_3771](https://user-images.githubusercontent.com/63157451/187084980-27cd8852-73c4-4a17-b0f5-8e0b51616a2f.PNG)
 
 
