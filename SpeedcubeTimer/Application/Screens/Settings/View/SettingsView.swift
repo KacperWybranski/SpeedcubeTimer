@@ -41,7 +41,7 @@ struct SettingsView: View {
                     }
                     .alert(isPresented: Binding(get: { state.isPresentingEraseSessionPopup },
                                                 set: { if !$0 { store.dispatch(SettingsViewStateAction.showEraseSessionPopup($0)) } })) {
-                        Alert(title: Text("Are you sure?"),
+                        Alert(title: Text("Erase current session?"),
                               message: Text("Current session name and all results from this session will be removed."),
                               primaryButton: .destructive(Text("Yes"), action: { store.dispatch(SettingsViewStateAction.eraseSession) }),
                               secondaryButton: .default(Text("No")))
@@ -51,6 +51,31 @@ struct SettingsView: View {
                 Section(header: Text("General")) {
                     Toggle("Preinspection", isOn: Binding(get: { state.isPreinspectionOn },
                                                           set: { store.dispatch(SettingsViewStateAction.isPreinspectionOnChanged($0)) }))
+                    
+                    Button {
+                        store.dispatch(SettingsViewStateAction.showResetActionSheet(true))
+                    } label: {
+                        Text("Reset")
+                            .foregroundColor(.red)
+                    }
+                    .actionSheet(isPresented: Binding(get: { state.isPresentingResetActionSheet },
+                                                      set: { if !$0 { store.dispatch(SettingsViewStateAction.showResetActionSheet($0)) } }),
+                                 content: {
+                        ActionSheet(title: Text("Reset app data?"),
+                                    message: Text("All data including results in every session will be removed. This action cannot be undone."),
+                                    buttons: [
+                                        .destructive(Text("Reset app data"), action: { store.dispatch(SettingsViewStateAction.showResetAppPopup(true)) }),
+                                        .default(Text("Reset only current session"), action: { store.dispatch(SettingsViewStateAction.showEraseSessionPopup(true)) }),
+                                        .default(Text("Cancel"))
+                                    ])
+                    })
+                    .alert(isPresented: Binding(get: { state.isPresentingResetAppPopup },
+                                                set: { if !$0 { store.dispatch(SettingsViewStateAction.showResetAppPopup($0)) } })) {
+                        Alert(title: Text("Reset app data?"),
+                              message: Text("You will lose all your results and settings. This action cannot be undone."),
+                              primaryButton: .destructive(Text("Yes"), action: { store.dispatch(SettingsViewStateAction.resetApp) }),
+                              secondaryButton: .default(Text("No")))
+                    }
                 }
             }
             .navigationTitle("Settings")
