@@ -91,7 +91,8 @@ struct SettingsView_Previews: PreviewProvider {
                         AppState(allSessions: CubingSession.previewSessions,
                                  currentSession: CubingSession.previewSessions.first ?? .init(),
                                  screens: [.settingsScreen(SettingsViewState(allSessions: CubingSession.previewSessions))]),
-                      reducer: AppState.reducer))
+                      reducer: AppState.reducer,
+                      middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate]))
             .preferredColorScheme(.dark)
     }
 }

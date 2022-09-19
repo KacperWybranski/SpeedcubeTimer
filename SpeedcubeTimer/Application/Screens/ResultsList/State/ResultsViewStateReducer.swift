@@ -14,6 +14,8 @@ extension ResultsViewState {
             switch action {
             case .newSessionsSet(let newSession, _):
                 return ResultsViewState(currentSession: newSession)
+            default:
+                break
             }
         }
         

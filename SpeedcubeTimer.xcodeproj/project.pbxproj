@@ -72,6 +72,8 @@
 		E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
 		E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
 		E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
+		E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */; };
+		E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
@@ -144,6 +146,8 @@
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
 		E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewState.swift; sourceTree = "<group>"; };
 		E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducer.swift; sourceTree = "<group>"; };
+		E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsUpdateMiddleware.swift; sourceTree = "<group>"; };
+		E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMiddleware.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,6 +357,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E7EEE0A028D8679500214A31 /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+				E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */,
+				E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */,
+			);
+			path = Middlewares;
+			sourceTree = "<group>";
+		};
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,9 +437,10 @@
 			children = (
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
 				E712AB5E28187804008CD0A4 /* Store */,
+				E7556D9A2804324B0024BB7A /* Model */,
 				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
 				E7556D9D280432E60024BB7A /* State */,
-				E7556D9A2804324B0024BB7A /* Model */,
+				E7EEE0A028D8679500214A31 /* Middlewares */,
 				E7556D992804320E0024BB7A /* Screens */,
 			);
 			path = Application;
@@ -619,6 +633,8 @@
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
 				E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */,
+				E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */,
+				E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
 				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,

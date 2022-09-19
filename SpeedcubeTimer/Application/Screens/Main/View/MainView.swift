@@ -52,7 +52,9 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(Store(initial: AppState(), reducer: AppState.reducer))
+            .environmentObject(Store(initial: AppState(),
+                                     reducer: AppState.reducer,
+                                     middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate]))
             .preferredColorScheme(.dark)
             .previewDevice("iPhone 13 mini")
     }
