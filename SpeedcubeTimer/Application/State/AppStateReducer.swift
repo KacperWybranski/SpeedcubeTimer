@@ -59,13 +59,6 @@ extension AppState {
                 .settingsScreen(SettingsViewState(allSessions: newAllSessions))
             ]
             return AppState(allSessions: newAllSessions, currentSession: newSession, screens: screens)
-//            if newSession.bestResult != oldSession.bestResult {
-//                newActions.append(MainViewStateAction.showOverlay(text: "🤩 new best single 🥳"))
-//            } else if newSession.bestAvgOf(5, mode: .avgOf) != oldSession.bestAvgOf(5, mode: .avgOf) {
-//                newActions.append(MainViewStateAction.showOverlay(text: "🤯 new best avg5 😱"))
-//            } else if newSession.bestAvgOf(12, mode: .avgOf) != oldSession.bestAvgOf(12, mode: .avgOf) {
-//                newActions.append(MainViewStateAction.showOverlay(text: "🎉 new best avg12 🎉"))
-//            }
         case ResultsViewStateAction.removeResultsAt(let offsets):
             let oldSession = state.currentSession
             var newResults = oldSession.results
