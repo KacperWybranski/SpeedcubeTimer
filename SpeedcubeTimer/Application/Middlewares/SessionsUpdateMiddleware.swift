@@ -87,7 +87,9 @@ extension Middlewares {
             let newSession = CubingSession.initialSession
             let newAllSessions = [newSession]
             return Just(
-                AppStateAction.newSessionsSet(current: newSession, allSessions: newAllSessions)
+                AppStateAction
+                    .newSessionsSet(current: newSession,
+                                    allSessions: newAllSessions)
             )
             .eraseToAnyPublisher()
         default:
