@@ -58,6 +58,7 @@ extension Middlewares {
             )
             .eraseToAnyPublisher()
         case ResultsViewStateAction.removeResultsAt(let offsets):
+            #warning("to be removed ")
             var newResults = state.currentSession.results
             newResults.remove(atOffsets: offsets)
             let newSession = CubingSession(results: newResults,

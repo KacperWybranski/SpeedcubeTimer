@@ -8,22 +8,11 @@
 import Combine
 
 extension Middlewares {
-    static let dataController = DataController()
+    static private let dataController = DataController()
     
     static let coreDataManager: Middleware<AppState> = { state, action in
         switch action {
-        case TimerViewStateAction
-                .saveResult(let result):
-            dataController
-                .save(result,
-                      to: state.currentSession)
-            return Just(
-                AppStateAction
-                    .loadSessions
-            )
-            .eraseToAnyPublisher()
-        case AppStateAction
-                .loadSessions:
+        case AppStateAction.loadSessions:
             let sessions = dataController
                                     .loadSessions()
             let currentSession = sessions
@@ -36,6 +25,32 @@ extension Middlewares {
                     .newSessionsSet(
                         current: currentSession,
                         allSessions: sessions)
+            )
+            .eraseToAnyPublisher()
+        case TimerViewStateAction.saveResult(let result):
+            dataController
+                .save(result,
+                      to: state.currentSession)
+            return Just(
+                AppStateAction
+                    .loadSessions
+            )
+            .eraseToAnyPublisher()
+        case ResultsViewStateAction.removeResultsAt(let offsets):
+            offsets
+                .forEach { index in
+                    dataController
+                        .remove(
+                            result: state
+                                    .currentSession
+                                    .results[index],
+                            from: state
+                                    .currentSession
+                        )
+                }
+            return Just(
+                AppStateAction
+                    .loadSessions
             )
             .eraseToAnyPublisher()
         default:

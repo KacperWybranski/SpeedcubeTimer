@@ -27,6 +27,19 @@ final class DataController: ObservableObject {
             }
     }
     
+    private func loadedOrNewSession(from session: CubingSession) -> CDSession {
+        loadedSessions
+            .filter {
+                $0.id == session.id
+            }
+            .first ??
+        session
+            .newCdSession(
+                with: container
+                        .viewContext
+            )
+    }
+    
     // MARK: - Getters
     
     func loadSessions() -> [CubingSession] {
@@ -52,20 +65,36 @@ final class DataController: ObservableObject {
     // MARK: - Setters
     
     func save(_ result: Result, to session: CubingSession) {
-        result
-            .newCdResult(
-                with: loadedSessions
-                            .filter {
-                                $0.id == session.id
-                            }
-                            .first ??
-                            session
-                                .newCdSession(
-                                    with: container
-                                            .viewContext
-                                ),
-                and: container
-                            .viewContext
+        loadedOrNewSession(
+            from: session
+        )
+        .addToResults(
+            result
+                .newCdResult(
+                    with: container.viewContext
+                )
+            )
+        try? container
+                .viewContext
+                .save()
+    }
+    
+    func remove(result: Result, from session: CubingSession) {
+        let session = loadedOrNewSession(
+            from: session
+        )
+        session
+            .removeFromResults(
+                NSSet(
+                    array: session
+                                .results?
+                                .compactMap{
+                                    $0 as? CDResult
+                                }
+                                .filter {
+                                    $0.id == result.id
+                                } ?? []
+                )
             )
         try? container
                 .viewContext
@@ -75,7 +104,7 @@ final class DataController: ObservableObject {
 
 // MARK: - Bridge
 
-extension CubingSession {
+private extension CubingSession {
     init?(from cdSession: CDSession) {
         guard let id = cdSession.id,
               let resultsSet = (cdSession.results as? Set<CDResult>)
@@ -86,6 +115,9 @@ extension CubingSession {
         self.results = resultsSet
                             .compactMap {
                                 Result(from: $0)
+                            }
+                            .sorted {
+                                $0.date > $1.date
                             }
         self.cube = cdSession.cube
     }
@@ -100,7 +132,7 @@ extension CubingSession {
     }
 }
 
-extension Result {
+private extension Result {
     init?(from cdResult: CDResult) {
         guard let id = cdResult.id,
               let scramble = cdResult.scramble,
@@ -113,20 +145,19 @@ extension Result {
     }
     
     @discardableResult
-    func newCdResult(with session: CDSession?, and moc: NSManagedObjectContext) -> CDResult {
+    func newCdResult(with moc: NSManagedObjectContext) -> CDResult {
         let cdResult = CDResult(context: moc)
         cdResult.id = id
         cdResult.scramble = scramble
         cdResult.time = time
         cdResult.date = date
-        cdResult.session = session
         return cdResult
     }
 }
 
 // MARK: - Cache helper
 
-extension Array {
+private extension Array {
     func save(to array: inout [Element]) -> Self {
         array = self
         return self
