@@ -7,9 +7,14 @@
 
 import Foundation
 import CoreData
+import Combine
+import SwiftUI
 
 final class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "SpeedcubeTimerModel")
+    private let container = NSPersistentContainer(name: "SpeedcubeTimer")
+    private var loadedSessions: [CDSession] = []
+    
+    // MARK: - Initialize
     
     init() {
         container
@@ -17,13 +22,113 @@ final class DataController: ObservableObject {
                 if let error = error {
                     debugPrint("Core data failed to load \(error.localizedDescription)")
                 }
+                
+                self.container.viewContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
             }
     }
     
-    func save(_ result: Result) {
-        let coreDataResult = CDResult(context: container.viewContext)
-        coreDataResult.time = result.time
-        coreDataResult.scramble = result.scramble
-        try? container.viewContext.save()
+    // MARK: - Getters
+    
+    func loadSessions() -> [CubingSession] {
+        do {
+            return try container
+                        .viewContext
+                        .fetch(
+                            CDSession
+                                .fetchRequest()
+                        )
+                        .save(
+                            to: &loadedSessions
+                        )
+                        .compactMap {
+                            CubingSession(from: $0)
+                        }
+        } catch {
+            debugPrint("Core data sessions failed to load")
+            return []
+        }
+    }
+    
+    // MARK: - Setters
+    
+    func save(_ result: Result, to session: CubingSession) {
+        result
+            .newCdResult(
+                with: loadedSessions
+                            .filter {
+                                $0.id == session.id
+                            }
+                            .first ??
+                            session
+                                .newCdSession(
+                                    with: container
+                                            .viewContext
+                                ),
+                and: container
+                            .viewContext
+            )
+        try? container
+                .viewContext
+                .save()
+    }
+}
+
+// MARK: - Bridge
+
+extension CubingSession {
+    init?(from cdSession: CDSession) {
+        guard let id = cdSession.id,
+              let resultsSet = (cdSession.results as? Set<CDResult>)
+        else { return nil }
+        self.id = id
+        self.name = cdSession.name
+        self.index = Int(cdSession.index)
+        self.results = resultsSet
+                            .compactMap {
+                                Result(from: $0)
+                            }
+        self.cube = cdSession.cube
+    }
+    
+    func newCdSession(with moc: NSManagedObjectContext) -> CDSession {
+        let cdSession = CDSession(context: moc)
+        cdSession.id = id
+        cdSession.name = name
+        cdSession.cube = cube
+        cdSession.index = Int16(index)
+        return cdSession
+    }
+}
+
+extension Result {
+    init?(from cdResult: CDResult) {
+        guard let id = cdResult.id,
+              let scramble = cdResult.scramble,
+              let date = cdResult.date
+        else { return nil }
+        self.id = id
+        self.scramble = scramble
+        self.date = date
+        self.time = cdResult.time
+    }
+    
+    @discardableResult
+    func newCdResult(with session: CDSession?, and moc: NSManagedObjectContext) -> CDResult {
+        let cdResult = CDResult(context: moc)
+        cdResult.id = id
+        cdResult.scramble = scramble
+        cdResult.time = time
+        cdResult.date = date
+        cdResult.session = session
+        return cdResult
+    }
+}
+
+// MARK: - Cache helper
+
+extension Array {
+    func save(to array: inout [Element]) -> Self {
+        array = self
+        return self
     }
 }

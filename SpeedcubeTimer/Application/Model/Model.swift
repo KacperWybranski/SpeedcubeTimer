@@ -9,23 +9,14 @@ import Foundation
 
 // MARK: - Cube
 
-enum Cube: CaseIterable, Codable {
+@objc
+public enum Cube: Int16, CaseIterable, Codable {
     case two
     case three
     case four
 }
 
-// MARK: - SelectionType
-
-protocol SelectionType {
-    var name: String { get }
-}
-
-extension Int: SelectionType {
-    var name: String { "\(self)" }
-}
-
-extension Cube: SelectionType {
+extension Cube {
     var name: String {
         switch self {
         case .two: return "2x2"

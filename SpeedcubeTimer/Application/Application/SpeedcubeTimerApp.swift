@@ -12,7 +12,8 @@ struct SpeedcubeTimerApp: App {
     private let store = Store(initial: AppState(),
                               reducer: AppState.reducer,
                               middlewares: [Middlewares.overlayCheck,
-                                            Middlewares.sessionsUpdate])
+                                            Middlewares.sessionsUpdate,
+                                            Middlewares.coreDataManager])
     
     var body: some Scene {
         WindowGroup {

@@ -21,19 +21,6 @@ extension Middlewares {
                                     allSessions: newAllSessions)
             )
             .eraseToAnyPublisher()
-        case TimerViewStateAction.saveResult(let result):
-            var newResults = state.currentSession.results
-            newResults.insert(result, at: 0)
-            let newSession = CubingSession(results: newResults,
-                                           cube: state.currentSession.cube,
-                                           index: state.currentSession.index,
-                                           name: state.currentSession.name,
-                                           id: state.currentSession.id)
-            return Just(
-                AppStateAction
-                    .newSessionSet(current: newSession)
-            )
-            .eraseToAnyPublisher()
         case SettingsViewStateAction.currentSessionNameChanged(let name):
             let newSession = CubingSession(results: state.currentSession.results,
                                            cube: state.currentSession.cube,

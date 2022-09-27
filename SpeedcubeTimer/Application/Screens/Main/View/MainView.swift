@@ -38,6 +38,8 @@ struct MainView: View {
                     let appearance = UITabBarAppearance()
                     UITabBar.appearance().scrollEdgeAppearance = appearance
                 }
+                
+                store.dispatch(AppStateAction.loadSessions)
             }
             
             if state.isPresentingOverlay {

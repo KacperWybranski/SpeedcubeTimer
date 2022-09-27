@@ -60,6 +60,10 @@
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75678A428B3C08600C8525F /* ResultsListDictionary.swift */; };
 		E763B8DA28D8FD9900097281 /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
+		E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */; };
+		E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */; };
+		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
+		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
 		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
 		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
 		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
@@ -141,6 +145,10 @@
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E75678A428B3C08600C8525F /* ResultsListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListDictionary.swift; sourceTree = "<group>"; };
 		E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddleware.swift; sourceTree = "<group>"; };
+		E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E763E09228327E5E0051DE7E /* ResultsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewState.swift; sourceTree = "<group>"; };
 		E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducer.swift; sourceTree = "<group>"; };
 		E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateAction.swift; sourceTree = "<group>"; };
@@ -226,8 +234,8 @@
 		E7340F7228D8F0FF00270680 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E763B8EB28E1B6A600097281 /* Model */,
 				E7340F7628D8F16600270680 /* DataController.swift */,
-				E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -324,6 +332,18 @@
 				E712AB6528187BD2008CD0A4 /* AppScreenState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		E763B8EB28E1B6A600097281 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */,
+				E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */,
+				E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */,
+				E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */,
+				E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E763E09028327E460051DE7E /* View */ = {
@@ -665,16 +685,20 @@
 				E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */,
 				E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
+				E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */,
 				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
+				E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */,
 				E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */,
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
+				E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
 				E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
+				E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
 				E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */,
 				E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */,
