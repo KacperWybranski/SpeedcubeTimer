@@ -17,7 +17,8 @@ extension Middlewares {
             newAllSessions.append(newSession)
             return Just(
                 AppStateAction
-                    .newSessionsSet(current: newSession,
+                    .newSessionsSet(previous: state.currentSession,
+                                    current: newSession,
                                     allSessions: newAllSessions)
             )
             .eraseToAnyPublisher()
@@ -62,7 +63,8 @@ extension Middlewares {
             let newAllSessions = [newSession]
             return Just(
                 AppStateAction
-                    .newSessionsSet(current: newSession,
+                    .newSessionsSet(previous: state.currentSession,
+                                    current: newSession,
                                     allSessions: newAllSessions)
             )
             .eraseToAnyPublisher()

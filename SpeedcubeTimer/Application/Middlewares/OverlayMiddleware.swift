@@ -13,8 +13,7 @@ extension Middlewares {
         var overlayText: String?
         
         switch action {
-        case AppStateAction.newSessionSet(let newSession):
-            let oldSession = state.currentSession
+        case AppStateAction.newSessionsSet(let oldSession, let newSession, _):
             guard newSession.id == oldSession.id else { break }
             
             if isNewBest(newSession.bestResult,

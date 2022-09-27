@@ -15,7 +15,7 @@ extension AppState {
         var newAllSessions = state.allSessions
         
         switch action {
-        case AppStateAction.newSessionsSet(let current, let all):
+        case AppStateAction.newSessionsSet(_, let current, let all):
             newSession = current
             newAllSessions = all
         default:

@@ -20,9 +20,11 @@ extension Middlewares {
                                         $0.cube == state.currentSession.cube &&
                                         $0.index == state.currentSession.index
                                     } ?? state.currentSession
+            
             return Just(
                 AppStateAction
                     .newSessionsSet(
+                        previous: state.currentSession,
                         current: currentSession,
                         allSessions: sessions)
             )

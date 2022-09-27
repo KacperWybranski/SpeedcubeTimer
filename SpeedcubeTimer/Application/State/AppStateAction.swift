@@ -12,5 +12,5 @@ import Foundation
 enum AppStateAction: Action {
     case loadSessions
     case newSessionSet(current: CubingSession)
-    case newSessionsSet(current: CubingSession, allSessions: [CubingSession])
+    case newSessionsSet(previous: CubingSession, current: CubingSession, allSessions: [CubingSession])
 }
