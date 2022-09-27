@@ -57,20 +57,6 @@ extension Middlewares {
                     .newSessionSet(current: newSession)
             )
             .eraseToAnyPublisher()
-        case ResultsViewStateAction.removeResultsAt(let offsets):
-            #warning("to be removed ")
-            var newResults = state.currentSession.results
-            newResults.remove(atOffsets: offsets)
-            let newSession = CubingSession(results: newResults,
-                                           cube: state.currentSession.cube,
-                                           index: state.currentSession.index,
-                                           name: state.currentSession.name,
-                                           id: state.currentSession.id)
-            return Just(
-                AppStateAction
-                    .newSessionSet(current: newSession)
-            )
-            .eraseToAnyPublisher()
         case SettingsViewStateAction.resetApp:
             let newSession = CubingSession.initialSession
             let newAllSessions = [newSession]
