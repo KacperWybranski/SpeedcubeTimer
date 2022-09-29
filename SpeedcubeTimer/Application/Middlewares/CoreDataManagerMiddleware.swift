@@ -55,6 +55,28 @@ extension Middlewares {
                     .loadSessions
             )
             .eraseToAnyPublisher()
+        case SettingsViewStateAction.eraseSession(let session):
+            dataController
+                .erase(
+                    session: session
+                )
+            return Just(
+                AppStateAction
+                    .loadSessions
+            )
+            .eraseToAnyPublisher()
+        case SettingsViewStateAction.resetApp:
+            dataController
+                .reset()
+            let newSession = CubingSession.initialSession
+            return Just(
+                AppStateAction
+                    .newSessionsSet(
+                        previous: state.currentSession,
+                        current: newSession,
+                        allSessions: [newSession])
+            )
+            .eraseToAnyPublisher()
         default:
             break
         }

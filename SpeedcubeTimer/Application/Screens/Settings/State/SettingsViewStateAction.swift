@@ -12,7 +12,7 @@ enum SettingsViewStateAction: Action {
     case cubeChanged(_ cube: Cube)
     case sessionIndexChanged(_ session: Int)
     case isPreinspectionOnChanged(_ isOn: Bool)
-    case eraseSession
+    case eraseSession(_ session: CubingSession)
     case showResetActionSheet(_ show: Bool)
     case showEraseSessionPopup(_ show: Bool)
     case showResetAppPopup(_ show: Bool)

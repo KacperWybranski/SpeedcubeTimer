@@ -47,27 +47,6 @@ extension Middlewares {
                     .newSessionSet(current: newSession)
             )
             .eraseToAnyPublisher()
-        case SettingsViewStateAction.eraseSession:
-            let newSession = CubingSession(results: [],
-                                           cube: state.currentSession.cube,
-                                           index: state.currentSession.index,
-                                           name: nil,
-                                           id: state.currentSession.id)
-            return Just(
-                AppStateAction
-                    .newSessionSet(current: newSession)
-            )
-            .eraseToAnyPublisher()
-        case SettingsViewStateAction.resetApp:
-            let newSession = CubingSession.initialSession
-            let newAllSessions = [newSession]
-            return Just(
-                AppStateAction
-                    .newSessionsSet(previous: state.currentSession,
-                                    current: newSession,
-                                    allSessions: newAllSessions)
-            )
-            .eraseToAnyPublisher()
         default:
             return Empty()
                 .eraseToAnyPublisher()

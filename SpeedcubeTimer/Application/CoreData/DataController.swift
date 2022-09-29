@@ -74,6 +74,7 @@ final class DataController: ObservableObject {
                     with: container.viewContext
                 )
             )
+        
         try? container
                 .viewContext
                 .save()
@@ -96,9 +97,46 @@ final class DataController: ObservableObject {
                                 } ?? []
                 )
             )
+        
         try? container
                 .viewContext
                 .save()
+    }
+    
+    func erase(session: CubingSession) {
+        let session = loadedOrNewSession(
+            from: session
+        )
+        session
+            .results?
+            .compactMap {
+                $0 as? NSManagedObject
+            }
+            .forEach {
+                container
+                    .viewContext
+                    .delete($0)
+            }
+        session
+            .name = nil
+        
+        try? container
+            .viewContext
+            .save()
+    }
+    
+    func reset() {
+        guard !loadSessions().isEmpty else { return }
+        loadedSessions
+            .forEach {
+                container
+                    .viewContext
+                    .delete($0)
+            }
+            
+        try? container
+            .viewContext
+            .save()
     }
 }
 
