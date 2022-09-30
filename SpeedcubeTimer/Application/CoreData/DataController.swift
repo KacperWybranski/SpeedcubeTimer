@@ -10,7 +10,10 @@ import CoreData
 import Combine
 import SwiftUI
 
-final class DataController: ObservableObject {
+final class DataController: DataControllerProtocol {
+    
+    // MARK: - Properties
+    
     private let container = NSPersistentContainer(name: "SpeedcubeTimer")
     private var loadedSessions: [CDSession] = []
     
@@ -26,6 +29,8 @@ final class DataController: ObservableObject {
                 self.container.viewContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
             }
     }
+    
+    // MARK: - Private
     
     private func loadedOrNewSession(from session: CubingSession) -> CDSession {
         loadedSessions

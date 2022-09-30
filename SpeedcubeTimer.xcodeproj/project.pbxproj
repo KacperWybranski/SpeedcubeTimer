@@ -20,6 +20,10 @@
 		E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */; };
 		E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
 		E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
+		E736E66628E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */; };
+		E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
+		E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
+		E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
 		E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
 		E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
 		E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
@@ -127,6 +131,8 @@
 		E7340F7B28D8FA5500270680 /* SpeedcubeTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeedcubeTimer.xcdatamodel; sourceTree = "<group>"; };
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
+		E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddlewareTests.swift; sourceTree = "<group>"; };
+		E736E66828E70D16001E55EF /* DataControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerProtocol.swift; sourceTree = "<group>"; };
 		E73A67D528BC0E920013B2AC /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
 		E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateAction.swift; sourceTree = "<group>"; };
 		E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducer.swift; sourceTree = "<group>"; };
@@ -237,8 +243,17 @@
 			children = (
 				E763B8EB28E1B6A600097281 /* Model */,
 				E7340F7628D8F16600270680 /* DataController.swift */,
+				E736E66828E70D16001E55EF /* DataControllerProtocol.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E736E66428E709BE001E55EF /* MiddlewaresTests */ = {
+			isa = PBXGroup;
+			children = (
+				E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */,
+			);
+			path = MiddlewaresTests;
 			sourceTree = "<group>";
 		};
 		E73A67DB28BC0F3B0013B2AC /* State */ = {
@@ -455,6 +470,7 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E736E66428E709BE001E55EF /* MiddlewaresTests */,
 				E73D688828B396AE00B41034 /* ModelTests */,
 				E73D688128B3913400B41034 /* HelpersTests */,
 				E73D688028B2283F00B41034 /* StateTests */,
@@ -688,6 +704,7 @@
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
 				E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */,
 				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
+				E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
 				E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */,
 				E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */,
@@ -725,6 +742,7 @@
 				E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */,
 				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
+				E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */,
 				E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
 				E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */,
@@ -736,11 +754,13 @@
 				E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */,
 				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
+				E736E66628E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift in Sources */,
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
 				E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */,
 				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
 				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
+				E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
 				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
@@ -1007,7 +1027,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerUITests;
@@ -1025,7 +1045,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerUITests;

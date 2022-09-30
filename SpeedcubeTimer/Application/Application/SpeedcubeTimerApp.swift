@@ -13,7 +13,7 @@ struct SpeedcubeTimerApp: App {
                               reducer: AppState.reducer,
                               middlewares: [Middlewares.overlayCheck,
                                             Middlewares.sessionsUpdate,
-                                            Middlewares.coreDataManager])
+                                            Middlewares.coreDataManager(with: DataController())])
     
     var body: some Scene {
         WindowGroup {
