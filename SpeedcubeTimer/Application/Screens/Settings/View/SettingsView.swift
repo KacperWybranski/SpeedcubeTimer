@@ -43,7 +43,7 @@ struct SettingsView: View {
                                                 set: { if !$0 { store.dispatch(SettingsViewStateAction.showEraseSessionPopup($0)) } })) {
                         Alert(title: Text("Erase current session?"),
                               message: Text("Current session name and all results from this session will be removed."),
-                              primaryButton: .destructive(Text("Yes"), action: { store.dispatch(SettingsViewStateAction.eraseSession) }),
+                              primaryButton: .destructive(Text("Yes"), action: { store.dispatch(SettingsViewStateAction.eraseSession(state.currentSession)) }),
                               secondaryButton: .default(Text("No")))
                     }
                 }
@@ -91,7 +91,8 @@ struct SettingsView_Previews: PreviewProvider {
                         AppState(allSessions: CubingSession.previewSessions,
                                  currentSession: CubingSession.previewSessions.first ?? .init(),
                                  screens: [.settingsScreen(SettingsViewState(allSessions: CubingSession.previewSessions))]),
-                      reducer: AppState.reducer))
+                      reducer: AppState.reducer,
+                      middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate]))
             .preferredColorScheme(.dark)
     }
 }

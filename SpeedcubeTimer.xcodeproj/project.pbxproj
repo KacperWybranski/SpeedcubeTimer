@@ -15,8 +15,15 @@
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
 		E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7208AC928CDFAAA007EEEFB /* TestAction.swift */; };
+		E7340F7728D8F16600270680 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7628D8F16600270680 /* DataController.swift */; };
+		E7340F7928D8F81600270680 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7828D8F81600270680 /* Result.swift */; };
+		E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */; };
 		E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */; };
 		E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736CD3F28AD06DE00625EBD /* AppStateAction.swift */; };
+		E736E66628E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */; };
+		E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
+		E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
+		E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
 		E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
 		E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
 		E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
@@ -56,9 +63,15 @@
 		E7556D9F280432F00024BB7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75678A428B3C08600C8525F /* ResultsListDictionary.swift */; };
+		E763B8DA28D8FD9900097281 /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
+		E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */; };
+		E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */; };
+		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
+		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
 		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
 		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
 		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
+		E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7828D8F81600270680 /* Result.swift */; };
 		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
@@ -72,6 +85,8 @@
 		E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
 		E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
 		E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
+		E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */; };
+		E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
@@ -111,8 +126,13 @@
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		E7208AC928CDFAAA007EEEFB /* TestAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAction.swift; sourceTree = "<group>"; };
+		E7340F7628D8F16600270680 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		E7340F7828D8F81600270680 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E7340F7B28D8FA5500270680 /* SpeedcubeTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeedcubeTimer.xcdatamodel; sourceTree = "<group>"; };
 		E736CD3D28AD06CE00625EBD /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
+		E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddlewareTests.swift; sourceTree = "<group>"; };
+		E736E66828E70D16001E55EF /* DataControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerProtocol.swift; sourceTree = "<group>"; };
 		E73A67D528BC0E920013B2AC /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
 		E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateAction.swift; sourceTree = "<group>"; };
 		E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducer.swift; sourceTree = "<group>"; };
@@ -131,6 +151,11 @@
 		E7556D9E280432F00024BB7A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E75678A428B3C08600C8525F /* ResultsListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListDictionary.swift; sourceTree = "<group>"; };
+		E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddleware.swift; sourceTree = "<group>"; };
+		E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E763E09228327E5E0051DE7E /* ResultsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewState.swift; sourceTree = "<group>"; };
 		E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducer.swift; sourceTree = "<group>"; };
 		E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateAction.swift; sourceTree = "<group>"; };
@@ -144,6 +169,8 @@
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
 		E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewState.swift; sourceTree = "<group>"; };
 		E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducer.swift; sourceTree = "<group>"; };
+		E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsUpdateMiddleware.swift; sourceTree = "<group>"; };
+		E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMiddleware.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +236,24 @@
 				E712AB5F28187813008CD0A4 /* Store.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		E7340F7228D8F0FF00270680 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E763B8EB28E1B6A600097281 /* Model */,
+				E7340F7628D8F16600270680 /* DataController.swift */,
+				E736E66828E70D16001E55EF /* DataControllerProtocol.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E736E66428E709BE001E55EF /* MiddlewaresTests */ = {
+			isa = PBXGroup;
+			children = (
+				E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */,
+			);
+			path = MiddlewaresTests;
 			sourceTree = "<group>";
 		};
 		E73A67DB28BC0F3B0013B2AC /* State */ = {
@@ -287,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				E7556D9B2804325E0024BB7A /* Model.swift */,
+				E7340F7828D8F81600270680 /* Result.swift */,
 				E7556DA0280433C40024BB7A /* CubingSession.swift */,
 				E718865128AE4934004DDD29 /* AverageResult.swift */,
 			);
@@ -302,6 +348,18 @@
 				E712AB6528187BD2008CD0A4 /* AppScreenState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		E763B8EB28E1B6A600097281 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */,
+				E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */,
+				E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */,
+				E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */,
+				E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E763E09028327E460051DE7E /* View */ = {
@@ -353,6 +411,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E7EEE0A028D8679500214A31 /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+				E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */,
+				E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */,
+				E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */,
+			);
+			path = Middlewares;
+			sourceTree = "<group>";
+		};
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +470,7 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E736E66428E709BE001E55EF /* MiddlewaresTests */,
 				E73D688828B396AE00B41034 /* ModelTests */,
 				E73D688128B3913400B41034 /* HelpersTests */,
 				E73D688028B2283F00B41034 /* StateTests */,
@@ -424,10 +493,12 @@
 			children = (
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
 				E712AB5E28187804008CD0A4 /* Store */,
+				E7556D9A2804324B0024BB7A /* Model */,
 				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
 				E7556D9D280432E60024BB7A /* State */,
-				E7556D9A2804324B0024BB7A /* Model */,
+				E7EEE0A028D8679500214A31 /* Middlewares */,
 				E7556D992804320E0024BB7A /* Screens */,
+				E7340F7228D8F0FF00270680 /* CoreData */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -618,33 +689,44 @@
 				E73D688E28B39DE400B41034 /* ResultsListRows.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
+				E7340F7928D8F81600270680 /* Result.swift in Sources */,
 				E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */,
+				E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */,
+				E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
 				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,
 				E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */,
 				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
 				E718865228AE4934004DDD29 /* AverageResult.swift in Sources */,
+				E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */,
 				E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
+				E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */,
 				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
+				E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
+				E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */,
 				E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */,
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
+				E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
 				E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
+				E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
 				E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */,
 				E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
 				E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */,
+				E7340F7728D8F16600270680 /* DataController.swift in Sources */,
 				E712AB6028187813008CD0A4 /* Store.swift in Sources */,
 				E7E8BFC428C20C24008A05BD /* SettingsViewState.swift in Sources */,
+				E763B8DA28D8FD9900097281 /* CoreDataManagerMiddleware.swift in Sources */,
 				E7556D9F280432F00024BB7A /* AppState.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,
 			);
@@ -660,6 +742,7 @@
 				E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */,
 				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
+				E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */,
 				E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
 				E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */,
@@ -668,13 +751,16 @@
 				E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
 				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
+				E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */,
 				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
+				E736E66628E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift in Sources */,
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
 				E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */,
 				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
 				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
+				E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
 				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
@@ -902,7 +988,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -922,7 +1008,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -941,7 +1027,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerUITests;
@@ -959,7 +1045,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HD4U882MR;
+				DEVELOPMENT_TEAM = S3P2JPKT5J;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpeedcubeTimerUITests;
@@ -1011,6 +1097,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E7340F7B28D8FA5500270680 /* SpeedcubeTimer.xcdatamodel */,
+			);
+			currentVersion = E7340F7B28D8FA5500270680 /* SpeedcubeTimer.xcdatamodel */;
+			path = SpeedcubeTimer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E8F3BAF227EA0AC6001AEDB2 /* Project object */;
 }

@@ -115,7 +115,8 @@ struct TimerView_Previews: PreviewProvider {
         let store = Store
             .init(initial: .forPreview(screenStates: [.timerScreen(timerViewState)],
                                        session: session),
-                  reducer: AppState.reducer)
+                  reducer: AppState.reducer,
+                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
         TimerView()
             .environmentObject(store)
             .previewDevice("iPhone 13 mini")

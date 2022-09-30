@@ -9,7 +9,11 @@ import SwiftUI
  
 @main
 struct SpeedcubeTimerApp: App {
-    let store = Store(initial: AppState(), reducer: AppState.reducer)
+    private let store = Store(initial: AppState(),
+                              reducer: AppState.reducer,
+                              middlewares: [Middlewares.overlayCheck,
+                                            Middlewares.sessionsUpdate,
+                                            Middlewares.coreDataManager(with: DataController())])
     
     var body: some Scene {
         WindowGroup {

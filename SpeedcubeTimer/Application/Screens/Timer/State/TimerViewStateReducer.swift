@@ -11,7 +11,7 @@ extension TimerViewState {
     static let reducer: Reducer<Self> = { state, action in
         
         switch action {
-        case AppStateAction.newSessionsSet(let newSession, _):
+        case AppStateAction.newSessionsSet(_, let newSession, _):
             return TimerViewState(cubingState: state.cubingState,
                                   time: state.time,
                                   cube: newSession.cube,

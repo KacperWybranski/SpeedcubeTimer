@@ -71,7 +71,9 @@ struct ResultsListView_Previews: PreviewProvider {
         let session = CubingSession.previewSession
         let resultsListState = ResultsViewState(currentSession: session)
         let store = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session), reducer: AppState.reducer)
+            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session),
+                  reducer: AppState.reducer,
+                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
         ResultsListView()
             .environmentObject(store)
             .preferredColorScheme(.dark)
@@ -80,7 +82,9 @@ struct ResultsListView_Previews: PreviewProvider {
         let session2 = CubingSession.previewEmptySession
         let resultsListState2 = ResultsViewState(currentSession: session2)
         let store2 = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState2)], session: session2), reducer: AppState.reducer)
+            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState2)], session: session2),
+                  reducer: AppState.reducer,
+                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
         ResultsListView()
             .environmentObject(store2)
             .preferredColorScheme(.dark)

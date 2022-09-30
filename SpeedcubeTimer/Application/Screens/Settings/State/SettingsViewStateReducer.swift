@@ -11,7 +11,7 @@ extension SettingsViewState {
     static let reducer: Reducer<Self> = { state, action in
         
         switch action {
-        case AppStateAction.newSessionsSet(let newCurrent, let newAllSessions):
+        case AppStateAction.newSessionsSet(_, let newCurrent, let newAllSessions):
             return SettingsViewState(allSessions: newAllSessions,
                                      currentSession: newCurrent,
                                      isPreinspectionOn: state.isPreinspectionOn,
