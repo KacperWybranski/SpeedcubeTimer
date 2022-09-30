@@ -121,8 +121,8 @@ final class DataController: ObservableObject {
             .name = nil
         
         try? container
-            .viewContext
-            .save()
+                .viewContext
+                .save()
     }
     
     func reset() {
@@ -135,8 +135,19 @@ final class DataController: ObservableObject {
             }
             
         try? container
-            .viewContext
-            .save()
+                .viewContext
+                .save()
+    }
+    
+    func changeName(of session: CubingSession, to name: String?) {
+        loadedOrNewSession(
+            from: session
+        )
+        .name = name
+        
+        try? container
+                .viewContext
+                .save()
     }
 }
 

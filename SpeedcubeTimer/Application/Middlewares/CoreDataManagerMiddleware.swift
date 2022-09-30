@@ -55,6 +55,18 @@ extension Middlewares {
                     .loadSessions
             )
             .eraseToAnyPublisher()
+        case SettingsViewStateAction.currentSessionNameChanged(let name):
+            dataController
+                .changeName(
+                    of: state.currentSession,
+                    to: name.isEmpty ? nil : name
+                )
+            
+            return Just(
+                AppStateAction
+                    .loadSessions
+            )
+            .eraseToAnyPublisher()
         case SettingsViewStateAction.eraseSession(let session):
             dataController
                 .erase(
