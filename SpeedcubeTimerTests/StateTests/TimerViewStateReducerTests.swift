@@ -26,7 +26,16 @@ class TimerViewStateReducerTests: XCTestCase {
         
         // Reduce
         
-        let reduced = TimerViewState.reducer(timerViewStateBefore, AppStateAction.newSessionsSet(current: session2, allSessions: [session2]))
+        let reduced = TimerViewState
+                            .reducer(
+                                timerViewStateBefore,
+                                AppStateAction
+                                    .newSessionsSet(
+                                        previous: session1,
+                                        current: session2,
+                                        allSessions: [session2]
+                                    )
+                            )
         
         // Test
         

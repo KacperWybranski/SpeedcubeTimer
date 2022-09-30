@@ -20,7 +20,15 @@ final class SettingsViewStateReducerTests: XCTestCase {
         
         // Reduce
         
-        let reduced = SettingsViewState.reducer(beforeState, AppStateAction.newSessionsSet(current: afterSessions.first!, allSessions: afterSessions))
+        let reduced = SettingsViewState
+                            .reducer(
+                                beforeState,
+                                AppStateAction
+                                    .newSessionsSet(
+                                        previous: beforeSessions.first!,
+                                        current: afterSessions.first!,
+                                        allSessions: afterSessions)
+                            )
         
         // Test
         

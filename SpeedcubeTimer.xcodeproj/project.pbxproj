@@ -67,6 +67,7 @@
 		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
 		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
 		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
+		E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7828D8F81600270680 /* Result.swift */; };
 		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
@@ -732,6 +733,7 @@
 				E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */,
 				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
 				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
+				E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */,
 				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,

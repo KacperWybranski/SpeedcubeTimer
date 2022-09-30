@@ -18,7 +18,6 @@ class AppStateReducerTests: XCTestCase {
         // Input
         
         let session1 = Configuration.sessionCubeThreeIndexOne
-        let session2 = Configuration.sessionCubeTwoIndexOne
         let session3 = Configuration.sessionCubeTwoIndexOne
         let beforeAppState = AppState(allSessions: [session1],
                                       currentSession: session1,
@@ -44,7 +43,16 @@ class AppStateReducerTests: XCTestCase {
         
         // Reduce
         
-        let reduced = AppState.reducer(beforeAppState, AppStateAction.newSessionsSet(current: session3, allSessions: [session3]))
+        let reduced = AppState
+                            .reducer(
+                                beforeAppState,
+                                AppStateAction
+                                    .newSessionsSet(
+                                        previous: session1,
+                                        current: session3,
+                                        allSessions: [session3]
+                                    )
+                            )
         
         // Test
         
