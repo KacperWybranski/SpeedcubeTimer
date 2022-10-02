@@ -25,10 +25,9 @@ struct HorizontalTabViewBar: View {
                     } label: {
                         row
                             .label()
-                            .foregroundColor(.white)
-                    }
-                    .on(condition: selectedIndex == index) {
-                        $0.listRowBackground(Color.primaryTheme)
+                            .foregroundColor(
+                                selectedIndex == index ? .primaryTheme : .white
+                            )
                     }
                 }
             }

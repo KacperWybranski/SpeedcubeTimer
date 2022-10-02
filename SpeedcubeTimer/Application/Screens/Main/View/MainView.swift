@@ -37,24 +37,6 @@ struct MainView: View {
                         Label("Settings", systemImage: "gearshape")
                     }
                 ])
-//            TabView(selection: Binding(get: { state.tabSelection },
-//                                       set: { store.dispatch(MainViewStateAction.selectionChanged($0)) })) {
-//                ResultsListView()
-//                    .tabItem {
-//                        Label("Results", systemImage: "list.number")
-//                    }
-//                    .tag(0)
-//                TimerView()
-//                    .tabItem {
-//                        Label("Timer", systemImage: "timer")
-//                    }
-//                    .tag(1)
-//                SettingsView()
-//                    .tabItem {
-//                        Label("Settings", systemImage: "gearshape")
-//                    }
-//                    .tag(2)
-//            }
             .accentColor(.primaryTheme)
             .onAppear {
                 if #available(iOS 15.0, *) {
