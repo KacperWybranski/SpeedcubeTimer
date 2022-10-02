@@ -271,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				E763B8EB28E1B6A600097281 /* Model */,
-				E7340F7628D8F16600270680 /* DataController.swift */,
 				E736E66828E70D16001E55EF /* DataControllerProtocol.swift */,
+				E7340F7628D8F16600270680 /* DataController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
