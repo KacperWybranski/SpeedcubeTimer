@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Dynamic view changing according to current horizontal size class. Classic TabView if sizeClass == .compact, sidebar-like view with always visible bar (like in Settings App) otherwise.
 struct TabViewOrHorizontalTabView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     @Binding var selection: Int
@@ -42,34 +43,5 @@ struct TabViewOrHorizontalTabView: View {
                 
             )
         }
-    }
-}
-
-struct TabViewOrHorizontalTabViewRow {
-    private let id: UUID = .init()
-    @ViewBuilder let destination: () -> AnyView
-    @ViewBuilder let label: () -> AnyView
-    
-    init<Label: View, Destination: View>(destination: @escaping () -> Destination, label: @escaping () -> Label) {
-        self.destination = {
-            AnyView(
-                destination()
-            )
-        }
-        self.label = {
-            AnyView(
-                label()
-            )
-        }
-    }
-}
-
-extension TabViewOrHorizontalTabViewRow: Hashable, Equatable {
-    static func == (lhs: TabViewOrHorizontalTabViewRow, rhs: TabViewOrHorizontalTabViewRow) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
     }
 }
