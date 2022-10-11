@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct MainView: View {
     @EnvironmentObject var store: Store<AppState>
     
@@ -14,24 +15,28 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            TabView(selection: Binding(get: { state.tabSelection },
-                                       set: { store.dispatch(MainViewStateAction.selectionChanged($0)) })) {
-                ResultsListView()
-                    .tabItem {
+            TabViewOrHorizontalTabView(
+                selection: Binding(get: { state.tabSelection },
+                                   set: { store.dispatch(MainViewStateAction.selectionChanged($0)) }),
+                rows: [
+                    TabViewOrHorizontalTabViewRow {
+                        ResultsListView()
+                    } label: {
                         Label("Results", systemImage: "list.number")
-                    }
-                    .tag(0)
-                TimerView()
-                    .tabItem {
+                    },
+                    
+                    TabViewOrHorizontalTabViewRow {
+                        TimerView()
+                    } label: {
                         Label("Timer", systemImage: "timer")
-                    }
-                    .tag(1)
-                SettingsView()
-                    .tabItem {
+                    },
+                    
+                    TabViewOrHorizontalTabViewRow {
+                        SettingsView()
+                    } label: {
                         Label("Settings", systemImage: "gearshape")
                     }
-                    .tag(2)
-            }
+                ])
             .accentColor(.primaryTheme)
             .onAppear {
                 if #available(iOS 15.0, *) {
