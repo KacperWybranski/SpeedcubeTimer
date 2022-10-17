@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 // MARK: - ResultListRow
 
@@ -99,16 +100,16 @@ struct ResultListRowBestResult: View {
 
 struct ResultsListRowsView_Previews: PreviewProvider {
     static var previews: some View {
-        let session = CubingSession.previewSession
-        let resultsListState = ResultsViewState(currentSession: session)
-        let store = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session),
-                  reducer: AppState.reducer,
-                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
-        ResultsListView()
-            .environmentObject(store)
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13")
+        ResultsListView(
+            store: Store(
+                initialState: ResultsListFeature
+                                                .State(
+                                                    currentSession: .previewSession
+                                                ),
+                reducer: ResultsListFeature())
+        )
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13")
     }
 }
 

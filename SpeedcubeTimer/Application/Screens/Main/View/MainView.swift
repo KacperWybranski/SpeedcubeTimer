@@ -6,45 +6,51 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct MainView: View {
-    @EnvironmentObject var store: Store<AppState>
-    
-    var state: MainViewState { store.state.screenState(for: .main) ?? .init() }
+    let store: StoreOf<MainFeature>
     
     var body: some View {
-        ZStack {
-            TabView(selection: Binding(get: { state.tabSelection },
-                                       set: { store.dispatch(MainViewStateAction.selectionChanged($0)) })) {
-                ResultsListView()
-                    .tabItem {
-                        Label("Results", systemImage: "list.number")
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            ZStack {
+                TabView(
+                    selection: viewStore
+                                    .binding(
+                                        get: { $0.tabSelection },
+                                        send: { .selectionChanged($0) }
+                                    )
+                ) {
+                    ResultsListView()
+                        .tabItem {
+                            Label("Results", systemImage: "list.number")
+                        }
+                        .tag(0)
+                    TimerView()
+                        .tabItem {
+                            Label("Timer", systemImage: "timer")
+                        }
+                        .tag(1)
+                    SettingsView()
+                        .tabItem {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                        .tag(2)
+                }
+                .accentColor(.primaryTheme)
+                .onAppear {
+                    if #available(iOS 15.0, *) {
+                        let appearance = UITabBarAppearance()
+                        UITabBar.appearance().scrollEdgeAppearance = appearance
                     }
-                    .tag(0)
-                TimerView()
-                    .tabItem {
-                        Label("Timer", systemImage: "timer")
-                    }
-                    .tag(1)
-                SettingsView()
-                    .tabItem {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                    .tag(2)
-            }
-            .accentColor(.primaryTheme)
-            .onAppear {
-                if #available(iOS 15.0, *) {
-                    let appearance = UITabBarAppearance()
-                    UITabBar.appearance().scrollEdgeAppearance = appearance
+                    
+                    viewStore.send(.loadSessions)
                 }
                 
-                store.dispatch(AppStateAction.loadSessions)
-            }
-            
-            if state.isPresentingOverlay {
-                OverlayAnimationView(text: state.overlayText) {
-                    store.dispatch(MainViewStateAction.hideOverlay)
+                if viewStore.isPresentingOverlay {
+                    OverlayAnimationView(text: viewStore.overlayText) {
+                        viewStore.send(.hideOverlay)
+                    }
                 }
             }
         }
@@ -53,10 +59,11 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-            .environmentObject(Store(initial: AppState(),
-                                     reducer: AppState.reducer,
-                                     middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate]))
+        MainView(
+            store: Store(
+                initialState: MainFeature.State(),
+                reducer: MainFeature())
+        )
             .preferredColorScheme(.dark)
             .previewDevice("iPhone 13 mini")
     }

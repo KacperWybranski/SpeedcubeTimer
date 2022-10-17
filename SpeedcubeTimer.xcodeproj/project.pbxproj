@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */; };
-		E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E2281C542E00EAA212 /* TimerViewState.swift */; };
-		E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */; };
-		E712AB6028187813008CD0A4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB5F28187813008CD0A4 /* Store.swift */; };
 		E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB6528187BD2008CD0A4 /* AppScreenState.swift */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
@@ -24,12 +20,6 @@
 		E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
 		E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
 		E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
-		E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
-		E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
-		E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
-		E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D528BC0E920013B2AC /* MainViewState.swift */; };
-		E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */; };
-		E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */; };
 		E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */; };
 		E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D686828B046F900B41034 /* AppStateReducerTests.swift */; };
 		E73D686A28B047A600B41034 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
@@ -39,14 +29,6 @@
 		E73D686E28B047C500B41034 /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E73D686F28B047C700B41034 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
 		E73D687028B047CB00B41034 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
-		E73D687128B0489100B41034 /* TimerViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E2281C542E00EAA212 /* TimerViewState.swift */; };
-		E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */; };
-		E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */; };
-		E73D687428B0489C00B41034 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
-		E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
-		E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
-		E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
-		E73D687828B04A2A00B41034 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712AB5F28187813008CD0A4 /* Store.swift */; };
 		E73D687928B04A3A00B41034 /* ScrambleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */; };
 		E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D97280283990024BB7A /* Double+Additions.swift */; };
 		E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
@@ -63,28 +45,26 @@
 		E7556D9F280432F00024BB7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9E280432F00024BB7A /* AppState.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75678A428B3C08600C8525F /* ResultsListDictionary.swift */; };
+		E7602A9328FD7FFD00286E47 /* ResultsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7602A9228FD7FFD00286E47 /* ResultsListFeature.swift */; };
+		E7602A9528FD85EE00286E47 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7602A9428FD85EE00286E47 /* TimerFeature.swift */; };
 		E763B8DA28D8FD9900097281 /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
 		E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */; };
 		E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */; };
 		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
 		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
-		E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09228327E5E0051DE7E /* ResultsViewState.swift */; };
-		E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */; };
-		E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */; };
 		E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7828D8F81600270680 /* Result.swift */; };
-		E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
+		E79EC3A928F590F200D4C3CF /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E79EC3A828F590F200D4C3CF /* ComposableArchitecture */; };
+		E79EC3AB28F590F200D4C3CF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = E79EC3AA28F590F200D4C3CF /* Dependencies */; };
+		E79EC3AD28F70D8F00D4C3CF /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */; };
+		E79EC3AF28F70E1100D4C3CF /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79EC3AE28F70E1100D4C3CF /* SettingsFeature.swift */; };
 		E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */; };
 		E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0A03228AE64970092776C /* Date+Additions.swift */; };
 		E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */; };
 		E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F328BBAB0000140717 /* Color+Additions.swift */; };
 		E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */; };
-		E7E8BFC428C20C24008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
-		E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
-		E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */; };
-		E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */; };
 		E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */; };
 		E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
@@ -118,10 +98,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateReducer.swift; sourceTree = "<group>"; };
-		E70C08E2281C542E00EAA212 /* TimerViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewState.swift; sourceTree = "<group>"; };
-		E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateAction.swift; sourceTree = "<group>"; };
-		E712AB5F28187813008CD0A4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E712AB6528187BD2008CD0A4 /* AppScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenState.swift; sourceTree = "<group>"; };
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
@@ -133,9 +109,6 @@
 		E736CD3F28AD06DE00625EBD /* AppStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAction.swift; sourceTree = "<group>"; };
 		E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddlewareTests.swift; sourceTree = "<group>"; };
 		E736E66828E70D16001E55EF /* DataControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerProtocol.swift; sourceTree = "<group>"; };
-		E73A67D528BC0E920013B2AC /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
-		E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateAction.swift; sourceTree = "<group>"; };
-		E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducer.swift; sourceTree = "<group>"; };
 		E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D686828B046F900B41034 /* AppStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducerTests.swift; sourceTree = "<group>"; };
@@ -151,24 +124,22 @@
 		E7556D9E280432F00024BB7A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E75678A428B3C08600C8525F /* ResultsListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListDictionary.swift; sourceTree = "<group>"; };
+		E7602A9228FD7FFD00286E47 /* ResultsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListFeature.swift; sourceTree = "<group>"; };
+		E7602A9428FD85EE00286E47 /* TimerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFeature.swift; sourceTree = "<group>"; };
 		E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddleware.swift; sourceTree = "<group>"; };
 		E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E763E09228327E5E0051DE7E /* ResultsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewState.swift; sourceTree = "<group>"; };
-		E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducer.swift; sourceTree = "<group>"; };
-		E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateAction.swift; sourceTree = "<group>"; };
-		E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateAction.swift; sourceTree = "<group>"; };
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
+		E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
+		E79EC3AE28F70E1100D4C3CF /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
 		E79F0A1328C226F30041EF2C /* SettingsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E7A0A03228AE64970092776C /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterCircleTransition.swift; sourceTree = "<group>"; };
 		E7A415F328BBAB0000140717 /* Color+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Additions.swift"; sourceTree = "<group>"; };
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
-		E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewState.swift; sourceTree = "<group>"; };
-		E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewStateReducer.swift; sourceTree = "<group>"; };
 		E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsUpdateMiddleware.swift; sourceTree = "<group>"; };
 		E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMiddleware.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
@@ -192,6 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E79EC3A928F590F200D4C3CF /* ComposableArchitecture in Frameworks */,
+				E79EC3AB28F590F200D4C3CF /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,19 +196,9 @@
 		E70C08DD281C53F500EAA212 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				E70C08E2281C542E00EAA212 /* TimerViewState.swift */,
-				E70C08E4281C544B00EAA212 /* TimerViewStateAction.swift */,
-				E70C08E0281C541C00EAA212 /* TimerViewStateReducer.swift */,
+				E7602A9428FD85EE00286E47 /* TimerFeature.swift */,
 			);
 			path = State;
-			sourceTree = "<group>";
-		};
-		E712AB5E28187804008CD0A4 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				E712AB5F28187813008CD0A4 /* Store.swift */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		E7340F7228D8F0FF00270680 /* CoreData */ = {
@@ -256,14 +219,12 @@
 			path = MiddlewaresTests;
 			sourceTree = "<group>";
 		};
-		E73A67DB28BC0F3B0013B2AC /* State */ = {
+		E73A67DB28BC0F3B0013B2AC /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				E73A67D528BC0E920013B2AC /* MainViewState.swift */,
-				E73A67D728BC0E9C0013B2AC /* MainViewStateAction.swift */,
-				E73A67D928BC0EA40013B2AC /* MainViewStateReducer.swift */,
+				E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */,
 			);
-			path = State;
+			path = Feature;
 			sourceTree = "<group>";
 		};
 		E73A67DC28BC0F3F0013B2AC /* View */ = {
@@ -377,9 +338,7 @@
 		E763E09128327E4D0051DE7E /* State */ = {
 			isa = PBXGroup;
 			children = (
-				E763E09228327E5E0051DE7E /* ResultsViewState.swift */,
-				E763E09628327E7A0051DE7E /* ResultsViewStateAction.swift */,
-				E763E09428327E6D0051DE7E /* ResultsViewStateReducer.swift */,
+				E7602A9228FD7FFD00286E47 /* ResultsListFeature.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -392,14 +351,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E796C00B2822E2300092EE59 /* State */ = {
+		E796C00B2822E2300092EE59 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				E7E8BFC328C20C24008A05BD /* SettingsViewState.swift */,
-				E796C00E2822E3440092EE59 /* SettingsViewStateAction.swift */,
-				E7E8BFC528C20CBF008A05BD /* SettingsViewStateReducer.swift */,
+				E79EC3AE28F70E1100D4C3CF /* SettingsFeature.swift */,
 			);
-			path = State;
+			path = Feature;
 			sourceTree = "<group>";
 		};
 		E7A415F028BBA7A800140717 /* Views */ = {
@@ -424,7 +381,7 @@
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E796C00B2822E2300092EE59 /* State */,
+				E796C00B2822E2300092EE59 /* Feature */,
 				E796C00A2822E22A0092EE59 /* View */,
 			);
 			path = Settings;
@@ -492,7 +449,6 @@
 			isa = PBXGroup;
 			children = (
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
-				E712AB5E28187804008CD0A4 /* Store */,
 				E7556D9A2804324B0024BB7A /* Model */,
 				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
 				E7556D9D280432E60024BB7A /* State */,
@@ -534,7 +490,7 @@
 		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E73A67DB28BC0F3B0013B2AC /* State */,
+				E73A67DB28BC0F3B0013B2AC /* Feature */,
 				E73A67DC28BC0F3F0013B2AC /* View */,
 			);
 			path = Main;
@@ -565,6 +521,10 @@
 			dependencies = (
 			);
 			name = SpeedcubeTimer;
+			packageProductDependencies = (
+				E79EC3A828F590F200D4C3CF /* ComposableArchitecture */,
+				E79EC3AA28F590F200D4C3CF /* Dependencies */,
+			);
 			productName = SpeedcubeTimer;
 			productReference = E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */;
 			productType = "com.apple.product-type.application";
@@ -637,6 +597,9 @@
 				Base,
 			);
 			mainGroup = E8F3BAF127EA0AC6001AEDB2;
+			packageReferences = (
+				E79EC3A728F590F200D4C3CF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = E8F3BAFB27EA0AC6001AEDB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -680,52 +643,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7556D9C2804325E0024BB7A /* Model.swift in Sources */,
-				E73A67D628BC0E920013B2AC /* MainViewState.swift in Sources */,
 				E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */,
-				E73A67D828BC0E9C0013B2AC /* MainViewStateAction.swift in Sources */,
+				E7602A9328FD7FFD00286E47 /* ResultsListFeature.swift in Sources */,
 				E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */,
-				E763E09728327E7A0051DE7E /* ResultsViewStateAction.swift in Sources */,
-				E796C00F2822E3440092EE59 /* SettingsViewStateAction.swift in Sources */,
 				E73D688E28B39DE400B41034 /* ResultsListRows.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
+				E79EC3AD28F70D8F00D4C3CF /* MainFeature.swift in Sources */,
 				E7340F7928D8F81600270680 /* Result.swift in Sources */,
-				E763E09328327E5E0051DE7E /* ResultsViewState.swift in Sources */,
 				E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */,
 				E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
+				E7602A9528FD85EE00286E47 /* TimerFeature.swift in Sources */,
 				E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */,
-				E70C08E1281C541C00EAA212 /* TimerViewStateReducer.swift in Sources */,
 				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
 				E718865228AE4934004DDD29 /* AverageResult.swift in Sources */,
 				E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */,
 				E736CD3E28AD06CE00625EBD /* AppStateReducer.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
 				E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */,
-				E70C08E3281C542E00EAA212 /* TimerViewState.swift in Sources */,
 				E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
 				E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */,
-				E7E8BFC628C20CBF008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */,
 				E712AB6628187BD2008CD0A4 /* AppScreenState.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
 				E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
-				E73A67DA28BC0EA40013B2AC /* MainViewStateReducer.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
 				E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
-				E763E09528327E6D0051DE7E /* ResultsViewStateReducer.swift in Sources */,
-				E70C08E5281C544B00EAA212 /* TimerViewStateAction.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
 				E736CD4028AD06DE00625EBD /* AppStateAction.swift in Sources */,
 				E7340F7728D8F16600270680 /* DataController.swift in Sources */,
-				E712AB6028187813008CD0A4 /* Store.swift in Sources */,
-				E7E8BFC428C20C24008A05BD /* SettingsViewState.swift in Sources */,
+				E79EC3AF28F70E1100D4C3CF /* SettingsFeature.swift in Sources */,
 				E763B8DA28D8FD9900097281 /* CoreDataManagerMiddleware.swift in Sources */,
 				E7556D9F280432F00024BB7A /* AppState.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,
@@ -738,41 +692,28 @@
 			files = (
 				E73D687028B047CB00B41034 /* AverageResult.swift in Sources */,
 				E73D686F28B047C700B41034 /* Model.swift in Sources */,
-				E73D687328B0489500B41034 /* TimerViewStateReducer.swift in Sources */,
-				E73A67E028BC130B0013B2AC /* MainViewStateAction.swift in Sources */,
-				E73D687828B04A2A00B41034 /* Store.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
 				E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */,
 				E73D687F28B2257800B41034 /* TimerViewStateReducerTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
-				E73A67DF28BC13070013B2AC /* MainViewState.swift in Sources */,
 				E73D686E28B047C500B41034 /* CubingSession.swift in Sources */,
 				E73D686C28B047AF00B41034 /* AppStateReducer.swift in Sources */,
 				E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */,
-				E73D687628B048A800B41034 /* ResultsViewStateAction.swift in Sources */,
-				E73D687228B0489300B41034 /* TimerViewStateAction.swift in Sources */,
 				E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */,
-				E7E8BFC728C21EBE008A05BD /* SettingsViewState.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
 				E736E66628E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift in Sources */,
 				E73D686B28B047AD00B41034 /* AppStateAction.swift in Sources */,
 				E79F0A1428C226F30041EF2C /* SettingsViewStateReducerTests.swift in Sources */,
 				E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */,
-				E73D687128B0489100B41034 /* TimerViewState.swift in Sources */,
 				E73D687D28B223CF00B41034 /* ResultsViewStateReducerTests.swift in Sources */,
 				E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
-				E73D687728B048AA00B41034 /* ResultsViewStateReducer.swift in Sources */,
 				E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */,
-				E73A67E228BC130F0013B2AC /* MainViewStateReducer.swift in Sources */,
-				E73D687528B048A200B41034 /* ResultsViewState.swift in Sources */,
-				E7E8BFC828C21ECB008A05BD /* SettingsViewStateReducer.swift in Sources */,
 				E73D686A28B047A600B41034 /* AppState.swift in Sources */,
 				E73D686D28B047B200B41034 /* AppScreenState.swift in Sources */,
 				E73D688328B3914800B41034 /* ScrambleProviderTests.swift in Sources */,
 				E73D687928B04A3A00B41034 /* ScrambleProvider.swift in Sources */,
-				E73D687428B0489C00B41034 /* SettingsViewStateAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1038,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E79EC3A728F590F200D4C3CF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 0.41.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E79EC3A828F590F200D4C3CF /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E79EC3A728F590F200D4C3CF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		E79EC3AA28F590F200D4C3CF /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E79EC3A728F590F200D4C3CF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = Dependencies;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E7340F7A28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld */ = {
