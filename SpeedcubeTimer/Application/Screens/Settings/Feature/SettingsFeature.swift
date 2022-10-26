@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct SettingsFeature: ReducerProtocol {
+struct SettingsFeature {
     
     // MARK: - State
     
@@ -45,10 +45,15 @@ struct SettingsFeature: ReducerProtocol {
         case resetApp
     }
     
+    // MARK: - Environment
+    
+    struct Environment {
+        
+    }
+    
     // MARK: - Reducer
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
-        
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
 //        case AppStateAction.newSessionsSet(_, let newCurrent, let newAllSessions):
 //            state.allSessions = newAllSessions

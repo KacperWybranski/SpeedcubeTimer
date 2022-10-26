@@ -106,7 +106,9 @@ struct ResultsListRowsView_Previews: PreviewProvider {
                                                 .State(
                                                     currentSession: .previewSession
                                                 ),
-                reducer: ResultsListFeature())
+                reducer: ResultsListFeature.reducer,
+                environment: .init()
+            )
         )
         .preferredColorScheme(.dark)
         .previewDevice("iPhone 13")

@@ -10,21 +10,21 @@ import ComposableArchitecture
 import SwiftUI
 
 private enum Configuration {
-    static let timeIntervalNanoseconds: UInt64 = 10
-    static let preinspectionTimeIntervalNanoseconds: UInt64 = 1000
-    static let preinpectionSeconds: Double = 15.00
+    static let timeInterval: TimeInterval = 0.01
+    static let preinspectionTimeInterval: TimeInterval = 1
+    static let preinpectionSeconds: TimeInterval = 15.00
 }
 
-struct TimerFeature: ReducerProtocol {
+struct TimerFeature {
     
     // MARK: - State
     
     struct State: Equatable {
-        var cubingState: CubingState
-        var time: Double
-        var cube: Cube
-        var scramble: String
-        var isPreinspectionOn: Bool
+        var cubingState: CubingState = .idle
+        var time: Double = 0.0
+        var cube: Cube = .three
+        var scramble: String = ScrambleProvider.newScramble(for: .three)
+        var isPreinspectionOn: Bool = false
         
         var formattedTime: String {
             if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
@@ -35,10 +35,6 @@ struct TimerFeature: ReducerProtocol {
         }
     }
     
-    // MARK: - Timer
-    
-    struct TimerID: Hashable { }
-    
     // MARK: - Action
     
     enum Action {
@@ -47,14 +43,23 @@ struct TimerFeature: ReducerProtocol {
         case updateTime(_ time: Double)
     }
     
+    // MARK: - Environment
+    
+    struct Environment {
+        var mainQueue: AnySchedulerOf<DispatchQueue>
+    }
+    
     // MARK: - Reducer
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
+        struct TimerID: Hashable {}
+        
         
 //        case .cubeChanged
 //            self.cube = new
 //        case .isPreinspectionOnChanged(let isOn):
 //            self.isPreinspection = isOn
+        
         
         switch (state.cubingState, action) {
         case (.idle, .touchBegan):
@@ -68,19 +73,17 @@ struct TimerFeature: ReducerProtocol {
             
             let startDate = Date()
             let runPreinspectionTimer = state.isPreinspectionOn
-            return Effect.run { send in
-                while true {
-                    try await Task.sleep(
-                        nanoseconds: runPreinspectionTimer ? Configuration.preinspectionTimeIntervalNanoseconds : Configuration.timeIntervalNanoseconds
-                    )
-                    await send(
-                        .updateTime(
-                            runPreinspectionTimer ? Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970) : Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
-                        )
-                    )
+            let interval = runPreinspectionTimer ? Configuration.preinspectionTimeInterval : Configuration.timeInterval
+            
+            return Effect
+                .timer(
+                    id: TimerID(),
+                    every: .init(floatLiteral: interval),
+                    on: environment.mainQueue
+                )
+                .map { _ in
+                    .updateTime(runPreinspectionTimer ? Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970) : Date().timeIntervalSince1970 - startDate.timeIntervalSince1970)
                 }
-            }
-            .cancellable(id: TimerID())
             
         case (.ongoing, .touchBegan):
             state.cubingState = .ended
@@ -104,17 +107,18 @@ struct TimerFeature: ReducerProtocol {
             state.cubingState = .ongoing
             
             let startDate = Date()
-            return Effect.run { send in
-                while true {
-                    try await Task.sleep(nanoseconds: Configuration.timeIntervalNanoseconds)
-                    await send(
-                        .updateTime(
-                            Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
-                        )
+            
+            return Effect
+                .timer(
+                    id: TimerID(),
+                    every: .init(floatLiteral: Configuration.timeInterval),
+                    on: environment.mainQueue
+                )
+                .map { _ in
+                    .updateTime(
+                        Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
                     )
                 }
-            }
-            .cancellable(id: TimerID())
 
         case (.ended, .touchEnded):
             state.cubingState = .idle

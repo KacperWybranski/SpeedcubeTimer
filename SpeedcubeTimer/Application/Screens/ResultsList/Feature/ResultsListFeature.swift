@@ -7,13 +7,14 @@
 
 import Foundation
 import ComposableArchitecture
+import SwiftUI
 
-struct ResultsListFeature: ReducerProtocol {
+struct ResultsListFeature {
     
     // MARK: - State
     
     struct State: Equatable {
-        var currentSession: CubingSession
+        var currentSession: CubingSession = .initialSession
         
         var currentAvg5: AverageResult? {
             currentSession.avgOfLast(5)
@@ -48,15 +49,19 @@ struct ResultsListFeature: ReducerProtocol {
         case removeResultsAt(_ offsets: IndexSet)
     }
     
+    // MARK: - Environment
+    
+    struct Environment {
+        
+    }
+    
     // MARK: - Reducer
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
-//        case .newSessionSet(let current):
-//            state.currentSession = current
         case .removeResultsAt(let offsets):
+            
             return .none
-            // return .removeResults ...
         }
     }
 }

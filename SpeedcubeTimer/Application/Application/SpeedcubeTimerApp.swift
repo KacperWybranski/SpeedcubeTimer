@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
+struct Middlewares { }
  
 @main
 struct SpeedcubeTimerApp: App {
-    private let store = Store(initial: AppState(),
-                              reducer: AppState.reducer,
-                              middlewares: [Middlewares.overlayCheck,
-                                            Middlewares.sessionsUpdate,
-                                            Middlewares.coreDataManager(with: DataController())])
-    
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .preferredColorScheme(.dark)
-                .environmentObject(store)
+            MainView(
+                store: Store(
+                    initialState: MainFeature.State(),
+                    reducer: MainFeature.reducer,
+                    environment: .init()
+                )
+            )
+            .preferredColorScheme(.dark)
         }
     }
 }

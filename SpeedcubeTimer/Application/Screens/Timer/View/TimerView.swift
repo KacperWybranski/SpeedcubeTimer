@@ -15,7 +15,7 @@ private enum Configuration {
 }
 
 struct TimerView: View {
-    let store: StoreOf<TimerFeature>
+    let store: Store<TimerFeature.State, TimerFeature.Action>
     
     @State private var timer: Timer?
     
@@ -89,7 +89,10 @@ struct TimerView_Previews: PreviewProvider {
                                             scramble: ScrambleProvider.newScramble(for: .four),
                                             isPreinspectionOn: true
                                         ),
-                reducer: TimerFeature()
+                reducer: TimerFeature.reducer,
+                environment: .init(
+                    mainQueue: .main
+                )
             )
         )
         .previewDevice("iPhone 13 mini")

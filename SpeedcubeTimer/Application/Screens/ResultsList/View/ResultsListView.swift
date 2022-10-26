@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ResultsListView: View {
-    let store: StoreOf<ResultsListFeature>
+    let store: Store<ResultsListFeature.State, ResultsListFeature.Action>
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
@@ -75,7 +75,9 @@ struct ResultsListView_Previews: PreviewProvider {
                                                 .State(
                                                     currentSession: .previewSession
                                                 ),
-                reducer: ResultsListFeature())
+                reducer: ResultsListFeature.reducer,
+                environment: .init()
+            )
         )
         .preferredColorScheme(.dark)
         .previewDevice("iPhone 13")
@@ -86,7 +88,9 @@ struct ResultsListView_Previews: PreviewProvider {
                                                 .State(
                                                     currentSession: .previewEmptySession
                                                 ),
-                reducer: ResultsListFeature())
+                reducer: ResultsListFeature.reducer,
+                environment: .init()
+            )
         )
         .preferredColorScheme(.dark)
         .previewDevice("iPhone 13")
