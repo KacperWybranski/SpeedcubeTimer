@@ -14,43 +14,43 @@ struct ResultsListView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationView {
-                ZStack {
-                    List {
-                        Section(header: Text(ResultsListDictionary.best)) {
-                            ResultListRowBestResult(result: viewStore.bestResult)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: viewStore.bestAvg5)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: viewStore.bestAvg12)
-                            ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: viewStore.bestMean100)
-                        }
-                        
-                        Section(header: Text(ResultsListDictionary.current)) {
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf5,
-                                                 result: viewStore.currentAvg5)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf12,
-                                                 result: viewStore.currentAvg12)
-                            ResultListRowAverage(name: ResultsListDictionary.meanOf100,
-                                                 result: viewStore.currentMean100)
-                        }
-                        
-                        Section(header: Text(ResultsListDictionary.all + " (\(viewStore.currentSession.results.count))")) {
-                            ForEach(viewStore.currentSession.results) { result in
-                                ResultListRow(result: result)
-                            }
-                            .onDelete { offsets in
-                                viewStore
-                                    .send(
-                                        .removeResultsAt(offsets)
-                                    )
-                            }
-                        }
-                    }
-                    .toolbar {
-                        EditButton()
-                    }
-                    
+                Group {
                     if viewStore.currentSession.results.isEmpty {
                         ResultsListEmptyView()
                             .ignoresSafeArea()
+                    } else {
+                        List {
+                            Section(header: Text(ResultsListDictionary.best)) {
+                                ResultListRowBestResult(result: viewStore.bestResult)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: viewStore.bestAvg5)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: viewStore.bestAvg12)
+                                ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: viewStore.bestMean100)
+                            }
+                            
+                            Section(header: Text(ResultsListDictionary.current)) {
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf5,
+                                                     result: viewStore.currentAvg5)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf12,
+                                                     result: viewStore.currentAvg12)
+                                ResultListRowAverage(name: ResultsListDictionary.meanOf100,
+                                                     result: viewStore.currentMean100)
+                            }
+                            
+                            Section(header: Text(ResultsListDictionary.all + " (\(viewStore.currentSession.results.count))")) {
+                                ForEach(viewStore.currentSession.results) { result in
+                                    ResultListRow(result: result)
+                                }
+                                .onDelete { offsets in
+                                    viewStore
+                                        .send(
+                                            .removeResultsAt(offsets)
+                                        )
+                                }
+                            }
+                        }
+                        .toolbar {
+                            EditButton()
+                        }
                     }
                 }
                 .navigationBarTitleDisplayMode(.large)

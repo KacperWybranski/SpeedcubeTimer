@@ -87,7 +87,7 @@ struct MainView_Previews: PreviewProvider {
                 environment: .init()
             )
         )
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13 mini")
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13 mini")
     }
 }
