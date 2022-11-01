@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import ComposableArchitecture
 
 struct MainFeature {
@@ -28,7 +29,6 @@ struct MainFeature {
         case selectionChanged(_ selection: Int)
         case showOverlay(text: String)
         case hideOverlay
-        case loadSessions
         
         case settings(SettingsFeature.Action)
         case resultsList(ResultsListFeature.Action)
@@ -38,7 +38,7 @@ struct MainFeature {
     // MARK: - Environment
     
     struct Environment {
-        
+        let sessionsManager: SessionsManaging
     }
     
     // MARK: - Reducer
@@ -50,7 +50,9 @@ struct MainFeature {
                     .pullback(
                         state: \State.settings,
                         action: /Action.settings,
-                        environment: { _ in .init() }
+                        environment: { environment in
+                                .init(sessionsManager: environment.sessionsManager)
+                        }
                     ),
             ResultsListFeature
                     .reducer
@@ -64,24 +66,28 @@ struct MainFeature {
                     .pullback(
                         state: \State.timer,
                         action: /Action.timer,
-                        environment: { _ in .init(mainQueue: .main) }
+                        environment: { environment in
+                                .init(mainQueue: .main, sessionsManager: environment.sessionsManager)
+                        }
                     ),
             Reducer<State, Action, Environment> { state, action, environment in
                 switch action {
                 case .selectionChanged(let selection):
                     state.tabSelection = selection
                     return .none
+                    
                 case .showOverlay(let text):
                     state.isPresentingOverlay = true
                     state.overlayText = text
                     return .none
+                    
                 case .hideOverlay:
                     state.isPresentingOverlay = false
                     state.overlayText = .empty
                     return .none
-                case .loadSessions:
+                case .settings(.cubeChanged(let cube)):
+                    
                     return .none
-                    // return .loadSessions or something
                 default:
                     return .none
                 }

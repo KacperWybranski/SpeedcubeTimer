@@ -180,7 +180,9 @@ struct SettingsView_Previews: PreviewProvider {
             store: Store(
                 initialState: SettingsFeature.State(),
                 reducer: SettingsFeature.reducer,
-                environment: . init()
+                environment: . init(
+                    sessionsManager: SessionsManager()
+                )
             )
         )
             .preferredColorScheme(.dark)

@@ -38,6 +38,8 @@ struct TimerFeature {
     // MARK: - Action
     
     enum Action {
+        case loadSession
+        case sessionLoaded(_ current: CubingSession)
         case touchBegan
         case touchEnded
         case updateTime(_ time: Double)
@@ -46,7 +48,8 @@ struct TimerFeature {
     // MARK: - Environment
     
     struct Environment {
-        var mainQueue: AnySchedulerOf<DispatchQueue>
+        let mainQueue: AnySchedulerOf<DispatchQueue>
+        let sessionsManager: SessionsManaging
     }
     
     // MARK: - Reducer
@@ -54,14 +57,25 @@ struct TimerFeature {
     static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         struct TimerID: Hashable {}
         
-        
-//        case .cubeChanged
-//            self.cube = new
-//        case .isPreinspectionOnChanged(let isOn):
-//            self.isPreinspection = isOn
-        
-        
         switch (state.cubingState, action) {
+        case (_, .loadSession):
+            return .run { @MainActor send in
+                send(
+                    .sessionLoaded(
+                        environment
+                            .sessionsManager
+                            .currentSession
+                    )
+                )
+            }
+            
+        case (_, .sessionLoaded(let newCurrent)):
+            if state.cube != newCurrent.cube {
+                state.cube = newCurrent.cube
+                state.scramble = ScrambleProvider.newScramble(for: newCurrent.cube)
+            }
+            return .none
+            
         case (.idle, .touchBegan):
             state.cubingState = .ready
             state.time = .zero

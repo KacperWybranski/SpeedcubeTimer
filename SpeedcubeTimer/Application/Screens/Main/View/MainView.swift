@@ -64,8 +64,6 @@ struct MainView: View {
                         let appearance = UITabBarAppearance()
                         UITabBar.appearance().scrollEdgeAppearance = appearance
                     }
-                    
-                    viewStore.send(.loadSessions)
                 }
                 
                 if viewStore.isPresentingOverlay {
@@ -84,7 +82,9 @@ struct MainView_Previews: PreviewProvider {
             store: Store(
                 initialState: MainFeature.State(),
                 reducer: MainFeature.reducer,
-                environment: .init()
+                environment: .init(
+                    sessionsManager: SessionsManager()
+                )
             )
         )
         .preferredColorScheme(.dark)

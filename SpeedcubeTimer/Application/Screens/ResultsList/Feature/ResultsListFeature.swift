@@ -46,6 +46,7 @@ struct ResultsListFeature {
     // MARK: - Action
     
     enum Action {
+        case sessionLoaded(_ currentSession: CubingSession)
         case removeResultsAt(_ offsets: IndexSet)
     }
     
@@ -59,6 +60,9 @@ struct ResultsListFeature {
     
     static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
+        case .sessionLoaded(let newCurrent):
+            state.currentSession = newCurrent
+            return .none
         case .removeResultsAt(let offsets):
             
             return .none

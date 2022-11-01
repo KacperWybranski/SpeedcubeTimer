@@ -61,6 +61,12 @@ struct TimerView: View {
                             )
                     }
             )
+            .onAppear {
+                viewStore
+                    .send(
+                        .loadSession
+                    )
+            }
             .onChange(of: viewStore.cubingState) { newState in
                 switch newState {
                 case .preinspectionOngoing:
@@ -91,7 +97,8 @@ struct TimerView_Previews: PreviewProvider {
                                         ),
                 reducer: TimerFeature.reducer,
                 environment: .init(
-                    mainQueue: .main
+                    mainQueue: .main,
+                    sessionsManager: SessionsManager()
                 )
             )
         )
