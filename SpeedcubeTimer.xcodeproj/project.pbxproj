@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E701172D29096F1B00BD1D6E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E701172C29096F1B00BD1D6E /* ComposableArchitecture */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
+		E71A787A28E9C292000F75FF /* HorizontalTabViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */; };
+		E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */; };
+		E71A787F28E9C345000F75FF /* TabViewOrHorizontalTabViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787E28E9C345000F75FF /* TabViewOrHorizontalTabViewRow.swift */; };
 		E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B7DE027F9D80B00896892 /* String+Additions.swift */; };
 		E7208ACA28CDFAAA007EEEFB /* TestAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7208AC928CDFAAA007EEEFB /* TestAction.swift */; };
 		E7340F7728D8F16600270680 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7628D8F16600270680 /* DataController.swift */; };
@@ -18,6 +21,7 @@
 		E736E66728E70A5C001E55EF /* CoreDataManagerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */; };
 		E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
 		E736E66A28E70DE4001E55EF /* DataControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66828E70D16001E55EF /* DataControllerProtocol.swift */; };
+		E736E66C28E75084001E55EF /* HorizontalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736E66B28E75084001E55EF /* HorizontalTabView.swift */; };
 		E73A67E428BC136B0013B2AC /* MainViewStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */; };
 		E73D686928B046F900B41034 /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D686828B046F900B41034 /* AppStateReducerTests.swift */; };
 		E73D686E28B047C500B41034 /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
@@ -46,6 +50,7 @@
 		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
 		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
 		E76ADF1928E63FCD006C8F40 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7340F7828D8F81600270680 /* Result.swift */; };
+		E79479C828E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79479C728E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878527F3AAC600C39780 /* ResultDetailView.swift */; };
@@ -90,6 +95,9 @@
 
 /* Begin PBXFileReference section */
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
+		E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewBar.swift; sourceTree = "<group>"; };
+		E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewRow.swift; sourceTree = "<group>"; };
+		E71A787E28E9C345000F75FF /* TabViewOrHorizontalTabViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewOrHorizontalTabViewRow.swift; sourceTree = "<group>"; };
 		E71B7DE027F9D80B00896892 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		E7208AC928CDFAAA007EEEFB /* TestAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAction.swift; sourceTree = "<group>"; };
 		E7340F7628D8F16600270680 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		E7340F7B28D8FA5500270680 /* SpeedcubeTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeedcubeTimer.xcdatamodel; sourceTree = "<group>"; };
 		E736E66528E709CE001E55EF /* CoreDataManagerMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerMiddlewareTests.swift; sourceTree = "<group>"; };
 		E736E66828E70D16001E55EF /* DataControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataControllerProtocol.swift; sourceTree = "<group>"; };
+		E736E66B28E75084001E55EF /* HorizontalTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabView.swift; sourceTree = "<group>"; };
 		E73A67E328BC136B0013B2AC /* MainViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D686828B046F900B41034 /* AppStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
 		E73D687C28B223CF00B41034 /* ResultsViewStateReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewStateReducerTests.swift; sourceTree = "<group>"; };
@@ -118,6 +127,7 @@
 		E763B8E428DC4A5A00097281 /* CDResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSession+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E79479C728E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewOrHorizontalTabView.swift; sourceTree = "<group>"; };
 		E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		E79D878527F3AAC600C39780 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
 		E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
@@ -187,12 +197,31 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		E71A787828E9C27E000F75FF /* HorizontalTabView */ = {
+			isa = PBXGroup;
+			children = (
+				E736E66B28E75084001E55EF /* HorizontalTabView.swift */,
+				E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */,
+				E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */,
+			);
+			path = HorizontalTabView;
+			sourceTree = "<group>";
+		};
+		E71A787D28E9C331000F75FF /* TabViewOrHorizontalTabView */ = {
+			isa = PBXGroup;
+			children = (
+				E79479C728E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift */,
+				E71A787E28E9C345000F75FF /* TabViewOrHorizontalTabViewRow.swift */,
+			);
+			path = TabViewOrHorizontalTabView;
+			sourceTree = "<group>";
+		};
 		E7340F7228D8F0FF00270680 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				E763B8EB28E1B6A600097281 /* Model */,
-				E7340F7628D8F16600270680 /* DataController.swift */,
 				E736E66828E70D16001E55EF /* DataControllerProtocol.swift */,
+				E7340F7628D8F16600270680 /* DataController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -334,9 +363,18 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		E7A0A29B2912A1DC003C5371 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		E7A415F028BBA7A800140717 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E71A787D28E9C331000F75FF /* TabViewOrHorizontalTabView */,
+				E71A787828E9C27E000F75FF /* HorizontalTabView */,
 				E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */,
 				E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */,
 			);
@@ -369,6 +407,7 @@
 				E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */,
 				E8F3BB1727EA0AC7001AEDB2 /* SpeedcubeTimerUITests */,
 				E8F3BAFB27EA0AC6001AEDB2 /* Products */,
+				E7A0A29B2912A1DC003C5371 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -425,7 +464,7 @@
 			children = (
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
 				E7556D9A2804324B0024BB7A /* Model */,
-				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
+				E8F3BB2E27EA1A79001AEDB2 /* Common */,
 				E7EEE0A028D8679500214A31 /* Managers */,
 				E7556D992804320E0024BB7A /* Screens */,
 				E7340F7228D8F0FF00270680 /* CoreData */,
@@ -451,14 +490,14 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
-		E8F3BB2E27EA1A79001AEDB2 /* Helpers */ = {
+		E8F3BB2E27EA1A79001AEDB2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */,
 				E74480B527F79704009ECBEF /* Extensions */,
 				E7A415F028BBA7A800140717 /* Views */,
 			);
-			path = Helpers;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		E8F3BB3F27EC8DCB001AEDB2 /* Main */ = {
@@ -619,6 +658,7 @@
 				E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */,
 				E7602A9328FD7FFD00286E47 /* ResultsListFeature.swift in Sources */,
 				E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */,
+				E736E66C28E75084001E55EF /* HorizontalTabView.swift in Sources */,
 				E73D688E28B39DE400B41034 /* ResultsListRows.swift in Sources */,
 				E8F3BB2827EA0B2D001AEDB2 /* TimerView.swift in Sources */,
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
@@ -633,19 +673,23 @@
 				E8F3BB3027EA1A83001AEDB2 /* ScrambleProvider.swift in Sources */,
 				E718865228AE4934004DDD29 /* AverageResult.swift in Sources */,
 				E7340F7C28D8FA5500270680 /* SpeedcubeTimer.xcdatamodeld in Sources */,
+				E71A787A28E9C292000F75FF /* HorizontalTabViewBar.swift in Sources */,
 				E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */,
 				E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */,
 				E736E66928E70D16001E55EF /* DataControllerProtocol.swift in Sources */,
 				E7556D98280283990024BB7A /* Double+Additions.swift in Sources */,
+				E79479C828E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift in Sources */,
 				E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */,
 				E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */,
 				E79D878627F3AAC600C39780 /* ResultDetailView.swift in Sources */,
+				E71A787F28E9C345000F75FF /* TabViewOrHorizontalTabViewRow.swift in Sources */,
 				E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
 				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
 				E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
+				E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
 				E7340F7728D8F16600270680 /* DataController.swift in Sources */,

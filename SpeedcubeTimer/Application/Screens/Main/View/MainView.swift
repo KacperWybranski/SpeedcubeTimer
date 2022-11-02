@@ -14,50 +14,50 @@ struct MainView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
-                TabView(
+                TabViewOrHorizontalTabView(
                     selection: viewStore
-                                    .binding(
-                                        get: { $0.tabSelection },
-                                        send: { .selectionChanged($0) }
+                        .binding(
+                            get: { $0.tabSelection },
+                            send: { .selectionChanged($0) }
+                        ),
+                    rows: [
+                        TabViewOrHorizontalTabViewRow {
+                            ResultsListView(
+                                store: self.store
+                                    .scope(
+                                        state: \.resultsList,
+                                        action: MainFeature.Action.resultsList
                                     )
-                ) {
-                    ResultsListView(
-                        store: self.store
-                            .scope(
-                                state: \.resultsList,
-                                action: MainFeature.Action.resultsList
                             )
-                    )
-                    .tabItem {
-                        Label("Results", systemImage: "list.number")
-                    }
-                    .tag(0)
-                    
-                    TimerView(
-                        store: self.store
-                            .scope(
-                                state: \.timer,
-                                action: MainFeature.Action.timer
+                        } label: {
+                            Label("Results", systemImage: "list.number")
+                        },
+                        
+                        TabViewOrHorizontalTabViewRow {
+                            TimerView(
+                                store: self.store
+                                    .scope(
+                                        state: \.timer,
+                                        action: MainFeature.Action.timer
+                                    )
                             )
-                    )
-                    .tabItem {
-                        Label("Timer", systemImage: "timer")
-                    }
-                    .tag(1)
-                    
-                    SettingsView(
-                        store: self.store
-                            .scope(
-                                state: \.settings,
-                                action: MainFeature.Action.settings
+                        } label: {
+                            Label("Timer", systemImage: "timer")
+                        },
+                        
+                        TabViewOrHorizontalTabViewRow {
+                            SettingsView(
+                                store: self.store
+                                    .scope(
+                                        state: \.settings,
+                                        action: MainFeature.Action.settings
+                                    )
                             )
-                    )
-                    .tabItem {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                    .tag(2)
-                    
-                }
+                        } label: {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                    ]
+                )
                 .accentColor(.primaryTheme)
                 .onAppear {
                     if #available(iOS 15.0, *) {
