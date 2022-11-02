@@ -59,10 +59,14 @@ struct SettingsFeature {
         switch action {
         case .loadSessions:
             return .run { @MainActor send in
-                let currentSession = environment.sessionsManager.currentSession
-                let allSessions = environment.sessionsManager.allSessions
+                let loadedSessions = environment
+                                            .sessionsManager
+                                            .loadSessions()
                 send(
-                    .sessionsLoaded(allSesions: allSessions, currentSession: currentSession)
+                    .sessionsLoaded(
+                        allSesions: loadedSessions.all,
+                        currentSession: loadedSessions.current
+                    )
                 )
             }
             

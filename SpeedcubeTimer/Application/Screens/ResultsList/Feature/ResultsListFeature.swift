@@ -64,7 +64,12 @@ struct ResultsListFeature {
         case .loadSession:
             return .run { @MainActor send in
                 send(
-                    .sessionLoaded(environment.sessionsManager.currentSession)
+                    .sessionLoaded(
+                        environment
+                            .sessionsManager
+                            .loadSessions()
+                            .current
+                    )
                 )
             }
             

@@ -9,9 +9,7 @@ import Foundation
 import Combine
 
 protocol SessionsManaging {
-    var allSessions: [CubingSession] { get set }
-    var currentSession: CubingSession { get set }
-    
+    func loadSessions() -> (all: [CubingSession], current: CubingSession)
     func session(for cube: Cube, and index: Int) -> CubingSession
     func session(for cube: Cube) -> CubingSession
     func sessionForCurrentCube(and index: Int) -> CubingSession
@@ -22,10 +20,11 @@ protocol SessionsManaging {
 }
 
 final class SessionsManager: SessionsManaging {
-    let overlayManager: OverlayManager = .init()
+    private let overlayManager: OverlayManager = .init()
+    private let coreDataController: DataController = .init()
     
-    var allSessions: [CubingSession]
-    var currentSession: CubingSession
+    private var allSessions: [CubingSession]
+    private var currentSession: CubingSession
     
     init(session: CubingSession) {
         allSessions = [session]
@@ -36,6 +35,20 @@ final class SessionsManager: SessionsManaging {
         let initial = CubingSession.initialSession
         allSessions = [initial]
         currentSession = initial
+    }
+    
+    @discardableResult
+    func loadSessions() -> (all: [CubingSession], current: CubingSession) {
+        let sessions = coreDataController
+                                    .loadSessions()
+        let newCurrent = sessions
+                            .first {
+                                $0.cube == currentSession.cube &&
+                                $0.index == currentSession.index
+                            } ?? currentSession
+        allSessions = sessions
+        currentSession = newCurrent
+        return (allSessions, currentSession)
     }
     
     func session(for cube: Cube, and index: Int) -> CubingSession {
@@ -67,30 +80,42 @@ final class SessionsManager: SessionsManaging {
     }
     
     func setNameForCurrentSession(_ name: String) {
-        var newCurrentSession = currentSession
-        newCurrentSession.name = (name == .empty) ? nil : name
-        setCurrentSession(newCurrentSession)
+        coreDataController
+            .changeName(
+                of: currentSession,
+                to: name.isEmpty ? nil : name
+            )
+        
+        loadSessions()
     }
     
     func saveResult(_ result: Result, andIfNewPB completion: (OverlayManager.RecordType) -> Void) {
-        var newCurrentSession = currentSession
-        newCurrentSession
-            .results
-            .append(result)
+        let oldSession = currentSession
+        
+        coreDataController
+            .save(result,
+                  to: oldSession)
+        
+        loadSessions()
+        
         overlayManager
             .checkForNewRecord(
-                oldSession: currentSession,
-                newSession: newCurrentSession,
+                oldSession: oldSession,
+                newSession: currentSession,
                 completion: completion
             )
-        setCurrentSession(newCurrentSession)
     }
     
     func removeResults(at offsets: IndexSet) {
-        var newCurrentSession = currentSession
-        newCurrentSession
-            .results
-            .remove(atOffsets: offsets)
-        setCurrentSession(newCurrentSession)
+        offsets
+            .forEach { index in
+                coreDataController
+                        .remove(
+                            result: currentSession.results[index],
+                            from: currentSession
+                        )
+            }
+        
+        loadSessions()
     }
 }

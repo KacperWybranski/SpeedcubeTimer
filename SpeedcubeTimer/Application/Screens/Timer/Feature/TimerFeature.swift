@@ -66,7 +66,8 @@ struct TimerFeature {
                     .sessionLoaded(
                         environment
                             .sessionsManager
-                            .currentSession
+                            .loadSessions()
+                            .current
                     )
                 )
             }
