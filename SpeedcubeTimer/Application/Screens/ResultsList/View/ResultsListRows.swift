@@ -102,12 +102,11 @@ struct ResultsListRowsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsListView(
             store: Store(
-                initialState: ResultsListFeature
-                                                .State(
-                                                    currentSession: .previewSession
-                                                ),
+                initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
-                environment: .init()
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewSession)
+                )
             )
         )
         .preferredColorScheme(.dark)

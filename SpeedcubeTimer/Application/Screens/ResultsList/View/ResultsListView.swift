@@ -61,6 +61,12 @@ struct ResultsListView: View {
                     .black
                     .ignoresSafeArea()
             )
+            .onAppear {
+                viewStore
+                    .send(
+                        .loadSession
+                    )
+            }
         }
     }
 }
@@ -71,12 +77,11 @@ struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsListView(
             store: Store(
-                initialState: ResultsListFeature
-                                                .State(
-                                                    currentSession: .previewSession
-                                                ),
+                initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
-                environment: .init()
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewSession)
+                )
             )
         )
         .preferredColorScheme(.dark)
@@ -84,12 +89,11 @@ struct ResultsListView_Previews: PreviewProvider {
         
         ResultsListView(
             store: Store(
-                initialState: ResultsListFeature
-                                                .State(
-                                                    currentSession: .previewEmptySession
-                                                ),
+                initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
-                environment: .init()
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewEmptySession)
+                )
             )
         )
         .preferredColorScheme(.dark)

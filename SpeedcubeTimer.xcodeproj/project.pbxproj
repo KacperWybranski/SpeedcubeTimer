@@ -56,7 +56,7 @@
 		E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */; };
 		E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F328BBAB0000140717 /* Color+Additions.swift */; };
 		E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */; };
-		E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */; };
+		E7EEE0A228D867CA00214A31 /* SessionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsManager.swift */; };
 		E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
@@ -127,7 +127,7 @@
 		E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterCircleTransition.swift; sourceTree = "<group>"; };
 		E7A415F328BBAB0000140717 /* Color+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Additions.swift"; sourceTree = "<group>"; };
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
-		E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsUpdateMiddleware.swift; sourceTree = "<group>"; };
+		E7EEE0A128D867CA00214A31 /* SessionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsManager.swift; sourceTree = "<group>"; };
 		E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMiddleware.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -343,14 +343,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E7EEE0A028D8679500214A31 /* Middlewares */ = {
+		E7EEE0A028D8679500214A31 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				E7EEE0A128D867CA00214A31 /* SessionsUpdateMiddleware.swift */,
+				E7EEE0A128D867CA00214A31 /* SessionsManager.swift */,
 				E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */,
 				E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */,
 			);
-			path = Middlewares;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E85499BE27EF65D500FA8FF1 /* Settings */ = {
@@ -426,7 +426,7 @@
 				E8F3BB2A27EA0CE2001AEDB2 /* Application */,
 				E7556D9A2804324B0024BB7A /* Model */,
 				E8F3BB2E27EA1A79001AEDB2 /* Helpers */,
-				E7EEE0A028D8679500214A31 /* Middlewares */,
+				E7EEE0A028D8679500214A31 /* Managers */,
 				E7556D992804320E0024BB7A /* Screens */,
 				E7340F7228D8F0FF00270680 /* CoreData */,
 			);
@@ -625,7 +625,7 @@
 				E79EC3AD28F70D8F00D4C3CF /* MainFeature.swift in Sources */,
 				E7340F7928D8F81600270680 /* Result.swift in Sources */,
 				E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */,
-				E7EEE0A228D867CA00214A31 /* SessionsUpdateMiddleware.swift in Sources */,
+				E7EEE0A228D867CA00214A31 /* SessionsManager.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
 				E7602A9528FD85EE00286E47 /* TimerFeature.swift in Sources */,

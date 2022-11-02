@@ -43,6 +43,7 @@ struct TimerFeature {
         case touchBegan
         case touchEnded
         case updateTime(_ time: Double)
+        case saveResult(_ result: Result)
     }
     
     // MARK: - Environment
@@ -101,15 +102,17 @@ struct TimerFeature {
             
         case (.ongoing, .touchBegan):
             state.cubingState = .ended
+            let newResult = Result(time: state.time,
+                                   scramble: state.scramble,
+                                   date: .init())
             return .merge(
                 [
                     .cancel(id: TimerID()),
-//                    .saveResult(
-//                            Result(time: state.time,
-//                                   scramble: state.scramble,
-//                                   date: .init())
-                    
-//                    )
+                    .run { @MainActor send in
+                        send(
+                            .saveResult(newResult)
+                        )
+                    }
                 ]
             )
             
@@ -141,6 +144,12 @@ struct TimerFeature {
             
         case (_, .updateTime(let newTime)):
             state.time = newTime
+            return .none
+            
+        case (_, .saveResult(let result)):
+            environment
+                .sessionsManager
+                .saveResult(result)
             return .none
             
         default:

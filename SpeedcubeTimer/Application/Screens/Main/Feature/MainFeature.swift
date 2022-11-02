@@ -51,7 +51,7 @@ struct MainFeature {
                         state: \State.settings,
                         action: /Action.settings,
                         environment: { environment in
-                                .init(sessionsManager: environment.sessionsManager)
+                            .init(sessionsManager: environment.sessionsManager)
                         }
                     ),
             ResultsListFeature
@@ -59,7 +59,9 @@ struct MainFeature {
                     .pullback(
                         state: \State.resultsList,
                         action: /Action.resultsList,
-                        environment: { _ in .init() }
+                        environment: { environment in
+                            .init(sessionsManager: environment.sessionsManager)
+                        }
                     ),
             TimerFeature
                     .reducer
@@ -67,7 +69,7 @@ struct MainFeature {
                         state: \State.timer,
                         action: /Action.timer,
                         environment: { environment in
-                                .init(mainQueue: .main, sessionsManager: environment.sessionsManager)
+                            .init(mainQueue: .main, sessionsManager: environment.sessionsManager)
                         }
                     ),
             Reducer<State, Action, Environment> { state, action, environment in
