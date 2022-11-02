@@ -44,6 +44,7 @@ struct TimerFeature {
         case touchEnded
         case updateTime(_ time: Double)
         case saveResult(_ result: Result)
+        case newRecordSet(_ type: OverlayManager.RecordType)
     }
     
     // MARK: - Environment
@@ -102,19 +103,7 @@ struct TimerFeature {
             
         case (.ongoing, .touchBegan):
             state.cubingState = .ended
-            let newResult = Result(time: state.time,
-                                   scramble: state.scramble,
-                                   date: .init())
-            return .merge(
-                [
-                    .cancel(id: TimerID()),
-                    .run { @MainActor send in
-                        send(
-                            .saveResult(newResult)
-                        )
-                    }
-                ]
-            )
+            return .cancel(id: TimerID())
             
         case (.preinspectionOngoing, .touchBegan):
             state.cubingState = .preinspectionReady
@@ -138,19 +127,31 @@ struct TimerFeature {
                 }
 
         case (.ended, .touchEnded):
+            let newResult = Result(time: state.time,
+                                   scramble: state.scramble,
+                                   date: .init())
             state.cubingState = .idle
             state.scramble = ScrambleProvider.newScramble(for: state.cube)
-            return .none
+            return .run { @MainActor send in
+                send(
+                    .saveResult(newResult)
+                )
+            }
             
         case (_, .updateTime(let newTime)):
             state.time = newTime
             return .none
             
         case (_, .saveResult(let result)):
-            environment
-                .sessionsManager
-                .saveResult(result)
-            return .none
+            return .run { @MainActor send in
+                environment
+                    .sessionsManager
+                    .saveResult(result) { type in
+                        send(
+                            .newRecordSet(type)
+                        )
+                    }
+            }
             
         default:
             return .none

@@ -14,9 +14,9 @@ struct MainFeature {
     // MARK: - State
     
     struct State: Equatable {
+        var tabSelection: Int = 1
         var isPresentingOverlay: Bool = false
         var overlayText: String = .empty
-        var tabSelection: Int = 1
         
         var settings: SettingsFeature.State = .init()
         var resultsList: ResultsListFeature.State = .init()
@@ -78,6 +78,25 @@ struct MainFeature {
                     state.tabSelection = selection
                     return .none
                     
+                case .timer(.newRecordSet(let type)):
+                    var overlayText: String {
+                        switch type {
+                        case .single:
+                            return "🤩 new best single 🥳"
+                        case .avg5:
+                            return "🤯 new best avg5 😱"
+                        case .avg12:
+                            return "🎉 new best avg12 🎉"
+                        case .mo100:
+                            return "🪑 new best mo100 👏"
+                        }
+                    }
+                    return .run { @MainActor send in
+                        send(
+                            .showOverlay(text: overlayText)
+                        )
+                    }
+                    
                 case .showOverlay(let text):
                     state.isPresentingOverlay = true
                     state.overlayText = text
@@ -85,11 +104,9 @@ struct MainFeature {
                     
                 case .hideOverlay:
                     state.isPresentingOverlay = false
-                    state.overlayText = .empty
                     return .none
-                case .settings(.cubeChanged(let cube)):
                     
-                    return .none
+                    
                 default:
                     return .none
                 }

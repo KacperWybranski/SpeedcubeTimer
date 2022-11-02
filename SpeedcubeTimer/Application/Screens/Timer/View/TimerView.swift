@@ -41,7 +41,7 @@ struct TimerView: View {
                         .foregroundColor(viewStore.cubingState.timerTextColor)
                         .font(.system(size: 70))
                         .multilineTextAlignment(.center)
-                        
+                    
                     
                     Color.clear
                 }

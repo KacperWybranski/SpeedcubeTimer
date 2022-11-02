@@ -57,7 +57,7 @@
 		E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F328BBAB0000140717 /* Color+Additions.swift */; };
 		E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */; };
 		E7EEE0A228D867CA00214A31 /* SessionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsManager.swift */; };
-		E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */; };
+		E7EEE0A428D8989D00214A31 /* OverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A328D8989D00214A31 /* OverlayManager.swift */; };
 		E81C5DB127F6FB2B00C8D6FC /* View+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */; };
 		E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85499BF27EF65E000FA8FF1 /* SettingsView.swift */; };
 		E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3BAFD27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift */; };
@@ -128,7 +128,7 @@
 		E7A415F328BBAB0000140717 /* Color+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Additions.swift"; sourceTree = "<group>"; };
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
 		E7EEE0A128D867CA00214A31 /* SessionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsManager.swift; sourceTree = "<group>"; };
-		E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayMiddleware.swift; sourceTree = "<group>"; };
+		E7EEE0A328D8989D00214A31 /* OverlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayManager.swift; sourceTree = "<group>"; };
 		E81C5DB027F6FB2B00C8D6FC /* View+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Additions.swift"; sourceTree = "<group>"; };
 		E85499BF27EF65E000FA8FF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedcubeTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,7 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				E7EEE0A128D867CA00214A31 /* SessionsManager.swift */,
-				E7EEE0A328D8989D00214A31 /* OverlayMiddleware.swift */,
+				E7EEE0A328D8989D00214A31 /* OverlayManager.swift */,
 				E763B8D928D8FD9900097281 /* CoreDataManagerMiddleware.swift */,
 			);
 			path = Managers;
@@ -624,7 +624,7 @@
 				E85499C027EF65E000FA8FF1 /* SettingsView.swift in Sources */,
 				E79EC3AD28F70D8F00D4C3CF /* MainFeature.swift in Sources */,
 				E7340F7928D8F81600270680 /* Result.swift in Sources */,
-				E7EEE0A428D8989D00214A31 /* OverlayMiddleware.swift in Sources */,
+				E7EEE0A428D8989D00214A31 /* OverlayManager.swift in Sources */,
 				E7EEE0A228D867CA00214A31 /* SessionsManager.swift in Sources */,
 				E8F3BB4127EC8DD9001AEDB2 /* MainView.swift in Sources */,
 				E8F3BB4527EC8E52001AEDB2 /* ResultsListView.swift in Sources */,
