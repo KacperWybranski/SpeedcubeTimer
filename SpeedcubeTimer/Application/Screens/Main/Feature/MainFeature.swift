@@ -60,7 +60,7 @@ struct MainFeature {
                         state: \State.resultsList,
                         action: /Action.resultsList,
                         environment: { environment in
-                            .init(sessionsManager: environment.sessionsManager)
+                            .init(sessionsManager: environment.sessionsManager, calculationsPriority: .medium)
                         }
                     ),
             TimerFeature

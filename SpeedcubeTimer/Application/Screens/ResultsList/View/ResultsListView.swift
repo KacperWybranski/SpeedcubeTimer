@@ -80,7 +80,8 @@ struct ResultsListView_Previews: PreviewProvider {
                 initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
                 environment: .init(
-                    sessionsManager: SessionsManager(session: .previewSession)
+                    sessionsManager: SessionsManager(session: .previewSession),
+                    calculationsPriority: .medium
                 )
             )
         )
@@ -92,7 +93,8 @@ struct ResultsListView_Previews: PreviewProvider {
                 initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
                 environment: .init(
-                    sessionsManager: SessionsManager(session: .previewEmptySession)
+                    sessionsManager: SessionsManager(session: .previewEmptySession),
+                    calculationsPriority: .medium
                 )
             )
         )

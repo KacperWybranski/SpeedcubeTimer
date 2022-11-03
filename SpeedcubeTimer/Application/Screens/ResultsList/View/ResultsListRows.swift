@@ -105,7 +105,8 @@ struct ResultsListRowsView_Previews: PreviewProvider {
                 initialState: ResultsListFeature.State(),
                 reducer: ResultsListFeature.reducer,
                 environment: .init(
-                    sessionsManager: SessionsManager(session: .previewSession)
+                    sessionsManager: SessionsManager(session: .previewSession),
+                    calculationsPriority: .medium
                 )
             )
         )

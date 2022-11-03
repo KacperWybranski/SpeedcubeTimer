@@ -16,31 +16,19 @@ struct ResultsListFeature {
     struct State: Equatable {
         var currentSession: CubingSession = .initialSession
         
-        var currentAvg5: AverageResult? {
-            currentSession.avgOfLast(5)
-        }
-        var currentAvg12: AverageResult? {
-            currentSession.avgOfLast(12)
-        }
-        var currentMean100: AverageResult? {
-            currentSession.meanOfLast(100)
-        }
+        fileprivate(set) var currentAvg5: AverageResult?
         
-        var bestResult: Result? {
-            currentSession.bestResult
-        }
+        fileprivate(set) var currentAvg12: AverageResult?
         
-        var bestAvg5: AverageResult? {
-            currentSession.bestAvgOf(5, mode: .avgOf)
-        }
+        fileprivate(set) var currentMean100: AverageResult?
         
-        var bestAvg12: AverageResult? {
-            currentSession.bestAvgOf(12, mode: .avgOf)
-        }
+        fileprivate(set) var bestResult: Result?
         
-        var bestMean100: AverageResult? {
-            currentSession.bestAvgOf(100, mode: .meanOf)
-        }
+        fileprivate(set) var bestAvg5: AverageResult?
+        
+        fileprivate(set) var bestAvg12: AverageResult?
+        
+        fileprivate(set) var bestMean100: AverageResult?
     }
     
     // MARK: - Action
@@ -48,6 +36,8 @@ struct ResultsListFeature {
     enum Action {
         case loadSession
         case sessionLoaded(_ currentSession: CubingSession)
+        case calculateResults(_ session: CubingSession)
+        case resultsCalculated(_ state: State)
         case removeResultsAt(_ offsets: IndexSet)
     }
     
@@ -55,6 +45,7 @@ struct ResultsListFeature {
     
     struct Environment {
         let sessionsManager: SessionsManaging
+        let calculationsPriority: TaskPriority
     }
     
     // MARK: - Reducer
@@ -75,6 +66,33 @@ struct ResultsListFeature {
             
         case .sessionLoaded(let newCurrent):
             state.currentSession = newCurrent
+            return .run { @MainActor send in
+                send(.calculateResults(newCurrent))
+            }
+            
+        case .calculateResults(let session):
+            let calculation = Task(priority: environment.calculationsPriority) {
+                return State(
+                    currentSession: session,
+                    currentAvg5: session.avgOfLast(5),
+                    currentAvg12: session.avgOfLast(12),
+                    currentMean100: session.meanOfLast(100),
+                    bestResult: session.bestResult,
+                    bestAvg5: session.bestAvgOf(5, mode: .avgOf),
+                    bestAvg12: session.bestAvgOf(12, mode: .avgOf),
+                    bestMean100: session.bestAvgOf(100, mode: .meanOf)
+                )
+            }
+            return .run { @MainActor send in
+                let calculated = await calculation.value
+                send(
+                    .resultsCalculated(calculated)
+                )
+            }
+            
+            
+        case .resultsCalculated(let calculatedState):
+            state = calculatedState
             return .none
             
         case .removeResultsAt(let offsets):
