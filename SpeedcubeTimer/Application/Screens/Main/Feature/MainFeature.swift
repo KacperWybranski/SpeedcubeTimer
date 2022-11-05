@@ -60,7 +60,10 @@ struct MainFeature {
                         state: \State.resultsList,
                         action: /Action.resultsList,
                         environment: { environment in
-                            .init(sessionsManager: environment.sessionsManager, calculationsPriority: .medium)
+                            .init(
+                                sessionsManager: environment.sessionsManager,
+                                calculationsPriority: .medium
+                            )
                         }
                     ),
             TimerFeature
@@ -69,7 +72,11 @@ struct MainFeature {
                         state: \State.timer,
                         action: /Action.timer,
                         environment: { environment in
-                            .init(mainQueue: .main, sessionsManager: environment.sessionsManager)
+                            .init(
+                                mainQueue: .main,
+                                overlayCheckPriority: .medium,
+                                sessionsManager: environment.sessionsManager
+                            )
                         }
                     ),
             Reducer<State, Action, Environment> { state, action, environment in
@@ -79,7 +86,7 @@ struct MainFeature {
                     return .none
                     
                 case .timer(.newRecordSet(let type)):
-                    var overlayText: String {
+                    var overlayText: String? {
                         switch type {
                         case .single:
                             return "🤩 new best single 🥳"
@@ -89,9 +96,12 @@ struct MainFeature {
                             return "🎉 new best avg12 🎉"
                         case .mo100:
                             return "🪑 new best mo100 👏"
+                        case .none:
+                            return nil
                         }
                     }
                     return .run { @MainActor send in
+                        guard let overlayText = overlayText else { return }
                         send(
                             .showOverlay(text: overlayText)
                         )

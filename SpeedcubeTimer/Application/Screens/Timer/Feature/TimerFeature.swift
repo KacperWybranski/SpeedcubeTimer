@@ -51,6 +51,7 @@ struct TimerFeature {
     
     struct Environment {
         let mainQueue: AnySchedulerOf<DispatchQueue>
+        let overlayCheckPriority: TaskPriority
         let sessionsManager: SessionsManaging
     }
     
@@ -144,14 +145,19 @@ struct TimerFeature {
             return .none
             
         case (_, .saveResult(let result)):
-            return .run { @MainActor send in
+            let saveAndCheckPb = Task(
+                priority: environment.overlayCheckPriority
+            ) {
                 environment
                     .sessionsManager
-                    .saveResult(result) { type in
-                        send(
-                            .newRecordSet(type)
-                        )
-                    }
+                    .saveResultAndCheckForPb(result)
+            }
+            
+            return .run { @MainActor send in
+                let record = await saveAndCheckPb.value
+                send(
+                    .newRecordSet(record)
+                )
             }
             
         default:

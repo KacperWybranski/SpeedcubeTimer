@@ -71,7 +71,9 @@ struct ResultsListFeature {
             }
             
         case .calculateResults(let session):
-            let calculation = Task(priority: environment.calculationsPriority) {
+            let calculation = Task(
+                priority: environment.calculationsPriority
+            ) {
                 return State(
                     currentSession: session,
                     currentAvg5: session.avgOfLast(5),

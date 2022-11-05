@@ -98,6 +98,7 @@ struct TimerView_Previews: PreviewProvider {
                 reducer: TimerFeature.reducer,
                 environment: .init(
                     mainQueue: .main,
+                    overlayCheckPriority: .medium,
                     sessionsManager: SessionsManager()
                 )
             )

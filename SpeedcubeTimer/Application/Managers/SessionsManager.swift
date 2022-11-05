@@ -15,7 +15,7 @@ protocol SessionsManaging {
     func sessionForCurrentCube(and index: Int) -> CubingSession
     func setCurrentSession(_ session: CubingSession)
     func setNameForCurrentSession(_ name: String)
-    func saveResult(_ result: Result, andIfNewPB completion: (OverlayManager.RecordType) -> Void)
+    func saveResultAndCheckForPb(_ result: Result) -> OverlayManager.RecordType
     func removeResults(at offsets: IndexSet)
 }
 
@@ -89,7 +89,7 @@ final class SessionsManager: SessionsManaging {
         loadSessions()
     }
     
-    func saveResult(_ result: Result, andIfNewPB completion: (OverlayManager.RecordType) -> Void) {
+    func saveResultAndCheckForPb(_ result: Result) -> OverlayManager.RecordType {
         let oldSession = currentSession
         
         coreDataController
@@ -98,11 +98,10 @@ final class SessionsManager: SessionsManaging {
         
         loadSessions()
         
-        overlayManager
+        return overlayManager
             .checkForNewRecord(
                 oldSession: oldSession,
-                newSession: currentSession,
-                completion: completion
+                newSession: currentSession
             )
     }
     

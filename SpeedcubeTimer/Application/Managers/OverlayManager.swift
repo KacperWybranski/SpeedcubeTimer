@@ -14,33 +14,36 @@ final class OverlayManager {
         case avg5
         case avg12
         case mo100
+        case none
     }
     
-    func checkForNewRecord(oldSession: CubingSession, newSession: CubingSession, completion: (RecordType) -> Void) {
+    func checkForNewRecord(oldSession: CubingSession, newSession: CubingSession) -> RecordType {
         if isNewBest(
             newSession.bestResult,
             oldSession.bestResult,
             compareBy: \.time
         ) {
-            completion(.single)
+            return .single
         } else if isNewBest(
             newSession.bestAvgOf(5, mode: .avgOf),
             oldSession.bestAvgOf(5, mode: .avgOf),
             compareBy: \.value
         ) {
-            completion(.avg5)
+            return .avg5
         } else if isNewBest(
             newSession.bestAvgOf(12, mode: .avgOf),
             oldSession.bestAvgOf(12, mode: .avgOf),
             compareBy: \.value
         ) {
-            completion(.avg12)
+            return .avg12
         } else if isNewBest(
             newSession.bestAvgOf(100, mode: .meanOf),
             oldSession.bestAvgOf(100, mode: .meanOf),
             compareBy: \.value
         ) {
-            completion(.mo100)
+            return .mo100
+        } else {
+            return .none
         }
     }
 }
