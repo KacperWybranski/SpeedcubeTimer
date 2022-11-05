@@ -16,9 +16,7 @@ struct SettingsFeature {
         var allSessions: [CubingSession] = []
         var currentSession: CubingSession = .init()
         var isPreinspectionOn: Bool = false
-        var isPresentingEraseSessionPopup: Bool = false
-        var isPresentingResetActionSheet: Bool = false
-        var isPresentingResetAppPopup: Bool = false
+        var alert: AlertState<Action>?
         
         static let availableCubes: [Cube] = Cube.allCases
         static let availableSessionNums: [Int] = Array(1...10)
@@ -33,18 +31,18 @@ struct SettingsFeature {
     
     // MARK: - Action
     
-    enum Action {
+    enum Action: Equatable {
         case loadSessions
         case sessionsLoaded(allSesions: [CubingSession], currentSession: CubingSession)
         case currentSessionNameChanged(_ name: String)
         case cubeChanged(_ cube: Cube)
         case sessionIndexChanged(_ session: Int)
         case isPreinspectionOnChanged(_ isOn: Bool)
-        case eraseSession(_ session: CubingSession)
-        case showResetActionSheet(_ show: Bool)
-        case showEraseSessionPopup(_ show: Bool)
-        case showResetAppPopup(_ show: Bool)
+        case eraseCurrentSession
+        case showResetPopup
+        case showEraseSessionPopup
         case resetApp
+        case dismissPopup
     }
     
     // MARK: - Environment
@@ -79,16 +77,34 @@ struct SettingsFeature {
             state.isPreinspectionOn = isPreinspectionOn
             return .none
             
-        case .showEraseSessionPopup(let show):
-            state.isPresentingEraseSessionPopup = show
+        case .showEraseSessionPopup:
+            state.alert = AlertState(
+                title: TextState("Erase current session?"),
+                message: TextState("Current session name and all results from this session will be removed."),
+                primaryButton: .destructive(
+                    TextState("Yes"),
+                    action: .send(.eraseCurrentSession)
+                ),
+                secondaryButton: .cancel(
+                    TextState("No"),
+                    action: .send(.dismissPopup)
+                )
+            )
             return .none
             
-        case .showResetActionSheet(let show):
-            state.isPresentingResetActionSheet = show
-            return .none
-            
-        case .showResetAppPopup(let show):
-            state.isPresentingResetAppPopup = show
+        case .showResetPopup:
+            state.alert = AlertState(
+                title: TextState("Reset app data?"),
+                message: TextState("All data including results in every session will be removed. This action cannot be undone."),
+                primaryButton: .destructive(
+                    TextState("Yes"),
+                    action: .send(.resetApp)
+                ),
+                secondaryButton: .cancel(
+                    TextState("Cancel"),
+                    action: .send(.dismissPopup)
+                )
+            )
             return .none
             
         case .cubeChanged(let cube):
@@ -123,13 +139,27 @@ struct SettingsFeature {
             }
           
         case .resetApp:
-            return .none
-            // return .resetApp ...
+            environment
+                .sessionsManager
+                .resetApp()
+            return .run { @MainActor send in
+                send(.loadSessions)
+            }
             
-        case .eraseSession(let session):
-            return .none
-            // return .eraseSession
+        case .eraseCurrentSession:
+            environment
+                .sessionsManager
+                .erase(
+                    session: state.currentSession
+                )
+            return .run { @MainActor send in
+                send(.loadSessions)
+            }
             
+        case .dismissPopup:
+            state.alert = nil
+            
+            return .none
         }
     }
 }

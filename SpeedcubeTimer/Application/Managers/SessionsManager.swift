@@ -17,6 +17,8 @@ protocol SessionsManaging {
     func setNameForCurrentSession(_ name: String)
     func saveResultAndCheckForPb(_ result: Result) -> OverlayManager.RecordType
     func removeResults(at offsets: IndexSet)
+    func erase(session: CubingSession)
+    func resetApp()
 }
 
 final class SessionsManager: SessionsManaging {
@@ -114,6 +116,20 @@ final class SessionsManager: SessionsManaging {
                             from: currentSession
                         )
             }
+        
+        loadSessions()
+    }
+    
+    func erase(session: CubingSession) {
+        coreDataController
+            .erase(session: session)
+        
+        loadSessions()
+    }
+    
+    func resetApp() {
+        coreDataController
+            .reset()
         
         loadSessions()
     }

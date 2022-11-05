@@ -61,35 +61,16 @@ struct SettingsView: View {
                         Button {
                             viewStore
                                 .send(
-                                    .showEraseSessionPopup(true)
+                                    .showEraseSessionPopup
                                 )
                         } label: {
                             Text("Erase")
                                 .foregroundColor(.red)
                         }
-//                        .alert(
-//                            isPresented: viewStore
-//                                            .binding(
-//                                                get: { $0.isPresentingEraseSessionPopup },
-//                                                send: { !$0 ? .showEraseSessionPopup($0) :  }
-//                                            )
-//                        ) {
-//                            Alert(title: Text("Erase current session?"),
-//                                  message: Text("Current session name and all results from this session will be removed."),
-//                                  primaryButton: .destructive(
-//                                                        Text("Yes"),
-//                                                        action: {
-//                                                            viewStore
-//                                                                .send(
-//                                                                    .eraseSession(viewStore.currentSession)
-//                                                                )
-//                                                        }
-//                                  ),
-//                                  secondaryButton: .default(
-//                                                        Text("No")
-//                                  )
-//                            )
-//                        }
+                        .alert(
+                            self.store.scope(state: \.alert),
+                            dismiss: .dismissPopup
+                        )
                     }
                     
                     Section(header: Text("General")) {
@@ -104,68 +85,12 @@ struct SettingsView: View {
                         Button {
                             viewStore
                                 .send(
-                                    .showResetActionSheet(true)
+                                    .showResetPopup
                                 )
                         } label: {
                             Text("Reset")
                                 .foregroundColor(.red)
                         }
-//                        .actionSheet(
-//                            isPresented: viewStore
-//                                .binding(
-//                                    get: { $0.isPresentingResetActionSheet },
-//                                    send: { !$0 ? .showResetActionSheet($0) : .none }
-//                                )
-//                        ) {
-//                            ActionSheet(title: Text("Reset app data?"),
-//                                        message: Text("All data including results in every session will be removed. This action cannot be undone."),
-//                                        buttons: [
-//                                            .destructive(
-//                                                Text("Reset app data"),
-//                                                action: {
-//                                                    viewStore
-//                                                        .send(
-//                                                            .showResetAppPopup(true)
-//                                                        )
-//                                                }
-//                                            ),
-//                                            .default(
-//                                                Text("Reset only current session"),
-//                                                action: {
-//                                                    viewStore
-//                                                        .send(
-//                                                            .showEraseSessionPopup(true)
-//                                                        )
-//                                                }
-//                                            ),
-//                                            .default(
-//                                                Text("Cancel")
-//                                            )
-//                                        ])
-//                        }
-//                        .alert(
-//                            isPresented: viewStore
-//                                                .binding(
-//                                                    get: { $0.isPresentingResetAppPopup },
-//                                                    send: { !$0 ? .showEraseSessionPopup($0) : .none }
-//                                                )
-//                        ) {
-//                            Alert(title: Text("Reset app data?"),
-//                                  message: Text("You will lose all your results and settings. This action cannot be undone."),
-//                                  primaryButton: .destructive(
-//                                                        Text("Yes"),
-//                                                        action: {
-//                                                            viewStore
-//                                                                .send(
-//                                                                    .resetApp
-//                                                                )
-//                                                        }
-//                                  ),
-//                                  secondaryButton: .default(
-//                                                        Text("No")
-//                                  )
-//                            )
-//                        }
                     }
                 }
                 .navigationTitle("Settings")
