@@ -33,6 +33,7 @@ struct TimerView: View {
                                 .hidden(viewStore.cubingState.shouldScrambleBeHidden)
                                 .foregroundColor(.lightGray)
                                 .font(.system(size: 40))
+                                .minimumScaleFactor(0.5)
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 15)
                         )

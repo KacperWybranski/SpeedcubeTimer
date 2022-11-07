@@ -361,13 +361,6 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		E7A0A29B2912A1DC003C5371 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		E7A415F028BBA7A800140717 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,7 +399,6 @@
 				E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */,
 				E8F3BB1727EA0AC7001AEDB2 /* SpeedcubeTimerUITests */,
 				E8F3BAFB27EA0AC6001AEDB2 /* Products */,
-				E7A0A29B2912A1DC003C5371 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
