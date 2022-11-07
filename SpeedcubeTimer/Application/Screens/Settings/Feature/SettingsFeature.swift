@@ -18,6 +18,9 @@ struct SettingsFeature {
         var alert: AlertState<Action>?
         
         @BindableState var isPreinspectionOn: Bool = false
+        @BindableState var selectedCube: Cube = .three
+        @BindableState var selectedIndex: Int = 1
+        @BindableState var sessionName: String = .empty
         
         static let availableCubes: [Cube] = Cube.allCases
         static let availableSessionNums: [Int] = Array(1...10)
@@ -35,10 +38,6 @@ struct SettingsFeature {
     enum Action: BindableAction, Equatable {
         case loadSessions
         case sessionsLoaded(allSesions: [CubingSession], currentSession: CubingSession)
-        case currentSessionNameChanged(_ name: String)
-        case cubeChanged(_ cube: Cube)
-        case sessionIndexChanged(_ session: Int)
-        case isPreinspectionOnChanged(_ isOn: Bool)
         case eraseCurrentSession
         case showResetPopup
         case showEraseSessionPopup
@@ -74,10 +73,7 @@ struct SettingsFeature {
         case .sessionsLoaded(let newAll, let newCurrent):
             state.allSessions = newAll
             state.currentSession = newCurrent
-            return .none
-            
-        case .isPreinspectionOnChanged(let isPreinspectionOn):
-            state.isPreinspectionOn = isPreinspectionOn
+            state.sessionName = newCurrent.name ?? .empty
             return .none
             
         case .showEraseSessionPopup:
@@ -109,37 +105,6 @@ struct SettingsFeature {
                 )
             )
             return .none
-            
-        case .cubeChanged(let cube):
-            environment
-                .sessionsManager
-                .setCurrentSession(
-                    environment
-                        .sessionsManager
-                        .session(for: cube)
-                )
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-        case .sessionIndexChanged(let index):
-            environment
-                .sessionsManager
-                .setCurrentSession(
-                    environment
-                        .sessionsManager
-                        .sessionForCurrentCube(and: index)
-                )
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-            
-        case .currentSessionNameChanged(let name):
-            environment
-                .sessionsManager
-                .setNameForCurrentSession(name)
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
           
         case .resetApp:
             environment
@@ -172,6 +137,38 @@ struct SettingsFeature {
                 )
             
             return .none
+            
+        case .binding(\.$selectedCube):
+            environment
+                .sessionsManager
+                .setCurrentSession(
+                    environment
+                        .sessionsManager
+                        .session(for: state.selectedCube)
+                )
+            return .run { @MainActor send in
+                send(.loadSessions)
+            }
+            
+        case .binding(\.$selectedIndex):
+            environment
+                .sessionsManager
+                .setCurrentSession(
+                    environment
+                        .sessionsManager
+                        .sessionForCurrentCube(and: state.selectedIndex)
+                )
+            return .run { @MainActor send in
+                send(.loadSessions)
+            }
+        
+        case .binding(\.$sessionName):
+            environment
+                .sessionsManager
+                .setNameForCurrentSession(state.sessionName)
+            return .run { @MainActor send in
+                send(.loadSessions)
+            }
             
         case .binding:
             return .none

@@ -16,12 +16,10 @@ struct SettingsView: View {
             NavigationView {
                 Form {
                     Section(header: Text("Current session")) {
-                        Picker("Cube",
-                               selection: viewStore
-                                                .binding(
-                                                    get: { $0.currentSession.cube },
-                                                    send: { .cubeChanged($0) }
-                                                )
+                        Picker(
+                            "Cube",
+                            selection: viewStore
+                                .binding(\.$selectedCube)
                         ) {
                             ForEach(
                                 SettingsFeature
@@ -33,12 +31,10 @@ struct SettingsView: View {
                             }
                         }
                         
-                        Picker("Session",
-                               selection: viewStore
-                                                .binding(
-                                                    get: { $0.currentSession.index },
-                                                    send: { .sessionIndexChanged($0) }
-                                                )
+                        Picker(
+                            "Session",
+                            selection: viewStore
+                                .binding(\.$selectedIndex)
                         ) {
                             ForEach(
                                 SettingsFeature
@@ -50,12 +46,10 @@ struct SettingsView: View {
                             }
                         }
                         
-                        TextField("Session identifier",
-                                  text: viewStore
-                                                .binding(
-                                                    get: { $0.currentSession.name ?? .empty },
-                                                    send: { .currentSessionNameChanged($0) }
-                                                )
+                        TextField(
+                            "Session identifier",
+                            text: viewStore
+                                .binding(\.$sessionName)
                         )
                         
                         Button {
