@@ -47,6 +47,10 @@ struct TimerView: View {
                     Color.clear
                 }
             }
+            .alert(
+                self.store.scope(state: \.alert),
+                dismiss: .dismissPopup
+            )
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { _ in

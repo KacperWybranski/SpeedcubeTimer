@@ -24,6 +24,7 @@ struct TimerFeature {
         var time: Double = 0.0
         var cube: Cube = .three
         var scramble: String = ScrambleProvider.newScramble(for: .three)
+        var alert: AlertState<Action>?
         
         var formattedTime: String {
             if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
@@ -36,12 +37,14 @@ struct TimerFeature {
     
     // MARK: - Action
     
-    enum Action {
+    enum Action: Equatable {
         case loadSession
         case sessionLoaded(_ current: CubingSession)
         case touchBegan
         case touchEnded
         case updateTime(_ time: Double)
+        case showSafeCheckPopup(_ result: Result)
+        case dismissPopup
         case saveResult(_ result: Result)
         case newRecordSet(_ type: OverlayManager.RecordType)
     }
@@ -137,14 +140,37 @@ struct TimerFeature {
                                    date: .init())
             state.cubingState = .idle
             state.scramble = ScrambleProvider.newScramble(for: state.cube)
+            let safeCheck = state.cube.safeCheckTime
+            
             return .run { @MainActor send in
-                send(
-                    .saveResult(newResult)
-                )
+                if newResult.time < safeCheck {
+                    send(.showSafeCheckPopup(newResult))
+                } else {
+                    send(.saveResult(newResult))
+                }
             }
             
         case (_, .updateTime(let newTime)):
             state.time = newTime
+            return .none
+            
+        case (_, .showSafeCheckPopup(let suspiciousResult)):
+            state.alert = AlertState(
+                title: TextState("Nice solve! ... or is it?"),
+                message: TextState("If there is no issue then congratulations, impressive solve! But looking at world records, this might've been miss click - if this is the case, you can decide not to save this solve now."),
+                primaryButton: .destructive(
+                    TextState("Remove"),
+                    action: .send(.dismissPopup)
+                ),
+                secondaryButton: .cancel(
+                    TextState("Save"),
+                    action: .send(.saveResult(suspiciousResult))
+                )
+            )
+            return .none
+            
+        case (_, .dismissPopup):
+            state.alert = nil
             return .none
             
         case (_, .saveResult(let result)):
@@ -200,4 +226,19 @@ extension TimerFeature {
         }
     }
 
+}
+
+private extension Cube {
+    var safeCheckTime: TimeInterval {
+        switch self {
+        case .two:
+            return 0.20
+        case .three:
+            return 4.0
+        case .four:
+            return 10.0
+        case .five:
+            return 10.0
+        }
+    }
 }
