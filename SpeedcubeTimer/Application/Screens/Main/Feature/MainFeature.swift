@@ -39,6 +39,7 @@ struct MainFeature {
     
     struct Environment {
         let sessionsManager: SessionsManaging
+        let userSettings: UserSettingsProtocol
     }
     
     // MARK: - Reducer
@@ -51,7 +52,10 @@ struct MainFeature {
                         state: \State.settings,
                         action: /Action.settings,
                         environment: { environment in
-                            .init(sessionsManager: environment.sessionsManager)
+                            .init(
+                                sessionsManager: environment.sessionsManager,
+                                userSettings: environment.userSettings
+                            )
                         }
                     ),
             ResultsListFeature
@@ -75,7 +79,8 @@ struct MainFeature {
                             .init(
                                 mainQueue: .main,
                                 overlayCheckPriority: .medium,
-                                sessionsManager: environment.sessionsManager
+                                sessionsManager: environment.sessionsManager,
+                                userSettings: environment.userSettings
                             )
                         }
                     ),

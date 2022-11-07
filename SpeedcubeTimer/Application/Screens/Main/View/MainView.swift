@@ -83,7 +83,8 @@ struct MainView_Previews: PreviewProvider {
                 initialState: MainFeature.State(),
                 reducer: MainFeature.reducer,
                 environment: MainFeature.Environment(
-                    sessionsManager: SessionsManager()
+                    sessionsManager: SessionsManager(),
+                    userSettings: UserSettings()
                 )
             )
         )

@@ -41,6 +41,7 @@
 		E7556D9C2804325E0024BB7A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556D9B2804325E0024BB7A /* Model.swift */; };
 		E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7556DA0280433C40024BB7A /* CubingSession.swift */; };
 		E75678A528B3C08600C8525F /* ResultsListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75678A428B3C08600C8525F /* ResultsListDictionary.swift */; };
+		E757F8842916F52E004CDC75 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757F8832916F52E004CDC75 /* UserSettings.swift */; };
 		E7602A9328FD7FFD00286E47 /* ResultsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7602A9228FD7FFD00286E47 /* ResultsListFeature.swift */; };
 		E7602A9528FD85EE00286E47 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7602A9428FD85EE00286E47 /* TimerFeature.swift */; };
 		E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */; };
@@ -118,6 +119,7 @@
 		E7556D9B2804325E0024BB7A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E7556DA0280433C40024BB7A /* CubingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubingSession.swift; sourceTree = "<group>"; };
 		E75678A428B3C08600C8525F /* ResultsListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListDictionary.swift; sourceTree = "<group>"; };
+		E757F8832916F52E004CDC75 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		E7602A9228FD7FFD00286E47 /* ResultsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListFeature.swift; sourceTree = "<group>"; };
 		E7602A9428FD85EE00286E47 /* TimerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFeature.swift; sourceTree = "<group>"; };
 		E763B8E328DC4A5A00097281 /* CDResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDResult+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			children = (
 				E7EEE0A128D867CA00214A31 /* SessionsManager.swift */,
 				E7EEE0A328D8989D00214A31 /* OverlayManager.swift */,
+				E757F8832916F52E004CDC75 /* UserSettings.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */,
 				E8F3BAFE27EA0AC6001AEDB2 /* SpeedcubeTimerApp.swift in Sources */,
 				E71B7DE127F9D80B00896892 /* String+Additions.swift in Sources */,
+				E757F8842916F52E004CDC75 /* UserSettings.swift in Sources */,
 				E7340F7728D8F16600270680 /* DataController.swift in Sources */,
 				E79EC3AF28F70E1100D4C3CF /* SettingsFeature.swift in Sources */,
 				E7556D96280262AD0024BB7A /* Optional+Additions.swift in Sources */,

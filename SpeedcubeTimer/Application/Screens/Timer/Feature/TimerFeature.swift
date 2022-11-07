@@ -24,7 +24,6 @@ struct TimerFeature {
         var time: Double = 0.0
         var cube: Cube = .three
         var scramble: String = ScrambleProvider.newScramble(for: .three)
-        var isPreinspectionOn: Bool = false
         
         var formattedTime: String {
             if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
@@ -53,6 +52,7 @@ struct TimerFeature {
         let mainQueue: AnySchedulerOf<DispatchQueue>
         let overlayCheckPriority: TaskPriority
         let sessionsManager: SessionsManaging
+        let userSettings: UserSettingsProtocol
     }
     
     // MARK: - Reducer
@@ -86,11 +86,14 @@ struct TimerFeature {
             return .none
             
         case (.ready, .touchEnded):
-            state.cubingState = state.isPreinspectionOn ? .preinspectionOngoing : .ongoing
-            state.time = state.isPreinspectionOn ? Configuration.preinpectionSeconds : state.time
+            let isPreinspectionOn = environment
+                .userSettings
+                .isPreinspectionOn
+            state.cubingState = isPreinspectionOn ? .preinspectionOngoing : .ongoing
+            state.time = isPreinspectionOn ? Configuration.preinpectionSeconds : state.time
             
             let startDate = Date()
-            let runPreinspectionTimer = state.isPreinspectionOn
+            let runPreinspectionTimer = isPreinspectionOn
             let interval = runPreinspectionTimer ? Configuration.preinspectionTimeInterval : Configuration.timeInterval
             
             return Effect

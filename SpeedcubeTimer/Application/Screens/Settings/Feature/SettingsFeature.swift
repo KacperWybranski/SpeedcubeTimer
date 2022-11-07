@@ -15,8 +15,9 @@ struct SettingsFeature {
     struct State: Equatable {
         var allSessions: [CubingSession] = []
         var currentSession: CubingSession = .init()
-        var isPreinspectionOn: Bool = false
         var alert: AlertState<Action>?
+        
+        @BindableState var isPreinspectionOn: Bool = false
         
         static let availableCubes: [Cube] = Cube.allCases
         static let availableSessionNums: [Int] = Array(1...10)
@@ -31,7 +32,7 @@ struct SettingsFeature {
     
     // MARK: - Action
     
-    enum Action: Equatable {
+    enum Action: BindableAction, Equatable {
         case loadSessions
         case sessionsLoaded(allSesions: [CubingSession], currentSession: CubingSession)
         case currentSessionNameChanged(_ name: String)
@@ -43,12 +44,14 @@ struct SettingsFeature {
         case showEraseSessionPopup
         case resetApp
         case dismissPopup
+        case binding(BindingAction<State>)
     }
     
     // MARK: - Environment
     
     struct Environment {
         let sessionsManager: SessionsManaging
+        let userSettings: UserSettingsProtocol
     }
     
     // MARK: - Reducer
@@ -160,6 +163,19 @@ struct SettingsFeature {
             state.alert = nil
             
             return .none
+        
+        case .binding(\.$isPreinspectionOn):
+            environment
+                .userSettings
+                .setIsPreinspectionOn(
+                    state.isPreinspectionOn
+                )
+            
+            return .none
+            
+        case .binding:
+            return .none
         }
     }
+    .binding()
 }

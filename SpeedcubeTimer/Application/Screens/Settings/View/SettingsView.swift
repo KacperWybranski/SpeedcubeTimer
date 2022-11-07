@@ -74,12 +74,10 @@ struct SettingsView: View {
                     }
                     
                     Section(header: Text("General")) {
-                        Toggle("Preinspection",
-                               isOn: viewStore
-                                            .binding(
-                                                get: { $0.isPreinspectionOn },
-                                                send: { .isPreinspectionOnChanged($0) }
-                                            )
+                        Toggle(
+                            "Preinspection",
+                            isOn: viewStore
+                                .binding(\.$isPreinspectionOn)
                         )
 
                         Button {
@@ -106,7 +104,8 @@ struct SettingsView_Previews: PreviewProvider {
                 initialState: SettingsFeature.State(),
                 reducer: SettingsFeature.reducer,
                 environment: . init(
-                    sessionsManager: SessionsManager()
+                    sessionsManager: SessionsManager(),
+                    userSettings: UserSettings()
                 )
             )
         )

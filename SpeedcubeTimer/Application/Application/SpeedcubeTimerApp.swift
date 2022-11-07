@@ -19,7 +19,8 @@ struct SpeedcubeTimerApp: App {
                     initialState: MainFeature.State(),
                     reducer: MainFeature.reducer,
                     environment: .init(
-                        sessionsManager: SessionsManager()
+                        sessionsManager: SessionsManager(),
+                        userSettings: UserSettings()
                     )
                 )
             )
