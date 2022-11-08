@@ -15,6 +15,7 @@ public enum Cube: Int16, CaseIterable, Codable {
     case three
     case four
     case five
+    case six
 }
 
 extension Cube {
@@ -24,6 +25,7 @@ extension Cube {
         case .three: return "3x3"
         case .four: return "4x4"
         case .five: return "5x5"
+        case .six: return "6x6"
         }
     }
 }

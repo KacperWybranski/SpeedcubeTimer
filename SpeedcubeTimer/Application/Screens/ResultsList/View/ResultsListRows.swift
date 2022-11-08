@@ -20,7 +20,7 @@ struct ResultListRow: View {
             ResultDetailView(result: result)
         }) {
             HStack {
-                Text(result.time.asTextWithTwoDecimal.wrappedInParentheses(withParentheses))
+                Text(result.time.asTimeWithTwoDecimal.wrappedInParentheses(withParentheses))
                     .fixedSize(horizontal: true, vertical: true)
                 Spacer()
                 Text(result.date.formatted)
@@ -53,7 +53,7 @@ struct ResultListRowAverage: View {
             HStack {
                 Text(name)
                 Spacer()
-                Text(result?.value.asTextWithTwoDecimal ?? resultPlaceholder)
+                Text(result?.value.asTimeWithTwoDecimal ?? resultPlaceholder)
             }
         }
         .disabled(result.isNil)
@@ -89,7 +89,7 @@ struct ResultListRowBestResult: View {
             HStack {
                 Text(ResultsListDictionary.single)
                 Spacer()
-                Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
+                Text(result?.time.asTimeWithTwoDecimal ?? resultPlaceholder)
             }
         }
         .disabled(result.isNil)

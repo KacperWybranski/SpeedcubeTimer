@@ -30,7 +30,7 @@ struct TimerFeature {
             if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
                 return time.asTextOnlyFractionalPart
             } else {
-                return time.asTextWithTwoDecimal
+                return time.asTimeWithTwoDecimal
             }
         }
     }
@@ -235,9 +235,7 @@ private extension Cube {
             return 0.20
         case .three:
             return 4.0
-        case .four:
-            return 10.0
-        case .five:
+        default:
             return 10.0
         }
     }
