@@ -42,7 +42,7 @@ extension Cube {
         switch self {
         case .two:
             return [.R, .F, .U]
-        case .three, .four, .five, .six:
+        case .three, .four, .five, .six, .seven:
             return [.R, .F, .U, .L, .B, .D]
         }
     }
@@ -56,7 +56,7 @@ extension Cube {
             return [.doubled, .prime, .none]
         case .four, .five:
             return [.doubleLayer, .doubled, .prime, .combined(available: [.doubleLayer, .doubled, .prime]), .none]
-        case .six:
+        case .six, .seven:
             return [.doubleLayer, .tripleLayer, .doubled, .prime, .combined(available: [.doubleLayer, .tripleLayer, .doubled, .prime]), .none]
         }
     }
@@ -73,6 +73,8 @@ extension Cube {
             return 60
         case .six:
             return 80
+        case .seven:
+            return 90
         }
     }
 }
