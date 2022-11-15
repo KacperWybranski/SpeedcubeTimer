@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+private let useDynamiciPadLayout: Bool = false
+
 /// Dynamic view changing according to current horizontal size class. Classic TabView if sizeClass == .compact, sidebar-like view with always visible bar (like in Settings App) otherwise.
 struct TabViewOrHorizontalTabView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
@@ -14,7 +16,7 @@ struct TabViewOrHorizontalTabView: View {
     let rows: [TabViewOrHorizontalTabViewRow]
     
     var body: some View {
-        if sizeClass == .compact {
+        if sizeClass == .compact || !useDynamiciPadLayout {
             TabView(selection: $selection) {
                 ForEach(
                     Array(
@@ -24,6 +26,7 @@ struct TabViewOrHorizontalTabView: View {
                 ) { (index, row) in
                     row
                         .destination()
+                        .navigationViewStyle(.stack)
                         .tabItem(
                             row.label
                         )

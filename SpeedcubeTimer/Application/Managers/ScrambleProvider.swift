@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ScrambleProvider {
-    static func newScramble(for cube: Cube) -> String {
+public struct ScrambleProvider {
+    public static func newScramble(for cube: Cube) -> String {
         newScramble(availableMoves: cube.availableMoves,
                     availableModifiers: cube.availableModifiers,
                     length: cube.scrambleLength)
@@ -37,8 +37,7 @@ struct ScrambleProvider {
 
 extension Cube {
     
-    /// available moves
-    var availableMoves: [Move] {
+    public var availableMoves: [Move] {
         switch self {
         case .two:
             return [.R, .F, .U]
@@ -47,7 +46,6 @@ extension Cube {
         }
     }
     
-    /// available modifiers (prime, doubled, double layer)
     var availableModifiers: [MoveModifier] {
         switch self {
         case .two:
@@ -61,7 +59,7 @@ extension Cube {
         }
     }
     
-    var scrambleLength: Int {
+    public var scrambleLength: Int {
         switch self {
         case .two:
             return 12
@@ -81,7 +79,7 @@ extension Cube {
 
 // MARK: - Move
 
-enum Move: String {
+public enum Move: String {
     case R
     case L
     case U
@@ -94,7 +92,7 @@ enum Move: String {
 
 // MARK: - MoveModifier
 
-enum MoveModifier: Equatable {
+public enum MoveModifier: Equatable {
     case doubleLayer
     case tripleLayer
     case prime
@@ -165,11 +163,16 @@ enum MoveModifier: Equatable {
 
 // MARK: - Modified move
 
-struct ModifiedMove {
+public struct ModifiedMove {
     let move: Move
     let modifier: MoveModifier
     
-    var asString: String {
+    public init(move: Move, modifier: MoveModifier) {
+        self.move = move
+        self.modifier = modifier
+    }
+    
+    public var asString: String {
         modifier.apply(to: move)
     }
 }

@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct Middlewares { }
- 
 @main
 struct SpeedcubeTimerApp: App {
     var body: some Scene {

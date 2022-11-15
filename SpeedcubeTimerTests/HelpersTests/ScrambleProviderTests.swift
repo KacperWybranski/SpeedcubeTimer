@@ -7,6 +7,7 @@
 
 import Foundation
 import XCTest
+import SpeedcubeTimer
 
 class ScrambleProviderTests: XCTestCase {
     
@@ -56,7 +57,7 @@ class ScrambleProviderTests: XCTestCase {
         
         let move: Move = .F
         let modifier: MoveModifier = .doubleLayer
-        let expectedValue = "f"
+        let expectedValue = "Fw"
         
         // Reduce
         
@@ -68,13 +69,30 @@ class ScrambleProviderTests: XCTestCase {
 
     }
     
+    func testModifiedMoveTripleLayer() {
+        
+        // Input
+        
+        let move: Move = .F
+        let modifier: MoveModifier = .tripleLayer
+        let expectedValue = "3Fw"
+        
+        // Reduce
+        
+        let modified = ModifiedMove(move: move, modifier: modifier)
+        
+        // Test
+        
+        XCTAssertEqual(expectedValue, modified.asString)
+    }
+    
     func testModifiedMoveCombined() {
         
         // Input
         
         let move: Move = .F
         let modifier: MoveModifier = .combined(available: [.doubleLayer, .doubled])
-        let expectedValue = "f2"
+        let expectedValue = "Fw2"
         
         // Reduce
         
@@ -84,6 +102,40 @@ class ScrambleProviderTests: XCTestCase {
         
         XCTAssertEqual(expectedValue, modified.asString)
 
+    }
+    
+    func testModifiedMoveCombinedWithNoAvailable() {
+        
+        // Input
+        
+        let move: Move = .F
+        let modifier: MoveModifier = .combined(available: [])
+        let expectedValue = "F"
+        
+        // Reduce
+        
+        let modified = ModifiedMove(move: move, modifier: modifier)
+        
+        // Test
+        
+        XCTAssertEqual(expectedValue, modified.asString)
+    }
+    
+    func testModifiedMoveCombinedWithOnlyOne() {
+        
+        // Input
+        
+        let move: Move = .F
+        let modifier: MoveModifier = .combined(available: [.doubled])
+        let expectedValue = "F2"
+        
+        // Reduce
+        
+        let modified = ModifiedMove(move: move, modifier: modifier)
+        
+        // Test
+        
+        XCTAssertEqual(expectedValue, modified.asString)
     }
     
     func testNewScrambleForCubeThree() {
@@ -96,9 +148,7 @@ class ScrambleProviderTests: XCTestCase {
         // Reduce
         
         let reduced = scramble
-            .replacingOccurrences(of: "'", with: "")
-            .replacingOccurrences(of: "2", with: "")
-            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrencesWithEmpty(of: ["'","2"," "])
         
         // Test
         
@@ -126,9 +176,7 @@ class ScrambleProviderTests: XCTestCase {
         // Reduce
         
         let reduced = scramble
-            .replacingOccurrences(of: "'", with: "")
-            .replacingOccurrences(of: "2", with: "")
-            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrencesWithEmpty(of: ["'","2"," "])
         
         // Test
         
@@ -146,4 +194,127 @@ class ScrambleProviderTests: XCTestCase {
             }
     }
     
+    func testNewScrambleForCubeFour() {
+        
+        // Input
+        
+        let cube: Cube = .four
+        let scramble = ScrambleProvider.newScramble(for: cube)
+        
+        // Reduce
+        
+        let reduced = scramble
+            .replacingOccurrencesWithEmpty(of: ["'","2"," ","w"])
+        
+        // Test
+        
+        XCTAssertEqual(reduced.count, cube.scrambleLength)
+        reduced
+            .forEach { stringMove in
+                XCTAssertTrue(
+                    cube
+                        .availableMoves
+                        .map {
+                            $0.rawValue
+                        }
+                        .contains("\(stringMove)")
+                )
+            }
+    }
+    
+    func testNewScrambleForCubeFive() {
+        
+        // Input
+        
+        let cube: Cube = .five
+        let scramble = ScrambleProvider.newScramble(for: cube)
+        
+        // Reduce
+        
+        let reduced = scramble
+            .replacingOccurrencesWithEmpty(of: ["'","2"," ","w"])
+        
+        // Test
+        
+        XCTAssertEqual(reduced.count, cube.scrambleLength)
+        reduced
+            .forEach { stringMove in
+                XCTAssertTrue(
+                    cube
+                        .availableMoves
+                        .map {
+                            $0.rawValue
+                        }
+                        .contains("\(stringMove)")
+                )
+            }
+    }
+    
+    func testNewScrambleForCubeSix() {
+        
+        // Input
+        
+        let cube: Cube = .six
+        let scramble = ScrambleProvider.newScramble(for: cube)
+        
+        // Reduce
+        
+        let reduced = scramble
+            .replacingOccurrencesWithEmpty(of: ["'","2"," ","w","3"])
+        
+        // Test
+        
+        XCTAssertEqual(reduced.count, cube.scrambleLength)
+        reduced
+            .forEach { stringMove in
+                XCTAssertTrue(
+                    cube
+                        .availableMoves
+                        .map {
+                            $0.rawValue
+                        }
+                        .contains("\(stringMove)")
+                )
+            }
+    }
+    
+    func testNewScrambleForCubeSeven() {
+        
+        // Input
+        
+        let cube: Cube = .seven
+        let scramble = ScrambleProvider.newScramble(for: cube)
+        
+        // Reduce
+        
+        let reduced = scramble
+            .replacingOccurrencesWithEmpty(of: ["'","2"," ","w","3"])
+        
+        // Test
+        
+        XCTAssertEqual(reduced.count, cube.scrambleLength)
+        reduced
+            .forEach { stringMove in
+                XCTAssertTrue(
+                    cube
+                        .availableMoves
+                        .map {
+                            $0.rawValue
+                        }
+                        .contains("\(stringMove)")
+                )
+            }
+    }
+}
+
+private extension String {
+    func replacingOccurrencesWithEmpty(of targets: [any StringProtocol]) -> String {
+        var cleanedSelf = self
+        targets
+            .forEach {
+                cleanedSelf = cleanedSelf
+                    .replacingOccurrences(of: $0, with: "")
+            }
+        return cleanedSelf
+    }
 }
