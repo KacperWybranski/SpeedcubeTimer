@@ -86,6 +86,12 @@ struct SettingsView: View {
                     }
                 }
                 .navigationTitle("Settings")
+                .onAppear {
+                    viewStore
+                        .send(
+                            .loadSessions
+                        )
+                }
             }
         }
     }

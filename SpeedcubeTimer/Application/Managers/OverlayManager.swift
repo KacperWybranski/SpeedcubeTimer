@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-final class OverlayManager {
-    enum RecordType {
+public final class OverlayManager {
+    public enum RecordType {
         case single
         case avg5
         case avg12
@@ -17,7 +17,9 @@ final class OverlayManager {
         case none
     }
     
-    func checkForNewRecord(oldSession: CubingSession, newSession: CubingSession) -> RecordType {
+    public init() { }
+    
+    public func checkForNewRecord(oldSession: CubingSession, newSession: CubingSession) -> RecordType {
         if isNewBest(
             newSession.bestResult,
             oldSession.bestResult,

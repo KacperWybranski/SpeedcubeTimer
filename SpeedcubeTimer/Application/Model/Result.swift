@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct Result: Hashable, Identifiable {
-    var id = UUID()
+public struct Result: Hashable, Identifiable {
+    public var id = UUID()
     var time: TimeInterval
     var scramble: String
     var date: Date
     
-    init(time: TimeInterval, scramble: String, date: Date) {
+    public init(time: TimeInterval, scramble: String, date: Date) {
         self.time = time
         self.scramble = scramble
         self.date = date
     }
     
-    static func == (lhs: Result, rhs: Result) -> Bool {
+    public static func == (lhs: Result, rhs: Result) -> Bool {
         (lhs.time == rhs.time &&
             lhs.scramble == rhs.scramble &&
             lhs.id == rhs.id &&
@@ -28,15 +28,15 @@ struct Result: Hashable, Identifiable {
 }
 
 extension Array where Element == Result {
-    var best: Result? {
+    public var best: Result? {
         return sorted { $0.time < $1.time }.first
     }
     
-    var worst: Result? {
+    public var worst: Result? {
         return sorted { $0.time < $1.time }.last
     }
     
-    var average: Double? {
+    public var average: Double? {
         return self.map { $0.time }.average
     }
 }
