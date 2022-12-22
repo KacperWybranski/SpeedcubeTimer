@@ -35,6 +35,7 @@ Results View | Timer View | Settings View
 * Remove unwanted solves with "edit" button or swipe gesture on row.
 * Change cube scramble by selecting different cube in settings (suported: 2x2, 3x3, 4x4).
 * Store your results on 10 different session for each cube (ex. one hand, bld)
+* Add identifier for each session (ex. "one handed", "bld)
 * Turn on preinspection in settings if you need.
 * Keep track of your records.
 
@@ -42,4 +43,3 @@ Results View | Timer View | Settings View
 
 * Add storing data in user defaults.
 * Add support for more cubes.
-* Add possibility to use own identifier insetad of number of session.
