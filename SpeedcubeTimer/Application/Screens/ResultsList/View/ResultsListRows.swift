@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 // MARK: - ResultListRow
 
@@ -19,7 +20,7 @@ struct ResultListRow: View {
             ResultDetailView(result: result)
         }) {
             HStack {
-                Text(result.time.asTextWithTwoDecimal.wrappedInParentheses(withParentheses))
+                Text(result.time.asTimeWithTwoDecimal.wrappedInParentheses(withParentheses))
                     .fixedSize(horizontal: true, vertical: true)
                 Spacer()
                 Text(result.date.formatted)
@@ -52,7 +53,7 @@ struct ResultListRowAverage: View {
             HStack {
                 Text(name)
                 Spacer()
-                Text(result?.value.asTextWithTwoDecimal ?? resultPlaceholder)
+                Text(result?.value.asTimeWithTwoDecimal ?? resultPlaceholder)
             }
         }
         .disabled(result.isNil)
@@ -88,7 +89,7 @@ struct ResultListRowBestResult: View {
             HStack {
                 Text(ResultsListDictionary.single)
                 Spacer()
-                Text(result?.time.asTextWithTwoDecimal ?? resultPlaceholder)
+                Text(result?.time.asTimeWithTwoDecimal ?? resultPlaceholder)
             }
         }
         .disabled(result.isNil)
@@ -99,16 +100,18 @@ struct ResultListRowBestResult: View {
 
 struct ResultsListRowsView_Previews: PreviewProvider {
     static var previews: some View {
-        let session = CubingSession.previewSession
-        let resultsListState = ResultsViewState(currentSession: session)
-        let store = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session),
-                  reducer: AppState.reducer,
-                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
-        ResultsListView()
-            .environmentObject(store)
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13")
+        ResultsListView(
+            store: Store(
+                initialState: ResultsListFeature.State(),
+                reducer: ResultsListFeature.reducer,
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewSession),
+                    calculationsPriority: .medium
+                )
+            )
+        )
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13")
     }
 }
 

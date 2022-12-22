@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ScrambleProvider {
-    static func newScramble(for cube: Cube) -> String {
+public struct ScrambleProvider {
+    public static func newScramble(for cube: Cube) -> String {
         newScramble(availableMoves: cube.availableMoves,
                     availableModifiers: cube.availableModifiers,
                     length: cube.scrambleLength)
@@ -37,29 +37,29 @@ struct ScrambleProvider {
 
 extension Cube {
     
-    /// available moves
-    var availableMoves: [Move] {
+    public var availableMoves: [Move] {
         switch self {
         case .two:
             return [.R, .F, .U]
-        case .three, .four:
+        case .three, .four, .five, .six, .seven:
             return [.R, .F, .U, .L, .B, .D]
         }
     }
     
-    /// available modifiers (prime, doubled, double layer)
     var availableModifiers: [MoveModifier] {
         switch self {
         case .two:
             return [.doubled, .prime, .none]
         case .three:
             return [.doubled, .prime, .none]
-        case .four:
+        case .four, .five:
             return [.doubleLayer, .doubled, .prime, .combined(available: [.doubleLayer, .doubled, .prime]), .none]
+        case .six, .seven:
+            return [.doubleLayer, .tripleLayer, .doubled, .prime, .combined(available: [.doubleLayer, .tripleLayer, .doubled, .prime]), .none]
         }
     }
     
-    var scrambleLength: Int {
+    public var scrambleLength: Int {
         switch self {
         case .two:
             return 12
@@ -67,13 +67,19 @@ extension Cube {
             return 20
         case .four:
             return 40
+        case .five:
+            return 60
+        case .six:
+            return 80
+        case .seven:
+            return 90
         }
     }
 }
 
 // MARK: - Move
 
-enum Move: String {
+public enum Move: String {
     case R
     case L
     case U
@@ -86,8 +92,9 @@ enum Move: String {
 
 // MARK: - MoveModifier
 
-enum MoveModifier: Equatable {
+public enum MoveModifier: Equatable {
     case doubleLayer
+    case tripleLayer
     case prime
     case doubled
     case combined(available: [MoveModifier])
@@ -96,7 +103,7 @@ enum MoveModifier: Equatable {
     
     var priorityForCombining: Int {
         switch self {
-        case .doubleLayer:
+        case .doubleLayer, .tripleLayer:
             return 0
         case .doubled, .prime, .combined, .none:
             return 1
@@ -106,6 +113,8 @@ enum MoveModifier: Equatable {
     func canBeCombined(with another: MoveModifier) -> Bool {
         switch (self, another) {
         case (.doubled, .prime), (.prime, .doubled):
+            return false
+        case (.doubleLayer, .tripleLayer), (.tripleLayer, .doubleLayer):
             return false
         default:
             return true
@@ -119,7 +128,9 @@ enum MoveModifier: Equatable {
     private func apply(to input: String) -> String {
         switch self {
         case .doubleLayer:
-            return input.lowercased()
+            return input + "w"
+        case .tripleLayer:
+            return "3" + input + "w"
         case .prime:
             return input + "'"
         case .doubled:
@@ -152,11 +163,16 @@ enum MoveModifier: Equatable {
 
 // MARK: - Modified move
 
-struct ModifiedMove {
+public struct ModifiedMove {
     let move: Move
     let modifier: MoveModifier
     
-    var asString: String {
+    public init(move: Move, modifier: MoveModifier) {
+        self.move = move
+        self.modifier = modifier
+    }
+    
+    public var asString: String {
         modifier.apply(to: move)
     }
 }

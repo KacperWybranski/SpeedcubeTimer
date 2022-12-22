@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - CubingSession
 
-struct CubingSession: Equatable {
+public struct CubingSession: Equatable {
     var results: [Result]
     var cube: Cube
     var index: Int
@@ -25,6 +25,12 @@ struct CubingSession: Equatable {
 // MARK: - Additions
 
 extension CubingSession {
+    public init(results: [Result], cube: Cube, index: Int) {
+        self.results = results
+        self.cube = cube
+        self.index = index
+    }
+    
     init() {
         results = []
         cube = .three

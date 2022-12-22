@@ -6,50 +6,70 @@
 //
 
 import SwiftUI
-
+import ComposableArchitecture
 
 struct MainView: View {
-    @EnvironmentObject var store: Store<AppState>
-    
-    var state: MainViewState { store.state.screenState(for: .main) ?? .init() }
+    let store: Store<MainFeature.State, MainFeature.Action>
     
     var body: some View {
-        ZStack {
-            TabViewOrHorizontalTabView(
-                selection: Binding(get: { state.tabSelection },
-                                   set: { store.dispatch(MainViewStateAction.selectionChanged($0)) }),
-                rows: [
-                    TabViewOrHorizontalTabViewRow {
-                        ResultsListView()
-                    } label: {
-                        Label("Results", systemImage: "list.number")
-                    },
-                    
-                    TabViewOrHorizontalTabViewRow {
-                        TimerView()
-                    } label: {
-                        Label("Timer", systemImage: "timer")
-                    },
-                    
-                    TabViewOrHorizontalTabViewRow {
-                        SettingsView()
-                    } label: {
-                        Label("Settings", systemImage: "gearshape")
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            ZStack {
+                TabViewOrHorizontalTabView(
+                    selection: viewStore
+                        .binding(
+                            get: { $0.tabSelection },
+                            send: { .selectionChanged($0) }
+                        ),
+                    rows: [
+                        TabViewOrHorizontalTabViewRow {
+                            ResultsListView(
+                                store: self.store
+                                    .scope(
+                                        state: \.resultsList,
+                                        action: MainFeature.Action.resultsList
+                                    )
+                            )
+                        } label: {
+                            Label("Results", systemImage: "list.number")
+                        },
+                        
+                        TabViewOrHorizontalTabViewRow {
+                            TimerView(
+                                store: self.store
+                                    .scope(
+                                        state: \.timer,
+                                        action: MainFeature.Action.timer
+                                    )
+                            )
+                        } label: {
+                            Label("Timer", systemImage: "timer")
+                        },
+                        
+                        TabViewOrHorizontalTabViewRow {
+                            SettingsView(
+                                store: self.store
+                                    .scope(
+                                        state: \.settings,
+                                        action: MainFeature.Action.settings
+                                    )
+                            )
+                        } label: {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                    ]
+                )
+                .accentColor(.primaryTheme)
+                .onAppear {
+                    if #available(iOS 15.0, *) {
+                        let appearance = UITabBarAppearance()
+                        UITabBar.appearance().scrollEdgeAppearance = appearance
                     }
-                ])
-            .accentColor(.primaryTheme)
-            .onAppear {
-                if #available(iOS 15.0, *) {
-                    let appearance = UITabBarAppearance()
-                    UITabBar.appearance().scrollEdgeAppearance = appearance
                 }
                 
-                store.dispatch(AppStateAction.loadSessions)
-            }
-            
-            if state.isPresentingOverlay {
-                OverlayAnimationView(text: state.overlayText) {
-                    store.dispatch(MainViewStateAction.hideOverlay)
+                if viewStore.isPresentingOverlay {
+                    OverlayAnimationView(text: viewStore.overlayText) {
+                        viewStore.send(.hideOverlay)
+                    }
                 }
             }
         }
@@ -58,11 +78,17 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-            .environmentObject(Store(initial: AppState(),
-                                     reducer: AppState.reducer,
-                                     middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate]))
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13 mini")
+        MainView(
+            store: Store(
+                initialState: MainFeature.State(),
+                reducer: MainFeature.reducer,
+                environment: MainFeature.Environment(
+                    sessionsManager: SessionsManager(),
+                    userSettings: UserSettings()
+                )
+            )
+        )
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13 mini")
     }
 }

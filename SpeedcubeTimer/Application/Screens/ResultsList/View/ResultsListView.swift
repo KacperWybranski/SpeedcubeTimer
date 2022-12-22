@@ -6,61 +6,68 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ResultsListView: View {
-    @EnvironmentObject var store: Store<AppState>
-    
-    var state: ResultsViewState { store.state.screenState(for: .resultsList) ?? .init() }
+    let store: Store<ResultsListFeature.State, ResultsListFeature.Action>
     
     var body: some View {
-        NavigationView {
-            Group {
-                if state.currentSession.results.isEmpty {
-                    ResultsListEmptyView()
-                } else {
-                    List {
-                        Section(header: Text(ResultsListDictionary.best)) {
-                            ResultListRowBestResult(result: state.bestResult)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: state.bestAvg5)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: state.bestAvg12)
-                            ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: state.bestMean100)
-                        }
-                        
-                        Section(header: Text(ResultsListDictionary.current)) {
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf5,
-                                                 result: state.currentAvg5)
-                            ResultListRowAverage(name: ResultsListDictionary.averageOf12,
-                                                 result: state.currentAvg12)
-                            ResultListRowAverage(name: ResultsListDictionary.meanOf100,
-                                                 result: state.currentMean100)
-                        }
-                        
-                        Section(header: Text(ResultsListDictionary.all + " (\(state.currentSession.results.count))")) {
-                            ForEach(state.currentSession.results) { result in
-                                ResultListRow(result: result)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            NavigationView {
+                Group {
+                    if viewStore.currentSession.results.isEmpty {
+                        ResultsListEmptyView()
+                            .ignoresSafeArea()
+                    } else {
+                        List {
+                            Section(header: Text(ResultsListDictionary.best)) {
+                                ResultListRowBestResult(result: viewStore.bestResult)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: viewStore.bestAvg5)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: viewStore.bestAvg12)
+                                ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: viewStore.bestMean100)
                             }
-                            .onDelete { offsets in
-                                removeResult(at: offsets)
+                            
+                            Section(header: Text(ResultsListDictionary.current)) {
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf5,
+                                                     result: viewStore.currentAvg5)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf12,
+                                                     result: viewStore.currentAvg12)
+                                ResultListRowAverage(name: ResultsListDictionary.meanOf100,
+                                                     result: viewStore.currentMean100)
+                            }
+                            
+                            Section(header: Text(ResultsListDictionary.all + " (\(viewStore.currentSession.results.count))")) {
+                                ForEach(viewStore.currentSession.results) { result in
+                                    ResultListRow(result: result)
+                                }
+                                .onDelete { offsets in
+                                    viewStore
+                                        .send(
+                                            .removeResultsAt(offsets)
+                                        )
+                                }
                             }
                         }
-                    }
-                    .toolbar {
-                        EditButton()
+                        .toolbar {
+                            EditButton()
+                        }
                     }
                 }
+                .navigationBarTitleDisplayMode(.large)
+                .navigationTitle(ResultsListDictionary.results)
             }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle(ResultsListDictionary.results)
+            .background(
+                Color
+                    .black
+                    .ignoresSafeArea()
+            )
+            .onAppear {
+                viewStore
+                    .send(
+                        .loadSession
+                    )
+            }
         }
-        .background(
-            Color
-                .black
-                .ignoresSafeArea()
-        )
-    }
-    
-    func removeResult(at offsets: IndexSet) {
-        store.dispatch(ResultsViewStateAction.removeResultsAt(offsets))
     }
 }
 
@@ -68,27 +75,31 @@ struct ResultsListView: View {
 
 struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
-        let session = CubingSession.previewSession
-        let resultsListState = ResultsViewState(currentSession: session)
-        let store = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState)], session: session),
-                  reducer: AppState.reducer,
-                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
-        ResultsListView()
-            .environmentObject(store)
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13")
+        ResultsListView(
+            store: Store(
+                initialState: ResultsListFeature.State(),
+                reducer: ResultsListFeature.reducer,
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewSession),
+                    calculationsPriority: .medium
+                )
+            )
+        )
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13")
         
-        let session2 = CubingSession.previewEmptySession
-        let resultsListState2 = ResultsViewState(currentSession: session2)
-        let store2 = Store
-            .init(initial: .forPreview(screenStates: [.resultsScreen(resultsListState2)], session: session2),
-                  reducer: AppState.reducer,
-                  middlewares: [Middlewares.overlayCheck, Middlewares.sessionsUpdate])
-        ResultsListView()
-            .environmentObject(store2)
-            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13")
+        ResultsListView(
+            store: Store(
+                initialState: ResultsListFeature.State(),
+                reducer: ResultsListFeature.reducer,
+                environment: .init(
+                    sessionsManager: SessionsManager(session: .previewEmptySession),
+                    calculationsPriority: .medium
+                )
+            )
+        )
+        .preferredColorScheme(.dark)
+        .previewDevice("iPhone 13")
     }
 }
 
