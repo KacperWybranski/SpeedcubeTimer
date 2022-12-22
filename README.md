@@ -14,6 +14,8 @@ Project was started to learn more about SwiftUI and applying MVVM pattern to it.
 I decided not to share common data using global variables, so it is shared between screens by passing it to appropriate states when views are created.
 Redux architecture with any logic happening in reducers make it really easy to write tests for every step when app state is changed.
 
+Data is stored with CoreData.
+
 App is always in dark mode, so it use less energy on devices with OLED screens.
 
 ## Screenshots
