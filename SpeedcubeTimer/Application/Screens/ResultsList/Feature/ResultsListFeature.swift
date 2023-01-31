@@ -33,7 +33,7 @@ struct ResultsListFeature {
     
     // MARK: - Action
     
-    enum Action {
+    enum Action: Equatable {
         case loadSession
         case sessionLoaded(_ currentSession: CubingSession)
         case calculateResults(_ session: CubingSession)
