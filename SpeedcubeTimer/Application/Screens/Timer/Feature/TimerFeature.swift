@@ -15,7 +15,7 @@ private enum Configuration {
     static let preinpectionSeconds: TimeInterval = 15.00
 }
 
-struct TimerFeature {
+struct TimerFeature: ReducerProtocol {
     
     // MARK: - State
     
@@ -49,18 +49,16 @@ struct TimerFeature {
         case newRecordSet(_ type: OverlayManager.RecordType)
     }
     
-    // MARK: - Environment
+    // MARK: - Dependencies
     
-    struct Environment {
-        let mainQueue: AnySchedulerOf<DispatchQueue>
-        let overlayCheckPriority: TaskPriority
-        let sessionsManager: SessionsManaging
-        let userSettings: UserSettingsProtocol
-    }
+    let mainQueue: AnySchedulerOf<DispatchQueue>
+    let overlayCheckPriority: TaskPriority
+    let sessionsManager: SessionsManaging
+    let userSettings: UserSettingsProtocol
     
     // MARK: - Reducer
     
-    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
+    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         struct TimerID: Hashable {}
         
         switch (state.cubingState, action) {
@@ -68,8 +66,7 @@ struct TimerFeature {
             return .run { @MainActor send in
                 send(
                     .sessionLoaded(
-                        environment
-                            .sessionsManager
+                        sessionsManager
                             .loadSessions()
                             .current
                     )
@@ -89,9 +86,7 @@ struct TimerFeature {
             return .none
             
         case (.ready, .touchEnded):
-            let isPreinspectionOn = environment
-                .userSettings
-                .isPreinspectionOn
+            let isPreinspectionOn = userSettings.isPreinspectionOn
             state.cubingState = isPreinspectionOn ? .preinspectionOngoing : .ongoing
             state.time = isPreinspectionOn ? Configuration.preinpectionSeconds : state.time
             
@@ -103,7 +98,7 @@ struct TimerFeature {
                 .timer(
                     id: TimerID(),
                     every: .init(floatLiteral: interval),
-                    on: environment.mainQueue
+                    on: mainQueue
                 )
                 .map { _ in
                     .updateTime(runPreinspectionTimer ? Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970) : Date().timeIntervalSince1970 - startDate.timeIntervalSince1970)
@@ -126,7 +121,7 @@ struct TimerFeature {
                 .timer(
                     id: TimerID(),
                     every: .init(floatLiteral: Configuration.timeInterval),
-                    on: environment.mainQueue
+                    on: mainQueue
                 )
                 .map { _ in
                     .updateTime(
@@ -175,10 +170,9 @@ struct TimerFeature {
             
         case (_, .saveResult(let result)):
             let saveAndCheckPb = Task(
-                priority: environment.overlayCheckPriority
+                priority: overlayCheckPriority
             ) {
-                environment
-                    .sessionsManager
+                sessionsManager
                     .saveResultAndCheckForPb(result)
             }
             

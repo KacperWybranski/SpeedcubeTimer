@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 import SwiftUI
 
-struct ResultsListFeature {
+struct ResultsListFeature: ReducerProtocol {
     
     // MARK: - State
     
@@ -41,23 +41,20 @@ struct ResultsListFeature {
         case removeResultsAt(_ offsets: IndexSet)
     }
     
-    // MARK: - Environment
+    // MARK: - Dependencies
     
-    struct Environment {
-        let sessionsManager: SessionsManaging
-        let calculationsPriority: TaskPriority
-    }
+    let sessionsManager: SessionsManaging
+    let calculationsPriority: TaskPriority
     
     // MARK: - Reducer
     
-    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
+    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
         case .loadSession:
             return .run { @MainActor send in
                 send(
                     .sessionLoaded(
-                        environment
-                            .sessionsManager
+                        sessionsManager
                             .loadSessions()
                             .current
                     )
@@ -72,7 +69,7 @@ struct ResultsListFeature {
             
         case .calculateResults(let session):
             let calculation = Task(
-                priority: environment.calculationsPriority
+                priority: calculationsPriority
             ) {
                 return State(
                     currentSession: session,
@@ -92,14 +89,12 @@ struct ResultsListFeature {
                 )
             }
             
-            
         case .resultsCalculated(let calculatedState):
             state = calculatedState
             return .none
             
         case .removeResultsAt(let offsets):
-            environment
-                .sessionsManager
+            sessionsManager
                 .removeResults(at: offsets)
             return .run { @MainActor send in
                 send(.loadSession)

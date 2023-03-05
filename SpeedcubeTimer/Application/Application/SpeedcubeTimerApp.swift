@@ -15,11 +15,7 @@ struct SpeedcubeTimerApp: App {
             MainView(
                 store: Store(
                     initialState: MainFeature.State(),
-                    reducer: MainFeature.reducer,
-                    environment: .init(
-                        sessionsManager: SessionsManager(),
-                        userSettings: UserSettings()
-                    )
+                    reducer: MainFeature(sessionsManager: SessionsManager(), userSettings: UserSettings())
                 )
             )
             .preferredColorScheme(.dark)
