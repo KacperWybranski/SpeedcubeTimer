@@ -22,8 +22,7 @@ final class ResultsListReducerTests: XCTestCase {
     func testLoadSessions() async {
         let store = TestStore(
             initialState: ResultsListFeature.State(),
-            reducer: ResultsListFeature.reducer,
-            environment: ResultsListFeature.Environment(
+            reducer: ResultsListFeature(
                 sessionsManager: sessionManager,
                 calculationsPriority: .high
             )
@@ -52,8 +51,7 @@ final class ResultsListReducerTests: XCTestCase {
         
         let store = TestStore(
             initialState: ResultsListFeature.State(),
-            reducer: ResultsListFeature.reducer,
-            environment: ResultsListFeature.Environment(
+            reducer: ResultsListFeature(
                 sessionsManager: sessionManager,
                 calculationsPriority: .high
             )
