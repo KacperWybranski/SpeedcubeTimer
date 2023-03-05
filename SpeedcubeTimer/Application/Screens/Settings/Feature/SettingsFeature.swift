@@ -17,10 +17,10 @@ struct SettingsFeature {
         var currentSession: CubingSession = .init()
         var alert: AlertState<Action>?
         
-        @BindableState var isPreinspectionOn: Bool = false
-        @BindableState var selectedCube: Cube = .three
-        @BindableState var selectedIndex: Int = 1
-        @BindableState var sessionName: String = .empty
+        @BindingState var isPreinspectionOn: Bool = false
+        @BindingState var selectedCube: Cube = .three
+        @BindingState var selectedIndex: Int = 1
+        @BindingState var sessionName: String = .empty
         
         static let availableCubes: [Cube] = Cube.allCases
         static let availableSessionNums: [Int] = Array(1...10)

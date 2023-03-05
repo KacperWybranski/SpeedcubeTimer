@@ -99,7 +99,7 @@ struct TimerFeature {
             let runPreinspectionTimer = isPreinspectionOn
             let interval = runPreinspectionTimer ? Configuration.preinspectionTimeInterval : Configuration.timeInterval
             
-            return Effect
+            return EffectTask
                 .timer(
                     id: TimerID(),
                     every: .init(floatLiteral: interval),
@@ -122,7 +122,7 @@ struct TimerFeature {
             
             let startDate = Date()
             
-            return Effect
+            return EffectTask
                 .timer(
                     id: TimerID(),
                     every: .init(floatLiteral: Configuration.timeInterval),
