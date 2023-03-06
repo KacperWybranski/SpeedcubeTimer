@@ -40,6 +40,7 @@
 		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
 		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
 		E77C534E292535FE003DDF02 /* OverlayManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C534D292535FE003DDF02 /* OverlayManagerTests.swift */; };
+		E78BBCA029B6577F00CCFFD3 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = E78BBC9F29B6577F00CCFFD3 /* Collections */; };
 		E79479C828E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79479C728E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
@@ -145,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78BBCA029B6577F00CCFFD3 /* Collections in Frameworks */,
 				E701172D29096F1B00BD1D6E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +495,7 @@
 			name = SpeedcubeTimer;
 			packageProductDependencies = (
 				E701172C29096F1B00BD1D6E /* ComposableArchitecture */,
+				E78BBC9F29B6577F00CCFFD3 /* Collections */,
 			);
 			productName = SpeedcubeTimer;
 			productReference = E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */;
@@ -568,6 +571,7 @@
 			mainGroup = E8F3BAF127EA0AC6001AEDB2;
 			packageReferences = (
 				E701172B29096F1B00BD1D6E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = E8F3BAFB27EA0AC6001AEDB2 /* Products */;
 			projectDirPath = "";
@@ -1003,6 +1007,14 @@
 				version = 0.50.1;
 			};
 		};
+		E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1010,6 +1022,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E701172B29096F1B00BD1D6E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		E78BBC9F29B6577F00CCFFD3 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
 		};
 /* End XCSwiftPackageProductDependency section */
 
