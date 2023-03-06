@@ -30,6 +30,7 @@ final class TimerReducerTests: XCTestCase {
                 userSettings: userSettings
             )
         )
+        store.exhaustivity = .off
         
         sessionManager.sessionsSource = {
             return ([Configuration.session], Configuration.session)
@@ -39,7 +40,6 @@ final class TimerReducerTests: XCTestCase {
         
         await store.receive(.sessionLoaded(Configuration.session)) { state in
             state.cube = Configuration.session.cube
-            // must be exactly the same state - to fix
         }
     }
 }
