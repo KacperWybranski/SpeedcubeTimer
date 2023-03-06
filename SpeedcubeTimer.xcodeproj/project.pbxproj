@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E701172D29096F1B00BD1D6E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E701172C29096F1B00BD1D6E /* ComposableArchitecture */; };
-		E709ED90294E022400EAB100 /* ResultsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */; };
 		E709ED9229571E8100EAB100 /* SessionsManager+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */; };
+		E71535F529B6668100513F7E /* ResultsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71535F329B6668100513F7E /* ResultsListReducerTests.swift */; };
+		E71535F629B6668100513F7E /* TimerReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71535F429B6668100513F7E /* TimerReducerTests.swift */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71A787A28E9C292000F75FF /* HorizontalTabViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */; };
 		E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */; };
@@ -84,8 +85,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListReducerTests.swift; sourceTree = "<group>"; };
 		E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionsManager+Mocks.swift"; sourceTree = "<group>"; };
+		E71535F329B6668100513F7E /* ResultsListReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsListReducerTests.swift; sourceTree = "<group>"; };
+		E71535F429B6668100513F7E /* TimerReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerReducerTests.swift; sourceTree = "<group>"; };
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewBar.swift; sourceTree = "<group>"; };
 		E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewRow.swift; sourceTree = "<group>"; };
@@ -182,6 +184,15 @@
 				E7602A9428FD85EE00286E47 /* TimerFeature.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		E71535F229B6668100513F7E /* ReducersTests */ = {
+			isa = PBXGroup;
+			children = (
+				E71535F329B6668100513F7E /* ResultsListReducerTests.swift */,
+				E71535F429B6668100513F7E /* TimerReducerTests.swift */,
+			);
+			path = ReducersTests;
 			sourceTree = "<group>";
 		};
 		E71A787828E9C27E000F75FF /* HorizontalTabView */ = {
@@ -402,9 +413,9 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E71535F229B6668100513F7E /* ReducersTests */,
 				E73D688828B396AE00B41034 /* ModelTests */,
 				E73D688128B3913400B41034 /* HelpersTests */,
-				E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */,
 				E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */,
 			);
 			path = SpeedcubeTimerTests;
@@ -666,10 +677,11 @@
 			files = (
 				E709ED9229571E8100EAB100 /* SessionsManager+Mocks.swift in Sources */,
 				E77C534E292535FE003DDF02 /* OverlayManagerTests.swift in Sources */,
+				E71535F629B6668100513F7E /* TimerReducerTests.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
-				E709ED90294E022400EAB100 /* ResultsListReducerTests.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
+				E71535F529B6668100513F7E /* ResultsListReducerTests.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
 				E73D688328B3914800B41034 /* ScrambleProviderTests.swift in Sources */,

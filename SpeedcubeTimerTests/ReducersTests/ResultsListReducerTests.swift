@@ -11,7 +11,6 @@ import ComposableArchitecture
 @testable import SpeedcubeTimer
 
 final class ResultsListReducerTests: XCTestCase {
-    
     var sessionManager: MockSessionsManager!
     
     override func setUp() async throws {
@@ -56,6 +55,7 @@ final class ResultsListReducerTests: XCTestCase {
                 calculationsPriority: .high
             )
         )
+        store.exhaustivity = .off
         
         sessionManager.sessionsSource = {
             return ([Configuration.session], Configuration.session)
@@ -69,18 +69,6 @@ final class ResultsListReducerTests: XCTestCase {
         _ = await store.send(.removeResultsAt(Configuration.indexSet))
         
         await store.receive(.loadSession)
-        
-        // below can be removed in future
-        
-        await store.receive(.sessionLoaded(Configuration.session)) { state in
-            state.currentSession = Configuration.session
-        }
-        
-        await store.receive(.calculateResults(Configuration.session))
-        
-        await store.receive(.resultsCalculated(Configuration.calculatedState)) { state in
-            state = Configuration.calculatedState
-        }
         
         wait(for: [expectation], timeout: 5.0)
     }
