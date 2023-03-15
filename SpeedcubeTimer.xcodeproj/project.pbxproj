@@ -356,6 +356,7 @@
 		E7EEE0A028D8679500214A31 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E7340F7228D8F0FF00270680 /* CoreData */,
 				E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */,
 				E7EEE0A128D867CA00214A31 /* SessionsManager.swift */,
 				E7EEE0A328D8989D00214A31 /* OverlayManager.swift */,
@@ -438,7 +439,6 @@
 				E8F3BB2E27EA1A79001AEDB2 /* Common */,
 				E7EEE0A028D8679500214A31 /* Managers */,
 				E7556D992804320E0024BB7A /* Screens */,
-				E7340F7228D8F0FF00270680 /* CoreData */,
 			);
 			path = Application;
 			sourceTree = "<group>";
