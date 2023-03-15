@@ -99,8 +99,7 @@ struct TimerView_Previews: PreviewProvider {
                                             cube: .four,
                                             scramble: ScrambleProvider.newScramble(for: .four)
                                         ),
-                reducer: TimerFeature.reducer,
-                environment: .init(
+                reducer: TimerFeature(
                     mainQueue: .main,
                     overlayCheckPriority: .medium,
                     sessionsManager: SessionsManager(),

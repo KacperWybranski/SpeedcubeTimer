@@ -12,7 +12,7 @@ final class MockSessionsManager: SessionsManaging {
     
     // MARK: - SessionsManaging
     
-    func loadSessions() -> (all: [SpeedcubeTimer.CubingSession], current: SpeedcubeTimer.CubingSession) {
+    func loadSessions() -> (all: [CubingSession], current: CubingSession) {
         if let source = sessionsSource {
             return source()
         } else {
@@ -21,19 +21,19 @@ final class MockSessionsManager: SessionsManaging {
         }
     }
     
-    func session(for cube: SpeedcubeTimer.Cube, and index: Int) -> SpeedcubeTimer.CubingSession {
+    func session(for cube: Cube, and index: Int) -> CubingSession {
         return .initialSession
     }
     
-    func session(for cube: SpeedcubeTimer.Cube) -> SpeedcubeTimer.CubingSession {
+    func session(for cube: Cube) -> CubingSession {
         return .initialSession
     }
     
-    func sessionForCurrentCube(and index: Int) -> SpeedcubeTimer.CubingSession {
+    func sessionForCurrentCube(and index: Int) -> CubingSession {
         return .initialSession
     }
     
-    func setCurrentSession(_ session: SpeedcubeTimer.CubingSession) {
+    func setCurrentSession(_ session: CubingSession) {
         
     }
     
@@ -41,8 +41,8 @@ final class MockSessionsManager: SessionsManaging {
         
     }
     
-    func saveResultAndCheckForPb(_ result: SpeedcubeTimer.Result) -> SpeedcubeTimer.OverlayManager.RecordType {
-        .none
+    func saveResultAndCheckForPb(_ result: Result) -> OverlayManager.RecordType {
+        checkForPbResult
     }
     
     func removeResults(at offsets: IndexSet) {
@@ -61,5 +61,6 @@ final class MockSessionsManager: SessionsManaging {
     
     var sessionsSource: (() -> (all: [CubingSession], current: CubingSession))?
     var onRemoveResults: ((IndexSet) -> ())?
+    var checkForPbResult: OverlayManager.RecordType = .none
     
 }

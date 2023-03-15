@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct SettingsFeature {
+struct SettingsFeature: ReducerProtocol {
     
     // MARK: - State
     
@@ -17,10 +17,10 @@ struct SettingsFeature {
         var currentSession: CubingSession = .init()
         var alert: AlertState<Action>?
         
-        @BindableState var isPreinspectionOn: Bool = false
-        @BindableState var selectedCube: Cube = .three
-        @BindableState var selectedIndex: Int = 1
-        @BindableState var sessionName: String = .empty
+        @BindingState var isPreinspectionOn: Bool = false
+        @BindingState var selectedCube: Cube = .three
+        @BindingState var selectedIndex: Int = 1
+        @BindingState var sessionName: String = .empty
         
         static let availableCubes: [Cube] = Cube.allCases
         static let availableSessionNums: [Int] = Array(1...10)
@@ -46,133 +46,123 @@ struct SettingsFeature {
         case binding(BindingAction<State>)
     }
     
-    // MARK: - Environment
+    // MARK: - Dependencies
     
-    struct Environment {
-        let sessionsManager: SessionsManaging
-        let userSettings: UserSettingsProtocol
-    }
+    let sessionsManager: SessionsManaging
+    let userSettings: UserSettingsProtocol
     
     // MARK: - Reducer
     
-    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
-        switch action {
-        case .loadSessions:
-            return .run { @MainActor send in
-                let loadedSessions = environment
-                                            .sessionsManager
-                                            .loadSessions()
-                send(
-                    .sessionsLoaded(
-                        allSesions: loadedSessions.all,
-                        currentSession: loadedSessions.current
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .loadSessions:
+                return .run { @MainActor send in
+                    let loadedSessions = sessionsManager.loadSessions()
+                    send(
+                        .sessionsLoaded(
+                            allSesions: loadedSessions.all,
+                            currentSession: loadedSessions.current
+                        )
+                    )
+                }
+                
+            case .sessionsLoaded(let newAll, let newCurrent):
+                state.allSessions = newAll
+                state.currentSession = newCurrent
+                state.sessionName = newCurrent.name ?? .empty
+                return .none
+                
+            case .showEraseSessionPopup:
+                state.alert = AlertState(
+                    title: TextState("Erase current session?"),
+                    message: TextState("Current session name and all results from this session will be removed."),
+                    primaryButton: .destructive(
+                        TextState("Yes"),
+                        action: .send(.eraseCurrentSession)
+                    ),
+                    secondaryButton: .cancel(
+                        TextState("No"),
+                        action: .send(.dismissPopup)
                     )
                 )
-            }
-            
-        case .sessionsLoaded(let newAll, let newCurrent):
-            state.allSessions = newAll
-            state.currentSession = newCurrent
-            state.sessionName = newCurrent.name ?? .empty
-            return .none
-            
-        case .showEraseSessionPopup:
-            state.alert = AlertState(
-                title: TextState("Erase current session?"),
-                message: TextState("Current session name and all results from this session will be removed."),
-                primaryButton: .destructive(
-                    TextState("Yes"),
-                    action: .send(.eraseCurrentSession)
-                ),
-                secondaryButton: .cancel(
-                    TextState("No"),
-                    action: .send(.dismissPopup)
+                return .none
+                
+            case .showResetPopup:
+                state.alert = AlertState(
+                    title: TextState("Reset app data?"),
+                    message: TextState("All data including results in every session will be removed. This action cannot be undone."),
+                    primaryButton: .destructive(
+                        TextState("Yes"),
+                        action: .send(.resetApp)
+                    ),
+                    secondaryButton: .cancel(
+                        TextState("Cancel"),
+                        action: .send(.dismissPopup)
+                    )
                 )
-            )
-            return .none
-            
-        case .showResetPopup:
-            state.alert = AlertState(
-                title: TextState("Reset app data?"),
-                message: TextState("All data including results in every session will be removed. This action cannot be undone."),
-                primaryButton: .destructive(
-                    TextState("Yes"),
-                    action: .send(.resetApp)
-                ),
-                secondaryButton: .cancel(
-                    TextState("Cancel"),
-                    action: .send(.dismissPopup)
-                )
-            )
-            return .none
-          
-        case .resetApp:
-            environment
-                .sessionsManager
-                .resetApp()
-            return .run { @MainActor send in
-                send(.loadSessions)
+                return .none
+                
+            case .resetApp:
+                sessionsManager.resetApp()
+                return .run { @MainActor send in
+                    send(.loadSessions)
+                }
+                
+            case .eraseCurrentSession:
+                sessionsManager
+                    .erase(
+                        session: state.currentSession
+                    )
+                return .run { @MainActor send in
+                    send(.loadSessions)
+                }
+                
+            case .dismissPopup:
+                state.alert = nil
+                
+                return .none
+                
+            case .binding(\.$isPreinspectionOn):
+                userSettings
+                    .setIsPreinspectionOn(
+                        state.isPreinspectionOn
+                    )
+                
+                return .none
+                
+            case .binding(\.$selectedCube):
+                sessionsManager
+                    .setCurrentSession(
+                        sessionsManager
+                            .session(for: state.selectedCube)
+                    )
+                return .run { @MainActor send in
+                    send(.loadSessions)
+                }
+                
+            case .binding(\.$selectedIndex):
+                sessionsManager
+                    .setCurrentSession(
+                        sessionsManager
+                            .sessionForCurrentCube(and: state.selectedIndex)
+                    )
+                return .run { @MainActor send in
+                    send(.loadSessions)
+                }
+                
+            case .binding(\.$sessionName):
+                sessionsManager
+                    .setNameForCurrentSession(state.sessionName)
+                return .run { @MainActor send in
+                    send(.loadSessions)
+                }
+                
+            case .binding:
+                return .none
             }
-            
-        case .eraseCurrentSession:
-            environment
-                .sessionsManager
-                .erase(
-                    session: state.currentSession
-                )
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-            
-        case .dismissPopup:
-            state.alert = nil
-            
-            return .none
-        
-        case .binding(\.$isPreinspectionOn):
-            environment
-                .userSettings
-                .setIsPreinspectionOn(
-                    state.isPreinspectionOn
-                )
-            
-            return .none
-            
-        case .binding(\.$selectedCube):
-            environment
-                .sessionsManager
-                .setCurrentSession(
-                    environment
-                        .sessionsManager
-                        .session(for: state.selectedCube)
-                )
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-            
-        case .binding(\.$selectedIndex):
-            environment
-                .sessionsManager
-                .setCurrentSession(
-                    environment
-                        .sessionsManager
-                        .sessionForCurrentCube(and: state.selectedIndex)
-                )
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-        
-        case .binding(\.$sessionName):
-            environment
-                .sessionsManager
-                .setNameForCurrentSession(state.sessionName)
-            return .run { @MainActor send in
-                send(.loadSessions)
-            }
-            
-        case .binding:
-            return .none
         }
+        
+        BindingReducer()
     }
-    .binding()
 }

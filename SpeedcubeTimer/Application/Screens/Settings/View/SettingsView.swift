@@ -102,8 +102,7 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(
             store: Store(
                 initialState: SettingsFeature.State(),
-                reducer: SettingsFeature.reducer,
-                environment: . init(
+                reducer: SettingsFeature(
                     sessionsManager: SessionsManager(),
                     userSettings: UserSettings()
                 )

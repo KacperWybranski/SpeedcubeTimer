@@ -12,17 +12,17 @@ import ComposableArchitecture
 struct SpeedcubeTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView(
-                store: Store(
-                    initialState: MainFeature.State(),
-                    reducer: MainFeature.reducer,
-                    environment: .init(
-                        sessionsManager: SessionsManager(),
-                        userSettings: UserSettings()
+            if NSClassFromString("XCTestCase") == nil {
+                MainView(
+                    store: Store(
+                        initialState: MainFeature.State(),
+                        reducer: MainFeature(sessionsManager: SessionsManager(), userSettings: UserSettings())
                     )
                 )
-            )
-            .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
+            } else {
+                Text("Running unit tests")
+            }
         }
     }
 }

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E701172D29096F1B00BD1D6E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = E701172C29096F1B00BD1D6E /* ComposableArchitecture */; };
-		E709ED90294E022400EAB100 /* ResultsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */; };
 		E709ED9229571E8100EAB100 /* SessionsManager+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */; };
+		E71535F529B6668100513F7E /* ResultsListReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71535F329B6668100513F7E /* ResultsListReducerTests.swift */; };
+		E71535F629B6668100513F7E /* TimerReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71535F429B6668100513F7E /* TimerReducerTests.swift */; };
 		E718865228AE4934004DDD29 /* AverageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718865128AE4934004DDD29 /* AverageResult.swift */; };
 		E71A787A28E9C292000F75FF /* HorizontalTabViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */; };
 		E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */; };
@@ -40,6 +41,7 @@
 		E763B8E928DC4A5A00097281 /* CDSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E528DC4A5A00097281 /* CDSession+CoreDataClass.swift */; };
 		E763B8EA28DC4A5A00097281 /* CDSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E763B8E628DC4A5A00097281 /* CDSession+CoreDataProperties.swift */; };
 		E77C534E292535FE003DDF02 /* OverlayManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C534D292535FE003DDF02 /* OverlayManagerTests.swift */; };
+		E78BBCA029B6577F00CCFFD3 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = E78BBC9F29B6577F00CCFFD3 /* Collections */; };
 		E79479C828E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79479C728E9AF44005F43D4 /* TabViewOrHorizontalTabView.swift */; };
 		E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
 		E79D878427F2FCC900C39780 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79D878327F2FCC900C39780 /* TimeInterval+Additions.swift */; };
@@ -83,8 +85,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListReducerTests.swift; sourceTree = "<group>"; };
 		E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionsManager+Mocks.swift"; sourceTree = "<group>"; };
+		E71535F329B6668100513F7E /* ResultsListReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsListReducerTests.swift; sourceTree = "<group>"; };
+		E71535F429B6668100513F7E /* TimerReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerReducerTests.swift; sourceTree = "<group>"; };
 		E718865128AE4934004DDD29 /* AverageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageResult.swift; sourceTree = "<group>"; };
 		E71A787928E9C292000F75FF /* HorizontalTabViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewBar.swift; sourceTree = "<group>"; };
 		E71A787B28E9C2A5000F75FF /* HorizontalTabViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTabViewRow.swift; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78BBCA029B6577F00CCFFD3 /* Collections in Frameworks */,
 				E701172D29096F1B00BD1D6E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +184,15 @@
 				E7602A9428FD85EE00286E47 /* TimerFeature.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		E71535F229B6668100513F7E /* ReducersTests */ = {
+			isa = PBXGroup;
+			children = (
+				E71535F329B6668100513F7E /* ResultsListReducerTests.swift */,
+				E71535F429B6668100513F7E /* TimerReducerTests.swift */,
+			);
+			path = ReducersTests;
 			sourceTree = "<group>";
 		};
 		E71A787828E9C27E000F75FF /* HorizontalTabView */ = {
@@ -343,6 +356,7 @@
 		E7EEE0A028D8679500214A31 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E7340F7228D8F0FF00270680 /* CoreData */,
 				E8F3BB2F27EA1A83001AEDB2 /* ScrambleProvider.swift */,
 				E7EEE0A128D867CA00214A31 /* SessionsManager.swift */,
 				E7EEE0A328D8989D00214A31 /* OverlayManager.swift */,
@@ -400,9 +414,9 @@
 		E8F3BB0D27EA0AC7001AEDB2 /* SpeedcubeTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E71535F229B6668100513F7E /* ReducersTests */,
 				E73D688828B396AE00B41034 /* ModelTests */,
 				E73D688128B3913400B41034 /* HelpersTests */,
-				E709ED8F294E022400EAB100 /* ResultsListReducerTests.swift */,
 				E709ED9129571E8100EAB100 /* SessionsManager+Mocks.swift */,
 			);
 			path = SpeedcubeTimerTests;
@@ -425,7 +439,6 @@
 				E8F3BB2E27EA1A79001AEDB2 /* Common */,
 				E7EEE0A028D8679500214A31 /* Managers */,
 				E7556D992804320E0024BB7A /* Screens */,
-				E7340F7228D8F0FF00270680 /* CoreData */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -493,6 +506,7 @@
 			name = SpeedcubeTimer;
 			packageProductDependencies = (
 				E701172C29096F1B00BD1D6E /* ComposableArchitecture */,
+				E78BBC9F29B6577F00CCFFD3 /* Collections */,
 			);
 			productName = SpeedcubeTimer;
 			productReference = E8F3BAFA27EA0AC6001AEDB2 /* SpeedcubeTimer.app */;
@@ -568,6 +582,7 @@
 			mainGroup = E8F3BAF127EA0AC6001AEDB2;
 			packageReferences = (
 				E701172B29096F1B00BD1D6E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = E8F3BAFB27EA0AC6001AEDB2 /* Products */;
 			projectDirPath = "";
@@ -662,10 +677,11 @@
 			files = (
 				E709ED9229571E8100EAB100 /* SessionsManager+Mocks.swift in Sources */,
 				E77C534E292535FE003DDF02 /* OverlayManagerTests.swift in Sources */,
+				E71535F629B6668100513F7E /* TimerReducerTests.swift in Sources */,
 				E73D688528B3950800B41034 /* Double+AverageTests.swift in Sources */,
 				E73D688A28B396C800B41034 /* ResultTests.swift in Sources */,
-				E709ED90294E022400EAB100 /* ResultsListReducerTests.swift in Sources */,
 				E73D687A28B04A4400B41034 /* Double+Additions.swift in Sources */,
+				E71535F529B6668100513F7E /* ResultsListReducerTests.swift in Sources */,
 				E73D687B28B04A5000B41034 /* String+Additions.swift in Sources */,
 				E799AB7828C9FBEB00E8F18E /* TimeInterval+Additions.swift in Sources */,
 				E73D688328B3914800B41034 /* ScrambleProviderTests.swift in Sources */,
@@ -1000,7 +1016,15 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = exactVersion;
-				version = 0.40.0;
+				version = 0.50.1;
+			};
+		};
+		E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1010,6 +1034,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E701172B29096F1B00BD1D6E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		E78BBC9F29B6577F00CCFFD3 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78BBC9E29B6577F00CCFFD3 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
 		};
 /* End XCSwiftPackageProductDependency section */
 
