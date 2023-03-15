@@ -54,6 +54,7 @@ struct SettingsFeature: ReducerProtocol {
     // MARK: - Reducer
     
     var body: some ReducerProtocol<State, Action> {
+        BindingReducer()
         Reduce { state, action in
             switch action {
             case .loadSessions:
