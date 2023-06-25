@@ -35,7 +35,7 @@ struct TimerView: View {
                                 .font(.system(size: 40))
                                 .minimumScaleFactor(0.5)
                                 .multilineTextAlignment(.center)
-                                .padding(.horizontal, 15)
+                                .padding(15)
                         )
                     
                     Text(viewStore.formattedTime)

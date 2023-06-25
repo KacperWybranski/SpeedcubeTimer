@@ -49,7 +49,6 @@
 		E79EC3AD28F70D8F00D4C3CF /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */; };
 		E79EC3AF28F70E1100D4C3CF /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79EC3AE28F70E1100D4C3CF /* SettingsFeature.swift */; };
 		E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0A03228AE64970092776C /* Date+Additions.swift */; };
-		E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */; };
 		E7A415F428BBAB0000140717 /* Color+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A415F328BBAB0000140717 /* Color+Additions.swift */; };
 		E7AB789F28B6B59300280044 /* OverlayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */; };
 		E7EEE0A228D867CA00214A31 /* SessionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EEE0A128D867CA00214A31 /* SessionsManager.swift */; };
@@ -122,7 +121,6 @@
 		E79EC3AC28F70D8F00D4C3CF /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		E79EC3AE28F70E1100D4C3CF /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
 		E7A0A03228AE64970092776C /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
-		E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterCircleTransition.swift; sourceTree = "<group>"; };
 		E7A415F328BBAB0000140717 /* Color+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Additions.swift"; sourceTree = "<group>"; };
 		E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAnimationView.swift; sourceTree = "<group>"; };
 		E7EEE0A128D867CA00214A31 /* SessionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsManager.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 				E71A787D28E9C331000F75FF /* TabViewOrHorizontalTabView */,
 				E71A787828E9C27E000F75FF /* HorizontalTabView */,
 				E7AB789E28B6B59300280044 /* OverlayAnimationView.swift */,
-				E7A415F128BBA7C400140717 /* QuarterCircleTransition.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -658,7 +655,6 @@
 				E763B8E728DC4A5A00097281 /* CDResult+CoreDataClass.swift in Sources */,
 				E73D688C28B39AD900B41034 /* ResultsListEmptyView.swift in Sources */,
 				E7556DA1280433C40024BB7A /* CubingSession.swift in Sources */,
-				E7A415F228BBA7C400140717 /* QuarterCircleTransition.swift in Sources */,
 				E763B8E828DC4A5A00097281 /* CDResult+CoreDataProperties.swift in Sources */,
 				E7A0A03328AE64970092776C /* Date+Additions.swift in Sources */,
 				E71A787C28E9C2A5000F75FF /* HorizontalTabViewRow.swift in Sources */,
