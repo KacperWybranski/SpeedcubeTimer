@@ -51,6 +51,11 @@ struct TimerView: View {
                 self.store.scope(state: \.alert),
                 dismiss: .dismissPopup
             )
+            .recordOverlay(
+                text: viewStore.overlayText ?? .empty,
+                .init(get: { viewStore.overlayText.isNotNil },
+                      set: { if !$0 { viewStore.send(.hideOverlay) } })
+            )
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { _ in

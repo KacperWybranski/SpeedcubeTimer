@@ -5,6 +5,7 @@
 //  Created by Kacper on 24/08/2022.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 fileprivate struct OverlayAnimationViewModifier: ViewModifier {
@@ -12,7 +13,7 @@ fileprivate struct OverlayAnimationViewModifier: ViewModifier {
     // MARK: - Private
     
     @State private var isOverlayColorVisible: Bool = false
-    @State private var isTextVisible: Bool = false
+    @State private var textOpacity: CGFloat = 0.0
     @Binding private var isPresented: Bool
     
     private var themeColor: Color = .randomThemeForOverlay
@@ -30,44 +31,41 @@ fileprivate struct OverlayAnimationViewModifier: ViewModifier {
             content
             
             VStack {
+                Spacer()
+                    .layoutPriority(1)
+                
                 ZStack {
                     if isOverlayColorVisible {
                         themeColor
-                            .transition(.asymmetric(insertion: .move(edge: .top), removal: .opacity))
+                            .edgesIgnoringSafeArea(.bottom)
+                            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
                     }
                     
-                    VStack {
-                        Spacer()
-                        
-                        if isTextVisible {
-                            Text(text)
-                                .foregroundColor(themeColor)
-                                .font(.system(size: 30))
-                                .multilineTextAlignment(.center)
-                                .transition(.opacity)
-                        }
-                    }
+                    Text(text)
+                        .foregroundColor(themeColor)
+                        .font(.system(size: 30))
+                        .multilineTextAlignment(.center)
+                        .opacity(textOpacity)
+                        .padding(.vertical, 10)
+                        .transition(.opacity)
                 }
-                .frame(maxHeight: 100)
                 
-                Spacer()
             }
-            .ignoresSafeArea()
-            .onChange(of: isPresented) { isPresented in
-                guard isPresented else { return }
-                withAnimation(.easeInOut(duration: Configuration.showOverlayDuration)) {
-                    isOverlayColorVisible = true
-                }
-                withAnimation(.linear(duration: Configuration.hideOverlayShowTextDuration).delay(1.0)) {
-                    isOverlayColorVisible = false
-                    isTextVisible = true
-                }
-                withAnimation(.easeIn(duration: Configuration.hideTextDuration).delay(4.0)) {
-                    isTextVisible = false
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                    self.isPresented = false
-                }
+        }
+        .onChange(of: isPresented) { isPresented in
+            guard isPresented else { return }
+            withAnimation(.easeInOut(duration: Configuration.showOverlayDuration)) {
+                isOverlayColorVisible = true
+            }
+            withAnimation(.linear(duration: Configuration.hideOverlayShowTextDuration).delay(1.0)) {
+                isOverlayColorVisible = false
+                textOpacity = 1.0
+            }
+            withAnimation(.linear(duration: Configuration.hideTextDuration).delay(4.0)) {
+                textOpacity = 0.0
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                self.isPresented = false
             }
         }
     }
@@ -93,11 +91,17 @@ struct SampleView: View {
     @State var showOverlay: Bool = false
     
     var body: some View {
-        Button("Tap to see animation") {
-            showOverlay = true
+        TabView {
+            Button("Tap to see animation") {
+                showOverlay = true
+            }
+            .buttonStyle(.automatic)
+            .tabItem {
+                Text("xd")
+            }
         }
-        .buttonStyle(.automatic)
         .recordOverlay(text: "Hello :)", $showOverlay)
+        .preferredColorScheme(.dark)
     }
 }
 

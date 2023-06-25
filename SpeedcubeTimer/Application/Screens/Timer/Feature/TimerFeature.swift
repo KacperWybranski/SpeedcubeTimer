@@ -25,6 +25,7 @@ struct TimerFeature: ReducerProtocol {
         var cube: Cube = .three
         var scramble: String = ScrambleProvider.newScramble(for: .three)
         var alert: AlertState<Action>?
+        var overlayText: String?
         
         var formattedTime: String {
             if cubingState == .preinspectionOngoing || cubingState == .preinspectionReady {
@@ -47,6 +48,8 @@ struct TimerFeature: ReducerProtocol {
         case dismissPopup
         case saveResult(_ result: Result)
         case newRecordSet(_ type: OverlayManager.RecordType)
+        case showOverlay(text: String)
+        case hideOverlay
     }
     
     // MARK: - Dependencies
@@ -182,6 +185,36 @@ struct TimerFeature: ReducerProtocol {
                     .newRecordSet(record)
                 )
             }
+            
+        case (_, .newRecordSet(let type)):
+            var overlayText: String? {
+                switch type {
+                case .single:
+                    return "🤩 new best single 🥳"
+                case .avg5:
+                    return "🤯 new best avg5 😱"
+                case .avg12:
+                    return "🎉 new best avg12 🎉"
+                case .mo100:
+                    return "🪑 new best mo100 👏"
+                case .none:
+                    return nil
+                }
+            }
+            return .run { @MainActor send in
+                guard let overlayText = overlayText else { return }
+                send(
+                    .showOverlay(text: overlayText)
+                )
+            }
+            
+        case (_, .showOverlay(let text)):
+            state.overlayText = text
+            return .none
+            
+        case (_, .hideOverlay):
+            state.overlayText = nil
+            return .none
             
         default:
             return .none

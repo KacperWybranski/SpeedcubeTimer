@@ -22,9 +22,12 @@ struct ResultsListView: View {
                         List {
                             Section(header: Text(ResultsListDictionary.best)) {
                                 ResultListRowBestResult(result: viewStore.bestResult)
-                                ResultListRowAverage(name: ResultsListDictionary.averageOf5, result: viewStore.bestAvg5)
-                                ResultListRowAverage(name: ResultsListDictionary.averageOf12, result: viewStore.bestAvg12)
-                                ResultListRowAverage(name: ResultsListDictionary.meanOf100, result: viewStore.bestMean100)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf5,
+                                                     result: viewStore.bestAvg5)
+                                ResultListRowAverage(name: ResultsListDictionary.averageOf12,
+                                                     result: viewStore.bestAvg12)
+                                ResultListRowAverage(name: ResultsListDictionary.meanOf100,
+                                                     result: viewStore.bestMean100)
                             }
                             
                             Section(header: Text(ResultsListDictionary.current)) {

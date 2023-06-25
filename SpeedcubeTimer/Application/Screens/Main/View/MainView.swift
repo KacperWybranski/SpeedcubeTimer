@@ -13,50 +13,49 @@ struct MainView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            TabViewOrHorizontalTabView(
+            TabView(
                 selection: viewStore
                     .binding(
-                        get: { $0.tabSelection },
-                        send: { .selectionChanged($0) }
-                    ),
-                rows: [
-                    TabViewOrHorizontalTabViewRow {
-                        ResultsListView(
-                            store: self.store
-                                .scope(
-                                    state: \.resultsList,
-                                    action: MainFeature.Action.resultsList
-                                )
+                        get: \.tabSelection,
+                        send: MainFeature.Action.selectionChanged
+                    )
+            ) {
+                ResultsListView(
+                    store: self.store
+                        .scope(
+                            state: \.resultsList,
+                            action: MainFeature.Action.resultsList
                         )
-                    } label: {
-                        Label("Results", systemImage: "list.number")
-                    },
-                    
-                    TabViewOrHorizontalTabViewRow {
-                        TimerView(
-                            store: self.store
-                                .scope(
-                                    state: \.timer,
-                                    action: MainFeature.Action.timer
-                                )
+                )
+                .tabItem {
+                    Label("Results", systemImage: "list.number")
+                }
+                .tag(0)
+                
+                TimerView(
+                    store: self.store
+                        .scope(
+                            state: \.timer,
+                            action: MainFeature.Action.timer
                         )
-                    } label: {
-                        Label("Timer", systemImage: "timer")
-                    },
-                    
-                    TabViewOrHorizontalTabViewRow {
-                        SettingsView(
-                            store: self.store
-                                .scope(
-                                    state: \.settings,
-                                    action: MainFeature.Action.settings
-                                )
+                )
+                .tabItem {
+                    Label("Timer", systemImage: "timer")
+                }
+                .tag(1)
+                
+                SettingsView(
+                    store: self.store
+                        .scope(
+                            state: \.settings,
+                            action: MainFeature.Action.settings
                         )
-                    } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
-                ]
-            )
+                )
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                }
+                .tag(2)
+            }
             .accentColor(.primaryTheme)
             .onAppear {
                 if #available(iOS 15.0, *) {
@@ -64,11 +63,6 @@ struct MainView: View {
                     UITabBar.appearance().scrollEdgeAppearance = appearance
                 }
             }
-            .recordOverlay(
-                text: viewStore.overlayText,
-                .init(get: { viewStore.isPresentingOverlay },
-                      set: { if !$0 { viewStore.send(.hideOverlay) } })
-            )
         }
     }
 }
