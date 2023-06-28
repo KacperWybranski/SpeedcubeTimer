@@ -20,7 +20,16 @@ struct TimerView: View {
                     .black
                     .ignoresSafeArea()
                 
-                content(viewStore: viewStore)
+                clickableContent(viewStore: viewStore)
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { _ in
+                                viewStore.send(.touchBegan)
+                            }
+                            .onEnded { _ in
+                                viewStore.send(.touchEnded)
+                            }
+                    )
             }
             .alert(
                 self.store.scope(state: \.alert),
@@ -30,15 +39,6 @@ struct TimerView: View {
                 text: viewStore.overlayText ?? .empty,
                 .init(get: { viewStore.overlayText.isNotNil },
                       set: { if !$0 { viewStore.send(.hideOverlay) } })
-            )
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in
-                        viewStore.send(.touchBegan)
-                    }
-                    .onEnded { _ in
-                        viewStore.send(.touchEnded)
-                    }
             )
             .onAppear {
                 viewStore.send(.loadSession)
@@ -59,45 +59,50 @@ struct TimerView: View {
     }
     
     @ViewBuilder
-    func content(viewStore: ViewStore<TimerFeature.State, TimerFeature.Action>) -> some View {
-        GeometryReader { proxy in
-            VStack(spacing: 0) {
-                if sizeClass != .compact {
-                    HStack {
-                        Text(viewStore.cube.name)
-                        
-                        Rectangle()
-                            .frame(width: 1, height: 40)
-                            .padding(.horizontal, 15)
+    func clickableContent(viewStore: ViewStore<TimerFeature.State, TimerFeature.Action>) -> some View {
+        Group {
+            Color.black
+                .padding(20)
+            
+            GeometryReader { proxy in
+                VStack(spacing: 0) {
+                    if sizeClass != .compact {
+                        HStack {
+                            Text(viewStore.cube.name)
                             
-                        Text(viewStore.sessionName)
+                            Rectangle()
+                                .frame(width: 1, height: 40)
+                                .padding(.horizontal, 15)
+                                
+                            Text(viewStore.sessionName)
+                        }
+                        .frame(maxWidth: proxy.size.width*0.25)
+                        .lineLimit(1)
+                        .hidden(viewStore.cubingState.shouldHideLabels)
+                        .font(.system(size: 30))
+                        .foregroundColor(.lightGray)
+                        .padding(.top, 15)
                     }
-                    .frame(maxWidth: proxy.size.width*0.25)
-                    .lineLimit(1)
-                    .hidden(viewStore.cubingState.shouldHideLabels)
-                    .font(.system(size: 30))
-                    .foregroundColor(.lightGray)
-                    .padding(.top, 15)
+                    
+                    Color.clear
+                        .overlay(
+                            Text(viewStore.scramble)
+                                .hidden(viewStore.cubingState.shouldHideLabels)
+                                .foregroundColor(.lightGray)
+                                .font(.system(size: 40))
+                                .minimumScaleFactor(0.5)
+                                .multilineTextAlignment(.center)
+                                .padding(15)
+                        )
+                    
+                    Text(viewStore.formattedTime)
+                        .foregroundColor(viewStore.cubingState.timerTextColor)
+                        .font(.system(size: 70))
+                        .multilineTextAlignment(.center)
+                    
+                    
+                    Color.clear
                 }
-                
-                Color.clear
-                    .overlay(
-                        Text(viewStore.scramble)
-                            .hidden(viewStore.cubingState.shouldHideLabels)
-                            .foregroundColor(.lightGray)
-                            .font(.system(size: 40))
-                            .minimumScaleFactor(0.5)
-                            .multilineTextAlignment(.center)
-                            .padding(15)
-                    )
-                
-                Text(viewStore.formattedTime)
-                    .foregroundColor(viewStore.cubingState.timerTextColor)
-                    .font(.system(size: 70))
-                    .multilineTextAlignment(.center)
-                
-                
-                Color.clear
             }
         }
     }
