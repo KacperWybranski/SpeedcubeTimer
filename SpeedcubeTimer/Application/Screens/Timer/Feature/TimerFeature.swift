@@ -23,6 +23,7 @@ struct TimerFeature: ReducerProtocol {
         var cubingState: CubingState = .idle
         var time: Double = 0.0
         var cube: Cube = .three
+        var sessionName: String = .empty
         var scramble: String = ScrambleProvider.newScramble(for: .three)
         var alert: AlertState<Action>?
         var overlayText: String?
@@ -61,164 +62,166 @@ struct TimerFeature: ReducerProtocol {
     
     // MARK: - Reducer
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        struct TimerID: Hashable {}
-        
-        switch (state.cubingState, action) {
-        case (_, .loadSession):
-            return .run { @MainActor send in
-                send(
-                    .sessionLoaded(
-                        sessionsManager
-                            .loadSessions()
-                            .current
-                    )
-                )
-            }
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            struct TimerID: Hashable {}
             
-        case (_, .sessionLoaded(let newCurrent)):
-            if state.cube != newCurrent.cube {
-                state.cube = newCurrent.cube
-                state.scramble = ScrambleProvider.newScramble(for: newCurrent.cube)
-            }
-            return .none
-            
-        case (.idle, .touchBegan):
-            state.cubingState = .ready
-            state.time = .zero
-            return .none
-            
-        case (.ready, .touchEnded):
-            let isPreinspectionOn = userSettings.isPreinspectionOn
-            state.cubingState = isPreinspectionOn ? .preinspectionOngoing : .ongoing
-            state.time = isPreinspectionOn ? Configuration.preinpectionSeconds : state.time
-            
-            let startDate = Date()
-            let runPreinspectionTimer = isPreinspectionOn
-            let interval = runPreinspectionTimer ? Configuration.preinspectionTimeInterval : Configuration.timeInterval
-            
-            return EffectTask
-                .timer(
-                    id: TimerID(),
-                    every: .init(floatLiteral: interval),
-                    on: mainQueue
-                )
-                .map { _ in
-                    .updateTime(runPreinspectionTimer ? Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970) : Date().timeIntervalSince1970 - startDate.timeIntervalSince1970)
-                }
-            
-        case (.ongoing, .touchBegan):
-            state.cubingState = .ended
-            return .cancel(id: TimerID())
-            
-        case (.preinspectionOngoing, .touchBegan):
-            state.cubingState = .preinspectionReady
-            return .none
-            
-        case (.preinspectionReady, .touchEnded):
-            state.cubingState = .ongoing
-            
-            let startDate = Date()
-            
-            return EffectTask
-                .timer(
-                    id: TimerID(),
-                    every: .init(floatLiteral: Configuration.timeInterval),
-                    on: mainQueue
-                )
-                .map { _ in
-                    .updateTime(
-                        Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
+            switch (state.cubingState, action) {
+            case (_, .loadSession):
+                return .run { @MainActor send in
+                    send(
+                        .sessionLoaded(
+                            sessionsManager
+                                .loadSessions()
+                                .current
+                        )
                     )
                 }
-
-        case (.ended, .touchEnded):
-            let newResult = Result(time: state.time,
-                                   scramble: state.scramble,
-                                   date: .init())
-            state.cubingState = .idle
-            state.scramble = ScrambleProvider.newScramble(for: state.cube)
-            let safeCheck = state.cube.safeCheckTime
-            
-            return .run { @MainActor send in
-                if newResult.time < safeCheck {
-                    send(.showSafeCheckPopup(newResult))
-                } else {
-                    send(.saveResult(newResult))
+                
+            case (_, .sessionLoaded(let newCurrent)):
+                if state.cube != newCurrent.cube {
+                    state.cube = newCurrent.cube
+                    state.scramble = ScrambleProvider.newScramble(for: newCurrent.cube)
                 }
-            }
-            
-        case (_, .updateTime(let newTime)):
-            state.time = newTime
-            return .none
-            
-        case (_, .showSafeCheckPopup(let suspiciousResult)):
-            state.alert = AlertState(
-                title: TextState("Nice solve! ... or is it?"),
-                message: TextState("If there is no issue then congratulations, impressive solve! But looking at world records, this might've been miss click - if this is the case, you can decide not to save this solve now."),
-                primaryButton: .destructive(
-                    TextState("Remove"),
-                    action: .send(.dismissPopup)
-                ),
-                secondaryButton: .cancel(
-                    TextState("Save"),
-                    action: .send(.saveResult(suspiciousResult))
-                )
-            )
-            return .none
-            
-        case (_, .dismissPopup):
-            state.alert = nil
-            return .none
-            
-        case (_, .saveResult(let result)):
-            let saveAndCheckPb = Task(
-                priority: overlayCheckPriority
-            ) {
-                sessionsManager
-                    .saveResultAndCheckForPb(result)
-            }
-            
-            return .run { @MainActor send in
-                let record = await saveAndCheckPb.value
-                send(
-                    .newRecordSet(record)
-                )
-            }
-            
-        case (_, .newRecordSet(let type)):
-            var overlayText: String? {
-                switch type {
-                case .single:
-                    return "🤩 new best single 🥳"
-                case .avg5:
-                    return "🤯 new best avg5 😱"
-                case .avg12:
-                    return "🎉 new best avg12 🎉"
-                case .mo100:
-                    return "🪑 new best mo100 👏"
-                case .none:
-                    return nil
+                state.sessionName = newCurrent.name ?? "\(newCurrent.index)"
+                return .none
+                
+            case (.idle, .touchBegan):
+                state.cubingState = .ready
+                state.time = .zero
+                return .none
+                
+            case (.ready, .touchEnded):
+                let isPreinspectionOn = userSettings.isPreinspectionOn
+                state.cubingState = isPreinspectionOn ? .preinspectionOngoing : .ongoing
+                state.time = isPreinspectionOn ? Configuration.preinpectionSeconds : state.time
+                
+                let startDate = Date()
+                let runPreinspectionTimer = isPreinspectionOn
+                let interval = runPreinspectionTimer ? Configuration.preinspectionTimeInterval : Configuration.timeInterval
+                
+                return EffectTask
+                    .timer(
+                        id: TimerID(),
+                        every: .init(floatLiteral: interval),
+                        on: mainQueue
+                    )
+                    .map { _ in
+                            .updateTime(runPreinspectionTimer ? Configuration.preinpectionSeconds - (Date().timeIntervalSince1970 - startDate.timeIntervalSince1970) : Date().timeIntervalSince1970 - startDate.timeIntervalSince1970)
+                    }
+                
+            case (.ongoing, .touchBegan):
+                state.cubingState = .ended
+                return .cancel(id: TimerID())
+                
+            case (.preinspectionOngoing, .touchBegan):
+                state.cubingState = .preinspectionReady
+                return .none
+                
+            case (.preinspectionReady, .touchEnded):
+                state.cubingState = .ongoing
+                
+                let startDate = Date()
+                
+                return EffectTask
+                    .timer(
+                        id: TimerID(),
+                        every: .init(floatLiteral: Configuration.timeInterval),
+                        on: mainQueue
+                    )
+                    .map { _ in
+                            .updateTime(
+                                Date().timeIntervalSince1970 - startDate.timeIntervalSince1970
+                            )
+                    }
+                
+            case (.ended, .touchEnded):
+                let newResult = Result(time: state.time,
+                                       scramble: state.scramble,
+                                       date: .init())
+                state.cubingState = .idle
+                state.scramble = ScrambleProvider.newScramble(for: state.cube)
+                let safeCheck = state.cube.safeCheckTime
+                
+                return .run { @MainActor send in
+                    if newResult.time < safeCheck {
+                        send(.showSafeCheckPopup(newResult))
+                    } else {
+                        send(.saveResult(newResult))
+                    }
                 }
-            }
-            return .run { @MainActor send in
-                guard let overlayText = overlayText else { return }
-                send(
-                    .showOverlay(text: overlayText)
+                
+            case (_, .updateTime(let newTime)):
+                state.time = newTime
+                return .none
+                
+            case (_, .showSafeCheckPopup(let suspiciousResult)):
+                state.alert = AlertState(
+                    title: TextState("Nice solve! ... or is it?"),
+                    message: TextState("If there is no issue then congratulations, impressive solve! But looking at world records, this might've been miss click - if this is the case, you can decide not to save this solve now."),
+                    primaryButton: .destructive(
+                        TextState("Remove"),
+                        action: .send(.dismissPopup)
+                    ),
+                    secondaryButton: .cancel(
+                        TextState("Save"),
+                        action: .send(.saveResult(suspiciousResult))
+                    )
                 )
+                return .none
+                
+            case (_, .dismissPopup):
+                state.alert = nil
+                return .none
+                
+            case (_, .saveResult(let result)):
+                let saveAndCheckPb = Task(
+                    priority: overlayCheckPriority
+                ) {
+                    sessionsManager
+                        .saveResultAndCheckForPb(result)
+                }
+                
+                return .run { @MainActor send in
+                    let record = await saveAndCheckPb.value
+                    send(
+                        .newRecordSet(record)
+                    )
+                }
+                
+            case (_, .newRecordSet(let type)):
+                var overlayText: String? {
+                    switch type {
+                    case .single:
+                        return "🤩 new best single 🥳"
+                    case .avg5:
+                        return "🤯 new best avg5 😱"
+                    case .avg12:
+                        return "🎉 new best avg12 🎉"
+                    case .mo100:
+                        return "🪑 new best mo100 👏"
+                    case .none:
+                        return nil
+                    }
+                }
+                return .run { @MainActor send in
+                    guard let overlayText = overlayText else { return }
+                    send(
+                        .showOverlay(text: overlayText)
+                    )
+                }
+                
+            case (_, .showOverlay(let text)):
+                state.overlayText = text
+                return .none
+                
+            case (_, .hideOverlay):
+                state.overlayText = nil
+                return .none
+                  
+            default:
+                return .none
             }
-            
-        case (_, .showOverlay(let text)):
-            state.overlayText = text
-            return .none
-            
-        case (_, .hideOverlay):
-            state.overlayText = nil
-            return .none
-            
-        default:
-            return .none
-            
         }
     }
 }
@@ -243,7 +246,7 @@ extension TimerFeature {
             }
         }
         
-        var shouldScrambleBeHidden: Bool {
+        var shouldHideLabels: Bool {
             switch self {
             case .idle, .ready, .preinspectionReady, .preinspectionOngoing:
                 return false

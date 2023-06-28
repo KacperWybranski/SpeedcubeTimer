@@ -8,16 +8,10 @@
 import SwiftUI
 import ComposableArchitecture
 
-private enum Configuration {
-    static let timerTimeInterval: TimeInterval = 0.01
-    static let timerPreinspectionTimeInterval: TimeInterval = 1
-    static let preinpectionSeconds: TimeInterval = 15.00
-}
-
 struct TimerView: View {
     let store: Store<TimerFeature.State, TimerFeature.Action>
     
-    @State private var timer: Timer?
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
@@ -26,26 +20,7 @@ struct TimerView: View {
                     .black
                     .ignoresSafeArea()
                 
-                VStack(spacing: 0) {
-                    Color.clear
-                        .overlay(
-                            Text(viewStore.scramble)
-                                .hidden(viewStore.cubingState.shouldScrambleBeHidden)
-                                .foregroundColor(.lightGray)
-                                .font(.system(size: 40))
-                                .minimumScaleFactor(0.5)
-                                .multilineTextAlignment(.center)
-                                .padding(15)
-                        )
-                    
-                    Text(viewStore.formattedTime)
-                        .foregroundColor(viewStore.cubingState.timerTextColor)
-                        .font(.system(size: 70))
-                        .multilineTextAlignment(.center)
-                    
-                    
-                    Color.clear
-                }
+                content(viewStore: viewStore)
             }
             .alert(
                 self.store.scope(state: \.alert),
@@ -59,23 +34,14 @@ struct TimerView: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { _ in
-                        viewStore
-                            .send(
-                                .touchBegan
-                            )
+                        viewStore.send(.touchBegan)
                     }
                     .onEnded { _ in
-                        viewStore
-                            .send(
-                                .touchEnded
-                            )
+                        viewStore.send(.touchEnded)
                     }
             )
             .onAppear {
-                viewStore
-                    .send(
-                        .loadSession
-                    )
+                viewStore.send(.loadSession)
             }
             .onChange(of: viewStore.cubingState) { newState in
                 switch newState {
@@ -91,6 +57,50 @@ struct TimerView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func content(viewStore: ViewStore<TimerFeature.State, TimerFeature.Action>) -> some View {
+        GeometryReader { proxy in
+            VStack(spacing: 0) {
+                if sizeClass != .compact {
+                    HStack {
+                        Text(viewStore.cube.name)
+                        
+                        Rectangle()
+                            .frame(width: 1, height: 40)
+                            .padding(.horizontal, 15)
+                            
+                        Text(viewStore.sessionName)
+                    }
+                    .frame(maxWidth: proxy.size.width*0.25)
+                    .lineLimit(1)
+                    .hidden(viewStore.cubingState.shouldHideLabels)
+                    .font(.system(size: 30))
+                    .foregroundColor(.lightGray)
+                    .padding(.top, 15)
+                }
+                
+                Color.clear
+                    .overlay(
+                        Text(viewStore.scramble)
+                            .hidden(viewStore.cubingState.shouldHideLabels)
+                            .foregroundColor(.lightGray)
+                            .font(.system(size: 40))
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.center)
+                            .padding(15)
+                    )
+                
+                Text(viewStore.formattedTime)
+                    .foregroundColor(viewStore.cubingState.timerTextColor)
+                    .font(.system(size: 70))
+                    .multilineTextAlignment(.center)
+                
+                
+                Color.clear
+            }
+        }
+    }
 }
 
 struct TimerView_Previews: PreviewProvider {
@@ -102,6 +112,7 @@ struct TimerView_Previews: PreviewProvider {
                                             cubingState: .idle,
                                             time: 0.0,
                                             cube: .four,
+                                            sessionName: "1",
                                             scramble: ScrambleProvider.newScramble(for: .four)
                                         ),
                 reducer: TimerFeature(
