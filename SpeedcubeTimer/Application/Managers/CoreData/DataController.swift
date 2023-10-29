@@ -16,6 +16,13 @@ final class DataController: DataControllerProtocol {
     
     private let container = NSPersistentContainer(name: "SpeedcubeTimer")
     private var loadedSessions: [CDSession] = []
+    private var sessions: [CubingSession] {
+        loadedSessions.compactMap { CubingSession(from: $0) }
+    }
+    
+    @Published private var buffer: Int = 0
+    private let bufferLimit: Int = 10
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initialize
     
@@ -28,46 +35,48 @@ final class DataController: DataControllerProtocol {
                 
                 self.container.viewContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
             }
+        
+        $buffer
+            .dropFirst()
+            .filter { $0 > self.bufferLimit }
+            .sink { _ in
+                self.flush()
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Private
     
     private func loadedOrNewSession(from session: CubingSession) -> CDSession {
-        loadedSessions
-            .filter {
-                $0.id == session.id
-            }
-            .first ??
-        session
-            .newCdSession(
-                with: container
-                        .viewContext
-            )
+        if let existing = loadedSessions.filter({ $0.id == session.id }).first {
+            return existing
+        } else {
+            let new = session.newCdSession(with: container.viewContext)
+            loadedSessions.append(new)
+            return new
+        }
     }
     
-    // MARK: - Getters
+    // MARK: - DataControllerProtocol
     
     func loadSessions() -> [CubingSession] {
+        guard loadedSessions.isEmpty else { return sessions }
         do {
-            return try container
-                        .viewContext
-                        .fetch(
-                            CDSession
-                                .fetchRequest()
-                        )
-                        .save(
-                            to: &loadedSessions
-                        )
-                        .compactMap {
-                            CubingSession(from: $0)
-                        }
+            try container
+                .viewContext
+                .fetch(
+                    CDSession
+                        .fetchRequest()
+                )
+                .save(
+                    to: &loadedSessions
+                )
+            return sessions
         } catch {
             debugPrint("Core data sessions failed to load")
             return []
         }
     }
-    
-    // MARK: - Setters
     
     func save(_ result: Result, to session: CubingSession) {
         loadedOrNewSession(
@@ -80,9 +89,7 @@ final class DataController: DataControllerProtocol {
                 )
             )
         
-        try? container
-                .viewContext
-                .save()
+        inscreaseBuffer()
     }
     
     func remove(result: Result, from session: CubingSession) {
@@ -103,9 +110,7 @@ final class DataController: DataControllerProtocol {
                 )
             )
         
-        try? container
-                .viewContext
-                .save()
+        inscreaseBuffer()
     }
     
     func erase(session: CubingSession) {
@@ -123,25 +128,11 @@ final class DataController: DataControllerProtocol {
                     .delete($0)
             }
         session
+            .results = []
+        session
             .name = nil
         
-        try? container
-                .viewContext
-                .save()
-    }
-    
-    func reset() {
-        guard !loadSessions().isEmpty else { return }
-        loadedSessions
-            .forEach {
-                container
-                    .viewContext
-                    .delete($0)
-            }
-            
-        try? container
-                .viewContext
-                .save()
+        inscreaseBuffer()
     }
     
     func changeName(of session: CubingSession, to name: String?) {
@@ -150,9 +141,39 @@ final class DataController: DataControllerProtocol {
         )
         .name = name
         
-        try? container
+        inscreaseBuffer()
+    }
+    
+    func reset() {
+        guard !loadedSessions.isEmpty else { return }
+        loadedSessions
+            .forEach {
+                container
+                    .viewContext
+                    .delete($0)
+            }
+        loadedSessions = []
+            
+        inscreaseBuffer()
+    }
+}
+
+// MARK: - Buffer
+
+private extension DataController {
+    func inscreaseBuffer() {
+        buffer += 1
+    }
+    
+    func flush() {
+        buffer = 0
+        do {
+            try container
                 .viewContext
                 .save()
+        } catch {
+            debugPrint("❗️ error saving context: \(error.localizedDescription)")
+        }
     }
 }
 
@@ -212,8 +233,7 @@ private extension Result {
 // MARK: - Cache helper
 
 private extension Array {
-    func save(to array: inout [Element]) -> Self {
+    func save(to array: inout [Element]) {
         array = self
-        return self
     }
 }

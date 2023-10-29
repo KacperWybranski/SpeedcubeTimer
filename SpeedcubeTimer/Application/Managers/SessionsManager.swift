@@ -41,8 +41,7 @@ final class SessionsManager: SessionsManaging {
     
     @discardableResult
     func loadSessions() -> (all: [CubingSession], current: CubingSession) {
-        let sessions = coreDataController
-                                    .loadSessions()
+        let sessions = coreDataController.loadSessions()
         let newCurrent = sessions
                             .first {
                                 $0.cube == currentSession.cube &&

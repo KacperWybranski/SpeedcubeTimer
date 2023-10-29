@@ -50,7 +50,7 @@ extension AverageResult {
             .sorted()
         
         times.removeFirst()
-        times.removeFirst()
+        times.removeLast()
         return times.average
     }
     
